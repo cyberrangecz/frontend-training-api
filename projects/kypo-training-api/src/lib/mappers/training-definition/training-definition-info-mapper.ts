@@ -2,6 +2,9 @@ import {TrainingDefinitionInfo} from 'kypo-training-model';
 import {TrainingDefinitionMapper} from './training-definition-mapper';
 import {TrainingDefinitionInfoDTO} from '../../dto/training-definition/training-definition-info-dto';
 
+/**
+ * @dynamic
+ */
 export class TrainingDefinitionInfoMapper {
 
   static fromDTO(dto: TrainingDefinitionInfoDTO): TrainingDefinitionInfo {

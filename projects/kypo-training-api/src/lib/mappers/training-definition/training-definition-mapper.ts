@@ -5,6 +5,9 @@ import {TrainingDefinitionDTO} from '../../dto/training-definition/training-defi
 import {TrainingDefinitionUpdateDTO} from '../../dto/training-definition/training-definition-update-dto';
 import {TrainingDefinitionCreateDTO} from '../../dto/training-definition/training-definition-create-dto';
 
+/**
+ * @dynamic
+ */
 export class TrainingDefinitionMapper {
 
   static fromDTO(dto: TrainingDefinitionDTO, withLevels: boolean): TrainingDefinition {

@@ -4,6 +4,9 @@ import {UserMapper} from '../user/user-mapper';
 import {LevelMapper} from '../level/level-mapper';
 import {TrainingRunDTO} from '../../dto/training-run/training-run-dto';
 
+/**
+ * @dynamic
+ */
 export class TrainingRunMapper {
 
   static fromDTOs(dtos: TrainingRunDTO[]): TrainingRun[] {

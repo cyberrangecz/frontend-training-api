@@ -6,7 +6,6 @@
     "@angular/core": "^9.0.7",
     "tslib": "^1.10.0",
     "kypo-training-model": "9.0.0",
-    "kypo2-auth": "9.1.0",
     "kypo-common": "9.0.0",
     "file-saver": "^2.0.2"
   }

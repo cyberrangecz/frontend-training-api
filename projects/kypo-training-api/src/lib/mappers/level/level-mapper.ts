@@ -12,6 +12,9 @@ import {AssessmentLevelDTO} from '../../dto/level/assessment/assessment-level-dt
 import {InfoLevelDTO} from '../../dto/level/info/info-level-dto';
 import {BasicLevelInfoDTO} from '../../dto/level/basic-level-info-dto';
 
+/**
+ * @dynamic
+ */
 export class LevelMapper {
 
   static fromDTO(dto: AbstractLevelDTO): Level {

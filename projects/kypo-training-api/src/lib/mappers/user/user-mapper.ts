@@ -1,5 +1,8 @@
 import {User, UserDTO} from 'kypo2-auth';
 
+/**
+ * @dynamic
+ */
 export class UserMapper {
   static fromDTO(dto: UserDTO): User {
     return User.fromDTO(dto);

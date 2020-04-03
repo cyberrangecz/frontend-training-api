@@ -4,6 +4,9 @@ import {TrainingInstance} from 'kypo-training-model';
 import {TrainingInstanceCreateDTO} from '../../dto/training-instance/training-instance-create-dto';
 import {TrainingInstanceUpdateDTO} from '../../dto/training-instance/training-instance-update-dto';
 
+/**
+ * @dynamic
+ */
 export class TrainingInstanceMapper {
 
   static fromDTO(dto: TrainingInstanceDTO): TrainingInstance {

@@ -1,6 +1,9 @@
 import {Hint} from 'kypo-training-model';
 import {HintDTO, HintDTOClass} from '../../../dto/level/game/hint-dto';
 
+/**
+ * @dynamic
+ */
 export class HintMapper {
 
   static fromDTO(dto: HintDTO): Hint {

@@ -8,6 +8,9 @@ import {MultipleChoiceQuestionMapper} from './multiple-choice-question-mapper';
 import {AbstractAssessmentAnswerDTO} from '../../../dto/level/assessment/abstract-assessment-answer-dto';
 import {AbstractQuestionCreateDTO} from '../../../dto/level/assessment/abstact-question-dto';
 
+/**
+ * @dynamic
+ */
 export class QuestionMapper {
 
   static fromDTO(dto): Question {

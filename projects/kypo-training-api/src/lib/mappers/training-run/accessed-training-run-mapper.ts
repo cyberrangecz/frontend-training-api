@@ -3,6 +3,9 @@ import {AccessedTrainingRun} from 'kypo-training-model';
 import PossibleActionEnum = AccessedTrainingRunDTO.PossibleActionEnum;
 import {AccessedTrainingRunDTO} from '../../dto/training-run/accessed-training-run-dto';
 
+/**
+ * @dynamic
+ */
 export class AccessedTrainingRunMapper {
 
   static fromDTO(dto: AccessedTrainingRunDTO): AccessedTrainingRun {
