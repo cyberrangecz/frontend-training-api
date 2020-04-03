@@ -1,14 +1,21 @@
-import {User, UserDTO} from 'kypo2-auth';
-
 /**
  * @dynamic
  */
+import {UserRefDTO} from '../../dto/user/user-ref-dto';
+import {TrainingUser} from 'kypo-training-model';
+
 export class UserMapper {
-  static fromDTO(dto: UserDTO): User {
-    return User.fromDTO(dto);
+  static fromDTO(dto: UserRefDTO): TrainingUser {
+    return {
+      id: dto.id,
+      login: dto.sub,
+      name: `${dto.given_name} ${dto.family_name}`,
+      picture: dto.picture,
+      mail: dto.mail
+    };
   }
 
-  static fromDTOs(dtos: UserDTO[]): User[] {
+  static fromDTOs(dtos: UserRefDTO[]): TrainingUser[] {
     return dtos.map(dto => UserMapper.fromDTO(dto));
   }
 }

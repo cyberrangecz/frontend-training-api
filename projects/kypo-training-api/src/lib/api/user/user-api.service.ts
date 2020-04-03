@@ -1,6 +1,6 @@
 import {KypoFilter, KypoPaginatedResource, KypoRequestedPagination} from 'kypo-common';
 import {Observable} from 'rxjs';
-import {User} from 'kypo2-auth';
+import {Designer, Organizer} from 'kypo-training-model';
 
 /**
  * Service abstracting http communication with user related endpoints.
@@ -15,7 +15,7 @@ export abstract class UserApi {
    */
   abstract getOrganizersNotInTI(trainingInstanceId: number,
                                 pagination: KypoRequestedPagination,
-                                filters?: KypoFilter[]): Observable<KypoPaginatedResource<User>>;
+                                filters?: KypoFilter[]): Observable<KypoPaginatedResource<Organizer>>;
 
   /**
    * Sends http request to retrieve designers not associated with provided training definition
@@ -25,7 +25,7 @@ export abstract class UserApi {
    */
   abstract getDesignersNotInTD(trainingDefinitionId: number,
                                pagination: KypoRequestedPagination,
-                               filters?: KypoFilter[]): Observable<KypoPaginatedResource<User>>;
+                               filters?: KypoFilter[]): Observable<KypoPaginatedResource<Organizer>>;
 
   /**
    * Sends http request to retrieve authors of a training definition
@@ -35,7 +35,7 @@ export abstract class UserApi {
    */
   abstract getAuthors(trainingDefinitionId: number,
                       pagination: KypoRequestedPagination,
-                      filters?: KypoFilter[]): Observable<KypoPaginatedResource<User>>;
+                      filters?: KypoFilter[]): Observable<KypoPaginatedResource<Designer>>;
 
   /**
    * Sends http request to retrieve organizers of a training instance
@@ -45,7 +45,7 @@ export abstract class UserApi {
    */
   abstract getOrganizers(trainingInstanceId: number,
                 pagination: KypoRequestedPagination,
-                filters?: KypoFilter[]): Observable<KypoPaginatedResource<User>>;
+                filters?: KypoFilter[]): Observable<KypoPaginatedResource<Designer>>;
 
 
   /**

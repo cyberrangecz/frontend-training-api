@@ -1,6 +1,5 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {User} from 'kypo2-auth';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {KypoRequestedPagination} from 'kypo-common';
@@ -14,6 +13,7 @@ import {UserMapper} from '../../mappers/user/user-mapper';
 import {PaginationMapper} from '../../mappers/pagination-mapper';
 import {KypoTrainingApiContext} from '../../other/kypo-training-api-context';
 import {UserApi} from './user-api.service';
+import {Designer, Organizer, TrainingUser} from 'kypo-training-model';
 
 /**
  * Default implementation of service abstracting http communication with user related endpoints.
@@ -40,7 +40,7 @@ export class UserDefaultApi extends UserApi {
    */
   getOrganizersNotInTI(trainingInstanceId: number,
                        pagination: KypoRequestedPagination,
-                       filters: KypoFilter[] = []): Observable<KypoPaginatedResource<User>> {
+                       filters: KypoFilter[] = []): Observable<KypoPaginatedResource<Organizer>> {
     const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http.get<UserRestResource>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/organizers-not-in-training-instance`,
       { params})
@@ -57,7 +57,7 @@ export class UserDefaultApi extends UserApi {
    */
   getDesignersNotInTD(trainingDefinitionId: number,
                       pagination: KypoRequestedPagination,
-                      filters: KypoFilter[] = []): Observable<KypoPaginatedResource<User>> {
+                      filters: KypoFilter[] = []): Observable<KypoPaginatedResource<Designer>> {
     const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http.get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/designers-not-in-training-definition`,
       { params })
@@ -74,7 +74,7 @@ export class UserDefaultApi extends UserApi {
    */
   getAuthors(trainingDefinitionId: number,
              pagination: KypoRequestedPagination,
-             filters: KypoFilter[] = []): Observable<KypoPaginatedResource<User>> {
+             filters: KypoFilter[] = []): Observable<KypoPaginatedResource<Designer>> {
     const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http.get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/authors`,
       { params})
@@ -91,7 +91,7 @@ export class UserDefaultApi extends UserApi {
    */
   getOrganizers(trainingInstanceId: number,
                 pagination: KypoRequestedPagination,
-                filters: KypoFilter[] = []): Observable<KypoPaginatedResource<User>> {
+                filters: KypoFilter[] = []): Observable<KypoPaginatedResource<Organizer>> {
     const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http.get<UserRestResource>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/organizers`,
       { params })
@@ -100,8 +100,8 @@ export class UserDefaultApi extends UserApi {
       );
   }
 
-  private paginatedUsersFromDTO(dto: UserRestResource): KypoPaginatedResource<User> {
-    return new KypoPaginatedResource<User>(
+  private paginatedUsersFromDTO(dto: UserRestResource): KypoPaginatedResource<TrainingUser> {
+    return new KypoPaginatedResource<TrainingUser>(
       UserMapper.fromDTOs(dto.content),
       PaginationMapper.fromJavaAPI(dto.pagination)
     );
