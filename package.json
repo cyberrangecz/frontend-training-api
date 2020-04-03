@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-lib": "ng build kypo-sandbox-api --prod",
+    "create-package": "cd dist/kypo-sandbox-api && npm pack",
+    "build-and-pack": "npm install && npm run build-lib && npm run create-package",
+    "publish": "npm run build-and-pack && cd dist/kypo-sandbox-api && npm publish --registry=http://kypo-storage.ics.muni.cz:8081/repository/npm-hosted"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +25,12 @@
     "@angular/router": "~9.0.6",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "kypo-training-model": "9.0.0",
+    "kypo-common": "9.0.0",
+    "file-saver": "^2.0.2",
+    "kypo2-auth": "9.1.0",
+    "angular-oauth2-oidc": "^9.2.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.7",
