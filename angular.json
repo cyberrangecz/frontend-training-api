@@ -2,5 +2,46 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1, 
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "kypo-training-api": {
+      "projectType": "library",
+      "root": "projects/kypo-training-api",
+      "sourceRoot": "projects/kypo-training-api/src",
+      "prefix": "kypo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/kypo-training-api/tsconfig.lib.json",
+            "project": "projects/kypo-training-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/kypo-training-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/kypo-training-api/src/test.ts",
+            "tsConfig": "projects/kypo-training-api/tsconfig.spec.json",
+            "karmaConfig": "projects/kypo-training-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/kypo-training-api/tsconfig.lib.json",
+              "projects/kypo-training-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "kypo-training-api"
 }

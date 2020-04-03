@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "kypo-training-api": [
+        "dist/kypo-training-api/kypo-training-api",
+        "dist/kypo-training-api"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
