@@ -1,13 +1,14 @@
-/**
- * @dynamic
- */
 import {UserRefDTO} from '../../dto/user/user-ref-dto';
 import {TrainingUser} from 'kypo-training-model';
 
+
+/**
+ * @dynamic
+ */
 export class UserMapper {
   static fromDTO(dto: UserRefDTO): TrainingUser {
     return {
-      id: dto.id,
+      id: dto.user_ref_id,
       login: dto.sub,
       name: `${dto.given_name} ${dto.family_name}`,
       picture: dto.picture,

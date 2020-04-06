@@ -4,5 +4,4 @@ export class KypoTrainingApiConfig {
   constructor(trainingBasePath: string) {
     this.trainingBasePath = trainingBasePath;
   }
-
 }

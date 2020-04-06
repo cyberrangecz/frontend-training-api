@@ -1,5 +1,5 @@
 export interface UserRefDTO {
-  id: number;
+  user_ref_id: number;
   sub: string;
   given_name: string;
   family_name: string;
