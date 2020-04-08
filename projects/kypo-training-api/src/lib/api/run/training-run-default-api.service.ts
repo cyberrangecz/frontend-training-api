@@ -48,7 +48,7 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
    * @param id id of training run which should be retrieved
    */
   get(id: number): Observable<TrainingRun> {
-    return this.http.get<TrainingRunDTO>(this.trainingRunsEndpointUri + id)
+    return this.http.get<TrainingRunDTO>(`${this.trainingRunsEndpointUri}/${id}`)
       .pipe(map(response => TrainingRunMapper.fromDTO(response)));
   }
 
