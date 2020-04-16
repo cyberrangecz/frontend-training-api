@@ -1,12 +1,11 @@
-import {TrainingDefinitionInfo} from 'kypo-training-model';
-import {TrainingDefinitionMapper} from './training-definition-mapper';
-import {TrainingDefinitionInfoDTO} from '../../dto/training-definition/training-definition-info-dto';
+import { TrainingDefinitionInfo } from 'kypo-training-model';
+import { TrainingDefinitionInfoDTO } from '../../dto/training-definition/training-definition-info-dto';
+import { TrainingDefinitionMapper } from './training-definition-mapper';
 
 /**
  * @dynamic
  */
 export class TrainingDefinitionInfoMapper {
-
   static fromDTO(dto: TrainingDefinitionInfoDTO): TrainingDefinitionInfo {
     const result = new TrainingDefinitionInfo();
     result.id = dto.id;
@@ -16,6 +15,6 @@ export class TrainingDefinitionInfoMapper {
   }
 
   static fromDTOs(dtos: TrainingDefinitionInfoDTO[]): TrainingDefinitionInfo[] {
-    return dtos.map(dto => TrainingDefinitionInfoMapper.fromDTO(dto));
+    return dtos.map((dto) => TrainingDefinitionInfoMapper.fromDTO(dto));
   }
 }

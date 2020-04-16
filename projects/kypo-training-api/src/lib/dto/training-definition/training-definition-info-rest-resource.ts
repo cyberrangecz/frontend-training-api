@@ -1,7 +1,7 @@
-import {TrainingDefinitionInfoDTO} from './training-definition-info-dto';
-import {Paginated} from '../rest/paginated';
+import { Paginated } from '../rest/paginated';
+import { TrainingDefinitionInfoDTO } from './training-definition-info-dto';
 
 export interface TrainingDefinitionInfoRestResource {
-  content?: Array<TrainingDefinitionInfoDTO>;
+  content?: TrainingDefinitionInfoDTO[];
   pagination?: Paginated;
 }

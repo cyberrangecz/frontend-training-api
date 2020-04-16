@@ -1,21 +1,22 @@
-import {KypoFilter, KypoPaginatedResource, KypoRequestedPagination} from 'kypo-common';
-import {Observable} from 'rxjs';
-import {Designer, Organizer} from 'kypo-training-model';
+import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { Designer, Organizer } from 'kypo-training-model';
+import { Observable } from 'rxjs';
 
 /**
  * Service abstracting http communication with user related endpoints.
  */
 export abstract class UserApi {
-
   /**
    * Sends http request to retrieve organizers not associated with provided  training instance
    * @param trainingInstanceId id of a training instance not associated with retrieved organizers
    * @param pagination requested pagination
    * @param filters requested filtering
    */
-  abstract getOrganizersNotInTI(trainingInstanceId: number,
-                                pagination: KypoRequestedPagination,
-                                filters?: KypoFilter[]): Observable<KypoPaginatedResource<Organizer>>;
+  abstract getOrganizersNotInTI(
+    trainingInstanceId: number,
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<Organizer>>;
 
   /**
    * Sends http request to retrieve designers not associated with provided training definition
@@ -23,9 +24,11 @@ export abstract class UserApi {
    * @param pagination requested pagination
    * @param filters requested filtering
    */
-  abstract getDesignersNotInTD(trainingDefinitionId: number,
-                               pagination: KypoRequestedPagination,
-                               filters?: KypoFilter[]): Observable<KypoPaginatedResource<Organizer>>;
+  abstract getDesignersNotInTD(
+    trainingDefinitionId: number,
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<Organizer>>;
 
   /**
    * Sends http request to retrieve authors of a training definition
@@ -33,9 +36,11 @@ export abstract class UserApi {
    * @param pagination requested pagination
    * @param filters requested filtering
    */
-  abstract getAuthors(trainingDefinitionId: number,
-                      pagination: KypoRequestedPagination,
-                      filters?: KypoFilter[]): Observable<KypoPaginatedResource<Designer>>;
+  abstract getAuthors(
+    trainingDefinitionId: number,
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<Designer>>;
 
   /**
    * Sends http request to retrieve organizers of a training instance
@@ -43,10 +48,11 @@ export abstract class UserApi {
    * @param pagination requested pagination
    * @param filters requested filtering
    */
-  abstract getOrganizers(trainingInstanceId: number,
-                pagination: KypoRequestedPagination,
-                filters?: KypoFilter[]): Observable<KypoPaginatedResource<Designer>>;
-
+  abstract getOrganizers(
+    trainingInstanceId: number,
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<Designer>>;
 
   /**
    * Sends http request to create and remove associations between training definition and designers

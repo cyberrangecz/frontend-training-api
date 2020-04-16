@@ -1,10 +1,9 @@
-import {AbstractLevelTypeEnum} from 'kypo-training-model';
-import {InfoLevel} from 'kypo-training-model';
-import {InfoLevelUpdateDTO, InfoLevelUpdateDTOClass} from '../../../dto/level/info/info-level-update-dto';
-import {InfoLevelDTO} from '../../../dto/level/info/info-level-dto';
+import { AbstractLevelTypeEnum } from 'kypo-training-model';
+import { InfoLevel } from 'kypo-training-model';
+import { InfoLevelDTO } from '../../../dto/level/info/info-level-dto';
+import { InfoLevelUpdateDTO, InfoLevelUpdateDTOClass } from '../../../dto/level/info/info-level-update-dto';
 
 export class InfoLevelMapper {
-
   static fromDTO(dto: InfoLevelDTO): InfoLevel {
     const result = new InfoLevel();
     result.type = AbstractLevelTypeEnum.Info;

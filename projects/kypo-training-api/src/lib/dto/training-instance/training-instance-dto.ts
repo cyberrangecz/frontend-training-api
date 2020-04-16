@@ -10,17 +10,17 @@
  * Do not edit the class manually.
  */
 
-import {TrainingDefinitionDTO} from '../training-definition/training-definition-dto';
+import { TrainingDefinitionDTO } from '../training-definition/training-definition-dto';
 
 /**
  * Training Instance.
  */
 export interface TrainingInstanceDTO {
-    end_time?: Date;
-    id?: number;
-    pool_id: number;
-    start_time?: Date;
-    title?: string;
-    training_definition?: TrainingDefinitionDTO;
-    access_token: string;
+  end_time?: Date;
+  id?: number;
+  pool_id: number;
+  start_time?: Date;
+  title?: string;
+  training_definition?: TrainingDefinitionDTO;
+  access_token: string;
 }

@@ -9,17 +9,16 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import {TrainingDefinitionDTO} from './training-definition-dto';
-import {Paginated} from '../rest/paginated';
-
+import { Paginated } from '../rest/paginated';
+import { TrainingDefinitionDTO } from './training-definition-dto';
 
 export interface TrainingDefinitionRestResource {
-    /**
-     * Retrieved Training Definitions from databases.
-     */
-    content?: Array<TrainingDefinitionDTO>;
-    /**
-     * Paginated including: page number, number of elements in page, size, total elements and total pages.
-     */
-    pagination?: Paginated;
+  /**
+   * Retrieved Training Definitions from databases.
+   */
+  content?: TrainingDefinitionDTO[];
+  /**
+   * Paginated including: page number, number of elements in page, size, total elements and total pages.
+   */
+  pagination?: Paginated;
 }

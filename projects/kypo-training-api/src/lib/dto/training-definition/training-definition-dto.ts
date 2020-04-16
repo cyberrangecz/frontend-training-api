@@ -1,11 +1,11 @@
-import {AbstractLevelDTO} from '../level/abstract-level-dto';
+import { AbstractLevelDTO } from '../level/abstract-level-dto';
 
 export class TrainingDefinitionDTO {
-  levels?: Array<AbstractLevelDTO>;
+  levels?: AbstractLevelDTO[];
   description?: string;
   id?: number;
-  outcomes?: Array<string>;
-  prerequisities?: Array<string>;
+  outcomes?: string[];
+  prerequisities?: string[];
   show_stepper_bar?: boolean;
   state?: TrainingDefinitionDTO.StateEnum;
   title?: string;
@@ -14,10 +14,10 @@ export class TrainingDefinitionDTO {
 }
 
 export namespace TrainingDefinitionDTO {
-    export type StateEnum = 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
-    export const StateEnum = {
-        RELEASED: 'RELEASED' as StateEnum,
-        ARCHIVED: 'ARCHIVED' as StateEnum,
-        UNRELEASED: 'UNRELEASED' as StateEnum
-    };
+  export type StateEnum = 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
+  export const StateEnum = {
+    RELEASED: 'RELEASED' as StateEnum,
+    ARCHIVED: 'ARCHIVED' as StateEnum,
+    UNRELEASED: 'UNRELEASED' as StateEnum,
+  };
 }

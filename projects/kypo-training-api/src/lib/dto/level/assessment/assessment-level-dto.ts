@@ -1,4 +1,4 @@
-import {AbstractLevelDTO} from '../abstract-level-dto';
+import { AbstractLevelDTO } from '../abstract-level-dto';
 
 export interface AssessmentLevelDTO extends AbstractLevelDTO {
   assessment_type: AssessmentLevelDTO.AssessmentTypeEnum;
@@ -10,6 +10,6 @@ export namespace AssessmentLevelDTO {
   export type AssessmentTypeEnum = 'TEST' | 'QUESTIONNAIRE';
   export const AssessmentTypeEnum = {
     TEST: 'TEST' as AssessmentTypeEnum,
-    QUESTIONNAIRE: 'QUESTIONNAIRE' as AssessmentTypeEnum
+    QUESTIONNAIRE: 'QUESTIONNAIRE' as AssessmentTypeEnum,
   };
 }

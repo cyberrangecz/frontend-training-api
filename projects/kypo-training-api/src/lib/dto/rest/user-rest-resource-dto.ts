@@ -1,11 +1,11 @@
-import {Paginated} from './paginated';
-import {UserRefDTO} from '../user/user-ref-dto';
+import { UserRefDTO } from '../user/user-ref-dto';
+import { Paginated } from './paginated';
 
 export interface UserRestResource {
   /**
    * Retrieved Training Definitions from databases.
    */
-  content?: Array<UserRefDTO>;
+  content?: UserRefDTO[];
   /**
    * Paginated including: page number, number of elements in page, size, total elements and total pages.
    */

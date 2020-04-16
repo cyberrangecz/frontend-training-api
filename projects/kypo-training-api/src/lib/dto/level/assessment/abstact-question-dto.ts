@@ -12,6 +12,6 @@ export namespace AbstractQuestionDTO {
   export const QuestionTypeEnum = {
     FFQ: 'FFQ' as QuestionTypeEnum,
     MCQ: 'MCQ' as QuestionTypeEnum,
-    EMI: 'EMI' as QuestionTypeEnum
+    EMI: 'EMI' as QuestionTypeEnum,
   };
 }

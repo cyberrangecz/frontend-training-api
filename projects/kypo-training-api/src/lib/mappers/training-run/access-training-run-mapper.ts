@@ -1,9 +1,9 @@
-import {GameLevel} from 'kypo-training-model';
-import {AccessTrainingRunInfo} from 'kypo-training-model';
-import {LevelMapper} from '../level/level-mapper';
+import { GameLevel } from 'kypo-training-model';
+import { AccessTrainingRunInfo } from 'kypo-training-model';
+import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
 import LevelTypeEnum = AbstractLevelDTO.LevelTypeEnum;
-import {AccessTrainingRunDTO} from '../../dto/training-run/access-training-run-dto';
-import {AbstractLevelDTO} from '../../dto/level/abstract-level-dto';
+import { AccessTrainingRunDTO } from '../../dto/training-run/access-training-run-dto';
+import { LevelMapper } from '../level/level-mapper';
 
 export class AccessTrainingRunMapper {
   static fromDTO(dto: AccessTrainingRunDTO): AccessTrainingRunInfo {
@@ -18,9 +18,9 @@ export class AccessTrainingRunMapper {
     if (dto.taken_solution && dto.abstract_level_dto.level_type === LevelTypeEnum.GAME) {
       (result.currentLevel as GameLevel).solution = dto.taken_solution;
     }
-    if (dto.taken_hints && dto.taken_hints.length > 0  && dto.abstract_level_dto.level_type === LevelTypeEnum.GAME) {
-      dto.taken_hints.forEach(takenHint =>  {
-        const matchingHint = (result.currentLevel as GameLevel).hints.find(hint => hint.id === takenHint.id);
+    if (dto.taken_hints && dto.taken_hints.length > 0 && dto.abstract_level_dto.level_type === LevelTypeEnum.GAME) {
+      dto.taken_hints.forEach((takenHint) => {
+        const matchingHint = (result.currentLevel as GameLevel).hints.find((hint) => hint.id === takenHint.id);
         if (matchingHint) {
           matchingHint.content = takenHint.content;
         }

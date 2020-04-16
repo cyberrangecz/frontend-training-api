@@ -1,15 +1,14 @@
-import {TrainingDefinitionStateEnum} from 'kypo-training-model';
-import {TrainingDefinition} from 'kypo-training-model';
-import {LevelMapper} from '../level/level-mapper';
-import {TrainingDefinitionDTO} from '../../dto/training-definition/training-definition-dto';
-import {TrainingDefinitionUpdateDTO} from '../../dto/training-definition/training-definition-update-dto';
-import {TrainingDefinitionCreateDTO} from '../../dto/training-definition/training-definition-create-dto';
+import { TrainingDefinitionStateEnum } from 'kypo-training-model';
+import { TrainingDefinition } from 'kypo-training-model';
+import { TrainingDefinitionCreateDTO } from '../../dto/training-definition/training-definition-create-dto';
+import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';
+import { TrainingDefinitionUpdateDTO } from '../../dto/training-definition/training-definition-update-dto';
+import { LevelMapper } from '../level/level-mapper';
 
 /**
  * @dynamic
  */
 export class TrainingDefinitionMapper {
-
   static fromDTO(dto: TrainingDefinitionDTO, withLevels: boolean): TrainingDefinition {
     const result = new TrainingDefinition();
     result.id = dto.id;
@@ -28,7 +27,7 @@ export class TrainingDefinitionMapper {
   }
 
   static fromDTOs(dtos: TrainingDefinitionDTO[], withLevels: boolean): TrainingDefinition[] {
-    return dtos.map(dto => TrainingDefinitionMapper.fromDTO(dto, withLevels));
+    return dtos.map((dto) => TrainingDefinitionMapper.fromDTO(dto, withLevels));
   }
 
   static stateFromDTO(stateDTO: TrainingDefinitionDTO.StateEnum): TrainingDefinitionStateEnum {
@@ -40,7 +39,9 @@ export class TrainingDefinitionMapper {
       case TrainingDefinitionDTO.StateEnum.UNRELEASED:
         return TrainingDefinitionStateEnum.Unreleased;
       default: {
-        console.error(`Attribute "state" of TrainingDefinitionDTO with value: ${stateDTO} does not match any of the TrainingDefinition states`);
+        console.error(
+          `Attribute "state" of TrainingDefinitionDTO with value: ${stateDTO} does not match any of the TrainingDefinition states`
+        );
         return undefined;
       }
     }
@@ -55,7 +56,9 @@ export class TrainingDefinitionMapper {
       case TrainingDefinitionStateEnum.Archived:
         return TrainingDefinitionDTO.StateEnum.ARCHIVED;
       default: {
-        console.error(`Attribute "state" of TrainingDefinition with value ${state} does not match any of the TrainingDefinitionDTO states`);
+        console.error(
+          `Attribute "state" of TrainingDefinition with value ${state} does not match any of the TrainingDefinitionDTO states`
+        );
         return undefined;
       }
     }
@@ -66,8 +69,8 @@ export class TrainingDefinitionMapper {
     result.id = trainingDefinition.id;
     result.description = trainingDefinition.description;
     result.show_stepper_bar = trainingDefinition.showStepperBar;
-    result.prerequisities = trainingDefinition.prerequisites.filter(prerequisite => prerequisite.length > 1);
-    result.outcomes = trainingDefinition.outcomes.filter(outcome => outcome.length > 1);
+    result.prerequisities = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
+    result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
     result.state = TrainingDefinitionMapper.stateToDTO(trainingDefinition.state);
     result.title = trainingDefinition.title;
     return result;
@@ -75,13 +78,12 @@ export class TrainingDefinitionMapper {
 
   static toCreateDTO(trainingDefinition: TrainingDefinition): TrainingDefinitionCreateDTO {
     const result = new TrainingDefinitionCreateDTO();
-    result.prerequisities = trainingDefinition.prerequisites.filter(prerequisite => prerequisite.length > 1);
-    result.outcomes = trainingDefinition.outcomes.filter(outcome => outcome.length > 1);
+    result.prerequisities = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
+    result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
     result.description = trainingDefinition.description;
     result.state = TrainingDefinitionDTO.StateEnum.UNRELEASED;
     result.title = trainingDefinition.title;
     result.show_stepper_bar = trainingDefinition.showStepperBar;
     return result;
   }
-
 }

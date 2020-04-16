@@ -1,14 +1,13 @@
-import {TrainingDefinitionMapper} from '../training-definition/training-definition-mapper';
-import {TrainingInstanceDTO} from '../../dto/training-instance/training-instance-dto';
-import {TrainingInstance} from 'kypo-training-model';
-import {TrainingInstanceCreateDTO} from '../../dto/training-instance/training-instance-create-dto';
-import {TrainingInstanceUpdateDTO} from '../../dto/training-instance/training-instance-update-dto';
+import { TrainingInstance } from 'kypo-training-model';
+import { TrainingInstanceCreateDTO } from '../../dto/training-instance/training-instance-create-dto';
+import { TrainingInstanceDTO } from '../../dto/training-instance/training-instance-dto';
+import { TrainingInstanceUpdateDTO } from '../../dto/training-instance/training-instance-update-dto';
+import { TrainingDefinitionMapper } from '../training-definition/training-definition-mapper';
 
 /**
  * @dynamic
  */
 export class TrainingInstanceMapper {
-
   static fromDTO(dto: TrainingInstanceDTO): TrainingInstance {
     const result = new TrainingInstance();
     result.id = dto.id;
@@ -22,7 +21,7 @@ export class TrainingInstanceMapper {
   }
 
   static fromDTOs(dtos: TrainingInstanceDTO[]): TrainingInstance[] {
-    return dtos.map(dto => TrainingInstanceMapper.fromDTO(dto));
+    return dtos.map((dto) => TrainingInstanceMapper.fromDTO(dto));
   }
 
   static toCreateDTO(trainingInstance: TrainingInstance): TrainingInstanceCreateDTO {

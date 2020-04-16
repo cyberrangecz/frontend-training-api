@@ -14,9 +14,9 @@
  * Info Level to update.
  */
 export interface InfoLevelUpdateDTO {
-    content?: string;
-    id?: number;
-    title?: string;
+  content?: string;
+  id?: number;
+  title?: string;
 }
 
 export class InfoLevelUpdateDTOClass implements InfoLevelUpdateDTO {

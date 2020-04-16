@@ -1,4 +1,4 @@
-import {AbstractQuestionCreateDTO, AbstractQuestionDTO} from './abstact-question-dto';
+import { AbstractQuestionCreateDTO, AbstractQuestionDTO } from './abstact-question-dto';
 
 export interface FreeFormQuestionCreateDTO extends AbstractQuestionCreateDTO {
   correct_choices: string[];

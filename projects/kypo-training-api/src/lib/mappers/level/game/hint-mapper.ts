@@ -1,11 +1,10 @@
-import {Hint} from 'kypo-training-model';
-import {HintDTO, HintDTOClass} from '../../../dto/level/game/hint-dto';
+import { Hint } from 'kypo-training-model';
+import { HintDTO, HintDTOClass } from '../../../dto/level/game/hint-dto';
 
 /**
  * @dynamic
  */
 export class HintMapper {
-
   static fromDTO(dto: HintDTO): Hint {
     const result = new Hint();
     result.id = dto.id;
@@ -17,9 +16,7 @@ export class HintMapper {
   }
 
   static fromDTOs(dtos: HintDTO[]): Hint[] {
-    return dtos
-      .map(dto => HintMapper.fromDTO(dto))
-      .sort((a, b) => a.order - b.order);
+    return dtos.map((dto) => HintMapper.fromDTO(dto)).sort((a, b) => a.order - b.order);
   }
 
   static toDTO(hint: Hint): HintDTO {
@@ -33,6 +30,6 @@ export class HintMapper {
   }
 
   static toDTOs(hints: Hint[]): HintDTO[] {
-    return hints.map(hint => HintMapper.toDTO(hint));
+    return hints.map((hint) => HintMapper.toDTO(hint));
   }
 }

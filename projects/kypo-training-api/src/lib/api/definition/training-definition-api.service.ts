@@ -1,33 +1,35 @@
-import {
-  KypoFilter,
-  KypoPaginatedResource,
-  KypoRequestedPagination,
-} from 'kypo-common';
-import {Observable} from 'rxjs/internal/Observable';
+import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
 import {
   AssessmentLevel,
-  GameLevel, InfoLevel,
+  GameLevel,
+  InfoLevel,
   Level,
   TrainingDefinition,
   TrainingDefinitionInfo,
-  TrainingDefinitionStateEnum
+  TrainingDefinitionStateEnum,
 } from 'kypo-training-model';
+import { Observable } from 'rxjs/internal/Observable';
 
 export abstract class TrainingDefinitionApi {
-
   /**
    * Sends http request to retrieve all training definitions on specified page of a pagination
    * @param pagination requested pagination
    * @param filters filters to be applied on result
    */
-  abstract getAll(pagination: KypoRequestedPagination, filters?: KypoFilter[]): Observable<KypoPaginatedResource<TrainingDefinition>>;
+  abstract getAll(
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<TrainingDefinition>>;
 
   /**
    * Sends http request to retrieve all training instances on specified page of a pagination for organizer (different access rights)
    * @param pagination requested pagination
    * @param filters filters to be applied on result
    */
-  abstract getAllForOrganizer(pagination: KypoRequestedPagination, filters?: KypoFilter[]): Observable<KypoPaginatedResource<TrainingDefinitionInfo>>;
+  abstract getAllForOrganizer(
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<TrainingDefinitionInfo>>;
 
   /**
    * Sends http request to retrieve training definition by its id

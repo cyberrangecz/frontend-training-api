@@ -1,5 +1,5 @@
-import {HttpParams} from '@angular/common/http';
-import {KypoFilter} from 'kypo-common';
+import { HttpParams } from '@angular/common/http';
+import { KypoFilter } from 'kypo-common';
 
 /**
  * Class transforming filters to http params in server supported format
@@ -11,7 +11,7 @@ export class FilterParams {
    */
   static create(filters: KypoFilter[]): HttpParams {
     let params = new HttpParams();
-    filters.forEach(filter => params = params.set(filter.paramName, filter.value));
+    filters.forEach((filter) => (params = params.set(filter.paramName, filter.value)));
     return params;
   }
 }

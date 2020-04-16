@@ -1,11 +1,10 @@
-import {AbstractLevelTypeEnum} from 'kypo-training-model';
-import {GameLevel} from 'kypo-training-model';
-import {HintMapper} from './hint-mapper';
-import {GameLevelDTO} from '../../../dto/level/game/game-level-dto';
-import {GameLevelUpdateDTO, GameLevelUpdateDTOClass} from '../../../dto/level/game/game-level-update-dto';
+import { AbstractLevelTypeEnum } from 'kypo-training-model';
+import { GameLevel } from 'kypo-training-model';
+import { GameLevelDTO } from '../../../dto/level/game/game-level-dto';
+import { GameLevelUpdateDTO, GameLevelUpdateDTOClass } from '../../../dto/level/game/game-level-update-dto';
+import { HintMapper } from './hint-mapper';
 
 export class GameLevelMapper {
-
   static fromDTO(dto: GameLevelDTO): GameLevel {
     const result = new GameLevel();
     result.hints = HintMapper.fromDTOs(dto.hints);

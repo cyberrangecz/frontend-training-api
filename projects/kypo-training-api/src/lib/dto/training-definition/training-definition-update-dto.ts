@@ -10,26 +10,25 @@
  * Do not edit the class manually.
  */
 
-
 /**
  * Training Definition to update.
  */
 export class TrainingDefinitionUpdateDTO {
-    description?: string;
-    id?: number;
-    outcomes?: string[];
-    prerequisities?: string[];
-    show_stepper_bar?: boolean;
-    state?: TrainingDefinitionUpdateDTO.StateEnum;
-    title?: string;
+  description?: string;
+  id?: number;
+  outcomes?: string[];
+  prerequisities?: string[];
+  show_stepper_bar?: boolean;
+  state?: TrainingDefinitionUpdateDTO.StateEnum;
+  title?: string;
 }
 
 export namespace TrainingDefinitionUpdateDTO {
-    export type StateEnum = 'PRIVATED' | 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
-    export const StateEnum = {
-        PRIVATED: 'PRIVATED' as StateEnum,
-        RELEASED: 'RELEASED' as StateEnum,
-        ARCHIVED: 'ARCHIVED' as StateEnum,
-        UNRELEASED: 'UNRELEASED' as StateEnum
-    };
+  export type StateEnum = 'PRIVATED' | 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
+  export const StateEnum = {
+    PRIVATED: 'PRIVATED' as StateEnum,
+    RELEASED: 'RELEASED' as StateEnum,
+    ARCHIVED: 'ARCHIVED' as StateEnum,
+    UNRELEASED: 'UNRELEASED' as StateEnum,
+  };
 }

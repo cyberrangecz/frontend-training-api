@@ -1,18 +1,17 @@
-import {FreeFormQuestion} from 'kypo-training-model';
-import {ExtendedMatchingItems} from 'kypo-training-model';
-import {MultipleChoiceQuestion} from 'kypo-training-model';
-import {Question} from 'kypo-training-model';
-import {FreeFormQuestionMapper} from './free-form-question-mapper';
-import {ExtendedMatchingItemsMapper} from './extended-matching-items-mapper';
-import {MultipleChoiceQuestionMapper} from './multiple-choice-question-mapper';
-import {AbstractAssessmentAnswerDTO} from '../../../dto/level/assessment/abstract-assessment-answer-dto';
-import {AbstractQuestionCreateDTO} from '../../../dto/level/assessment/abstact-question-dto';
+import { FreeFormQuestion } from 'kypo-training-model';
+import { ExtendedMatchingItems } from 'kypo-training-model';
+import { MultipleChoiceQuestion } from 'kypo-training-model';
+import { Question } from 'kypo-training-model';
+import { AbstractQuestionCreateDTO } from '../../../dto/level/assessment/abstact-question-dto';
+import { AbstractAssessmentAnswerDTO } from '../../../dto/level/assessment/abstract-assessment-answer-dto';
+import { ExtendedMatchingItemsMapper } from './extended-matching-items-mapper';
+import { FreeFormQuestionMapper } from './free-form-question-mapper';
+import { MultipleChoiceQuestionMapper } from './multiple-choice-question-mapper';
 
 /**
  * @dynamic
  */
 export class QuestionMapper {
-
   static fromDTO(dto): Question {
     let question: Question;
 
@@ -43,7 +42,7 @@ export class QuestionMapper {
   }
 
   static fromDTOs(dtos): Question[] {
-    return dtos.map(dto => QuestionMapper.fromDTO(dto));
+    return dtos.map((dto) => QuestionMapper.fromDTO(dto));
   }
 
   static toAnswersDTO(question: Question): AbstractAssessmentAnswerDTO {
@@ -59,7 +58,7 @@ export class QuestionMapper {
   }
 
   static toAnswersDTOs(questions: Question[]): string {
-    const result = questions.map(question => this.toAnswersDTO(question));
+    const result = questions.map((question) => this.toAnswersDTO(question));
     return JSON.stringify(result);
   }
 
@@ -89,7 +88,7 @@ export class QuestionMapper {
       return [];
     }
     let index = 0;
-    questions.forEach(question => {
+    questions.forEach((question) => {
       const questionDTO = QuestionMapper.toCreateDTO(question);
       questionDTO.order = index;
       index++;
