@@ -10,13 +10,12 @@
  * Do not edit the class manually.
  */
 
-
 export interface HintDTO {
-    content?: string;
-    hint_penalty?: number;
-    id?: number;
-    title?: string;
-    order?: number;
+  content?: string;
+  hint_penalty?: number;
+  id?: number;
+  title?: string;
+  order?: number;
 }
 
 export class HintDTOClass implements HintDTO {

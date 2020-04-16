@@ -1,16 +1,15 @@
-import {TrainingRunStateEnum} from 'kypo-training-model';
-import {TrainingRun} from 'kypo-training-model';
-import {UserMapper} from '../user/user-mapper';
-import {LevelMapper} from '../level/level-mapper';
-import {TrainingRunDTO} from '../../dto/training-run/training-run-dto';
+import { TrainingRunStateEnum } from 'kypo-training-model';
+import { TrainingRun } from 'kypo-training-model';
+import { TrainingRunDTO } from '../../dto/training-run/training-run-dto';
+import { LevelMapper } from '../level/level-mapper';
+import { UserMapper } from '../user/user-mapper';
 
 /**
  * @dynamic
  */
 export class TrainingRunMapper {
-
   static fromDTOs(dtos: TrainingRunDTO[]): TrainingRun[] {
-    return dtos.map(dto => this.fromDTO(dto));
+    return dtos.map((dto) => this.fromDTO(dto));
   }
 
   static fromDTO(dto: TrainingRunDTO): TrainingRun {
@@ -32,9 +31,12 @@ export class TrainingRunMapper {
 
   private static resolveState(state: TrainingRunDTO.StateEnum): TrainingRunStateEnum {
     switch (state) {
-      case TrainingRunDTO.StateEnum.RUNNING: return TrainingRunStateEnum.RUNNING;
-      case TrainingRunDTO.StateEnum.FINISHED: return TrainingRunStateEnum.FINISHED;
-      case TrainingRunDTO.StateEnum.ARCHIVED: return TrainingRunStateEnum.ARCHIVED;
+      case TrainingRunDTO.StateEnum.RUNNING:
+        return TrainingRunStateEnum.RUNNING;
+      case TrainingRunDTO.StateEnum.FINISHED:
+        return TrainingRunStateEnum.FINISHED;
+      case TrainingRunDTO.StateEnum.ARCHIVED:
+        return TrainingRunStateEnum.ARCHIVED;
       default: {
         console.error(`Unsupported training run state of value: ${state}`);
         return undefined;

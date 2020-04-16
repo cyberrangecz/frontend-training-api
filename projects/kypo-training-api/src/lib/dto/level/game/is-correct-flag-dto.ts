@@ -10,9 +10,8 @@
  * Do not edit the class manually.
  */
 
-
 export interface IsCorrectFlagDTO {
-    correct?: boolean;
-    remaining_attempts?: number;
-    solution?: string;
+  correct?: boolean;
+  remaining_attempts?: number;
+  solution?: string;
 }

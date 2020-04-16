@@ -1,6 +1,14 @@
-import {Observable} from 'rxjs/internal/Observable';
-import {AccessedTrainingRun, AccessTrainingRunInfo, FlagCheck, Hint, Level, Question, TrainingRun} from 'kypo-training-model';
-import {KypoPaginatedResource, KypoRequestedPagination} from 'kypo-common';
+import { KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import {
+  AccessedTrainingRun,
+  AccessTrainingRunInfo,
+  FlagCheck,
+  Hint,
+  Level,
+  Question,
+  TrainingRun,
+} from 'kypo-training-model';
+import { Observable } from 'rxjs/internal/Observable';
 
 export abstract class TrainingRunApi {
   /**

@@ -1,22 +1,21 @@
-import {GameLevel} from 'kypo-training-model';
-import {InfoLevel} from 'kypo-training-model';
-import {AssessmentLevel} from 'kypo-training-model';
-import {Level} from 'kypo-training-model';
-import {GameLevelMapper} from './game/game-level-mapper';
-import {InfoLevelMapper} from './info/info-level-mapper';
-import {AssessmentLevelMapper} from './assessment/assessment-level-mapper';
-import {AbstractLevelTypeEnum} from 'kypo-training-model';
-import {AbstractLevelDTO} from '../../dto/level/abstract-level-dto';
-import {GameLevelDTO} from '../../dto/level/game/game-level-dto';
-import {AssessmentLevelDTO} from '../../dto/level/assessment/assessment-level-dto';
-import {InfoLevelDTO} from '../../dto/level/info/info-level-dto';
-import {BasicLevelInfoDTO} from '../../dto/level/basic-level-info-dto';
+import { GameLevel } from 'kypo-training-model';
+import { AssessmentLevel } from 'kypo-training-model';
+import { Level } from 'kypo-training-model';
+import { InfoLevel } from 'kypo-training-model';
+import { AbstractLevelTypeEnum } from 'kypo-training-model';
+import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
+import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';
+import { BasicLevelInfoDTO } from '../../dto/level/basic-level-info-dto';
+import { GameLevelDTO } from '../../dto/level/game/game-level-dto';
+import { InfoLevelDTO } from '../../dto/level/info/info-level-dto';
+import { AssessmentLevelMapper } from './assessment/assessment-level-mapper';
+import { GameLevelMapper } from './game/game-level-mapper';
+import { InfoLevelMapper } from './info/info-level-mapper';
 
 /**
  * @dynamic
  */
 export class LevelMapper {
-
   static fromDTO(dto: AbstractLevelDTO): Level {
     let level: Level;
     switch (dto.level_type) {
@@ -43,9 +42,7 @@ export class LevelMapper {
   }
 
   static fromDTOs(dtos: AbstractLevelDTO[]): Level[] {
-    return dtos
-      .map(dto => LevelMapper.fromDTO(dto))
-      .sort((a, b) => a.order - b.order);
+    return dtos.map((dto) => LevelMapper.fromDTO(dto)).sort((a, b) => a.order - b.order);
   }
 
   static fromBasicDTO(dto: BasicLevelInfoDTO): Level {
@@ -75,6 +72,6 @@ export class LevelMapper {
   }
 
   static fromBasicDTOs(dtos: BasicLevelInfoDTO[]): Level[] {
-    return dtos.map(dto => this.fromBasicDTO(dto));
+    return dtos.map((dto) => this.fromBasicDTO(dto));
   }
 }

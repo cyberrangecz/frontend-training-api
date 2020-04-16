@@ -1,5 +1,5 @@
-import {AbstractLevelDTO} from '../abstract-level-dto';
-import {HintDTO} from './hint-dto';
+import { AbstractLevelDTO } from '../abstract-level-dto';
+import { HintDTO } from './hint-dto';
 
 export interface GameLevelUpdateDTO {
   id: number;
@@ -7,7 +7,7 @@ export interface GameLevelUpdateDTO {
   content?: string;
   estimated_duration?: number;
   flag?: string;
-  hints?: Array<HintDTO>;
+  hints?: HintDTO[];
   incorrect_flag_limit?: number;
   solution?: string;
   solution_penalized?: boolean;
@@ -17,7 +17,7 @@ export class GameLevelUpdateDTOClass implements GameLevelUpdateDTO {
   content: string;
   estimated_duration: number;
   flag: string;
-  hints: Array<HintDTO>;
+  hints: HintDTO[];
   id: number;
   incorrect_flag_limit: number;
   level_type: AbstractLevelDTO.LevelTypeEnum;

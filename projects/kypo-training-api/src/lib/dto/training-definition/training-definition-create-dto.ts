@@ -13,20 +13,20 @@
  * Training Definition to create.
  */
 export class TrainingDefinitionCreateDTO {
-    description?: string;
-    outcomes?: string[];
-    prerequisities?: string[];
-    show_stepper_bar?: boolean;
-    state?: TrainingDefinitionCreateDTO.StateEnum;
-    title?: string;
+  description?: string;
+  outcomes?: string[];
+  prerequisities?: string[];
+  show_stepper_bar?: boolean;
+  state?: TrainingDefinitionCreateDTO.StateEnum;
+  title?: string;
 }
 
 export namespace TrainingDefinitionCreateDTO {
-    export type StateEnum = 'PRIVATED' | 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
-    export const StateEnum = {
-        PRIVATED: 'PRIVATED' as StateEnum,
-        RELEASED: 'RELEASED' as StateEnum,
-        ARCHIVED: 'ARCHIVED' as StateEnum,
-        UNRELEASED: 'UNRELEASED' as StateEnum
-    };
+  export type StateEnum = 'PRIVATED' | 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
+  export const StateEnum = {
+    PRIVATED: 'PRIVATED' as StateEnum,
+    RELEASED: 'RELEASED' as StateEnum,
+    ARCHIVED: 'ARCHIVED' as StateEnum,
+    UNRELEASED: 'UNRELEASED' as StateEnum,
+  };
 }

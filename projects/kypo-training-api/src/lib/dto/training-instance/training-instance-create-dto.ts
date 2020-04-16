@@ -10,14 +10,13 @@
  * Do not edit the class manually.
  */
 
-
 /**
  * Training Instance to create.
  */
 export class TrainingInstanceCreateDTO {
-    end_time?: string;
-    access_token?: string;
-    start_time?: string;
-    title?: string;
-    training_definition_id?: number;
+  end_time?: string;
+  access_token?: string;
+  start_time?: string;
+  title?: string;
+  training_definition_id?: number;
 }

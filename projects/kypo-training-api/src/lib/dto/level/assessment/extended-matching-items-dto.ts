@@ -1,6 +1,5 @@
-import {AbstractQuestionCreateDTO, AbstractQuestionDTO} from './abstact-question-dto';
-import {EmiChoiceDTO} from './emi-choice-dto';
-
+import { AbstractQuestionCreateDTO, AbstractQuestionDTO } from './abstact-question-dto';
+import { EmiChoiceDTO } from './emi-choice-dto';
 
 export class ExtendedMatchingItemsDTO implements AbstractQuestionCreateDTO {
   answer_required: boolean;

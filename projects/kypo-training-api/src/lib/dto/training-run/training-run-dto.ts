@@ -9,30 +9,29 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import {AbstractLevelDTO} from '../level/abstract-level-dto';
-import {UserRefDTO} from '../user/user-ref-dto';
-
+import { AbstractLevelDTO } from '../level/abstract-level-dto';
+import { UserRefDTO } from '../user/user-ref-dto';
 
 /**
  * .
  */
 export interface TrainingRunDTO {
-    current_level?: AbstractLevelDTO;
-    end_time?: Date;
-    event_log_reference?: string;
-    id?: number;
-    sandbox_instance_ref_id?: number;
-    participant_ref: UserRefDTO;
-    start_time?: Date;
-    state?: TrainingRunDTO.StateEnum;
-    definition_id: number;
-    instance_id: number;
+  current_level?: AbstractLevelDTO;
+  end_time?: Date;
+  event_log_reference?: string;
+  id?: number;
+  sandbox_instance_ref_id?: number;
+  participant_ref: UserRefDTO;
+  start_time?: Date;
+  state?: TrainingRunDTO.StateEnum;
+  definition_id: number;
+  instance_id: number;
 }
 export namespace TrainingRunDTO {
-    export type StateEnum = 'RUNNING' | 'FINISHED' | 'ARCHIVED';
-    export const StateEnum = {
-        RUNNING: 'RUNNING' as StateEnum,
-        FINISHED: 'FINISHED' as StateEnum,
-        ARCHIVED: 'ARCHIVED' as StateEnum,
-    };
+  export type StateEnum = 'RUNNING' | 'FINISHED' | 'ARCHIVED';
+  export const StateEnum = {
+    RUNNING: 'RUNNING' as StateEnum,
+    FINISHED: 'FINISHED' as StateEnum,
+    ARCHIVED: 'ARCHIVED' as StateEnum,
+  };
 }

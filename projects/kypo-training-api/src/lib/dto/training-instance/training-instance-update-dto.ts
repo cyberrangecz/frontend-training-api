@@ -13,10 +13,10 @@
  * Training Instance to update.
  */
 export class TrainingInstanceUpdateDTO {
-    end_time?: string;
-    id?: number;
-    access_token?: string;
-    start_time?: string;
-    title?: string;
-    training_definition_id?: number;
+  end_time?: string;
+  id?: number;
+  access_token?: string;
+  start_time?: string;
+  title?: string;
+  training_definition_id?: number;
 }

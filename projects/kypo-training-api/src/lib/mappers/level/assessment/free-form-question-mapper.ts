@@ -1,14 +1,17 @@
-import {FreeFormQuestion} from 'kypo-training-model';
-import {FreeFormAnswerDTO} from '../../../dto/level/assessment/free-form-answer-dto';
-import {FreeFormQuestionCreateDTO, FreeFormQuestionDTOClass} from '../../../dto/level/assessment/free-form-question-dto';
-import {AbstractQuestionDTO} from '../../../dto/level/assessment/abstact-question-dto';
+import { FreeFormQuestion } from 'kypo-training-model';
+import { AbstractQuestionDTO } from '../../../dto/level/assessment/abstact-question-dto';
+import { FreeFormAnswerDTO } from '../../../dto/level/assessment/free-form-answer-dto';
+import {
+  FreeFormQuestionCreateDTO,
+  FreeFormQuestionDTOClass,
+} from '../../../dto/level/assessment/free-form-question-dto';
 
 export class FreeFormQuestionMapper {
   static fromDTO(dto): FreeFormQuestion {
     const result = new FreeFormQuestion(dto.text);
     const answers: string[] = [];
     if (dto.correct_choices) {
-      dto.correct_choices.forEach(choice => answers.push(choice));
+      dto.correct_choices.forEach((choice) => answers.push(choice));
     }
     result.correctAnswers = answers;
     return result;

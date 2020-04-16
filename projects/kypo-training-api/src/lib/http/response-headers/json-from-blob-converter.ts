@@ -1,5 +1,5 @@
-import {HttpResponse} from '@angular/common/http';
-import {saveAs} from 'file-saver';
+import { HttpResponse } from '@angular/common/http';
+import { saveAs } from 'file-saver';
 
 export class JsonFromBlobConverter {
   static convert(response: HttpResponse<Blob>, filename: string) {

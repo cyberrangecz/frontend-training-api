@@ -1,11 +1,10 @@
-import {HttpParams} from '@angular/common/http';
-import {KypoRequestedPagination} from 'kypo-common';
+import { HttpParams } from '@angular/common/http';
+import { KypoRequestedPagination } from 'kypo-common';
 
 /**
  * Class transforming requested pagination object to http params into microservice supported format
  */
 export class PaginationParams {
-
   /**
    * Transforms requested pagination object to http params in trainings microservice format (JAVA API)
    * @param pagination requested pagination
@@ -19,13 +18,9 @@ export class PaginationParams {
           .set('size', pagination.size.toString())
           .set('sort', sort);
       } else {
-        return new HttpParams()
-          .set('page', pagination.page.toString())
-          .set('size', pagination.size.toString());
+        return new HttpParams().set('page', pagination.page.toString()).set('size', pagination.size.toString());
       }
     }
-    return new HttpParams()
-      .set('page', '0')
-      .set('size', '10');
+    return new HttpParams().set('page', '0').set('size', '10');
   }
 }
