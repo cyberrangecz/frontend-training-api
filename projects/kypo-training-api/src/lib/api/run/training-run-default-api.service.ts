@@ -169,4 +169,12 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   finish(trainingRunId: number): Observable<any> {
     return this.http.put(`${this.trainingRunsEndpointUri}/${trainingRunId}`, null);
   }
+
+  /**
+   * Sends http request to archive training run
+   * @param trainingRunId id of a training run which should be archived
+   */
+  archive(trainingRunId: number): Observable<any> {
+    return this.http.patch(`${this.trainingRunsEndpointUri}/${trainingRunId}/archive`, null);
+  }
 }
