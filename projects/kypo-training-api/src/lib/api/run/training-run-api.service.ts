@@ -84,4 +84,10 @@ export abstract class TrainingRunApi {
    * @param trainingRunId id of a training run which should be finished
    */
   abstract finish(trainingRunId: number): Observable<any>;
+
+  /**
+   * Sends http request to archive training run
+   * @param trainingRunId id of a training run which should be archived
+   */
+  abstract archive(trainingRunId: number): Observable<any>;
 }
