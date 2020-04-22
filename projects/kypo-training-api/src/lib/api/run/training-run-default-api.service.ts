@@ -74,17 +74,22 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   /**
    * Sends http request to delete training run
    * @param trainingRunId id of a training run which should be deleted
+   * @param force true if delete should be forced, false otherwise
    */
-  delete(trainingRunId: number): Observable<any> {
-    return this.http.delete(`${this.trainingRunsEndpointUri}/${trainingRunId}`);
+  delete(trainingRunId: number, force = false): Observable<any> {
+    const params = new HttpParams().append('forceDelete', force.toString());
+    return this.http.delete(`${this.trainingRunsEndpointUri}/${trainingRunId}`, { params });
   }
 
   /**
    * Sends http request to delete training runs in batch
    * @param trainingRunIds ids of training runs which should be deleted
+   * @param force true if delete should be forced, false otherwise
    */
-  deleteMultiple(trainingRunIds: number[]): Observable<any> {
-    const params = new HttpParams().append('trainingRunIds', trainingRunIds.toString());
+  deleteMultiple(trainingRunIds: number[], force = false): Observable<any> {
+    const params = new HttpParams()
+      .append('trainingRunIds', trainingRunIds.toString())
+      .append('forceDelete', force.toString());
     return this.http.delete(this.trainingRunsEndpointUri, { params });
   }
 

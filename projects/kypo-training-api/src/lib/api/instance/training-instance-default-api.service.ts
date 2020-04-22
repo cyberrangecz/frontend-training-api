@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { KypoParamsMerger } from 'kypo-common';
 import { KypoRequestedPagination } from 'kypo-common';
@@ -128,8 +128,10 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
   /**
    * Sends http request to delete training instance
    * @param trainingInstanceId id of training instance which should be deleted
+   * @param force true if delete should be forced, false otherwise
    */
-  delete(trainingInstanceId: number): Observable<any> {
+  delete(trainingInstanceId: number, force = false): Observable<any> {
+    const params = new HttpParams().append('forceDelete', force.toString());
     return this.http.delete<any>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}`);
   }
 

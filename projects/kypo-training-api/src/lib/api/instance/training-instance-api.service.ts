@@ -46,8 +46,9 @@ export abstract class TrainingInstanceApi {
   /**
    * Sends http request to delete training instance
    * @param trainingInstanceId id of training instance which should be deleted
+   * @param force true if delete should be forced, false otherwise
    */
-  abstract delete(trainingInstanceId: number): Observable<any>;
+  abstract delete(trainingInstanceId: number, force?: boolean): Observable<any>;
 
   /**
    * Sends http request to archive (download) training instance
