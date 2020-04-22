@@ -26,14 +26,16 @@ export abstract class TrainingRunApi {
   /**
    * Sends http request to delete training run
    * @param trainingRunId id of a training run which should be deleted
+   * @param force true if delete should be forced, false otherwise
    */
-  abstract delete(trainingRunId: number): Observable<any>;
+  abstract delete(trainingRunId: number, force?: boolean): Observable<any>;
 
   /**
    * Sends http request to delete training runs in batch
    * @param trainingRunIds ids of training runs which should be deleted
+   * @param force true if delete should be forced, false otherwise
    */
-  abstract deleteMultiple(trainingRunIds: number[]): Observable<any>;
+  abstract deleteMultiple(trainingRunIds: number[], force?: boolean): Observable<any>;
 
   /**
    * Sends http request to access training run with access token.
