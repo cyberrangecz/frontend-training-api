@@ -10,7 +10,7 @@ export class ExtendedMatchingItemsMapper {
     result.cols = dto.cols;
     result.rows = dto.rows;
     if (dto.answer_required) {
-      result.correctAnswers = dto.answer_required.map((answerDTO) => {
+      result.correctAnswers = dto.correct_answers.map((answerDTO) => {
         return {
           x: answerDTO.x,
           y: answerDTO.y,
