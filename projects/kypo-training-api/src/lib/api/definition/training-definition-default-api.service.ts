@@ -44,6 +44,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   readonly exportsUriExtension = 'exports';
   readonly importsUriExtension = 'imports';
   readonly levelsUriExtension = 'levels';
+  readonly sandboxDefUriExtension = 'sandbox-definitions';
 
   readonly trainingDefsEndpointUri: string;
   readonly trainingExportEndpointUri: string;
@@ -343,6 +344,50 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
         { headers: this.createDefaultHeaders() }
       )
       .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
+  }
+
+  /**
+   * Sends http request to swap level with another level
+   * @param trainingDefinitionId id of training definition associated with the level
+   * @param levelIdFrom id of a first level which should be swaped
+   * @param levelIdTo id of a second level which should be swaped
+   */
+  swapLevelWith(trainingDefinitionId: number, levelIdFrom: number, levelIdTo: number): Observable<Level[]> {
+    return this.http
+      .put<BasicLevelInfoDTO[]>(
+        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/${levelIdFrom}/swap-with/${levelIdTo}`,
+        {},
+        { headers: this.createDefaultHeaders() }
+      )
+      .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
+  }
+
+  /**
+   * Sends http request to retrieve all training definitions with given sandbox definition id
+   * @param sandboxDefId id of sandbox definition
+   * @param pagination requested pagination
+   * @param filters filters to be applied on result
+   */
+  geTrainingDefinition(
+    sandboxDefId: number,
+    pagination: KypoRequestedPagination,
+    filters: KypoFilter[] = []
+  ): Observable<KypoPaginatedResource<TrainingDefinition>> {
+    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    return this.http
+      .get<TrainingDefinitionRestResource>(
+        `${this.trainingDefsEndpointUri}/${this.sandboxDefUriExtension}/${sandboxDefId}`,
+        { params }
+      )
+      .pipe(
+        map(
+          (response) =>
+            new KypoPaginatedResource(
+              TrainingDefinitionMapper.fromDTOs(response.content, false),
+              PaginationMapper.fromJavaAPI(response.pagination)
+            )
+        )
+      );
   }
 
   private createDefaultHeaders() {

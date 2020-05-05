@@ -5,6 +5,7 @@ import { KypoRequestedPagination } from 'kypo-common';
 import { KypoParamsMerger } from 'kypo-common';
 import { KypoPaginatedResource } from 'kypo-common';
 import { Designer, Organizer, TrainingUser } from 'kypo-training-model';
+import { BetaTester } from 'kypo-training-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserRestResource } from '../../dto/rest/user-rest-resource-dto';
@@ -13,6 +14,7 @@ import { PaginationParams } from '../../http/params/pagination-params';
 import { PaginationMapper } from '../../mappers/pagination-mapper';
 import { UserMapper } from '../../mappers/user/user-mapper';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
+import { UserRefDTO } from './../../dto/user/user-ref-dto';
 import { UserApi } from './user-api.service';
 
 /**
@@ -22,13 +24,16 @@ import { UserApi } from './user-api.service';
 export class UserDefaultApi extends UserApi {
   readonly trainingDefinitionUriExtension = 'training-definitions';
   readonly trainingInstanceUrlExtension = 'training-instances';
+  readonly trainingRunUrlExtension = 'training-runs';
   readonly trainingDefsEndpointUri: string;
   readonly trainingInstancesEndpointUri: string;
+  readonly trainingRunEndpointUri: string;
 
   constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
     super();
     this.trainingDefsEndpointUri = this.context.config.trainingBasePath + this.trainingDefinitionUriExtension;
     this.trainingInstancesEndpointUri = this.context.config.trainingBasePath + this.trainingInstanceUrlExtension;
+    this.trainingRunEndpointUri = this.context.config.trainingBasePath + this.trainingRunUrlExtension;
   }
 
   /**
@@ -146,5 +151,66 @@ export class UserDefaultApi extends UserApi {
           .set('organizersRemoval', removals.toString()),
       }
     );
+  }
+
+  /**
+   * Sends http request to retrieve beta-testers of a training instance
+   * @param trainingInstanceId id of a training instance associated with retrieved beta-testers
+   * @param pagination requested pagination
+   * @param filters requested filtering
+   */
+  getBetaTesters(
+    trainingInstanceId: number,
+    pagination: KypoRequestedPagination,
+    filters: KypoFilter[] = []
+  ): Observable<KypoPaginatedResource<BetaTester>> {
+    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    return this.http
+      .get<UserRestResource>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/beta-testers`, { params })
+      .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
+  }
+
+  /**
+   * Sends http request to retrieve designers associated with provided training definition
+   * @param trainingDefinitionId id of a training definition associated with retrieved designers
+   * @param pagination requested pagination
+   * @param filters requested filtering
+   */
+  getDesigners(
+    trainingDefinitionId: number,
+    pagination: KypoRequestedPagination,
+    filters: KypoFilter[] = []
+  ): Observable<KypoPaginatedResource<Designer>> {
+    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    return this.http
+      .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/designers`, { params })
+      .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
+  }
+
+  /**
+   * Sends http request to retrieve organizers of a training definition
+   * @param trainingDefinitionId id of a training definition associated with retrieved organizers
+   * @param pagination requested pagination
+   * @param filters requested filtering
+   */
+  getTrainingDefinitionOrganizers(
+    trainingDefinitionId: number,
+    pagination: KypoRequestedPagination,
+    filters: KypoFilter[] = []
+  ): Observable<KypoPaginatedResource<Organizer>> {
+    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    return this.http
+      .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/organizers`, { params })
+      .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
+  }
+
+  /**
+   * Sends http request to retrieve participant for training run
+   * @param trainingRunId id of a training run
+   */
+  getParticipant(trainingRunId: number): Observable<TrainingUser> {
+    return this.http
+      .get<UserRefDTO>(`${this.trainingRunEndpointUri}/${trainingRunId}/organizers`)
+      .pipe(map((resp) => UserMapper.fromDTO(resp)));
   }
 }

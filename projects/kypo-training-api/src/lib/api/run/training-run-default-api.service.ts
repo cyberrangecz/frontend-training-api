@@ -1,13 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
-import { FlagCheck } from 'kypo-training-model';
+import { KypoFilter, KypoPaginatedResource, KypoParamsMerger, KypoRequestedPagination } from 'kypo-common';
+import { FlagCheck, TrainingRun } from 'kypo-training-model';
 import { Hint } from 'kypo-training-model';
 import { Question } from 'kypo-training-model';
 import { AccessedTrainingRun } from 'kypo-training-model';
 import { AccessTrainingRunInfo } from 'kypo-training-model';
 import { Level } from 'kypo-training-model';
-import { TrainingRun } from 'kypo-training-model';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
@@ -16,6 +15,7 @@ import { IsCorrectFlagDTO } from '../../dto/level/game/is-correct-flag-dto';
 import { AccessTrainingRunDTO } from '../../dto/training-run/access-training-run-dto';
 import { TrainingRunDTO } from '../../dto/training-run/training-run-dto';
 import { TrainingRunRestResource } from '../../dto/training-run/training-run-rest-resource';
+import { FilterParams } from '../../http/params/filter-params';
 import { PaginationParams } from '../../http/params/pagination-params';
 import { QuestionMapper } from '../../mappers/level/assessment/question-mapper';
 import { HintMapper } from '../../mappers/level/game/hint-mapper';
@@ -39,6 +39,29 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
     super();
     this.trainingRunsEndpointUri = this.context.config.trainingBasePath + this.trainingRunsUriExtension;
+  }
+
+  /**
+   * Sends http request to retrieve all training runs on specified page of a pagination
+   * @param pagination requested pagination
+   * @param filters filters to be applied on resources
+   */
+  getAll(
+    pagination: KypoRequestedPagination,
+    filters: KypoFilter[] = []
+  ): Observable<KypoPaginatedResource<TrainingRun>> {
+    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    return this.http
+      .get<TrainingRunRestResource>(this.trainingRunsEndpointUri, { params })
+      .pipe(
+        map(
+          (response) =>
+            new KypoPaginatedResource<TrainingRun>(
+              TrainingRunMapper.fromDTOs(response.content),
+              PaginationMapper.fromJavaAPI(response.pagination)
+            )
+        )
+      );
   }
 
   /**

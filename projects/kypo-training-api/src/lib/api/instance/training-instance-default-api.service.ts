@@ -30,6 +30,7 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
   readonly exportsUriExtension = 'exports';
   readonly trainingInstancesUriExtension = 'training-instances';
   readonly trainingRunsUriExtension = 'training-runs';
+  readonly sandboxInstancesUriExtension = 'sandbox-instances';
 
   readonly trainingInstancesEndpointUri: string;
   readonly trainingExportsEndpointUri: string;

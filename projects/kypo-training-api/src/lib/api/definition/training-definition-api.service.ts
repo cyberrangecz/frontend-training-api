@@ -140,4 +140,24 @@ export abstract class TrainingDefinitionApi {
    * @param toPosition index of new position of a level
    */
   abstract moveLevelTo(trainingDefinitionId: number, levelId: number, toPosition: number): Observable<Level[]>;
+
+  /**
+   * Sends http request to swap level with another level
+   * @param trainingDefinitionId id of training definition associated with the level
+   * @param levelIdFrom id of a first level which should be swaped
+   * @param levelIdTo id of a second level which should be swaped
+   */
+  abstract swapLevelWith(trainingDefinitionId: number, levelIdFrom: number, levelIdTo: number): Observable<Level[]>;
+
+  /**
+   * Sends http request to retrieve all training definitions with given sandbox definition id
+   * @param sandboxDefId id of sandbox definition
+   * @param pagination requested pagination
+   * @param filters filters to be applied on result
+   */
+  abstract geTrainingDefinition(
+    sandboxDefId: number,
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<TrainingDefinition>>;
 }
