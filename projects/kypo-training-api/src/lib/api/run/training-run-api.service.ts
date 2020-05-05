@@ -1,4 +1,4 @@
-import { KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
 import {
   AccessedTrainingRun,
   AccessTrainingRunInfo,
@@ -11,6 +11,16 @@ import {
 import { Observable } from 'rxjs/internal/Observable';
 
 export abstract class TrainingRunApi {
+  /**
+   * Sends http request to retrieve all training runs on specified page of a pagination
+   * @param pagination requested pagination
+   * @param filters filters to be applied on resources
+   */
+  abstract getAll(
+    pagination: KypoRequestedPagination,
+    filters?: KypoFilter[]
+  ): Observable<KypoPaginatedResource<TrainingRun>>;
+
   /**
    * Sends http request to retrieve training run by id
    * @param id id of training run which should be retrieved
