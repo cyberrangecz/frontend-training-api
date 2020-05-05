@@ -12,9 +12,9 @@ export class VisualizationInfoMapper {
     res.maxScore = dto.max_score;
     res.order = dto.order;
     res.title = dto.title;
-    res.training_definition_estimated_duration = dto.training_definition_estimated_duration;
-    res.training_definition_id = dto.training_definition_id;
-    res.training_definition_title = dto.training_definition_title;
+    res.trainingDefinitionEstimatedDuration = dto.training_definition_estimated_duration;
+    res.trainingDefinitionId = dto.training_definition_id;
+    res.trainingDefinitionTitle = dto.training_definition_title;
     return res;
   }
 
