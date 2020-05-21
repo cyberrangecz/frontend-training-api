@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { KypoFilter, KypoPaginatedResource, KypoParamsMerger, KypoRequestedPagination } from 'kypo-common';
 import { FlagCheck, TrainingRun } from 'kypo-training-model';
@@ -153,9 +153,8 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
    * @param flag a flag submitted by user
    */
   isCorrectFlag(trainingRunId: number, flag: string): Observable<FlagCheck> {
-    const params = new HttpParams().append('flag', flag);
     return this.http
-      .get<IsCorrectFlagDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-flag`, { params })
+      .post<IsCorrectFlagDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-flag`, { flag })
       .pipe(map((response) => FlagMapper.fromDTO(response)));
   }
 
