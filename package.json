@@ -10,8 +10,7 @@
     "e2e": "ng e2e",
     "build-lib": "ng build kypo-training-api --prod",
     "create-package": "cd dist/kypo-training-api && npm pack",
-    "build-and-pack": "npm install && npm run build-lib && npm run create-package",
-    "publish": "npm run build-and-pack && cd dist/kypo-training-api && npm publish --registry=http://kypo-storage.ics.muni.cz:8081/repository/npm-hosted"
+    "build-and-pack": "npm install && npm run build-lib && npm run create-package"
   },
   "husky": {
     "hooks": {
