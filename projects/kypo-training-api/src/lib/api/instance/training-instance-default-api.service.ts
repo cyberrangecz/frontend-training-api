@@ -133,7 +133,7 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
    */
   delete(trainingInstanceId: number, force = false): Observable<any> {
     const params = new HttpParams().append('forceDelete', force.toString());
-    return this.http.delete<any>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}`);
+    return this.http.delete<any>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}`, { params });
   }
 
   /**
