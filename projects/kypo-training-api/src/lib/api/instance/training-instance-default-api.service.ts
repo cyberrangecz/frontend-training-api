@@ -1,21 +1,23 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoParamsMerger } from 'kypo-common';
 import { KypoRequestedPagination } from 'kypo-common';
 import { ResponseHeaderContentDispositionReader } from 'kypo-common';
 import { KypoPaginatedResource } from 'kypo-common';
 import { KypoFilter } from 'kypo-common';
-import { TrainingInstance } from 'kypo-training-model';
+import { KypoParamsMerger } from 'kypo-common';
 import { TrainingRun } from 'kypo-training-model';
+import { TrainingInstance } from 'kypo-training-model';
+import { from, of, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/operators';
+import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
 import { TrainingInstanceAssignPoolDTO } from '../../dto/training-instance/training-instance-assign-pool-dto';
 import { TrainingInstanceDTO } from '../../dto/training-instance/training-instance-dto';
 import { TrainingInstanceRestResource } from '../../dto/training-instance/training-instance-rest-resource';
 import { TrainingRunRestResource } from '../../dto/training-run/training-run-rest-resource';
+import { JSONErrorConverter } from '../../http/json-error-converter';
 import { FilterParams } from '../../http/params/filter-params';
 import { PaginationParams } from '../../http/params/pagination-params';
-import { JsonFromBlobConverter } from '../../http/response-headers/json-from-blob-converter';
+import { FileSaver } from '../../http/response-headers/file-saver';
 import { PaginationMapper } from '../../mappers/pagination-mapper';
 import { TrainingInstanceMapper } from '../../mappers/training-instance/training-instance-mapper';
 import { TrainingRunMapper } from '../../mappers/training-run/training-run-mapper';
@@ -150,9 +152,10 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
         headers,
       })
       .pipe(
+        catchError((err) => JSONErrorConverter.fromBlob(err)),
         map((resp) => {
-          JsonFromBlobConverter.convert(
-            resp,
+          FileSaver.fromBlob(
+            resp.body,
             ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'archived-training-instance.zip')
           );
           return true;
