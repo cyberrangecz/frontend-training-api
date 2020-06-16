@@ -1,20 +1,20 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoRequestedPagination } from 'kypo-common';
 import { ResponseHeaderContentDispositionReader } from 'kypo-common';
-import { KypoPaginatedResource } from 'kypo-common';
 import { KypoFilter } from 'kypo-common';
 import { KypoParamsMerger } from 'kypo-common';
-import { AssessmentLevel } from 'kypo-training-model';
+import { KypoRequestedPagination } from 'kypo-common';
+import { KypoPaginatedResource } from 'kypo-common';
 import { GameLevel } from 'kypo-training-model';
 import { InfoLevel } from 'kypo-training-model';
 import { TrainingDefinitionStateEnum } from 'kypo-training-model';
-import { TrainingDefinition } from 'kypo-training-model';
+import { AssessmentLevel } from 'kypo-training-model';
 import { TrainingDefinitionInfo } from 'kypo-training-model';
 import { Level } from 'kypo-training-model';
+import { TrainingDefinition } from 'kypo-training-model';
 import { fromEvent } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';
 import { BasicLevelInfoDTO } from '../../dto/level/basic-level-info-dto';
 import { GameLevelDTO } from '../../dto/level/game/game-level-dto';
@@ -22,9 +22,10 @@ import { InfoLevelDTO } from '../../dto/level/info/info-level-dto';
 import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';
 import { TrainingDefinitionInfoRestResource } from '../../dto/training-definition/training-definition-info-rest-resource';
 import { TrainingDefinitionRestResource } from '../../dto/training-definition/training-definition-rest-resource';
+import { JSONErrorConverter } from '../../http/json-error-converter';
 import { FilterParams } from '../../http/params/filter-params';
 import { PaginationParams } from '../../http/params/pagination-params';
-import { JsonFromBlobConverter } from '../../http/response-headers/json-from-blob-converter';
+import { FileSaver } from '../../http/response-headers/file-saver';
 import { AssessmentLevelMapper } from '../../mappers/level/assessment/assessment-level-mapper';
 import { GameLevelMapper } from '../../mappers/level/game/game-level-mapper';
 import { InfoLevelMapper } from '../../mappers/level/info/info-level-mapper';
@@ -153,9 +154,10 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
         headers,
       })
       .pipe(
+        catchError((err) => JSONErrorConverter.fromBlob(err)),
         map((resp) => {
-          JsonFromBlobConverter.convert(
-            resp,
+          FileSaver.fromBlob(
+            resp.body,
             ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-definition.json')
           );
           return true;
