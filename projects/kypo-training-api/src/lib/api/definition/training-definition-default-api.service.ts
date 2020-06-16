@@ -173,7 +173,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   upload(file: File): Observable<TrainingDefinition> {
     const fileReader = new FileReader();
     const fileRead$ = fromEvent(fileReader, 'load').pipe(
-      mergeMap((e) => {
+      mergeMap((_) => {
         const jsonBody = JSON.parse(fileReader.result as string);
         return this.http.post<TrainingDefinitionDTO>(
           `${this.trainingImportEndpointUri}/${this.trainingDefinitionUriExtension}`,

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { KypoFilter, KypoPaginatedResource, KypoParamsMerger, KypoRequestedPagination } from 'kypo-common';
 import { FlagCheck, TrainingRun } from 'kypo-training-model';
