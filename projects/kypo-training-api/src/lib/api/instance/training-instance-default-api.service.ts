@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { KypoRequestedPagination } from 'kypo-common';
 import { ResponseHeaderContentDispositionReader } from 'kypo-common';
@@ -7,9 +7,8 @@ import { KypoFilter } from 'kypo-common';
 import { KypoParamsMerger } from 'kypo-common';
 import { TrainingRun } from 'kypo-training-model';
 import { TrainingInstance } from 'kypo-training-model';
-import { from, of, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { TrainingInstanceAssignPoolDTO } from '../../dto/training-instance/training-instance-assign-pool-dto';
 import { TrainingInstanceDTO } from '../../dto/training-instance/training-instance-dto';
 import { TrainingInstanceRestResource } from '../../dto/training-instance/training-instance-rest-resource';
