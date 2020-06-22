@@ -122,9 +122,11 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
    * @param trainingInstance training instance which should be updated
    */
   update(trainingInstance: TrainingInstance): Observable<string> {
-    return this.http.put(this.trainingInstancesEndpointUri, TrainingInstanceMapper.toUpdateDTO(trainingInstance), {
-      responseType: 'text',
-    });
+    return this.http
+      .put(this.trainingInstancesEndpointUri, TrainingInstanceMapper.toUpdateDTO(trainingInstance), {
+        responseType: 'text',
+      })
+      .pipe(catchError((err) => JSONErrorConverter.fromText(err)));
   }
 
   /**
