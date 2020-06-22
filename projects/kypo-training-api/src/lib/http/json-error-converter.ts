@@ -29,4 +29,10 @@ export class JSONErrorConverter {
       };
     });
   }
+
+  static fromText(err: any) {
+    const newError = { ...err };
+    newError.error = JSON.parse(err.error);
+    return throwError(new HttpErrorResponse(newError));
+  }
 }
