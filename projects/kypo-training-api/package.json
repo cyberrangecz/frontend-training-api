@@ -2,11 +2,13 @@
   "name": "kypo-training-api",
   "version": "9.1.3",
   "peerDependencies": {
-    "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7",
-    "tslib": "^1.10.0",
-    "kypo-training-model": "9.0.1",
-    "kypo-common": "9.0.0",
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "kypo-training-model": "~10.0.0",
+    "kypo-common": "~10.0.0",
     "file-saver": "^2.0.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }
