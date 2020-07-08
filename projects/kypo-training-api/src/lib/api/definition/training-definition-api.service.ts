@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import {
   AssessmentLevel,
   GameLevel,
@@ -17,9 +17,9 @@ export abstract class TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   abstract getAll(
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<TrainingDefinition>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<TrainingDefinition>>;
 
   /**
    * Sends http request to retrieve all training instances on specified page of a pagination for organizer (different access rights)
@@ -27,9 +27,9 @@ export abstract class TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   abstract getAllForOrganizer(
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<TrainingDefinitionInfo>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<TrainingDefinitionInfo>>;
 
   /**
    * Sends http request to retrieve training definition by its id
@@ -157,7 +157,7 @@ export abstract class TrainingDefinitionApi {
    */
   abstract geTrainingDefinition(
     sandboxDefId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<TrainingDefinition>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<TrainingDefinition>>;
 }

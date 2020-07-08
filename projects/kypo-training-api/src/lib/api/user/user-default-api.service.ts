@@ -1,9 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoFilter } from 'kypo-common';
-import { KypoRequestedPagination } from 'kypo-common';
-import { KypoParamsMerger } from 'kypo-common';
-import { KypoPaginatedResource } from 'kypo-common';
+import { SentinelFilter, RequestedPagination, SentinelParamsMerger, PaginatedResource } from '@sentinel/common';
 import { Designer, Organizer, TrainingUser } from 'kypo-training-model';
 import { BetaTester } from 'kypo-training-model';
 import { Observable } from 'rxjs';
@@ -44,10 +41,10 @@ export class UserDefaultApi extends UserApi {
    */
   getOrganizersNotInTI(
     trainingInstanceId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<Organizer>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<Organizer>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(
         `${this.trainingInstancesEndpointUri}/${trainingInstanceId}/organizers-not-in-training-instance`,
@@ -64,10 +61,10 @@ export class UserDefaultApi extends UserApi {
    */
   getDesignersNotInTD(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<Designer>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<Designer>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(
         `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/designers-not-in-training-definition`,
@@ -84,10 +81,10 @@ export class UserDefaultApi extends UserApi {
    */
   getAuthors(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<Designer>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<Designer>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/authors`, { params })
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
@@ -101,17 +98,17 @@ export class UserDefaultApi extends UserApi {
    */
   getOrganizers(
     trainingInstanceId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<Organizer>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<Organizer>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/organizers`, { params })
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 
-  private paginatedUsersFromDTO(dto: UserRestResource): KypoPaginatedResource<TrainingUser> {
-    return new KypoPaginatedResource<TrainingUser>(
+  private paginatedUsersFromDTO(dto: UserRestResource): PaginatedResource<TrainingUser> {
+    return new PaginatedResource<TrainingUser>(
       UserMapper.fromDTOs(dto.content),
       PaginationMapper.fromJavaAPI(dto.pagination)
     );
@@ -161,10 +158,10 @@ export class UserDefaultApi extends UserApi {
    */
   getBetaTesters(
     trainingInstanceId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<BetaTester>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<BetaTester>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/beta-testers`, { params })
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
@@ -178,10 +175,10 @@ export class UserDefaultApi extends UserApi {
    */
   getDesigners(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<Designer>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<Designer>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/designers`, { params })
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
@@ -195,10 +192,10 @@ export class UserDefaultApi extends UserApi {
    */
   getTrainingDefinitionOrganizers(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<Organizer>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<Organizer>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/organizers`, { params })
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));

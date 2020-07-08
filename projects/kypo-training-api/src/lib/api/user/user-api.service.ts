@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import { Designer, Organizer, TrainingUser } from 'kypo-training-model';
 import { BetaTester } from 'kypo-training-model';
 import { Observable } from 'rxjs';
@@ -15,9 +15,9 @@ export abstract class UserApi {
    */
   abstract getOrganizersNotInTI(
     trainingInstanceId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<Organizer>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<Organizer>>;
 
   /**
    * Sends http request to retrieve designers not associated with provided training definition
@@ -27,9 +27,9 @@ export abstract class UserApi {
    */
   abstract getDesignersNotInTD(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<Organizer>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<Organizer>>;
 
   /**
    * Sends http request to retrieve authors of a training definition
@@ -39,9 +39,9 @@ export abstract class UserApi {
    */
   abstract getAuthors(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<Designer>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<Designer>>;
 
   /**
    * Sends http request to retrieve organizers of a training instance
@@ -51,9 +51,9 @@ export abstract class UserApi {
    */
   abstract getOrganizers(
     trainingInstanceId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<Organizer>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<Organizer>>;
 
   /**
    * Sends http request to create and remove associations between training definition and designers
@@ -79,9 +79,9 @@ export abstract class UserApi {
    */
   abstract getBetaTesters(
     trainingInstanceId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<BetaTester>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<BetaTester>>;
 
   /**
    * Sends http request to retrieve designers associated with provided training definition
@@ -91,9 +91,9 @@ export abstract class UserApi {
    */
   abstract getDesigners(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<Designer>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<Designer>>;
 
   /**
    * Sends http request to retrieve organizers of a training definition
@@ -103,9 +103,9 @@ export abstract class UserApi {
    */
   abstract getTrainingDefinitionOrganizers(
     trainingDefinitionId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<Organizer>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<Organizer>>;
 
   /**
    * Sends http request to retrieve participant for training run

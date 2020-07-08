@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import { TrainingInstance, TrainingRun } from 'kypo-training-model';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -9,9 +9,9 @@ export abstract class TrainingInstanceApi {
    * @param filters filters to be applied on resources
    */
   abstract getAll(
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<TrainingInstance>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<TrainingInstance>>;
 
   /**
    * Sends http request to retrieves training instance by id
@@ -27,9 +27,9 @@ export abstract class TrainingInstanceApi {
    */
   abstract getAssociatedTrainingRuns(
     trainingInstanceId: number,
-    pagination: KypoRequestedPagination,
+    pagination: RequestedPagination,
     isActive?
-  ): Observable<KypoPaginatedResource<TrainingRun>>;
+  ): Observable<PaginatedResource<TrainingRun>>;
 
   /**
    * Sends http request to create new training instance

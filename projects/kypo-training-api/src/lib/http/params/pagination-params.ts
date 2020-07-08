@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { KypoRequestedPagination } from 'kypo-common';
+import { RequestedPagination } from '@sentinel/common';
 
 /**
  * Class transforming requested pagination object to http params into microservice supported format
@@ -9,7 +9,7 @@ export class PaginationParams {
    * Transforms requested pagination object to http params in trainings microservice format (JAVA API)
    * @param pagination requested pagination
    */
-  static forJavaAPI(pagination: KypoRequestedPagination): HttpParams {
+  static forJavaAPI(pagination: RequestedPagination): HttpParams {
     if (pagination) {
       if (pagination.sort) {
         const sort = pagination.sort + ',' + (pagination.sortDir ? pagination.sortDir : 'asc');

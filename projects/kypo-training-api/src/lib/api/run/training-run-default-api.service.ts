@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoFilter, KypoPaginatedResource, KypoParamsMerger, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, SentinelParamsMerger, RequestedPagination } from '@sentinel/common';
 import { FlagCheck, TrainingRun } from 'kypo-training-model';
 import { Hint } from 'kypo-training-model';
 import { Question } from 'kypo-training-model';
@@ -46,17 +46,14 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
    * @param pagination requested pagination
    * @param filters filters to be applied on resources
    */
-  getAll(
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<TrainingRun>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+  getAll(pagination: RequestedPagination, filters: SentinelFilter[] = []): Observable<PaginatedResource<TrainingRun>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<TrainingRunRestResource>(this.trainingRunsEndpointUri, { params })
       .pipe(
         map(
           (response) =>
-            new KypoPaginatedResource<TrainingRun>(
+            new PaginatedResource<TrainingRun>(
               TrainingRunMapper.fromDTOs(response.content),
               PaginationMapper.fromJavaAPI(response.pagination)
             )
@@ -78,7 +75,7 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
    * Sends http request to retrieve training run already accessed by logged in user
    * @param pagination requested pagination
    */
-  getAccessed(pagination: KypoRequestedPagination): Observable<KypoPaginatedResource<AccessedTrainingRun>> {
+  getAccessed(pagination: RequestedPagination): Observable<PaginatedResource<AccessedTrainingRun>> {
     return this.http
       .get<TrainingRunRestResource>(`${this.trainingRunsEndpointUri}/accessible`, {
         params: PaginationParams.forJavaAPI(pagination),
@@ -86,7 +83,7 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
       .pipe(
         map(
           (response) =>
-            new KypoPaginatedResource<AccessedTrainingRun>(
+            new PaginatedResource<AccessedTrainingRun>(
               AccessedTrainingRunMapper.fromDTOs(response.content),
               PaginationMapper.fromJavaAPI(response.pagination)
             )
