@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import {
   AccessedTrainingRun,
   AccessTrainingRunInfo,
@@ -17,9 +17,9 @@ export abstract class TrainingRunApi {
    * @param filters filters to be applied on resources
    */
   abstract getAll(
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<TrainingRun>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<TrainingRun>>;
 
   /**
    * Sends http request to retrieve training run by id
@@ -31,7 +31,7 @@ export abstract class TrainingRunApi {
    * Sends http request to retrieve training run already accessed by logged in user
    * @param pagination requested pagination
    */
-  abstract getAccessed(pagination: KypoRequestedPagination): Observable<KypoPaginatedResource<AccessedTrainingRun>>;
+  abstract getAccessed(pagination: RequestedPagination): Observable<PaginatedResource<AccessedTrainingRun>>;
 
   /**
    * Sends http request to delete training run

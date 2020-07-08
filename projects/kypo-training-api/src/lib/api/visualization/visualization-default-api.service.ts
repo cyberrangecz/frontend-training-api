@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoFilter, KypoPaginatedResource, KypoParamsMerger, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, SentinelParamsMerger, RequestedPagination } from '@sentinel/common';
 import { Trainee, TrainingUser } from 'kypo-training-model';
 import { VisualizationInfo } from 'kypo-training-model';
 import { Observable } from 'rxjs';
@@ -71,11 +71,11 @@ export class VisualizationDefaultApi extends VisualizationApi {
    */
   getUsers(
     usersIds: number[],
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<TrainingUser>> {
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<TrainingUser>> {
     const idsParam = new HttpParams().set('ids', usersIds.toString());
-    const params = KypoParamsMerger.merge([
+    const params = SentinelParamsMerger.merge([
       PaginationParams.forJavaAPI(pagination),
       FilterParams.create(filters),
       idsParam,
@@ -84,7 +84,7 @@ export class VisualizationDefaultApi extends VisualizationApi {
       .get<UserRestResource>(`${this.visualizationsEndpointUri}/users`, { params })
       .pipe(
         map((resp) => {
-          return new KypoPaginatedResource<TrainingUser>(
+          return new PaginatedResource<TrainingUser>(
             UserMapper.fromDTOs(resp.content),
             PaginationMapper.fromJavaAPI(resp.pagination)
           );

@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import { Trainee, TrainingUser } from 'kypo-training-model';
 import { VisualizationInfo } from 'kypo-training-model';
 import { Observable } from 'rxjs';
@@ -33,7 +33,7 @@ export abstract class VisualizationApi {
    */
   abstract getUsers(
     usersIds: number[],
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<TrainingUser>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<TrainingUser>>;
 }

@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseHeaderContentDispositionReader } from 'kypo-common';
-import { KypoFilter } from 'kypo-common';
-import { KypoParamsMerger } from 'kypo-common';
-import { KypoRequestedPagination } from 'kypo-common';
-import { KypoPaginatedResource } from 'kypo-common';
+import {
+  ResponseHeaderContentDispositionReader,
+  SentinelFilter,
+  SentinelParamsMerger,
+  RequestedPagination,
+  PaginatedResource,
+} from '@sentinel/common';
 import { GameLevel } from 'kypo-training-model';
 import { InfoLevel } from 'kypo-training-model';
 import { TrainingDefinitionStateEnum } from 'kypo-training-model';
@@ -64,16 +66,16 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   getAll(
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<TrainingDefinition>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<TrainingDefinition>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<TrainingDefinitionRestResource>(this.trainingDefsEndpointUri, { params })
       .pipe(
         map(
           (response) =>
-            new KypoPaginatedResource(
+            new PaginatedResource(
               TrainingDefinitionMapper.fromDTOs(response.content, false),
               PaginationMapper.fromJavaAPI(response.pagination)
             )
@@ -87,16 +89,16 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   getAllForOrganizer(
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<TrainingDefinitionInfo>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<TrainingDefinitionInfo>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<TrainingDefinitionInfoRestResource>(`${this.trainingDefsEndpointUri}/for-organizers`, { params })
       .pipe(
         map(
           (response) =>
-            new KypoPaginatedResource(
+            new PaginatedResource(
               TrainingDefinitionInfoMapper.fromDTOs(response.content),
               PaginationMapper.fromJavaAPI(response.pagination)
             )
@@ -372,10 +374,10 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    */
   geTrainingDefinition(
     sandboxDefId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<TrainingDefinition>> {
-    const params = KypoParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<TrainingDefinition>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<TrainingDefinitionRestResource>(
         `${this.trainingDefsEndpointUri}/${this.sandboxDefUriExtension}/${sandboxDefId}`,
@@ -384,7 +386,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
       .pipe(
         map(
           (response) =>
-            new KypoPaginatedResource(
+            new PaginatedResource(
               TrainingDefinitionMapper.fromDTOs(response.content, false),
               PaginationMapper.fromJavaAPI(response.pagination)
             )
