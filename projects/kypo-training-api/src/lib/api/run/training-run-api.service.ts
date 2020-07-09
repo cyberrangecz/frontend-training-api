@@ -8,7 +8,7 @@ import {
   Question,
   TrainingRun,
 } from 'kypo-training-model';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 
 export abstract class TrainingRunApi {
   /**
