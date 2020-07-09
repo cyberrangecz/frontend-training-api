@@ -7,7 +7,7 @@ import { Question } from 'kypo-training-model';
 import { AccessedTrainingRun } from 'kypo-training-model';
 import { AccessTrainingRunInfo } from 'kypo-training-model';
 import { Level } from 'kypo-training-model';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
 import { HintDTO } from '../../dto/level/game/hint-dto';

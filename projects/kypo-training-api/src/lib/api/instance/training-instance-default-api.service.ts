@@ -9,7 +9,7 @@ import {
 } from '@sentinel/common';
 import { TrainingRun } from 'kypo-training-model';
 import { TrainingInstance } from 'kypo-training-model';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { TrainingInstanceAssignPoolDTO } from '../../dto/training-instance/training-instance-assign-pool-dto';
 import { TrainingInstanceDTO } from '../../dto/training-instance/training-instance-dto';
