@@ -13,7 +13,7 @@ export class TrainingEventDefaultApi extends TrainingEventApi {
   readonly trainingDefinitionUriExtension = 'training-definitions';
   readonly trainingInstanceUrlExtension = 'training-instances';
   readonly trainingRunUrlExtension = 'training-runs';
-  readonly trainingEventUriExtension = 'training-events';
+  readonly trainingEventUriExtension = 'training-platform-events';
 
   readonly trainingEventEndpointUri: string;
 
