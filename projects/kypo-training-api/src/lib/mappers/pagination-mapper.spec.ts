@@ -1,5 +1,5 @@
-import { PaginationMapper } from './pagination-mapper';
 import { Paginated } from '../dto/rest/paginated';
+import { PaginationMapper } from './pagination-mapper';
 
 describe('PaginationMapper', () => {
   it('should map correctly', () => {

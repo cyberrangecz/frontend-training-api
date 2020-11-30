@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SentinelFilter, PaginatedResource, SentinelParamsMerger, RequestedPagination } from '@sentinel/common';
+import { PaginatedResource, RequestedPagination, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
 import { Trainee, TrainingUser } from 'kypo-training-model';
 import { VisualizationInfo } from 'kypo-training-model';
 import { Observable } from 'rxjs';
