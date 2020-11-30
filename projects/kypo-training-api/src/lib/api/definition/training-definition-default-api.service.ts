@@ -1,19 +1,19 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  PaginatedResource,
+  RequestedPagination,
   ResponseHeaderContentDispositionReader,
   SentinelFilter,
   SentinelParamsMerger,
-  RequestedPagination,
-  PaginatedResource,
 } from '@sentinel/common';
 import { GameLevel } from 'kypo-training-model';
-import { InfoLevel } from 'kypo-training-model';
 import { TrainingDefinitionStateEnum } from 'kypo-training-model';
 import { AssessmentLevel } from 'kypo-training-model';
 import { TrainingDefinitionInfo } from 'kypo-training-model';
 import { Level } from 'kypo-training-model';
 import { TrainingDefinition } from 'kypo-training-model';
+import { InfoLevel } from 'kypo-training-model';
 import { fromEvent, Observable } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';

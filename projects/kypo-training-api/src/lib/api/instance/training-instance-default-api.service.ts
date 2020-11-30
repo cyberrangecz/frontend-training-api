@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  PaginatedResource,
   RequestedPagination,
   ResponseHeaderContentDispositionReader,
-  PaginatedResource,
   SentinelFilter,
   SentinelParamsMerger,
 } from '@sentinel/common';

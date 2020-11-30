@@ -1,4 +1,4 @@
-import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
+import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
 import {
   AccessedTrainingRun,
   AccessTrainingRunInfo,
