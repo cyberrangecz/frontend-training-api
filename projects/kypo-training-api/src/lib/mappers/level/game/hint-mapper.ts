@@ -1,4 +1,4 @@
-import { Hint } from 'kypo-training-model';
+import { Hint } from '@kypo/training-model';
 import { HintDTO, HintDTOClass } from '../../../dto/level/game/hint-dto';
 
 /**

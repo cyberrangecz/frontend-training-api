@@ -1,4 +1,4 @@
-import { AbstractLevelTypeEnum } from 'kypo-training-model';
+import { AbstractLevelTypeEnum } from '@kypo/training-model';
 import { AbstractLevelDTO } from '../level/abstract-level-dto';
 
 export class VisualizationInfoDTO {

@@ -1,6 +1,6 @@
 import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
-import { Designer, Organizer, TrainingUser } from 'kypo-training-model';
-import { BetaTester } from 'kypo-training-model';
+import { Designer, Organizer, TrainingUser } from '@kypo/training-model';
+import { BetaTester } from '@kypo/training-model';
 import { Observable } from 'rxjs';
 
 /**

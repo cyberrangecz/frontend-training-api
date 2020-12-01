@@ -1,6 +1,6 @@
-import { AbstractLevelTypeEnum } from 'kypo-training-model';
-import { AssessmentTypeEnum } from 'kypo-training-model';
-import { AssessmentLevel } from 'kypo-training-model';
+import { AbstractLevelTypeEnum } from '@kypo/training-model';
+import { AssessmentTypeEnum } from '@kypo/training-model';
+import { AssessmentLevel } from '@kypo/training-model';
 import { AssessmentLevelDTO } from '../../../dto/level/assessment/assessment-level-dto';
 import {
   AssessmentLevelUpdateDTO,

@@ -1,5 +1,5 @@
-import { AbstractLevelTypeEnum } from 'kypo-training-model';
-import { GameLevel } from 'kypo-training-model';
+import { AbstractLevelTypeEnum } from '@kypo/training-model';
+import { GameLevel } from '@kypo/training-model';
 import { GameLevelDTO } from '../../../dto/level/game/game-level-dto';
 import { GameLevelUpdateDTO, GameLevelUpdateDTOClass } from '../../../dto/level/game/game-level-update-dto';
 import { HintMapper } from './hint-mapper';
