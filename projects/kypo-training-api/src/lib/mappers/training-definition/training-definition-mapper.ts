@@ -1,5 +1,5 @@
-import { TrainingDefinitionStateEnum } from 'kypo-training-model';
-import { TrainingDefinition } from 'kypo-training-model';
+import { TrainingDefinitionStateEnum } from '@kypo/training-model';
+import { TrainingDefinition } from '@kypo/training-model';
 import { TrainingDefinitionCreateDTO } from '../../dto/training-definition/training-definition-create-dto';
 import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';
 import { TrainingDefinitionUpdateDTO } from '../../dto/training-definition/training-definition-update-dto';

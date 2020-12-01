@@ -1,6 +1,6 @@
 import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
-import { Trainee, TrainingUser } from 'kypo-training-model';
-import { VisualizationInfo } from 'kypo-training-model';
+import { Trainee, TrainingUser } from '@kypo/training-model';
+import { VisualizationInfo } from '@kypo/training-model';
 import { Observable } from 'rxjs';
 
 /**

@@ -1,4 +1,4 @@
-import { TrainingInstance } from 'kypo-training-model';
+import { TrainingInstance } from '@kypo/training-model';
 import { TrainingInstanceCreateDTO } from '../../dto/training-instance/training-instance-create-dto';
 import { TrainingInstanceDTO } from '../../dto/training-instance/training-instance-dto';
 import { TrainingInstanceUpdateDTO } from '../../dto/training-instance/training-instance-update-dto';

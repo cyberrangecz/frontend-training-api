@@ -7,8 +7,8 @@ import {
   SentinelFilter,
   SentinelParamsMerger,
 } from '@sentinel/common';
-import { TrainingRun } from 'kypo-training-model';
-import { TrainingInstance } from 'kypo-training-model';
+import { TrainingRun } from '@kypo/training-model';
+import { TrainingInstance } from '@kypo/training-model';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { TrainingInstanceAssignPoolDTO } from '../../dto/training-instance/training-instance-assign-pool-dto';

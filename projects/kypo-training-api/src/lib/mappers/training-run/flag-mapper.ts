@@ -1,4 +1,4 @@
-import { FlagCheck } from 'kypo-training-model';
+import { FlagCheck } from '@kypo/training-model';
 import { IsCorrectFlagDTO } from '../../dto/level/game/is-correct-flag-dto';
 
 export class FlagMapper {

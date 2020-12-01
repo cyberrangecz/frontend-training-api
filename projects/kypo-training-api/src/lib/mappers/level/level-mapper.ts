@@ -1,8 +1,8 @@
-import { GameLevel } from 'kypo-training-model';
-import { AssessmentLevel } from 'kypo-training-model';
-import { Level } from 'kypo-training-model';
-import { InfoLevel } from 'kypo-training-model';
-import { AbstractLevelTypeEnum } from 'kypo-training-model';
+import { GameLevel } from '@kypo/training-model';
+import { AssessmentLevel } from '@kypo/training-model';
+import { Level } from '@kypo/training-model';
+import { InfoLevel } from '@kypo/training-model';
+import { AbstractLevelTypeEnum } from '@kypo/training-model';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
 import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';
 import { BasicLevelInfoDTO } from '../../dto/level/basic-level-info-dto';

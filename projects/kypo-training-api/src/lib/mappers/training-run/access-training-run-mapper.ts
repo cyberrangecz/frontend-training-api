@@ -1,5 +1,5 @@
-import { GameLevel } from 'kypo-training-model';
-import { AccessTrainingRunInfo } from 'kypo-training-model';
+import { GameLevel } from '@kypo/training-model';
+import { AccessTrainingRunInfo } from '@kypo/training-model';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
 import LevelTypeEnum = AbstractLevelDTO.LevelTypeEnum;
 import { AccessTrainingRunDTO } from '../../dto/training-run/access-training-run-dto';

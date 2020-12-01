@@ -7,7 +7,7 @@ import {
   TrainingDefinition,
   TrainingDefinitionInfo,
   TrainingDefinitionStateEnum,
-} from 'kypo-training-model';
+} from '@kypo/training-model';
 import { Observable } from 'rxjs';
 
 export abstract class TrainingDefinitionApi {
