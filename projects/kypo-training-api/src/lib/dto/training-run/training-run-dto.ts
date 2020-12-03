@@ -27,6 +27,8 @@ export interface TrainingRunDTO {
   definition_id: number;
   instance_id: number;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace TrainingRunDTO {
   export type StateEnum = 'RUNNING' | 'FINISHED' | 'ARCHIVED';
   export const StateEnum = {

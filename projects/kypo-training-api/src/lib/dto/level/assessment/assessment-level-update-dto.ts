@@ -10,6 +10,8 @@ export interface AssessmentLevelUpdateDTO {
   questions?: string;
   type?: AssessmentLevelUpdateDTO.TypeEnum;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AssessmentLevelUpdateDTO {
   export type TypeEnum = 'TEST' | 'QUESTIONNAIRE';
   export const TypeEnum = {

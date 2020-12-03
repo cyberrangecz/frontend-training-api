@@ -6,6 +6,7 @@ export interface AssessmentLevelDTO extends AbstractLevelDTO {
   questions: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AssessmentLevelDTO {
   export type AssessmentTypeEnum = 'TEST' | 'QUESTIONNAIRE';
   export const AssessmentTypeEnum = {

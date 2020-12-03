@@ -36,7 +36,7 @@ export abstract class TrainingDefinitionApi {
    * @param id id of training definition
    * @param withLevels true if training definition should be mapped with levels, false otherwise
    */
-  abstract get(id: number, withLevels?): Observable<TrainingDefinition>;
+  abstract get(id: number, withLevels?: boolean): Observable<TrainingDefinition>;
 
   /**
    * Sends http request to change state of a training definition
@@ -119,19 +119,19 @@ export abstract class TrainingDefinitionApi {
    * @param trainingDefinitionId id of training definition associated with the level
    * @param gameLevel game level which should be updated
    */
-  abstract updateGameLevel(trainingDefinitionId: number, gameLevel: GameLevel);
+  abstract updateGameLevel(trainingDefinitionId: number, gameLevel: GameLevel): Observable<any>;
   /**
    * Sends http request to update info level
    * @param trainingDefinitionId id of training definition associated with the level
    * @param infoLevel info level which should be updated
    */
-  abstract updateInfoLevel(trainingDefinitionId: number, infoLevel: InfoLevel);
+  abstract updateInfoLevel(trainingDefinitionId: number, infoLevel: InfoLevel): Observable<any>;
   /**
    * Sends http request to update assessment level in DB
    * @param trainingDefId id of training definition associated with the level
    * @param assessmentLevel assessment level which should be updated
    */
-  abstract updateAssessmentLevel(trainingDefId: number, assessmentLevel: AssessmentLevel);
+  abstract updateAssessmentLevel(trainingDefId: number, assessmentLevel: AssessmentLevel): Observable<any>;
 
   /**
    * Sends http request to move level to new position (change order)

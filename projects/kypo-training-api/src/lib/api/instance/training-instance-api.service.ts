@@ -28,7 +28,7 @@ export abstract class TrainingInstanceApi {
   abstract getAssociatedTrainingRuns(
     trainingInstanceId: number,
     pagination: RequestedPagination,
-    isActive?
+    isActive?: boolean
   ): Observable<PaginatedResource<TrainingRun>>;
 
   /**

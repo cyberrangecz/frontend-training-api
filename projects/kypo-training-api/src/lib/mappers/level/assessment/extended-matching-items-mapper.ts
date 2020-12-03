@@ -5,7 +5,7 @@ import { ExtendedMatchingItemsAnswerDTO } from '../../../dto/level/assessment/ex
 import { ExtendedMatchingItemsDTO } from '../../../dto/level/assessment/extended-matching-items-dto';
 
 export class ExtendedMatchingItemsMapper {
-  static fromDTO(dto): ExtendedMatchingItems {
+  static fromDTO(dto: ExtendedMatchingItemsDTO): ExtendedMatchingItems {
     const result = new ExtendedMatchingItems(dto.text);
     result.cols = dto.cols;
     result.rows = dto.rows;

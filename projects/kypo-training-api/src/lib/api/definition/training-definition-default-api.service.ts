@@ -174,7 +174,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   upload(file: File): Observable<TrainingDefinition> {
     const fileReader = new FileReader();
     const fileRead$ = fromEvent(fileReader, 'load').pipe(
-      mergeMap((_) => {
+      mergeMap(() => {
         const jsonBody = JSON.parse(fileReader.result as string);
         return this.http.post<TrainingDefinitionDTO>(
           `${this.trainingImportEndpointUri}/${this.trainingDefinitionUriExtension}`,
@@ -190,7 +190,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * Sends http request to delete training definition
    * @param id id of training definition which should be deleted
    */
-  delete(id: number) {
+  delete(id: number): Observable<any> {
     return this.http.delete(`${this.trainingDefsEndpointUri}/${id}`, { headers: this.createDefaultHeaders() });
   }
 
@@ -299,7 +299,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param trainingDefinitionId id of training definition associated with the level
    * @param gameLevel game level which should be updated
    */
-  updateGameLevel(trainingDefinitionId: number, gameLevel: GameLevel) {
+  updateGameLevel(trainingDefinitionId: number, gameLevel: GameLevel): Observable<any> {
     return this.http.put(
       `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/game-levels`,
       GameLevelMapper.toUpdateDTO(gameLevel),
@@ -312,7 +312,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param trainingDefinitionId id of training definition associated with the level
    * @param infoLevel info level which should be updated
    */
-  updateInfoLevel(trainingDefinitionId: number, infoLevel: InfoLevel) {
+  updateInfoLevel(trainingDefinitionId: number, infoLevel: InfoLevel): Observable<any> {
     return this.http.put(
       `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/info-levels`,
       InfoLevelMapper.toUpdateDTO(infoLevel),
@@ -325,7 +325,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param trainingDefId id of training definition associated with the level
    * @param assessmentLevel assessment level which should be updated
    */
-  updateAssessmentLevel(trainingDefId: number, assessmentLevel: AssessmentLevel) {
+  updateAssessmentLevel(trainingDefId: number, assessmentLevel: AssessmentLevel): Observable<any> {
     return this.http.put(
       `${this.trainingDefsEndpointUri}/${trainingDefId}/assessment-levels`,
       AssessmentLevelMapper.toUpdateDTO(assessmentLevel),

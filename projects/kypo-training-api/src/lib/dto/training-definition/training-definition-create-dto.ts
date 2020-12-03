@@ -21,6 +21,7 @@ export class TrainingDefinitionCreateDTO {
   title?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace TrainingDefinitionCreateDTO {
   export type StateEnum = 'PRIVATED' | 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
   export const StateEnum = {
