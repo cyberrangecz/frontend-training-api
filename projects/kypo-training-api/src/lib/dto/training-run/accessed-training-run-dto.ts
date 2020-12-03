@@ -22,6 +22,8 @@ export interface AccessedTrainingRunDTO {
   training_instance_end_date?: Date;
   training_instance_start_date?: Date;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AccessedTrainingRunDTO {
   export type PossibleActionEnum = 'RESULTS';
   export const PossibleActionEnum = {

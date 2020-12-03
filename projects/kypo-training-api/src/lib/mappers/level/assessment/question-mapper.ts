@@ -12,7 +12,7 @@ import { MultipleChoiceQuestionMapper } from './multiple-choice-question-mapper'
  * @dynamic
  */
 export class QuestionMapper {
-  static fromDTO(dto): Question {
+  static fromDTO(dto: any): Question {
     let question: Question;
 
     switch (dto.question_type) {
@@ -41,7 +41,7 @@ export class QuestionMapper {
     return question;
   }
 
-  static fromDTOs(dtos): Question[] {
+  static fromDTOs(dtos: any[]): Question[] {
     return dtos.map((dto) => QuestionMapper.fromDTO(dto));
   }
 

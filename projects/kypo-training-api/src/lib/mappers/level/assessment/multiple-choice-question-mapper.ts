@@ -8,7 +8,7 @@ import {
 } from '../../../dto/level/assessment/multiple-choice-question-create-dto';
 
 export class MultipleChoiceQuestionMapper {
-  static fromDTO(dto): MultipleChoiceQuestion {
+  static fromDTO(dto: MultipleChoiceQuestionCreateDTOClass): MultipleChoiceQuestion {
     const result = new MultipleChoiceQuestion(dto.text);
     const answers: number[] = [];
     const options: string[] = [];

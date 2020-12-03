@@ -7,6 +7,7 @@ export interface AbstractQuestionCreateDTO {
   points?: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AbstractQuestionDTO {
   export type QuestionTypeEnum = 'FFQ' | 'MCQ' | 'EMI';
   export const QuestionTypeEnum = {

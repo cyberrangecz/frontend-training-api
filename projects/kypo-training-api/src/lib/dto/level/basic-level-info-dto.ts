@@ -17,6 +17,7 @@ export interface BasicLevelInfoDTO {
   title?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace BasicLevelInfoDTO {
   export type LevelTypeEnum = 'ASSESSMENT_LEVEL' | 'INFO_LEVEL' | 'GAME_LEVEL';
   export const LevelTypeEnum = {

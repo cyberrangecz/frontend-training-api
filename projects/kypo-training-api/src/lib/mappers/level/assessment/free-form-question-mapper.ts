@@ -7,7 +7,7 @@ import {
 } from '../../../dto/level/assessment/free-form-question-dto';
 
 export class FreeFormQuestionMapper {
-  static fromDTO(dto): FreeFormQuestion {
+  static fromDTO(dto: FreeFormQuestionDTOClass): FreeFormQuestion {
     const result = new FreeFormQuestion(dto.text);
     const answers: string[] = [];
     if (dto.correct_choices) {

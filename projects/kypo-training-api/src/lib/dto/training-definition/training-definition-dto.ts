@@ -13,6 +13,7 @@ export class TrainingDefinitionDTO {
   last_edited?: Date;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace TrainingDefinitionDTO {
   export type StateEnum = 'RELEASED' | 'ARCHIVED' | 'UNRELEASED';
   export const StateEnum = {
