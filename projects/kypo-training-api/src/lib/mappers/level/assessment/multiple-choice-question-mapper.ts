@@ -1,4 +1,4 @@
-import { MultipleChoiceQuestion } from '@kypo/training-model';
+import { MultipleChoiceQuestion } from '@muni-kypo-crp/training-model';
 import { AbstractQuestionDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import { McqDTO } from '../../../dto/level/assessment/mcq-choice-dto';
 import { MultipleChoiceQuestionAnswerDTO } from '../../../dto/level/assessment/multiple-choice-question-answer-dto';

@@ -1,7 +1,7 @@
-import { FreeFormQuestion } from '@kypo/training-model';
-import { ExtendedMatchingItems } from '@kypo/training-model';
-import { MultipleChoiceQuestion } from '@kypo/training-model';
-import { Question } from '@kypo/training-model';
+import { FreeFormQuestion } from '@muni-kypo-crp/training-model';
+import { ExtendedMatchingItems } from '@muni-kypo-crp/training-model';
+import { MultipleChoiceQuestion } from '@muni-kypo-crp/training-model';
+import { Question } from '@muni-kypo-crp/training-model';
 import { AbstractQuestionCreateDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import { AbstractAssessmentAnswerDTO } from '../../../dto/level/assessment/abstract-assessment-answer-dto';
 import { ExtendedMatchingItemsMapper } from './extended-matching-items-mapper';

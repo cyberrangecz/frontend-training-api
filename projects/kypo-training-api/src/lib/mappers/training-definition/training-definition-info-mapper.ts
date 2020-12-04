@@ -1,4 +1,4 @@
-import { TrainingDefinitionInfo } from '@kypo/training-model';
+import { TrainingDefinitionInfo } from '@muni-kypo-crp/training-model';
 import { TrainingDefinitionInfoDTO } from '../../dto/training-definition/training-definition-info-dto';
 import { TrainingDefinitionMapper } from './training-definition-mapper';
 

@@ -1,5 +1,5 @@
-import { AbstractLevelTypeEnum } from '@kypo/training-model';
-import { InfoLevel } from '@kypo/training-model';
+import { AbstractLevelTypeEnum } from '@muni-kypo-crp/training-model';
+import { InfoLevel } from '@muni-kypo-crp/training-model';
 import { InfoLevelDTO } from '../../../dto/level/info/info-level-dto';
 import { InfoLevelUpdateDTO, InfoLevelUpdateDTOClass } from '../../../dto/level/info/info-level-update-dto';
 

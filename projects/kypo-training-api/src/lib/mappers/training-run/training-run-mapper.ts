@@ -1,5 +1,5 @@
-import { TrainingRunStateEnum } from '@kypo/training-model';
-import { TrainingRun } from '@kypo/training-model';
+import { TrainingRunStateEnum } from '@muni-kypo-crp/training-model';
+import { TrainingRun } from '@muni-kypo-crp/training-model';
 import { TrainingRunDTO } from '../../dto/training-run/training-run-dto';
 import { LevelMapper } from '../level/level-mapper';
 import { UserMapper } from '../user/user-mapper';

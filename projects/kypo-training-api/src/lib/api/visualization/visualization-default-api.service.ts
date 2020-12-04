@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PaginatedResource, RequestedPagination, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
-import { Trainee, TrainingUser } from '@kypo/training-model';
-import { VisualizationInfo } from '@kypo/training-model';
+import { Trainee, TrainingUser } from '@muni-kypo-crp/training-model';
+import { VisualizationInfo } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserRestResource } from '../../dto/rest/user-rest-resource-dto';

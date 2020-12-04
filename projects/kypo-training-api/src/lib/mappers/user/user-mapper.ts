@@ -1,4 +1,4 @@
-import { TrainingUser } from '@kypo/training-model';
+import { TrainingUser } from '@muni-kypo-crp/training-model';
 import { UserRefDTO } from '../../dto/user/user-ref-dto';
 
 /**
