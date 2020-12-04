@@ -1,5 +1,5 @@
-import { TraineeAccessTrainingRunActionEnum } from '@kypo/training-model';
-import { AccessedTrainingRun } from '@kypo/training-model';
+import { TraineeAccessTrainingRunActionEnum } from '@muni-kypo-crp/training-model';
+import { AccessedTrainingRun } from '@muni-kypo-crp/training-model';
 import PossibleActionEnum = AccessedTrainingRunDTO.PossibleActionEnum;
 import { AccessedTrainingRunDTO } from '../../dto/training-run/accessed-training-run-dto';
 

@@ -1,12 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PaginatedResource, RequestedPagination, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
-import { FlagCheck, TrainingRun } from '@kypo/training-model';
-import { Question } from '@kypo/training-model';
-import { AccessedTrainingRun } from '@kypo/training-model';
-import { AccessTrainingRunInfo } from '@kypo/training-model';
-import { Level } from '@kypo/training-model';
-import { Hint } from '@kypo/training-model';
+import { FlagCheck, TrainingRun } from '@muni-kypo-crp/training-model';
+import { Question } from '@muni-kypo-crp/training-model';
+import { AccessedTrainingRun } from '@muni-kypo-crp/training-model';
+import { AccessTrainingRunInfo } from '@muni-kypo-crp/training-model';
+import { Level } from '@muni-kypo-crp/training-model';
+import { Hint } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';

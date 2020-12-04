@@ -1,5 +1,5 @@
-import { AbstractLevelTypeEnum } from '@kypo/training-model';
-import { VisualizationInfo } from '@kypo/training-model';
+import { AbstractLevelTypeEnum } from '@muni-kypo-crp/training-model';
+import { VisualizationInfo } from '@muni-kypo-crp/training-model';
 import { VisualizationInfoDTO } from './../../dto/visualization/visualization-info-dto';
 import { LevelMapper } from './../level/level-mapper';
 export class VisualizationInfoMapper {

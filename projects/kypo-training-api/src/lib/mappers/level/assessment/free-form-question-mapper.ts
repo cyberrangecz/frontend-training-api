@@ -1,4 +1,4 @@
-import { FreeFormQuestion } from '@kypo/training-model';
+import { FreeFormQuestion } from '@muni-kypo-crp/training-model';
 import { AbstractQuestionDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import { FreeFormAnswerDTO } from '../../../dto/level/assessment/free-form-answer-dto';
 import {

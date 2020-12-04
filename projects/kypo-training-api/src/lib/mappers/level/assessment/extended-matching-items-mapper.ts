@@ -1,4 +1,4 @@
-import { ExtendedMatchingItems } from '@kypo/training-model';
+import { ExtendedMatchingItems } from '@muni-kypo-crp/training-model';
 import { AbstractQuestionDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import { EmiChoiceDTO } from '../../../dto/level/assessment/emi-choice-dto';
 import { ExtendedMatchingItemsAnswerDTO } from '../../../dto/level/assessment/extended-matching-items-answer-dto';

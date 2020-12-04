@@ -13,7 +13,7 @@ You can override existing services by implementing the related abstract class an
 
 To use kypo-training-api in your application, follow these steps:
 
-1. Run `npm install @kypo/training-api`
+1. Run `npm install @muni-kypo-crp/training-api`
 2. Install peer dependencies
 3. Create an instance of `KypoTrainingApiConfig`
 4. Import `KypoTrainingApiModule` with config passed to `forRoot()` method

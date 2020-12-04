@@ -7,7 +7,7 @@ import {
   Level,
   Question,
   TrainingRun,
-} from '@kypo/training-model';
+} from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 
 export abstract class TrainingRunApi {
