@@ -11,12 +11,14 @@
  */
 import { AbstractLevelDTO } from '../level/abstract-level-dto';
 import { UserRefDTO } from '../user/user-ref-dto';
+import { AbstractPhaseDTO } from '../phase/abstract-phase-dto';
 
 /**
  * .
  */
 export interface TrainingRunDTO {
   current_level?: AbstractLevelDTO;
+  current_phase?: AbstractPhaseDTO;
   end_time?: Date;
   event_log_reference?: string;
   id?: number;

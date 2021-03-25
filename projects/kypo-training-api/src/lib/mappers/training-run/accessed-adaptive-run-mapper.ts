@@ -9,11 +9,11 @@ import PossibleActionEnum = AccessedTrainingRunDTO.PossibleActionEnum;
 /**
  * @dynamic
  */
-export class AccessedTrainingRunMapper {
+export class AccessedAdaptiveRunMapper {
   static fromDTO(dto: AccessedTrainingRunDTO): AccessedTrainingRun {
     const result = new AccessedTrainingRun();
-    result.currentLevel = dto.current_level_order;
-    result.totalLevels = dto.number_of_levels;
+    result.currentLevel = dto.current_phase_order;
+    result.totalLevels = dto.number_of_phases;
     result.completedLevels = `${result.currentLevel}/${result.totalLevels}`;
     result.trainingInstanceTitle = dto.title;
     result.trainingRunId = dto.id;
@@ -22,12 +22,12 @@ export class AccessedTrainingRunMapper {
     result.trainingInstanceFormattedDuration = `${this.extractDate(result.trainingInstanceStartTime.toString())} -
          ${this.extractDate(result.trainingInstanceEndTime.toString())}`;
     result.action = this.resolvePossibleAction(dto.possible_action);
-    result.type = TrainingRunTypeEnum.LINEAR;
+    result.type = TrainingRunTypeEnum.ADAPTIVE;
     return result;
   }
 
   static fromDTOs(dtos: AccessedTrainingRunDTO[]): AccessedTrainingRun[] {
-    return dtos.map((dto) => AccessedTrainingRunMapper.fromDTO(dto));
+    return dtos.map((dto) => AccessedAdaptiveRunMapper.fromDTO(dto));
   }
 
   private static extractDate(date: string): string {
