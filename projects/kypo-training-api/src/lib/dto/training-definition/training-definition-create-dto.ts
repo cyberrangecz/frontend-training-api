@@ -15,7 +15,7 @@
 export class TrainingDefinitionCreateDTO {
   description?: string;
   outcomes?: string[];
-  prerequisities?: string[];
+  prerequisites?: string[];
   show_stepper_bar?: boolean;
   state?: TrainingDefinitionCreateDTO.StateEnum;
   title?: string;

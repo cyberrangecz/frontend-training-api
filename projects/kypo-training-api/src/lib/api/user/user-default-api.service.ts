@@ -22,14 +22,18 @@ export class UserDefaultApi extends UserApi {
   readonly trainingDefinitionUriExtension = 'training-definitions';
   readonly trainingInstanceUrlExtension = 'training-instances';
   readonly trainingRunUrlExtension = 'training-runs';
+  readonly adaptiveDefsEndpointUri: string;
   readonly trainingDefsEndpointUri: string;
   readonly trainingInstancesEndpointUri: string;
+  readonly adaptiveInstancesEndpointUri: string;
   readonly trainingRunEndpointUri: string;
 
   constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
     super();
     this.trainingDefsEndpointUri = this.context.config.trainingBasePath + this.trainingDefinitionUriExtension;
+    this.adaptiveDefsEndpointUri = this.context.config.adaptiveBasePath + this.trainingDefinitionUriExtension;
     this.trainingInstancesEndpointUri = this.context.config.trainingBasePath + this.trainingInstanceUrlExtension;
+    this.adaptiveInstancesEndpointUri = this.context.config.adaptiveBasePath + this.trainingInstanceUrlExtension;
     this.trainingRunEndpointUri = this.context.config.trainingBasePath + this.trainingRunUrlExtension;
   }
 
@@ -37,56 +41,69 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to retrieve organizers not associated with provided  training instance
    * @param trainingInstanceId id of a training instance not associated with retrieved organizers
    * @param pagination requested pagination
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param filters requested filtering
    */
   getOrganizersNotInTI(
     trainingInstanceId: number,
     pagination: RequestedPagination,
+    adaptive: boolean,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<Organizer>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(
-        `${this.trainingInstancesEndpointUri}/${trainingInstanceId}/organizers-not-in-training-instance`,
+        `${
+          adaptive ? this.adaptiveInstancesEndpointUri : this.trainingInstancesEndpointUri
+        }/${trainingInstanceId}/organizers-not-in-training-instance`,
         { params }
       )
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 
   /**
-   * Sends http request to retrieve designers not associated with provided training definition
-   * @param trainingDefinitionId id of a training definition not associated with retrieved designers
+   * Sends http request to retrieve designers not associated with provided adaptive definition
+   * @param trainingDefinitionId id of a adaptive definition not associated with retrieved designers
    * @param pagination requested pagination
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param filters requested filtering
    */
   getDesignersNotInTD(
     trainingDefinitionId: number,
     pagination: RequestedPagination,
+    adaptive: boolean,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<Designer>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<UserRestResource>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/designers-not-in-training-definition`,
+        `${
+          adaptive ? this.adaptiveDefsEndpointUri : this.trainingDefsEndpointUri
+        }/${trainingDefinitionId}/designers-not-in-training-definition`,
         { params }
       )
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 
   /**
-   * Sends http request to retrieve authors of a training definition
+   * Sends http request to retrieve authors of a adaptive or training definition
    * @param trainingDefinitionId id of a training definition associated with retrieved authors
    * @param pagination requested pagination
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param filters requested filtering
    */
   getAuthors(
     trainingDefinitionId: number,
     pagination: RequestedPagination,
+    adaptive: boolean,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<Designer>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
-      .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/authors`, { params })
+      .get<UserRestResource>(
+        `${adaptive ? this.adaptiveDefsEndpointUri : this.trainingDefsEndpointUri}/${trainingDefinitionId}/authors`,
+        { params }
+      )
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 
@@ -94,16 +111,23 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to retrieve organizers of a training instance
    * @param trainingInstanceId id of a training instance associated with retrieved organizers
    * @param pagination requested pagination
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param filters requested filtering
    */
   getOrganizers(
     trainingInstanceId: number,
     pagination: RequestedPagination,
+    adaptive: boolean,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<Organizer>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
-      .get<UserRestResource>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/organizers`, { params })
+      .get<UserRestResource>(
+        `${
+          adaptive ? this.adaptiveInstancesEndpointUri : this.trainingInstancesEndpointUri
+        }/${trainingInstanceId}/organizers`,
+        { params }
+      )
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 
@@ -118,11 +142,17 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to create and remove associations between training definition and designers
    * @param trainingDefinitionId id of training definition whose associations shall be altered
    * @param additions ids of designers which should become associated with training definition (become its authors)
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param removals  ids of designers which should stop being associated with training definition
    */
-  updateAuthors(trainingDefinitionId: number, additions: number[], removals: number[]): Observable<any> {
+  updateAuthors(
+    trainingDefinitionId: number,
+    additions: number[],
+    adaptive: boolean,
+    removals: number[]
+  ): Observable<any> {
     return this.http.put(
-      `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/authors`,
+      `${adaptive ? this.adaptiveDefsEndpointUri : this.trainingDefsEndpointUri}/${trainingDefinitionId}/authors`,
       {},
       {
         params: new HttpParams()
@@ -136,11 +166,19 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to create and remove associations between training instance and organizers
    * @param trainingInstanceId id of training instance whose associations shall be altered
    * @param additions ids of organizers which should become associated with training instance
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param removals  ids of organizers which should stop being associated with training instance
    */
-  updateOrganizers(trainingInstanceId: number, additions: number[], removals: number[]): Observable<any> {
+  updateOrganizers(
+    trainingInstanceId: number,
+    additions: number[],
+    adaptive: boolean,
+    removals: number[]
+  ): Observable<any> {
     return this.http.put(
-      `${this.trainingInstancesEndpointUri}/${trainingInstanceId}/organizers`,
+      `${
+        adaptive ? this.adaptiveInstancesEndpointUri : this.trainingInstancesEndpointUri
+      }/${trainingInstanceId}/organizers`,
       {},
       {
         params: new HttpParams()
@@ -154,16 +192,23 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to retrieve beta-testers of a training instance
    * @param trainingInstanceId id of a training instance associated with retrieved beta-testers
    * @param pagination requested pagination
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param filters requested filtering
    */
   getBetaTesters(
     trainingInstanceId: number,
     pagination: RequestedPagination,
+    adaptive: boolean,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<BetaTester>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
-      .get<UserRestResource>(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/beta-testers`, { params })
+      .get<UserRestResource>(
+        `${
+          adaptive ? this.adaptiveInstancesEndpointUri : this.trainingInstancesEndpointUri
+        }/${trainingInstanceId}/beta-testers`,
+        { params }
+      )
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 
@@ -171,16 +216,21 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to retrieve designers associated with provided training definition
    * @param trainingDefinitionId id of a training definition associated with retrieved designers
    * @param pagination requested pagination
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param filters requested filtering
    */
   getDesigners(
     trainingDefinitionId: number,
     pagination: RequestedPagination,
+    adaptive: boolean,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<Designer>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
-      .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/designers`, { params })
+      .get<UserRestResource>(
+        `${adaptive ? this.adaptiveDefsEndpointUri : this.trainingDefsEndpointUri}/${trainingDefinitionId}/designers`,
+        { params }
+      )
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 
@@ -188,16 +238,21 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to retrieve organizers of a training definition
    * @param trainingDefinitionId id of a training definition associated with retrieved organizers
    * @param pagination requested pagination
+   * @param adaptive set to true if data are provided for adaptive definition
    * @param filters requested filtering
    */
   getTrainingDefinitionOrganizers(
     trainingDefinitionId: number,
     pagination: RequestedPagination,
+    adaptive: boolean,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<Organizer>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
-      .get<UserRestResource>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/organizers`, { params })
+      .get<UserRestResource>(
+        `${adaptive ? this.adaptiveDefsEndpointUri : this.trainingDefsEndpointUri}/${trainingDefinitionId}/organizers`,
+        { params }
+      )
       .pipe(map((resp) => this.paginatedUsersFromDTO(resp)));
   }
 

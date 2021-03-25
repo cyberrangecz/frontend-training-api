@@ -14,17 +14,26 @@ import { VisualizationApi } from './api/visualization/visualization-api.service'
 import { VisualizationDefaultApi } from './api/visualization/visualization-default-api.service';
 import { KypoTrainingApiConfig } from './other/kypo-training-api-config';
 import { KypoTrainingApiContext } from './other/kypo-training-api-context';
+import { AdaptiveDefinitionApiService } from './api/adaptive-definition/adaptive-definition-api.service';
+import { AdaptiveDefinitionDefaultApiService } from './api/adaptive-definition/adaptive-definition-default-api.service';
+import { AdaptiveInstanceDefaultApi } from './api/adaptive-instance/adaptive-instance-default-api.service';
+import { AdaptiveInstanceApi } from './api/adaptive-instance/adaptive-instance-api.service';
+import { AdaptiveRunApi } from './api/adaptive-run/adaptive-run-api.service';
+import { AdaptiveRunDefaultApi } from './api/adaptive-run/adaptive-run-default-api.service';
 
 @NgModule({
   imports: [CommonModule],
   providers: [
     KypoTrainingApiContext,
     { provide: TrainingDefinitionApi, useClass: TrainingDefinitionDefaultApi },
+    { provide: AdaptiveDefinitionApiService, useClass: AdaptiveDefinitionDefaultApiService },
     { provide: TrainingInstanceApi, useClass: TrainingInstanceDefaultApi },
     { provide: TrainingRunApi, useClass: TrainingRunDefaultApi },
     { provide: UserApi, useClass: UserDefaultApi },
     { provide: TrainingEventApi, useClass: TrainingEventDefaultApi },
     { provide: VisualizationApi, useClass: VisualizationDefaultApi },
+    { provide: AdaptiveInstanceApi, useClass: AdaptiveInstanceDefaultApi },
+    { provide: AdaptiveRunApi, useClass: AdaptiveRunDefaultApi },
   ],
 })
 export class KypoTrainingApiModule {

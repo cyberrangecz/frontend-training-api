@@ -1,11 +1,13 @@
 import { AbstractLevelDTO } from '../level/abstract-level-dto';
+import { AbstractPhaseDTO } from '../phase/abstract-phase-dto';
 
 export class TrainingDefinitionDTO {
   levels?: AbstractLevelDTO[];
+  phases?: AbstractPhaseDTO[];
   description?: string;
   id?: number;
   outcomes?: string[];
-  prerequisities?: string[];
+  prerequisites?: string[];
   show_stepper_bar?: boolean;
   state?: TrainingDefinitionDTO.StateEnum;
   title?: string;

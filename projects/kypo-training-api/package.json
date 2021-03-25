@@ -1,11 +1,11 @@
 {
   "name": "@muni-kypo-crp/training-api",
-  "version": "11.0.0",
+  "version": "11.1.0-EXPERIMENTAL",
   "peerDependencies": {
     "@angular/common": "~11.0.8",
     "@angular/core": "~11.0.8",
     "@sentinel/common": "~11.0.1",
-    "@muni-kypo-crp/training-model": "~11.0.0",
+    "@muni-kypo-crp/training-model": "~11.1.0-EXPERIMENTAL",
     "file-saver": "^2.0.2"
   },
   "dependencies": {

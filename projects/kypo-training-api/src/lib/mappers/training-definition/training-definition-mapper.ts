@@ -4,17 +4,18 @@ import { TrainingDefinitionCreateDTO } from '../../dto/training-definition/train
 import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';
 import { TrainingDefinitionUpdateDTO } from '../../dto/training-definition/training-definition-update-dto';
 import { LevelMapper } from '../level/level-mapper';
+import { PhaseMapper } from '../phase/phase-mapper';
 
 /**
  * @dynamic
  */
 export class TrainingDefinitionMapper {
-  static fromDTO(dto: TrainingDefinitionDTO, withLevels: boolean): TrainingDefinition {
+  static fromDTO(dto: TrainingDefinitionDTO, withLevels: boolean, withPhases?: boolean): TrainingDefinition {
     const result = new TrainingDefinition();
     result.id = dto.id;
     result.title = dto.title;
     result.description = dto.description;
-    result.prerequisites = dto.prerequisities ? dto.prerequisities : [];
+    result.prerequisites = dto.prerequisites ? dto.prerequisites : [];
     result.outcomes = dto.outcomes ? dto.outcomes : [];
     result.state = this.stateFromDTO(dto.state);
     result.lastEditTime = dto.last_edited;
@@ -22,7 +23,10 @@ export class TrainingDefinitionMapper {
     result.showStepperBar = dto.show_stepper_bar;
     if (withLevels) {
       result.levels = LevelMapper.fromDTOs(dto.levels);
+    } else if (withPhases) {
+      result.levels = PhaseMapper.fromDTOs(dto.phases);
     }
+
     return result;
   }
 
@@ -69,7 +73,7 @@ export class TrainingDefinitionMapper {
     result.id = trainingDefinition.id;
     result.description = trainingDefinition.description;
     result.show_stepper_bar = trainingDefinition.showStepperBar;
-    result.prerequisities = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
+    result.prerequisites = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
     result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
     result.state = TrainingDefinitionMapper.stateToDTO(trainingDefinition.state);
     result.title = trainingDefinition.title;
@@ -78,7 +82,7 @@ export class TrainingDefinitionMapper {
 
   static toCreateDTO(trainingDefinition: TrainingDefinition): TrainingDefinitionCreateDTO {
     const result = new TrainingDefinitionCreateDTO();
-    result.prerequisities = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
+    result.prerequisites = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
     result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
     result.description = trainingDefinition.description;
     result.state = TrainingDefinitionDTO.StateEnum.UNRELEASED;
