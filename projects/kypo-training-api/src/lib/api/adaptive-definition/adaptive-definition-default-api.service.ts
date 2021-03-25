@@ -275,8 +275,8 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
 
   moveTaskTo(trainingDefinitionId: number, phaseId: number, taskId: number, newPosition: number): Observable<any> {
     return this.http.put<void>(
-      `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${phaseId}/\
-      ${this.tasksUriExtension}/${taskId}/move-to/${newPosition}`,
+      // eslint-disable-next-line max-len
+      `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${phaseId}/${this.tasksUriExtension}/${taskId}/move-to/${newPosition}`,
       {},
       { headers: this.createDefaultHeaders() }
     );
@@ -285,8 +285,8 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
   createTask(trainingDefinitionId: number, trainingPhaseId: number): Observable<Task> {
     return this.http
       .post<TaskDTO>(
-        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/\
-        ${trainingPhaseId}/${this.tasksUriExtension}`,
+        // eslint-disable-next-line max-len
+        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}`,
         {},
         { headers: this.createDefaultHeaders() }
       )
@@ -296,8 +296,8 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
   cloneTask(trainingDefinitionId: number, trainingPhaseId: number, clonedTask: Task): Observable<Task> {
     return this.http
       .post<TaskDTO>(
-        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}
-        /${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${clonedTask.id}`,
+        // eslint-disable-next-line max-len
+        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${clonedTask.id}`,
         TaskMapper.toCopyDTO(clonedTask),
         { headers: this.createDefaultHeaders() }
       )
@@ -306,8 +306,8 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
 
   deleteTask(trainingDefinitionId: number, trainingPhaseId: number, taskId: number): Observable<any> {
     return this.http.delete(
-      `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/\
-      ${trainingPhaseId}/${this.tasksUriExtension}/${taskId}`,
+      // eslint-disable-next-line max-len
+      `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${taskId}`,
       { headers: this.createDefaultHeaders() }
     );
   }
@@ -315,8 +315,8 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
   getTask(trainingDefinitionId: number, trainingPhaseId: number, taskId: number): Observable<Phase> {
     return this.http
       .get<TaskDTO>(
-        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/\
-        ${trainingPhaseId}/${this.tasksUriExtension}/${taskId}`
+        // eslint-disable-next-line max-len
+        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${taskId}`
       )
       .pipe(map((response) => TaskMapper.fromDTO(response)));
   }
