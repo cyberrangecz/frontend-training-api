@@ -297,7 +297,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http
       .post<TaskDTO>(
         // eslint-disable-next-line max-len
-        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${clonedTask.id}`,
+        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${clonedTask.id}`,
         TaskMapper.toCopyDTO(clonedTask),
         { headers: this.createDefaultHeaders() }
       )
