@@ -1,4 +1,5 @@
 export interface AbstractQuestionCreateDTO {
+  id?: number;
   text: string;
   question_type: AbstractQuestionDTO.QuestionTypeEnum;
   answer_required: boolean;

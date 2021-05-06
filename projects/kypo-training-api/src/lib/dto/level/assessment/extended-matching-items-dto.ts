@@ -1,11 +1,11 @@
 import { AbstractQuestionCreateDTO, AbstractQuestionDTO } from './abstact-question-dto';
-import { EmiChoiceDTO } from './emi-choice-dto';
+import { ExtendedMatchingStatementDTO } from './extended-matching-statement-dto';
+import { ExtendedMatchingOptionDTO } from './extended-matching-option-dto';
 
 export class ExtendedMatchingItemsDTO implements AbstractQuestionCreateDTO {
   answer_required: boolean;
-  rows: string[];
-  cols: string[];
-  correct_answers: EmiChoiceDTO[];
+  extended_matching_statements: ExtendedMatchingStatementDTO[];
+  extended_matching_options: ExtendedMatchingOptionDTO[];
   order: number;
   penalty: number;
   points: number;

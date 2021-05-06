@@ -34,6 +34,7 @@ export class QuestionMapper {
       }
     }
 
+    question.id = dto.id;
     question.required = dto.answer_required;
     question.penalty = dto.penalty;
     question.score = dto.points;
@@ -57,9 +58,8 @@ export class QuestionMapper {
     }
   }
 
-  static toAnswersDTOs(questions: Question[]): string {
-    const result = questions.map((question) => this.toAnswersDTO(question));
-    return JSON.stringify(result);
+  static toAnswersDTOs(questions: Question[]): AbstractAssessmentAnswerDTO[] {
+    return questions.map((question) => this.toAnswersDTO(question));
   }
 
   static toCreateDTO(question: Question): AbstractQuestionCreateDTO {
@@ -74,6 +74,7 @@ export class QuestionMapper {
       questionDTO = ExtendedMatchingItemsMapper.toCreateDTO(question);
     }
 
+    questionDTO.id = question.id;
     questionDTO.answer_required = question.required;
     questionDTO.order = question.order;
     questionDTO.penalty = question.penalty;
