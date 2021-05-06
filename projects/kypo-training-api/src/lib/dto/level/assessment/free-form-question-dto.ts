@@ -1,7 +1,9 @@
 import { AbstractQuestionCreateDTO, AbstractQuestionDTO } from './abstact-question-dto';
+import { QuestionChoice } from '@muni-kypo-crp/training-model/lib/questions/question-choice';
+import { QuestionChoiceDTO } from './question-choice-dto';
 
 export interface FreeFormQuestionCreateDTO extends AbstractQuestionCreateDTO {
-  correct_choices: string[];
+  choices: QuestionChoice[];
 }
 
 export class FreeFormQuestionDTOClass implements FreeFormQuestionCreateDTO {
@@ -11,5 +13,5 @@ export class FreeFormQuestionDTOClass implements FreeFormQuestionCreateDTO {
   order: number;
   penalty?: number;
   points?: number;
-  correct_choices: string[];
+  choices: QuestionChoiceDTO[];
 }

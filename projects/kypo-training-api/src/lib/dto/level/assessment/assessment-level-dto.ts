@@ -1,9 +1,10 @@
 import { AbstractLevelDTO } from '../abstract-level-dto';
+import { AbstractQuestionCreateDTO } from './abstact-question-dto';
 
 export interface AssessmentLevelDTO extends AbstractLevelDTO {
   assessment_type: AssessmentLevelDTO.AssessmentTypeEnum;
   instructions: string;
-  questions: string;
+  questions: AbstractQuestionCreateDTO[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace

@@ -14,8 +14,8 @@ export class AssessmentLevelMapper {
     result.type = AbstractLevelTypeEnum.Assessment;
     result.instructions = dto.instructions;
     result.assessmentType = this.typeFromDTO(dto.assessment_type);
-    if (dto.questions && dto.questions !== '[]') {
-      result.questions = QuestionMapper.fromDTOs(JSON.parse(dto.questions));
+    if (dto.questions && dto.questions !== []) {
+      result.questions = QuestionMapper.fromDTOs(dto.questions);
       result.questions = result.questions ? result.questions : [];
     }
     return result;
@@ -29,8 +29,7 @@ export class AssessmentLevelMapper {
     result.estimated_duration = level.estimatedDuration;
     result.instructions = level.instructions;
     result.type = this.typeToDTO(level.assessmentType);
-    result.questions = '[]';
-    result.questions = JSON.stringify(QuestionMapper.toCreateDTOs(level.questions));
+    result.questions = QuestionMapper.toCreateDTOs(level.questions);
     return result;
   }
 

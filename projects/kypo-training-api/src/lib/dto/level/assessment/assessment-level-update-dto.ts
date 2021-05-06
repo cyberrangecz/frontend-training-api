@@ -1,13 +1,15 @@
 /**
  * Assessment Level to update.
  */
+import { AbstractQuestionCreateDTO } from './abstact-question-dto';
+
 export interface AssessmentLevelUpdateDTO {
   id?: number;
   title?: string;
   max_score?: number;
   estimated_duration: number;
   instructions?: string;
-  questions?: string;
+  questions?: AbstractQuestionCreateDTO[];
   type?: AssessmentLevelUpdateDTO.TypeEnum;
 }
 
@@ -24,7 +26,7 @@ export class AssessmentLevelUpdateDTOClass implements AssessmentLevelUpdateDTO {
   id: number;
   instructions: string;
   max_score: number;
-  questions: string;
+  questions: AbstractQuestionCreateDTO[];
   title: string;
   estimated_duration: number;
   type: AssessmentLevelUpdateDTO.TypeEnum;

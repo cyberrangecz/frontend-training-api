@@ -1,37 +1,29 @@
-import { FreeFormQuestion } from '@muni-kypo-crp/training-model';
 import { AbstractQuestionDTO } from '../../../dto/level/assessment/abstact-question-dto';
-import { FreeFormAnswerDTO } from '../../../dto/level/assessment/free-form-answer-dto';
 import {
   FreeFormQuestionCreateDTO,
   FreeFormQuestionDTOClass,
 } from '../../../dto/level/assessment/free-form-question-dto';
+import { QuestionAnswerDTO } from '../../../dto/level/assessment/question-answer-dto';
+import { FreeFormQuestion } from '@muni-kypo-crp/training-model';
 
 export class FreeFormQuestionMapper {
   static fromDTO(dto: FreeFormQuestionDTOClass): FreeFormQuestion {
     const result = new FreeFormQuestion(dto.text);
-    const answers: string[] = [];
-    if (dto.correct_choices) {
-      dto.correct_choices.forEach((choice) => answers.push(choice));
-    }
-    result.correctAnswers = answers;
+    result.choices = dto.choices ? dto.choices : [];
     return result;
   }
 
-  static toAnswersDTO(question: FreeFormQuestion): FreeFormAnswerDTO {
-    const result = new FreeFormAnswerDTO();
-    result.question_order = question.order;
-    if (!question.usersAnswer) {
-      result.text = '';
-    } else {
-      result.text = question.usersAnswer;
-    }
+  static toAnswersDTO(question: FreeFormQuestion): QuestionAnswerDTO {
+    const result = new QuestionAnswerDTO();
+    result.question_id = question.id;
+    result.answers = question.userAnswers ? question.userAnswers : [];
     return result;
   }
 
   static toCreateDTO(question: FreeFormQuestion): FreeFormQuestionCreateDTO {
     const result = new FreeFormQuestionDTOClass();
     result.question_type = AbstractQuestionDTO.QuestionTypeEnum.FFQ;
-    result.correct_choices = question.correctAnswers;
+    result.choices = question.choices;
     return result;
   }
 }
