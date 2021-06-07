@@ -2,13 +2,13 @@
   "name": "@muni-kypo-crp/training-api",
   "version": "11.1.2",
   "peerDependencies": {
-    "@angular/common": "~11.0.8",
-    "@angular/core": "~11.0.8",
-    "@sentinel/common": "~11.0.1",
-    "@muni-kypo-crp/training-model": "~11.1.1",
+    "@angular/common": "~12.0.3",
+    "@angular/core": "~12.0.3",
+    "@sentinel/common": "~12.0.0",
+    "@muni-kypo-crp/training-model": "~12.0.1",
     "file-saver": "^2.0.2"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.2.0"
   }
 }
