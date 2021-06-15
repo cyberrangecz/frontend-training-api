@@ -13,7 +13,7 @@
     "prettier-check": "prettier --check \"projects/**/*.ts\"",
     "create-package": "cd dist/kypo-training-api && npm pack",
     "build-and-pack": "npm install && npm run build-library && npm run create-package",
-    "ci-update-version": "cd ./projects/kypo-training-api/ && npm version $VERSION",
+    "ci-update-version": "cd ./projects/kypo-training-api/ && npm version $TAG_VERSION",
     "ci-build-and-pack": "npm ci --cache .npm --prefer-offline && npm run build-library && npm run create-package",
     "ci-publish-package": "cd dist/kypo-training-api && npm publish"
   },
