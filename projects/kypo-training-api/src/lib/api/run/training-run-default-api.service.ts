@@ -147,11 +147,11 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   /**
    * Sends http request to submit the flag from game level and check its valid
    * @param trainingRunId id of training run in which the flag should be submitted
-   * @param flag a flag submitted by user
+   * @param submittedFlag a flag submitted by user
    */
-  isCorrectFlag(trainingRunId: number, flag: string): Observable<FlagCheck> {
+  isCorrectFlag(trainingRunId: number, submittedFlag: string): Observable<FlagCheck> {
     return this.http
-      .post<IsCorrectFlagDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-flag`, { flag })
+      .post<IsCorrectFlagDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-flag`, { submittedFlag })
       .pipe(map((response) => FlagMapper.fromDTO(response)));
   }
 

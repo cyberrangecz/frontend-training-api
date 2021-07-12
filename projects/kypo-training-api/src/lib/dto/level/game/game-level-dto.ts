@@ -4,6 +4,7 @@ import { HintDTO } from './hint-dto';
 export interface GameLevelDTO extends AbstractLevelDTO {
   content: string;
   flag: string;
+  flag_identifier: string;
   hints: HintDTO[];
   incorrect_flag_limit: number;
   level_type: AbstractLevelDTO.LevelTypeEnum;
