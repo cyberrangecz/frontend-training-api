@@ -10,7 +10,7 @@ export class GameLevelMapper {
     result.hints = HintMapper.fromDTOs(dto.hints);
     result.type = AbstractLevelTypeEnum.Game;
     result.flag = dto.flag;
-    result.flagIdentifier = dto.flag_identifier
+    result.flagIdentifier = dto.flag_identifier;
     result.content = dto.content;
     result.solution = dto.solution;
     result.incorrectFlagLimit = dto.incorrect_flag_limit;
