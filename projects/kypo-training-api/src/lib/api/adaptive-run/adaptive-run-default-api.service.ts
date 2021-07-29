@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import {
   AccessedTrainingRun,
   AccessTrainingRunInfo,
-  AnswerCheck,
+  PhaseAnswerCheck,
   Phase,
   QuestionAnswer,
   TrainingRun,
@@ -133,7 +133,7 @@ export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
       .pipe(map((response) => PhaseMapper.fromDTO(response)));
   }
 
-  isCorrectAnswer(trainingRunId: number, answer: string): Observable<AnswerCheck> {
+  isCorrectAnswer(trainingRunId: number, answer: string): Observable<PhaseAnswerCheck> {
     return this.http
       .post<IsCorrectAnswerDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-answer`, { answer })
       .pipe(map((response) => AnswerMapper.fromDTO(response)));
