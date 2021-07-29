@@ -1,12 +1,12 @@
 import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
 import {
   AssessmentLevel,
-  GameLevel,
   InfoLevel,
   Level,
   TrainingDefinition,
   TrainingDefinitionInfo,
   TrainingDefinitionStateEnum,
+  TrainingLevel,
 } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 
@@ -96,10 +96,10 @@ export abstract class TrainingDefinitionApi {
   abstract createAssessmentLevel(trainingDefinitionId: number): Observable<AssessmentLevel>;
 
   /**
-   * Sends http request to create new game level associated with training definition
+   * Sends http request to create new training level associated with training definition
    * @param trainingDefinitionId id of training definition which should be associated with the new level
    */
-  abstract createGameLevel(trainingDefinitionId: number): Observable<GameLevel>;
+  abstract createTrainingLevel(trainingDefinitionId: number): Observable<TrainingLevel>;
 
   /**
    * Sends http request to create new info level associated with training definition
@@ -115,11 +115,11 @@ export abstract class TrainingDefinitionApi {
   abstract deleteLevel(trainingDefinitionId: number, levelId: number): Observable<Level[]>;
 
   /**
-   * Sends http request to update game level
+   * Sends http request to update training level
    * @param trainingDefinitionId id of training definition associated with the level
-   * @param gameLevel game level which should be updated
+   * @param trainingLevel training level which should be updated
    */
-  abstract updateGameLevel(trainingDefinitionId: number, gameLevel: GameLevel): Observable<any>;
+  abstract updateTrainingLevel(trainingDefinitionId: number, trainingLevel: TrainingLevel): Observable<any>;
   /**
    * Sends http request to update info level
    * @param trainingDefinitionId id of training definition associated with the level

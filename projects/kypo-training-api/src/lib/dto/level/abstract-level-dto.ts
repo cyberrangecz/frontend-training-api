@@ -9,10 +9,10 @@ export interface AbstractLevelDTO {
 }
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AbstractLevelDTO {
-  export type LevelTypeEnum = 'INFO_LEVEL' | 'ASSESSMENT_LEVEL' | 'GAME_LEVEL';
+  export type LevelTypeEnum = 'INFO_LEVEL' | 'ASSESSMENT_LEVEL' | 'TRAINING_LEVEL';
   export const LevelTypeEnum = {
     INFO: 'INFO_LEVEL' as LevelTypeEnum,
     ASSESSMENT: 'ASSESSMENT_LEVEL' as LevelTypeEnum,
-    GAME: 'GAME_LEVEL' as LevelTypeEnum,
+    TRAINING: 'TRAINING_LEVEL' as LevelTypeEnum,
   };
 }

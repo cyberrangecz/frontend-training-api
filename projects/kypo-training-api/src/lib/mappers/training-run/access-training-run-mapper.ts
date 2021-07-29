@@ -1,4 +1,4 @@
-import { GameLevel } from '@muni-kypo-crp/training-model';
+import { TrainingLevel } from '@muni-kypo-crp/training-model';
 import { AccessTrainingRunInfo } from '@muni-kypo-crp/training-model';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
 import LevelTypeEnum = AbstractLevelDTO.LevelTypeEnum;
@@ -15,12 +15,12 @@ export class AccessTrainingRunMapper {
     result.currentLevel = LevelMapper.fromDTO(dto.abstract_level_dto);
     result.levels = LevelMapper.fromBasicDTOs(dto.info_about_levels);
 
-    if (dto.taken_solution && dto.abstract_level_dto.level_type === LevelTypeEnum.GAME) {
-      (result.currentLevel as GameLevel).solution = dto.taken_solution;
+    if (dto.taken_solution && dto.abstract_level_dto.level_type === LevelTypeEnum.TRAINING) {
+      (result.currentLevel as TrainingLevel).solution = dto.taken_solution;
     }
-    if (dto.taken_hints && dto.taken_hints.length > 0 && dto.abstract_level_dto.level_type === LevelTypeEnum.GAME) {
+    if (dto.taken_hints && dto.taken_hints.length > 0 && dto.abstract_level_dto.level_type === LevelTypeEnum.TRAINING) {
       dto.taken_hints.forEach((takenHint) => {
-        const matchingHint = (result.currentLevel as GameLevel).hints.find((hint) => hint.id === takenHint.id);
+        const matchingHint = (result.currentLevel as TrainingLevel).hints.find((hint) => hint.id === takenHint.id);
         if (matchingHint) {
           matchingHint.content = takenHint.content;
         }

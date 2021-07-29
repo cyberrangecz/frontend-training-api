@@ -1,7 +1,7 @@
 import { AbstractLevelDTO } from '../abstract-level-dto';
 import { HintDTO } from './hint-dto';
 
-export interface GameLevelDTO extends AbstractLevelDTO {
+export interface TrainingLevelDto extends AbstractLevelDTO {
   content: string;
   answer: string;
   hints: HintDTO[];

@@ -1,5 +1,5 @@
 import { LevelAnswerCheck } from '@muni-kypo-crp/training-model';
-import { IsCorrectAnswerDto } from '../../dto/level/game/is-correct-answer-dto';
+import { IsCorrectAnswerDto } from '../../dto/level/training/is-correct-answer-dto';
 
 export class LevelAnswerMapper {
   static fromDTO(dto: IsCorrectAnswerDto): LevelAnswerCheck {
