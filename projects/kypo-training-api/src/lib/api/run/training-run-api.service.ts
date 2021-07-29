@@ -2,9 +2,9 @@ import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentine
 import {
   AccessedTrainingRun,
   AccessTrainingRunInfo,
-  FlagCheck,
   Hint,
   Level,
+  LevelAnswerCheck,
   Question,
   TrainingRun,
 } from '@muni-kypo-crp/training-model';
@@ -66,11 +66,11 @@ export abstract class TrainingRunApi {
   abstract nextLevel(trainingRunId: number): Observable<Level>;
 
   /**
-   * Sends http request to submit the flag from game level and check its valid
-   * @param trainingRunId id of training run in which the flag should be submitted
-   * @param flag a flag submitted by user
+   * Sends http request to submit the answer from game level and check its valid
+   * @param trainingRunId id of training run in which the answer should be submitted
+   * @param answer a answer submitted by user
    */
-  abstract isCorrectFlag(trainingRunId: number, flag: string): Observable<FlagCheck>;
+  abstract isCorrectAnswer(trainingRunId: number, answer: string): Observable<LevelAnswerCheck>;
 
   /**
    * Sends http request to display hint and deduct points for it

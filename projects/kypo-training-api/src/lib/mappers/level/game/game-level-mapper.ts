@@ -9,10 +9,10 @@ export class GameLevelMapper {
     const result = new GameLevel();
     result.hints = HintMapper.fromDTOs(dto.hints);
     result.type = AbstractLevelTypeEnum.Game;
-    result.flag = dto.flag;
+    result.answer = dto.answer;
     result.content = dto.content;
     result.solution = dto.solution;
-    result.incorrectFlagLimit = dto.incorrect_flag_limit;
+    result.incorrectAnswerLimit = dto.incorrect_answer_limit;
     result.solutionPenalized = dto.solution_penalized;
     return result;
   }
@@ -24,8 +24,8 @@ export class GameLevelMapper {
     result.max_score = gameLevel.maxScore;
     result.content = gameLevel.content;
     result.estimated_duration = gameLevel.estimatedDuration;
-    result.flag = gameLevel.flag;
-    result.incorrect_flag_limit = gameLevel.incorrectFlagLimit;
+    result.answer = gameLevel.answer;
+    result.incorrect_answer_limit = gameLevel.incorrectAnswerLimit;
     result.solution = gameLevel.solution;
     result.solution_penalized = gameLevel.solutionPenalized;
     result.hints = HintMapper.toDTOs(gameLevel.hints);

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface IsCorrectFlagDTO {
+export interface IsCorrectAnswerDto {
   correct?: boolean;
   remaining_attempts?: number;
   solution?: string;
