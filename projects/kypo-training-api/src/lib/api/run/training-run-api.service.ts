@@ -66,7 +66,7 @@ export abstract class TrainingRunApi {
   abstract nextLevel(trainingRunId: number): Observable<Level>;
 
   /**
-   * Sends http request to submit the answer from game level and check its valid
+   * Sends http request to submit the answer from training level and check its valid
    * @param trainingRunId id of training run in which the answer should be submitted
    * @param answer a answer submitted by user
    */

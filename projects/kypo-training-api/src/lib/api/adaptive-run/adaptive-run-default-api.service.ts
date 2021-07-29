@@ -25,7 +25,7 @@ import { AccessAdaptiveRunMapper } from '../../mappers/training-run/access-adapt
 import { AbstractPhaseDTO } from '../../dto/phase/abstract-phase-dto';
 import { PhaseMapper } from '../../mappers/phase/phase-mapper';
 import { IsCorrectAnswerDTO } from '../../dto/phase/training-phase/is-correct-answer-dto';
-import { AnswerMapper } from '../../mappers/training-run/answer-mapper';
+import { TaskAnswerMapper } from '../../mappers/training-run/task-answer-mapper';
 import { QuestionAnswerMapper } from '../../mappers/phase/question-answer-mapper';
 
 @Injectable()
@@ -136,7 +136,7 @@ export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
   isCorrectAnswer(trainingRunId: number, answer: string): Observable<PhaseAnswerCheck> {
     return this.http
       .post<IsCorrectAnswerDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-answer`, { answer })
-      .pipe(map((response) => AnswerMapper.fromDTO(response)));
+      .pipe(map((response) => TaskAnswerMapper.fromDTO(response)));
   }
 
   /**

@@ -20,8 +20,8 @@ export class VisualizationInfoMapper {
 
   private static resolveLevelType(levelType: string) {
     switch (levelType) {
-      case 'GAME':
-        return AbstractLevelTypeEnum.Game;
+      case 'TRAINING':
+        return AbstractLevelTypeEnum.Training;
       case 'INFO':
         return AbstractLevelTypeEnum.Info;
       case 'ASSESSMENT':

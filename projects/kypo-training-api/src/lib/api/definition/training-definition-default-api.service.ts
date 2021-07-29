@@ -7,8 +7,7 @@ import {
   SentinelFilter,
   SentinelParamsMerger,
 } from '@sentinel/common';
-import { GameLevel } from '@muni-kypo-crp/training-model';
-import { TrainingDefinitionStateEnum } from '@muni-kypo-crp/training-model';
+import { TrainingDefinitionStateEnum, TrainingLevel } from '@muni-kypo-crp/training-model';
 import { AssessmentLevel } from '@muni-kypo-crp/training-model';
 import { TrainingDefinitionInfo } from '@muni-kypo-crp/training-model';
 import { Level } from '@muni-kypo-crp/training-model';
@@ -18,7 +17,7 @@ import { fromEvent, Observable } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';
 import { BasicLevelInfoDTO } from '../../dto/level/basic-level-info-dto';
-import { GameLevelDTO } from '../../dto/level/game/game-level-dto';
+import { TrainingLevelDto } from '../../dto/level/training/training-level-dto';
 import { InfoLevelDTO } from '../../dto/level/info/info-level-dto';
 import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';
 import { TrainingDefinitionInfoRestResource } from '../../dto/training-definition/training-definition-info-rest-resource';
@@ -28,7 +27,7 @@ import { FilterParams } from '../../http/params/filter-params';
 import { PaginationParams } from '../../http/params/pagination-params';
 import { FileSaver } from '../../http/response-headers/file-saver';
 import { AssessmentLevelMapper } from '../../mappers/level/assessment/assessment-level-mapper';
-import { GameLevelMapper } from '../../mappers/level/game/game-level-mapper';
+import { TrainingLevelMapper } from '../../mappers/level/training/training-level-mapper';
 import { InfoLevelMapper } from '../../mappers/level/info/info-level-mapper';
 import { LevelMapper } from '../../mappers/level/level-mapper';
 import { PaginationMapper } from '../../mappers/pagination-mapper';
@@ -134,7 +133,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    */
   getLevel(levelId: number): Observable<Level> {
     return this.http
-      .get<GameLevelDTO | InfoLevelDTO | AssessmentLevelDTO>(
+      .get<TrainingLevelDto | InfoLevelDTO | AssessmentLevelDTO>(
         `${this.trainingDefsEndpointUri}/${this.levelsUriExtension}/${levelId}`
       )
       .pipe(map((response) => LevelMapper.fromDTO(response)));
@@ -253,17 +252,17 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   }
 
   /**
-   * Sends http request to create new game level associated with training definition
+   * Sends http request to create new training level associated with training definition
    * @param trainingDefinitionId id of training definition which should be associated with the new level
    */
-  createGameLevel(trainingDefinitionId: number): Observable<GameLevel> {
+  createTrainingLevel(trainingDefinitionId: number): Observable<TrainingLevel> {
     return this.http
       .post<BasicLevelInfoDTO>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/GAME`,
+        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/TRAINING`,
         {},
         { headers: this.createDefaultHeaders() }
       )
-      .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as GameLevel));
+      .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as TrainingLevel));
   }
 
   /**
@@ -295,14 +294,14 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   }
 
   /**
-   * Sends http request to update game level
+   * Sends http request to update training level
    * @param trainingDefinitionId id of training definition associated with the level
-   * @param gameLevel game level which should be updated
+   * @param trainingLevel training level which should be updated
    */
-  updateGameLevel(trainingDefinitionId: number, gameLevel: GameLevel): Observable<any> {
+  updateTrainingLevel(trainingDefinitionId: number, trainingLevel: TrainingLevel): Observable<any> {
     return this.http.put(
-      `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/game-levels`,
-      GameLevelMapper.toUpdateDTO(gameLevel),
+      `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/training-levels`,
+      TrainingLevelMapper.toUpdateDTO(trainingLevel),
       { headers: this.createDefaultHeaders() }
     );
   }

@@ -1,7 +1,7 @@
 import { AbstractLevelDTO } from '../abstract-level-dto';
 import { HintDTO } from './hint-dto';
 
-export interface GameLevelUpdateDTO {
+export interface TrainingLevelUpdateDto {
   id: number;
   max_score?: number;
   content?: string;
@@ -13,7 +13,7 @@ export interface GameLevelUpdateDTO {
   solution_penalized?: boolean;
 }
 
-export class GameLevelUpdateDTOClass implements GameLevelUpdateDTO {
+export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
   content: string;
   estimated_duration: number;
   answer: string;
