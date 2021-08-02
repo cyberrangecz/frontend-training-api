@@ -7,7 +7,7 @@ export interface GameLevelUpdateDTO {
   content?: string;
   estimated_duration?: number;
   flag?: string;
-  flag_identifier?: string;
+  flag_variable_name?: string;
   hints?: HintDTO[];
   incorrect_flag_limit?: number;
   solution?: string;
@@ -18,7 +18,7 @@ export class GameLevelUpdateDTOClass implements GameLevelUpdateDTO {
   content: string;
   estimated_duration: number;
   flag: string;
-  flag_identifier: string;
+  flag_variable_name: string;
   hints: HintDTO[];
   id: number;
   incorrect_flag_limit: number;

@@ -13,7 +13,7 @@ export class TrainingDefinitionDTO {
   title?: string;
   estimated_duration: number;
   last_edited?: Date;
-  variant_answers: boolean;
+  variant_sandboxes: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace

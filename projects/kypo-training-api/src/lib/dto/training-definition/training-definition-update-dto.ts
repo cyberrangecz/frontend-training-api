@@ -21,7 +21,7 @@ export class TrainingDefinitionUpdateDTO {
   show_stepper_bar?: boolean;
   state?: TrainingDefinitionUpdateDTO.StateEnum;
   title?: string;
-  variant_answers?: boolean;
+  variant_sandboxes?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace

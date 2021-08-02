@@ -26,7 +26,7 @@ export class TrainingDefinitionMapper {
     } else if (withPhases) {
       result.levels = PhaseMapper.fromDTOs(dto.phases);
     }
-    result.variantAnswers = dto.variant_answers;
+    result.variantSandboxes = dto.variant_sandboxes;
 
     return result;
   }
@@ -78,7 +78,7 @@ export class TrainingDefinitionMapper {
     result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
     result.state = TrainingDefinitionMapper.stateToDTO(trainingDefinition.state);
     result.title = trainingDefinition.title;
-    result.variant_answers = trainingDefinition.variantAnswers;
+    result.variant_sandboxes = trainingDefinition.variantSandboxes;
     return result;
   }
 
@@ -90,7 +90,7 @@ export class TrainingDefinitionMapper {
     result.state = TrainingDefinitionDTO.StateEnum.UNRELEASED;
     result.title = trainingDefinition.title;
     result.show_stepper_bar = trainingDefinition.showStepperBar;
-    result.variant_answers = trainingDefinition.variantAnswers;
+    result.variant_sandboxes = trainingDefinition.variantSandboxes;
     return result;
   }
 }
