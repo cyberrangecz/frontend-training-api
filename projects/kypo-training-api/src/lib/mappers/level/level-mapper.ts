@@ -1,4 +1,4 @@
-import { GameLevel } from '@muni-kypo-crp/training-model';
+import { TrainingLevel } from '@muni-kypo-crp/training-model';
 import { AssessmentLevel } from '@muni-kypo-crp/training-model';
 import { Level } from '@muni-kypo-crp/training-model';
 import { InfoLevel } from '@muni-kypo-crp/training-model';
@@ -6,10 +6,10 @@ import { AbstractLevelTypeEnum } from '@muni-kypo-crp/training-model';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
 import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';
 import { BasicLevelInfoDTO } from '../../dto/level/basic-level-info-dto';
-import { GameLevelDTO } from '../../dto/level/game/game-level-dto';
+import { TrainingLevelDto } from '../../dto/level/training/training-level-dto';
 import { InfoLevelDTO } from '../../dto/level/info/info-level-dto';
 import { AssessmentLevelMapper } from './assessment/assessment-level-mapper';
-import { GameLevelMapper } from './game/game-level-mapper';
+import { TrainingLevelMapper } from './training/training-level-mapper';
 import { InfoLevelMapper } from './info/info-level-mapper';
 
 /**
@@ -19,8 +19,8 @@ export class LevelMapper {
   static fromDTO(dto: AbstractLevelDTO): Level {
     let level: Level;
     switch (dto.level_type) {
-      case AbstractLevelDTO.LevelTypeEnum.GAME: {
-        level = GameLevelMapper.fromDTO(dto as GameLevelDTO);
+      case AbstractLevelDTO.LevelTypeEnum.TRAINING: {
+        level = TrainingLevelMapper.fromDTO(dto as TrainingLevelDto);
         break;
       }
       case AbstractLevelDTO.LevelTypeEnum.INFO: {
@@ -48,9 +48,9 @@ export class LevelMapper {
   static fromBasicDTO(dto: BasicLevelInfoDTO): Level {
     let level: Level;
     switch (dto.level_type) {
-      case BasicLevelInfoDTO.LevelTypeEnum.GAME: {
-        level = new GameLevel();
-        level.type = AbstractLevelTypeEnum.Game;
+      case BasicLevelInfoDTO.LevelTypeEnum.TRAINING: {
+        level = new TrainingLevel();
+        level.type = AbstractLevelTypeEnum.Training;
         break;
       }
       case BasicLevelInfoDTO.LevelTypeEnum.INFO: {

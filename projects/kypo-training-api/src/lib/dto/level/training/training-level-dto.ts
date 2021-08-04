@@ -1,12 +1,12 @@
 import { AbstractLevelDTO } from '../abstract-level-dto';
 import { HintDTO } from './hint-dto';
 
-export interface GameLevelDTO extends AbstractLevelDTO {
+export interface TrainingLevelDto extends AbstractLevelDTO {
   content: string;
-  flag: string;
-  flag_variable_name: string;
+  answer: string;
+  answer_variable_name: string;
   hints: HintDTO[];
-  incorrect_flag_limit: number;
+  incorrect_answer_limit: number;
   level_type: AbstractLevelDTO.LevelTypeEnum;
   solution: string;
   solution_penalized: boolean;

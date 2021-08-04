@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PaginatedResource, RequestedPagination, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
-import { FlagCheck, TrainingRun } from '@muni-kypo-crp/training-model';
+import { LevelAnswerCheck, TrainingRun } from '@muni-kypo-crp/training-model';
 import { Question } from '@muni-kypo-crp/training-model';
 import { AccessedTrainingRun } from '@muni-kypo-crp/training-model';
 import { AccessTrainingRunInfo } from '@muni-kypo-crp/training-model';
@@ -10,20 +10,20 @@ import { Hint } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
-import { HintDTO } from '../../dto/level/game/hint-dto';
-import { IsCorrectFlagDTO } from '../../dto/level/game/is-correct-flag-dto';
+import { HintDTO } from '../../dto/level/training/hint-dto';
+import { IsCorrectAnswerDto } from '../../dto/level/training/is-correct-answer-dto';
 import { AccessTrainingRunDTO } from '../../dto/training-run/access-training-run-dto';
 import { TrainingRunDTO } from '../../dto/training-run/training-run-dto';
 import { TrainingRunRestResource } from '../../dto/training-run/training-run-rest-resource';
 import { FilterParams } from '../../http/params/filter-params';
 import { PaginationParams } from '../../http/params/pagination-params';
 import { QuestionMapper } from '../../mappers/level/assessment/question-mapper';
-import { HintMapper } from '../../mappers/level/game/hint-mapper';
+import { HintMapper } from '../../mappers/level/training/hint-mapper';
 import { LevelMapper } from '../../mappers/level/level-mapper';
 import { PaginationMapper } from '../../mappers/pagination-mapper';
 import { AccessTrainingRunMapper } from '../../mappers/training-run/access-training-run-mapper';
 import { AccessedTrainingRunMapper } from '../../mappers/training-run/accessed-training-run-mapper';
-import { FlagMapper } from '../../mappers/training-run/flag-mapper';
+import { LevelAnswerMapper } from '../../mappers/training-run/level-answer-mapper';
 import { TrainingRunMapper } from '../../mappers/training-run/training-run-mapper';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
 import { TrainingRunApi } from './training-run-api.service';
@@ -145,14 +145,14 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   }
 
   /**
-   * Sends http request to submit the flag from game level and check its valid
-   * @param trainingRunId id of training run in which the flag should be submitted
-   * @param submittedFlag a flag submitted by user
+   * Sends http request to submit the answer from training level and check its valid
+   * @param trainingRunId id of training run in which the answer should be submitted
+   * @param answer a answer submitted by user
    */
-  isCorrectFlag(trainingRunId: number, submittedFlag: string): Observable<FlagCheck> {
+  isCorrectAnswer(trainingRunId: number, answer: string): Observable<LevelAnswerCheck> {
     return this.http
-      .post<IsCorrectFlagDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-flag`, { submittedFlag })
-      .pipe(map((response) => FlagMapper.fromDTO(response)));
+      .post<IsCorrectAnswerDto>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-answer`, { answer })
+      .pipe(map((response) => LevelAnswerMapper.fromDTO(response)));
   }
 
   /**
