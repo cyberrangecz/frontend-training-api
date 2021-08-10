@@ -13,6 +13,7 @@ export class TrainingLevelMapper {
     result.hints = HintMapper.fromDTOs(dto.hints);
     result.type = AbstractLevelTypeEnum.Training;
     result.answer = dto.answer;
+    result.answerVariableName = dto.answer_variable_name;
     result.content = dto.content;
     result.solution = dto.solution;
     result.incorrectAnswerLimit = dto.incorrect_answer_limit;
@@ -28,6 +29,7 @@ export class TrainingLevelMapper {
     result.content = trainingLevel.content;
     result.estimated_duration = trainingLevel.estimatedDuration;
     result.answer = trainingLevel.answer;
+    result.answer_variable_name = trainingLevel.answerVariableName;
     result.incorrect_answer_limit = trainingLevel.incorrectAnswerLimit;
     result.solution = trainingLevel.solution;
     result.solution_penalized = trainingLevel.solutionPenalized;

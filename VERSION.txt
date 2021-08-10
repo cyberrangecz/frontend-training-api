@@ -1,2 +1,3 @@
+12.0.3 Addition of the attributes for APG.
 12.0.2 Rename flag to answer, rename game level to training level, new version of Sentinel.
 12.0.1 Update gitlab CI

@@ -7,6 +7,7 @@ export interface TrainingLevelUpdateDto {
   content?: string;
   estimated_duration?: number;
   answer?: string;
+  answer_variable_name?: string;
   hints?: HintDTO[];
   incorrect_answer_limit?: number;
   solution?: string;
@@ -17,6 +18,7 @@ export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
   content: string;
   estimated_duration: number;
   answer: string;
+  answer_variable_name: string;
   hints: HintDTO[];
   id: number;
   incorrect_answer_limit: number;
