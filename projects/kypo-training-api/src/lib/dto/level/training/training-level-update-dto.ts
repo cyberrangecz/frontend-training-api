@@ -10,8 +10,10 @@ export interface TrainingLevelUpdateDto {
   answer_variable_name?: string;
   hints?: HintDTO[];
   incorrect_answer_limit?: number;
+  level_type: AbstractLevelDTO.LevelTypeEnum;
   solution?: string;
   solution_penalized?: boolean;
+  order: number;
 }
 
 export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
@@ -22,9 +24,10 @@ export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
   hints: HintDTO[];
   id: number;
   incorrect_answer_limit: number;
-  level_type: AbstractLevelDTO.LevelTypeEnum;
+  level_type: AbstractLevelDTO.LevelTypeEnum = 'TRAINING_LEVEL';
   max_score: number;
   solution: string;
   solution_penalized: boolean;
   title: string;
+  order: number;
 }

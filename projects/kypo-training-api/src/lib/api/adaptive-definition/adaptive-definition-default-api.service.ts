@@ -236,6 +236,14 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     );
   }
 
+  updatePhases(trainingDefinitionId: number, phases: Phase[]): Observable<any> {
+    return this.http.put(
+      `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
+      PhaseMapper.toUpdateDTOs(phases),
+      { headers: this.createDefaultHeaders() }
+    );
+  }
+
   updateTrainingPhase(trainingDefinitionId: number, trainingPhase: TrainingPhase): Observable<any> {
     return this.http.put(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhase.id}/training`,

@@ -1,4 +1,5 @@
 export class TaskUpdateDTO {
+  id: number;
   title: string;
   content: string;
   solution: string;

@@ -19,4 +19,5 @@ export class TrainingInstanceUpdateDTO {
   start_time?: string;
   title?: string;
   training_definition_id?: number;
+  pool_id?: number;
 }

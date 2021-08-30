@@ -18,8 +18,15 @@ export class TaskMapper {
     return result;
   }
 
+  static toUpdateDTOs(tasks: Task[]): TaskUpdateDTO[] {
+    const result = [];
+    tasks.forEach((task) => result.push(TaskMapper.toUpdateDTO(task)));
+    return result;
+  }
+
   static toUpdateDTO(task: Task): TaskUpdateDTO {
     const result = new TaskUpdateDTO();
+    result.id = task.id;
     result.content = task.content;
     result.solution = task.solution;
     result.title = task.title;

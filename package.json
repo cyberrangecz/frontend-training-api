@@ -11,6 +11,7 @@
     "build-library": "ng build kypo-training-api --configuration production",
     "ci-test": "ng test --browsers ChromeHeadless --watch=false",
     "prettier-check": "prettier --check \"projects/**/*.ts\"",
+    "prettier-fix": "prettier --write \"./projects/**/*.ts\"",
     "create-package": "cd dist/kypo-training-api && npm pack",
     "build-and-pack": "npm install && npm run build-library && npm run create-package",
     "ci-update-version": "cd ./projects/kypo-training-api/ && npm version $TAG_VERSION",

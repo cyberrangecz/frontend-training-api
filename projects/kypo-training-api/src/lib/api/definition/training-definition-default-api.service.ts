@@ -26,9 +26,6 @@ import { JSONErrorConverter } from '../../http/json-error-converter';
 import { FilterParams } from '../../http/params/filter-params';
 import { PaginationParams } from '../../http/params/pagination-params';
 import { FileSaver } from '../../http/response-headers/file-saver';
-import { AssessmentLevelMapper } from '../../mappers/level/assessment/assessment-level-mapper';
-import { TrainingLevelMapper } from '../../mappers/level/training/training-level-mapper';
-import { InfoLevelMapper } from '../../mappers/level/info/info-level-mapper';
 import { LevelMapper } from '../../mappers/level/level-mapper';
 import { PaginationMapper } from '../../mappers/pagination-mapper';
 import { TrainingDefinitionInfoMapper } from '../../mappers/training-definition/training-definition-info-mapper';
@@ -294,40 +291,14 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   }
 
   /**
-   * Sends http request to update training level
-   * @param trainingDefinitionId id of training definition associated with the level
-   * @param trainingLevel training level which should be updated
+   * Sends http request to update training levels
+   * @param trainingDefinitionId id of training definition associated with the levels
+   * @param levels training levels which should be updated
    */
-  updateTrainingLevel(trainingDefinitionId: number, trainingLevel: TrainingLevel): Observable<any> {
+  updateTrainingDefinitionLevels(trainingDefinitionId: number, levels: Level[]): Observable<any> {
     return this.http.put(
-      `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/training-levels`,
-      TrainingLevelMapper.toUpdateDTO(trainingLevel),
-      { headers: this.createDefaultHeaders() }
-    );
-  }
-
-  /**
-   * Sends http request to update info level
-   * @param trainingDefinitionId id of training definition associated with the level
-   * @param infoLevel info level which should be updated
-   */
-  updateInfoLevel(trainingDefinitionId: number, infoLevel: InfoLevel): Observable<any> {
-    return this.http.put(
-      `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/info-levels`,
-      InfoLevelMapper.toUpdateDTO(infoLevel),
-      { headers: this.createDefaultHeaders() }
-    );
-  }
-
-  /**
-   * Sends http request to update assessment level in DB
-   * @param trainingDefId id of training definition associated with the level
-   * @param assessmentLevel assessment level which should be updated
-   */
-  updateAssessmentLevel(trainingDefId: number, assessmentLevel: AssessmentLevel): Observable<any> {
-    return this.http.put(
-      `${this.trainingDefsEndpointUri}/${trainingDefId}/assessment-levels`,
-      AssessmentLevelMapper.toUpdateDTO(assessmentLevel),
+      `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/levels`,
+      LevelMapper.toUpdateDTOs(levels),
       { headers: this.createDefaultHeaders() }
     );
   }

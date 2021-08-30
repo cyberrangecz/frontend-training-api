@@ -50,6 +50,8 @@ export abstract class AdaptiveDefinitionApiService {
 
   abstract deletePhase(trainingDefinitionId: number, phaseId: number): Observable<any>;
 
+  abstract updatePhases(trainingDefinitionId: number, phases: Phase[]): Observable<any>;
+
   abstract updateTrainingPhase(trainingDefinitionId: number, trainingPhase: TrainingPhase): Observable<any>;
 
   abstract updateQuestionnairePhase(

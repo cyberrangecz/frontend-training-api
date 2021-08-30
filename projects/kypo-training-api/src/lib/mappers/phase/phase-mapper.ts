@@ -14,6 +14,9 @@ import { InfoPhaseDTO } from '../../dto/phase/info-phase/info-phase-dto';
 import { QuestionnairePhaseMapper } from './questionnaire-phase-mapper';
 import { QuestionnairePhaseDTO } from '../../dto/phase/questionnaire-phase/questionnaire-phase-dto';
 import { BasicPhaseInfoDTO } from '../../dto/phase/basic-phase-info-dto';
+import { TrainingPhaseUpdateDTO } from '../../dto/phase/training-phase/training-phase-update-dto';
+import { InfoPhaseUpdateDTO } from '../../dto/phase/info-phase/info-phase-update-dto';
+import { QuestionnairePhaseUpdateDTO } from '../../dto/phase/questionnaire-phase/questionnaire-phase-update-dto';
 
 /**
  * @dynamic
@@ -77,5 +80,31 @@ export class PhaseMapper {
 
   static fromBasicDTOs(dtos: BasicPhaseInfoDTO[]): Phase[] {
     return dtos.map((dto) => this.fromBasicDTO(dto));
+  }
+
+  static toUpdateDTOs(phases: Phase[]): AbstractPhaseDTO[] {
+    return phases.map((phase) => this.toUpdateDTO(phase));
+  }
+
+  static toUpdateDTO(phase: Phase): AbstractPhaseDTO {
+    let phaseDTO: AbstractPhaseDTO;
+    switch (phase.type) {
+      case AbstractPhaseTypeEnum.Training: {
+        phaseDTO = new TrainingPhaseUpdateDTO();
+        phaseDTO = TrainingPhaseMapper.toUpdateDTO(phase as TrainingPhase);
+        break;
+      }
+      case AbstractPhaseTypeEnum.Info: {
+        phaseDTO = new InfoPhaseUpdateDTO();
+        phaseDTO = InfoPhaseMapper.toUpdateDTO(phase as InfoPhase);
+        break;
+      }
+      case AbstractPhaseTypeEnum.Questionnaire: {
+        phaseDTO = new QuestionnairePhaseUpdateDTO();
+        phaseDTO = QuestionnairePhaseMapper.mapQuestionnaireToUpdateDTO(phase as QuestionnairePhase);
+        break;
+      }
+    }
+    return phaseDTO;
   }
 }

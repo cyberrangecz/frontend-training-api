@@ -30,11 +30,15 @@ export class TrainingPhaseMapper {
 
   static toUpdateDTO(phase: TrainingPhase): TrainingPhaseUpdateDTO {
     const result = new TrainingPhaseUpdateDTO();
+    result.id = phase.id;
+    result.title = phase.title;
+    result.order = phase.order;
     result.allowed_commands = phase.allowedCommands;
     result.allowed_wrong_answers = phase.allowedWrongAnswers;
     result.estimated_duration = phase.estimatedDuration;
     result.title = phase.title;
     result.decision_matrix = this.mapDecisionMatrixToDTO(phase.decisionMatrix);
+    result.tasks = TaskMapper.toUpdateDTOs(phase.tasks);
     return result;
   }
 

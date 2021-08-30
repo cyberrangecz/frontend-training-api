@@ -115,23 +115,11 @@ export abstract class TrainingDefinitionApi {
   abstract deleteLevel(trainingDefinitionId: number, levelId: number): Observable<Level[]>;
 
   /**
-   * Sends http request to update training level
-   * @param trainingDefinitionId id of training definition associated with the level
-   * @param trainingLevel training level which should be updated
+   * Sends http request to update training definition levels
+   * @param trainingDefinitionId id of training definition associated with the levels
+   * @param levels training levels which should be updated
    */
-  abstract updateTrainingLevel(trainingDefinitionId: number, trainingLevel: TrainingLevel): Observable<any>;
-  /**
-   * Sends http request to update info level
-   * @param trainingDefinitionId id of training definition associated with the level
-   * @param infoLevel info level which should be updated
-   */
-  abstract updateInfoLevel(trainingDefinitionId: number, infoLevel: InfoLevel): Observable<any>;
-  /**
-   * Sends http request to update assessment level in DB
-   * @param trainingDefId id of training definition associated with the level
-   * @param assessmentLevel assessment level which should be updated
-   */
-  abstract updateAssessmentLevel(trainingDefId: number, assessmentLevel: AssessmentLevel): Observable<any>;
+  abstract updateTrainingDefinitionLevels(trainingDefinitionId: number, levels: Level[]): Observable<any>;
 
   /**
    * Sends http request to move level to new position (change order)
