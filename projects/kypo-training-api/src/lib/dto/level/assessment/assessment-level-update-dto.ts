@@ -2,15 +2,17 @@
  * Assessment Level to update.
  */
 import { AbstractQuestionCreateDTO } from './abstact-question-dto';
+import { AbstractLevelDTO } from '../abstract-level-dto';
 
 export interface AssessmentLevelUpdateDTO {
   id?: number;
   title?: string;
+  level_type?: AbstractLevelDTO.LevelTypeEnum;
+  type?: AssessmentLevelUpdateDTO.TypeEnum;
   max_score?: number;
   estimated_duration: number;
   instructions?: string;
   questions?: AbstractQuestionCreateDTO[];
-  type?: AssessmentLevelUpdateDTO.TypeEnum;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -24,10 +26,11 @@ export namespace AssessmentLevelUpdateDTO {
 
 export class AssessmentLevelUpdateDTOClass implements AssessmentLevelUpdateDTO {
   id: number;
+  title: string;
+  level_type: AbstractLevelDTO.LevelTypeEnum = 'ASSESSMENT_LEVEL';
+  type: AssessmentLevelUpdateDTO.TypeEnum;
   instructions: string;
   max_score: number;
   questions: AbstractQuestionCreateDTO[];
-  title: string;
   estimated_duration: number;
-  type: AssessmentLevelUpdateDTO.TypeEnum;
 }

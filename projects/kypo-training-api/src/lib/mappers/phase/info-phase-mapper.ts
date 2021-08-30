@@ -10,10 +10,12 @@ export class InfoPhaseMapper {
     return result;
   }
 
-  static toUpdateDTO(level: InfoPhase): InfoPhaseUpdateDTO {
+  static toUpdateDTO(phase: InfoPhase): InfoPhaseUpdateDTO {
     const result = new InfoPhaseUpdateDTO();
-    result.title = level.title;
-    result.content = level.content;
+    result.id = phase.id;
+    result.order = phase.order;
+    result.title = phase.title;
+    result.content = phase.content;
     return result;
   }
 }

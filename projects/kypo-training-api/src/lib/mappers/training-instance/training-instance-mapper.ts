@@ -31,6 +31,7 @@ export class TrainingInstanceMapper {
     result.end_time = trainingInstance.endTime.toISOString();
     result.access_token = trainingInstance.accessToken;
     result.training_definition_id = trainingInstance.trainingDefinition.id;
+    result.pool_id = trainingInstance.poolId;
     return result;
   }
 
@@ -42,6 +43,7 @@ export class TrainingInstanceMapper {
     result.end_time = trainingInstance.endTime.toISOString();
     result.access_token = trainingInstance.accessToken;
     result.training_definition_id = trainingInstance.trainingDefinition.id;
+    result.pool_id = trainingInstance.poolId;
     return result;
   }
 }

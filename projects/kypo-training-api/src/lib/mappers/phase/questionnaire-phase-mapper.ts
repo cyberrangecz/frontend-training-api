@@ -96,6 +96,8 @@ export class QuestionnairePhaseMapper {
 
   static mapQuestionnaireToUpdateDTO(questionnaire: QuestionnairePhase): QuestionnairePhaseUpdateDTO {
     const questionnaireDto = new QuestionnairePhaseUpdateDTO();
+    questionnaireDto.id = questionnaire.id;
+    questionnaireDto.order = questionnaire.order;
     questionnaireDto.title = questionnaire.title;
     questionnaireDto.questions = this.mapQuestionsToDTO(questionnaire.questions);
     questionnaireDto.phase_relations = this.mapPhaseRelationsToDTO(questionnaire.phaseRelations);

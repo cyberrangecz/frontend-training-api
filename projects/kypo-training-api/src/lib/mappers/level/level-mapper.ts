@@ -11,6 +11,9 @@ import { InfoLevelDTO } from '../../dto/level/info/info-level-dto';
 import { AssessmentLevelMapper } from './assessment/assessment-level-mapper';
 import { TrainingLevelMapper } from './training/training-level-mapper';
 import { InfoLevelMapper } from './info/info-level-mapper';
+import { TrainingLevelUpdateDTOClass } from '../../dto/level/training/training-level-update-dto';
+import { InfoLevelUpdateDTOClass } from '../../dto/level/info/info-level-update-dto';
+import { AssessmentLevelUpdateDTOClass } from '../../dto/level/assessment/assessment-level-update-dto';
 
 /**
  * @dynamic
@@ -73,5 +76,31 @@ export class LevelMapper {
 
   static fromBasicDTOs(dtos: BasicLevelInfoDTO[]): Level[] {
     return dtos.map((dto) => this.fromBasicDTO(dto));
+  }
+
+  static toUpdateDTOs(levels: Level[]): AbstractLevelDTO[] {
+    return levels.map((level) => this.toUpdateDTO(level));
+  }
+
+  static toUpdateDTO(level: Level): AbstractLevelDTO {
+    let levelDTO: AbstractLevelDTO;
+    switch (level.type) {
+      case AbstractLevelTypeEnum.Training: {
+        levelDTO = new TrainingLevelUpdateDTOClass();
+        levelDTO = TrainingLevelMapper.toUpdateDTO(level as TrainingLevel);
+        break;
+      }
+      case AbstractLevelTypeEnum.Info: {
+        levelDTO = new InfoLevelUpdateDTOClass();
+        levelDTO = InfoLevelMapper.toUpdateDTO(level as InfoLevel);
+        break;
+      }
+      case AbstractLevelTypeEnum.Assessment: {
+        levelDTO = new AssessmentLevelUpdateDTOClass();
+        levelDTO = AssessmentLevelMapper.toUpdateDTO(level as AssessmentLevel);
+        break;
+      }
+    }
+    return levelDTO;
   }
 }

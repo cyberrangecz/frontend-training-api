@@ -1,11 +1,11 @@
 export interface AbstractLevelDTO {
   id?: number;
   max_score?: number;
-  estimated_duration: number;
-  order: number;
+  estimated_duration?: number;
+  order?: number;
   snapshot_hook?: any;
   title?: string;
-  level_type: AbstractLevelDTO.LevelTypeEnum;
+  level_type?: AbstractLevelDTO.LevelTypeEnum;
 }
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AbstractLevelDTO {
