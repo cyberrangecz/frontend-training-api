@@ -20,6 +20,7 @@ export class TrainingDefinitionCreateDTO {
   state?: TrainingDefinitionCreateDTO.StateEnum;
   title?: string;
   variant_sandboxes?: boolean;
+  default_content?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
