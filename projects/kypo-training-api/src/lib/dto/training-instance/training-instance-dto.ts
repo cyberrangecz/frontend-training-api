@@ -23,4 +23,5 @@ export interface TrainingInstanceDTO {
   title?: string;
   training_definition?: TrainingDefinitionDTO;
   access_token: string;
+  last_edited_by?: string;
 }

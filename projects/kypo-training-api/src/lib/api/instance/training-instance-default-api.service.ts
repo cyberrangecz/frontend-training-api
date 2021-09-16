@@ -85,11 +85,9 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
    */
   getAssociatedTrainingRuns(
     trainingInstanceId: number,
-    pagination: RequestedPagination,
-    isActive = true
+    pagination: RequestedPagination
   ): Observable<PaginatedResource<TrainingRun>> {
-    let params = PaginationParams.forJavaAPI(pagination);
-    params = params.append('isActive', isActive.toString());
+    const params = PaginationParams.forJavaAPI(pagination);
     return this.http
       .get<TrainingRunRestResource>(
         `${this.trainingInstancesEndpointUri}/${trainingInstanceId}/${this.trainingRunsUriExtension}`,
