@@ -23,12 +23,10 @@ export abstract class AdaptiveInstanceApi {
    * Sends http request to retrieve all training runs associated with training instance
    * @param trainingInstanceId id of a training instance associated with training runs
    * @param pagination requested pagination
-   * @param isActive true if active training runs should be retrieved, false if archived training runs should be retrieved
    */
   abstract getAssociatedTrainingRuns(
     trainingInstanceId: number,
-    pagination: RequestedPagination,
-    isActive?: boolean
+    pagination: RequestedPagination
   ): Observable<PaginatedResource<TrainingRun>>;
 
   /**

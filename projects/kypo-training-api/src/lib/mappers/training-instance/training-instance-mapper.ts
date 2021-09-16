@@ -17,6 +17,7 @@ export class TrainingInstanceMapper {
     result.title = dto.title;
     result.accessToken = dto.access_token;
     result.poolId = dto.pool_id;
+    result.lastEditBy = dto.last_edited_by;
     return result;
   }
 
