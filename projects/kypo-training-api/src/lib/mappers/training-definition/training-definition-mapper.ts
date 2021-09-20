@@ -92,6 +92,7 @@ export class TrainingDefinitionMapper {
     result.title = trainingDefinition.title;
     result.show_stepper_bar = trainingDefinition.showStepperBar;
     result.variant_sandboxes = trainingDefinition.variantSandboxes;
+    result.default_content = trainingDefinition.defaultContent;
     return result;
   }
 }
