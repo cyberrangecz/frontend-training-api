@@ -1,3 +1,11 @@
+### 12.0.6 Add attribute default_content to Training Definition Create DTO.
+* decbbcd -- [CI/CD] Update packages.json version based on GitLab tag.
+* 351d267 -- Merge branch '44-add-attribute-default_content-to-trainingdefinitioncreatedto' into 'master'
+* 70ded82 -- Update .gitlab-ci.yml file
+* 8303b40 -- Bump version file
+* f971dcf -- Merge remote-tracking branch 'origin/master' into 44-add-attribute-default_content-to-trainingdefinitioncreatedto
+* 89e4e5a -- Bump version of model
+* 2063e9d -- Added attribute default_content to training definition create DTO. Modification of the mapper accordingly.
 ### 12.0.5 Add last edit by field.
 * 3be52bc -- [CI/CD] Update packages.json version based on GitLab tag.
 *   450a99b -- Merge branch '45-add-last-edit-by-field' into 'master'
