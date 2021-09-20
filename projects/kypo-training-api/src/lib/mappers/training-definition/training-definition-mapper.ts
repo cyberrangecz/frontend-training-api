@@ -27,6 +27,7 @@ export class TrainingDefinitionMapper {
       result.levels = PhaseMapper.fromDTOs(dto.phases);
     }
     result.variantSandboxes = dto.variant_sandboxes;
+    result.lastEditBy = dto.last_edited_by;
 
     return result;
   }

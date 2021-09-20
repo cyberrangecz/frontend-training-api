@@ -1,3 +1,4 @@
+12.0.5 Add last edit by field.
 12.0.4 Include id to training definition info title. Allow save of multiple levels/phases at once.
 12.0.3 Addition of the attributes for APG.
 12.0.2 Rename flag to answer, rename game level to training level, new version of Sentinel.

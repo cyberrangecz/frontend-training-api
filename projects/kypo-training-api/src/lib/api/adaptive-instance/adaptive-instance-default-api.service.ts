@@ -81,15 +81,12 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
    * Sends http request to retrieve all training runs associated with training instance
    * @param trainingInstanceId id of a training instance associated with training runs
    * @param pagination requested pagination
-   * @param isActive true if active training runs should be retrieved, false if archived training runs should be retrieved
    */
   getAssociatedTrainingRuns(
     trainingInstanceId: number,
-    pagination: RequestedPagination,
-    isActive = true
+    pagination: RequestedPagination
   ): Observable<PaginatedResource<TrainingRun>> {
-    let params = PaginationParams.forJavaAPI(pagination);
-    params = params.append('isActive', isActive.toString());
+    const params = PaginationParams.forJavaAPI(pagination);
     return this.http
       .get<TrainingRunRestResource>(
         `${this.trainingInstancesEndpointUri}/${trainingInstanceId}/${this.trainingRunsUriExtension}`,
