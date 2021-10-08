@@ -1,3 +1,11 @@
+### 12.0.7 Add variant_answers into training level dto. Add training run info dto, mappers and api methods.
+* bc85d33 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   91e4b37 -- Merge branch '49-add-training-run-info-dto-and-api-call' into 'master'
+|\  
+| * cff6afc -- Resolve "Add training run info dto and api call"
+|/  
+* 6f2ab06 -- Merge branch '48-move-attribute-variant_sandboxes-from-definition-to-training-level-as-variant_answers' into 'master'
+* b88287f -- Removed variant_sandboxes from definition dto. Added variant_answers into...
 ### 12.0.6 Add attribute default_content to Training Definition Create DTO.
 * decbbcd -- [CI/CD] Update packages.json version based on GitLab tag.
 * 351d267 -- Merge branch '44-add-attribute-default_content-to-trainingdefinitioncreatedto' into 'master'
