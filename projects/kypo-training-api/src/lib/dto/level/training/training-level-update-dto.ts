@@ -13,6 +13,7 @@ export interface TrainingLevelUpdateDto {
   level_type: AbstractLevelDTO.LevelTypeEnum;
   solution?: string;
   solution_penalized?: boolean;
+  variant_answers?: boolean;
   order: number;
 }
 
@@ -29,5 +30,6 @@ export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
   solution: string;
   solution_penalized: boolean;
   title: string;
+  variant_answers: boolean;
   order: number;
 }
