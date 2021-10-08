@@ -7,6 +7,7 @@ import {
   LevelAnswerCheck,
   Question,
   TrainingRun,
+  TrainingRunInfo,
 } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 
@@ -32,6 +33,12 @@ export abstract class TrainingRunApi {
    * @param pagination requested pagination
    */
   abstract getAccessed(pagination: RequestedPagination): Observable<PaginatedResource<AccessedTrainingRun>>;
+
+  /**
+   * Sends http request to retrieve info about training run by id
+   * @param id id of training run which should be retrieved
+   */
+  abstract getInfo(id: number): Observable<TrainingRunInfo[]>;
 
   /**
    * Sends http request to delete training run
