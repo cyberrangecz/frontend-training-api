@@ -18,6 +18,7 @@ export class TrainingLevelMapper {
     result.solution = dto.solution;
     result.incorrectAnswerLimit = dto.incorrect_answer_limit;
     result.solutionPenalized = dto.solution_penalized;
+    result.variantAnswers = dto.variant_answers;
     return result;
   }
 
@@ -33,6 +34,7 @@ export class TrainingLevelMapper {
     result.incorrect_answer_limit = trainingLevel.incorrectAnswerLimit;
     result.solution = trainingLevel.solution;
     result.solution_penalized = trainingLevel.solutionPenalized;
+    result.variant_answers = trainingLevel.variantAnswers;
     result.hints = HintMapper.toDTOs(trainingLevel.hints);
     return result;
   }

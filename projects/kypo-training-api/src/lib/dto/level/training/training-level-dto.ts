@@ -10,4 +10,5 @@ export interface TrainingLevelDto extends AbstractLevelDTO {
   level_type: AbstractLevelDTO.LevelTypeEnum;
   solution: string;
   solution_penalized: boolean;
+  variant_answers: boolean;
 }
