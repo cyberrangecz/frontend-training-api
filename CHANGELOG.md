@@ -1,3 +1,15 @@
+### 12.1.0 Add tests for particular api services. Add DTO, mappers and api methods for command analysis visualization.
+* 842c40c -- [CI/CD] Update packages.json version based on GitLab tag.
+*   14317ec -- Merge branch '47-integrate-command-visualization' into 'master'
+|\  
+| * 8962094 -- Resolve "Integrate command visualization"
+|/  
+*   0a87b7c -- Merge branch '46-create-tests-for-api-services-and-mappers' into 'master'
+|\  
+| * 3ce3c9b -- Resolve "Create tests for api services and mappers"
+|/  
+* 5f94352 -- Merge branch '50-add-license' into 'master'
+* 729a37b -- Add license file
 ### 12.0.7 Add variant_answers into training level dto. Add training run info dto, mappers and api methods.
 * bc85d33 -- [CI/CD] Update packages.json version based on GitLab tag.
 *   91e4b37 -- Merge branch '49-add-training-run-info-dto-and-api-call' into 'master'
