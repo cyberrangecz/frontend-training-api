@@ -1,6 +1,8 @@
 import { AbstractLevelDTO } from '../level/abstract-level-dto';
 import { AbstractPhaseDTO } from '../phase/abstract-phase-dto';
-
+/**
+ * Training Definition DTO.
+ */
 export class TrainingDefinitionDTO {
   levels?: AbstractLevelDTO[];
   phases?: AbstractPhaseDTO[];

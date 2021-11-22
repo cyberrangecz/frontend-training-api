@@ -336,6 +336,14 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   }
 
   /**
+   * Sends http request to determine whether given training definition has reference solution
+   * @param trainingDefinitionId training definition id
+   */
+  hasReferenceSolution(trainingDefinitionId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.trainingDefsEndpointUri}/${trainingDefinitionId}/has-reference-solution`);
+  }
+
+  /**
    * Sends http request to retrieve all training definitions with given sandbox definition id
    * @param sandboxDefId id of sandbox definition
    * @param pagination requested pagination
