@@ -6,6 +6,7 @@ import {
   TrainingLevelUpdateDTOClass,
 } from '../../../dto/level/training/training-level-update-dto';
 import { HintMapper } from './hint-mapper';
+import { ReferenceSolutionNodeMapper } from './reference-solution-node-mapper';
 
 export class TrainingLevelMapper {
   static fromDTO(dto: TrainingLevelDto): TrainingLevel {
@@ -18,6 +19,9 @@ export class TrainingLevelMapper {
     result.solution = dto.solution;
     result.incorrectAnswerLimit = dto.incorrect_answer_limit;
     result.solutionPenalized = dto.solution_penalized;
+    if (dto.reference_solution) {
+      result.referenceSolution = ReferenceSolutionNodeMapper.fromDTOs(dto.reference_solution);
+    }
     result.variantAnswers = dto.variant_answers;
     return result;
   }
@@ -36,6 +40,7 @@ export class TrainingLevelMapper {
     result.solution_penalized = trainingLevel.solutionPenalized;
     result.variant_answers = trainingLevel.variantAnswers;
     result.hints = HintMapper.toDTOs(trainingLevel.hints);
+    result.reference_solution = ReferenceSolutionNodeMapper.toDTOs(trainingLevel.referenceSolution);
     return result;
   }
 }
