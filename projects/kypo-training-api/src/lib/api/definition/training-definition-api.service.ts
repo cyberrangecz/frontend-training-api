@@ -1,4 +1,4 @@
-import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent, SentinelFilter } from '@sentinel/common';
 import {
   AssessmentLevel,
   InfoLevel,
@@ -17,7 +17,7 @@ export abstract class TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   abstract getAll(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingDefinition>>;
 
@@ -27,7 +27,7 @@ export abstract class TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   abstract getAllForOrganizer(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingDefinitionInfo>>;
 
@@ -151,7 +151,7 @@ export abstract class TrainingDefinitionApi {
    */
   abstract geTrainingDefinition(
     sandboxDefId: number,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingDefinition>>;
 }

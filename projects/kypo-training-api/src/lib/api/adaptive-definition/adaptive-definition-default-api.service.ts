@@ -24,7 +24,7 @@ import { TaskDTO } from '../../dto/phase/training-phase/task-dto';
 import { TaskMapper } from '../../mappers/phase/task-mapper';
 import {
   PaginatedResource,
-  RequestedPagination,
+  OffsetPaginationEvent,
   ResponseHeaderContentDispositionReader,
   SentinelFilter,
   SentinelParamsMerger,
@@ -123,7 +123,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
   }
 
   getAll(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingDefinition>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
@@ -141,7 +141,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
   }
 
   getAllForOrganizer(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingDefinitionInfo>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);

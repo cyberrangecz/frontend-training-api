@@ -1,4 +1,4 @@
-import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent, SentinelFilter } from '@sentinel/common';
 import { Trainee, TrainingUser } from '@muni-kypo-crp/training-model';
 import { VisualizationInfo } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
@@ -33,7 +33,7 @@ export abstract class VisualizationApi {
    */
   abstract getUsers(
     usersIds: number[],
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingUser>>;
 }
