@@ -1,4 +1,4 @@
-import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent, SentinelFilter } from '@sentinel/common';
 import { Observable } from 'rxjs';
 import {
   InfoPhase,
@@ -13,12 +13,12 @@ import {
 
 export abstract class AdaptiveDefinitionApiService {
   abstract getAll(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingDefinition>>;
 
   abstract getAllForOrganizer(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingDefinitionInfo>>;
 

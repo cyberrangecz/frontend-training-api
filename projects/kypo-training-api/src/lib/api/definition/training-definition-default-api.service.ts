@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  OffsetPaginationEvent,
   PaginatedResource,
-  RequestedPagination,
   ResponseHeaderContentDispositionReader,
   SentinelFilter,
   SentinelParamsMerger,
@@ -61,7 +61,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   getAll(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<TrainingDefinition>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
@@ -84,7 +84,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param filters filters to be applied on result
    */
   getAllForOrganizer(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<TrainingDefinitionInfo>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
@@ -351,7 +351,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    */
   geTrainingDefinition(
     sandboxDefId: number,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<TrainingDefinition>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);

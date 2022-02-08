@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaginatedResource, RequestedPagination, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
 import { Trainee, TrainingUser } from '@muni-kypo-crp/training-model';
 import { VisualizationInfo } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
@@ -71,7 +71,7 @@ export class VisualizationDefaultApi extends VisualizationApi {
    */
   getUsers(
     usersIds: number[],
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<TrainingUser>> {
     const idsParam = new HttpParams().set('ids', usersIds.toString());
@@ -80,15 +80,13 @@ export class VisualizationDefaultApi extends VisualizationApi {
       FilterParams.create(filters),
       idsParam,
     ]);
-    return this.http
-      .get<UserRestResource>(`${this.visualizationsEndpointUri}/users`, { params })
-      .pipe(
-        map((resp) => {
-          return new PaginatedResource<TrainingUser>(
-            UserMapper.fromDTOs(resp.content),
-            PaginationMapper.fromJavaAPI(resp.pagination)
-          );
-        })
-      );
+    return this.http.get<UserRestResource>(`${this.visualizationsEndpointUri}/users`, { params }).pipe(
+      map((resp) => {
+        return new PaginatedResource<TrainingUser>(
+          UserMapper.fromDTOs(resp.content),
+          PaginationMapper.fromJavaAPI(resp.pagination)
+        );
+      })
+    );
   }
 }

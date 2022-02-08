@@ -1,4 +1,4 @@
-import { PaginatedResource, RequestedPagination, SentinelFilter } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent, SentinelFilter } from '@sentinel/common';
 import { Observable } from 'rxjs';
 import {
   AccessedTrainingRun,
@@ -11,11 +11,11 @@ import {
 
 export abstract class AdaptiveRunApi {
   abstract getAll(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<TrainingRun>>;
   abstract get(id: number): Observable<TrainingRun>;
-  abstract getAccessed(pagination: RequestedPagination): Observable<PaginatedResource<AccessedTrainingRun>>;
+  abstract getAccessed(pagination: OffsetPaginationEvent): Observable<PaginatedResource<AccessedTrainingRun>>;
   abstract delete(trainingRunId: number, force?: boolean): Observable<any>;
   abstract deleteMultiple(trainingRunIds: number[], force?: boolean): Observable<any>;
   abstract access(token: string): Observable<AccessTrainingRunInfo>;

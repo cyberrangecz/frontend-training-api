@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   PaginatedResource,
-  RequestedPagination,
+  OffsetPaginationEvent,
   ResponseHeaderContentDispositionReader,
   SentinelFilter,
   SentinelParamsMerger,
@@ -50,7 +50,7 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
    * @param filters filters to be applied on resources
    */
   getAll(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<TrainingInstance>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
@@ -84,7 +84,7 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
    */
   getAssociatedTrainingRuns(
     trainingInstanceId: number,
-    pagination: RequestedPagination
+    pagination: OffsetPaginationEvent
   ): Observable<PaginatedResource<TrainingRun>> {
     const params = PaginationParams.forJavaAPI(pagination);
     return this.http
