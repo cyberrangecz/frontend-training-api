@@ -20,4 +20,6 @@ export class TrainingInstanceCreateDTO {
   title?: string;
   training_definition_id?: number;
   pool_id?: number;
+  local_environment?: boolean;
+  sandbox_definition_id?: number;
 }

@@ -24,4 +24,6 @@ export interface TrainingInstanceDTO {
   training_definition?: TrainingDefinitionDTO;
   access_token: string;
   last_edited_by?: string;
+  local_environment?: boolean;
+  sandbox_definition_id?: number;
 }

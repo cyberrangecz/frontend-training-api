@@ -1,6 +1,7 @@
 import { AbstractPhaseDTO } from '../../dto/phase/abstract-phase-dto';
 import {
   AbstractPhaseTypeEnum,
+  AccessPhase,
   InfoPhase,
   Phase,
   QuestionnairePhase,
@@ -17,6 +18,9 @@ import { BasicPhaseInfoDTO } from '../../dto/phase/basic-phase-info-dto';
 import { TrainingPhaseUpdateDTO } from '../../dto/phase/training-phase/training-phase-update-dto';
 import { InfoPhaseUpdateDTO } from '../../dto/phase/info-phase/info-phase-update-dto';
 import { QuestionnairePhaseUpdateDTO } from '../../dto/phase/questionnaire-phase/questionnaire-phase-update-dto';
+import { AccessPhaseUpdateDTO } from '../../dto/phase/access-phase/access-phase-update-dto';
+import { AccessPhaseMapper } from './access-phase-mapper';
+import { AccessPhaseDTO } from '../../dto/phase/access-phase/access-phase-dto';
 
 /**
  * @dynamic
@@ -35,6 +39,10 @@ export class PhaseMapper {
       }
       case AbstractPhaseDTO.PhaseTypeEnum.QUESTIONNAIRE: {
         phase = QuestionnairePhaseMapper.fromDTO(dto as QuestionnairePhaseDTO);
+        break;
+      }
+      case AbstractPhaseDTO.PhaseTypeEnum.ACCESS: {
+        phase = AccessPhaseMapper.fromDTO(dto as AccessPhaseDTO);
         break;
       }
     }
@@ -71,6 +79,11 @@ export class PhaseMapper {
         phase.type = AbstractPhaseTypeEnum.Questionnaire;
         break;
       }
+      case BasicPhaseInfoDTO.PhaseTypeEnum.ACCESS: {
+        phase = new AccessPhase();
+        phase.type = AbstractPhaseTypeEnum.Access;
+        break;
+      }
     }
     phase.id = dto.id;
     phase.title = dto.title;
@@ -92,6 +105,11 @@ export class PhaseMapper {
       case AbstractPhaseTypeEnum.Training: {
         phaseDTO = new TrainingPhaseUpdateDTO();
         phaseDTO = TrainingPhaseMapper.toUpdateDTO(phase as TrainingPhase);
+        break;
+      }
+      case AbstractPhaseTypeEnum.Access: {
+        phaseDTO = new AccessPhaseUpdateDTO();
+        phaseDTO = AccessPhaseMapper.toUpdateDTO(phase as AccessPhase);
         break;
       }
       case AbstractPhaseTypeEnum.Info: {

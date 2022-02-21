@@ -25,8 +25,10 @@ export interface AccessTrainingRunDTO {
   info_about_phases?: BasicPhaseInfoDTO[];
   training_run_id: number;
   sandbox_instance_ref_id: number;
+  sandbox_definition_id: number;
   show_stepper_bar: boolean;
   start_time: Date;
   taken_solution: string;
   taken_hints: HintDTO[];
+  local_environment: boolean;
 }

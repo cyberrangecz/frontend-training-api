@@ -142,6 +142,10 @@ export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
       .pipe(map((response) => TaskAnswerMapper.fromDTO(response)));
   }
 
+  isCorrectPasskey(trainingRunId: number, passkey: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-passkey`, { passkey });
+  }
+
   /**
    * Sends http request to display solution to a level
    * @param trainingRunId id of the training run in which, solution should be revealed

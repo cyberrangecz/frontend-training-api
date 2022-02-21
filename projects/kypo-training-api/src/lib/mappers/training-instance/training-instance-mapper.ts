@@ -18,6 +18,8 @@ export class TrainingInstanceMapper {
     result.accessToken = dto.access_token;
     result.poolId = dto.pool_id;
     result.lastEditBy = dto.last_edited_by;
+    result.localEnvironment = dto.local_environment;
+    result.sandboxDefinitionId = dto.sandbox_definition_id;
     return result;
   }
 
@@ -33,6 +35,8 @@ export class TrainingInstanceMapper {
     result.access_token = trainingInstance.accessToken;
     result.training_definition_id = trainingInstance.trainingDefinition.id;
     result.pool_id = trainingInstance.poolId;
+    result.local_environment = trainingInstance.localEnvironment;
+    result.sandbox_definition_id = trainingInstance.sandboxDefinitionId;
     return result;
   }
 
@@ -45,6 +49,8 @@ export class TrainingInstanceMapper {
     result.access_token = trainingInstance.accessToken;
     result.training_definition_id = trainingInstance.trainingDefinition.id;
     result.pool_id = trainingInstance.poolId;
+    result.local_environment = trainingInstance.localEnvironment;
+    result.sandbox_definition_id = trainingInstance.sandboxDefinitionId;
     return result;
   }
 }

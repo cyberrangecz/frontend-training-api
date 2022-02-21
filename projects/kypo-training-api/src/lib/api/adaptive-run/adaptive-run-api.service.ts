@@ -22,6 +22,7 @@ export abstract class AdaptiveRunApi {
   abstract resume(trainingRunId: number): Observable<AccessTrainingRunInfo>;
   abstract nextPhase(trainingRunId: number): Observable<Phase>;
   abstract isCorrectAnswer(trainingRunId: number, answer: string): Observable<PhaseAnswerCheck>;
+  abstract isCorrectPasskey(trainingRunId: number, passkey: string): Observable<boolean>;
   abstract takeSolution(trainingRunId: number): Observable<string>;
   abstract evaluateQuestionnaire(trainingRunId: number, questionAnswers: QuestionAnswer[]): Observable<any>;
   abstract finish(trainingRunId: number): Observable<any>;

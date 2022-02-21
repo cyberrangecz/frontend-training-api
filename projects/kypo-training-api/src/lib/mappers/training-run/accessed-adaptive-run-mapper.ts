@@ -23,6 +23,8 @@ export class AccessedAdaptiveRunMapper {
          ${this.extractDate(result.trainingInstanceEndTime.toString())}`;
     result.action = this.resolvePossibleAction(dto.possible_action);
     result.type = TrainingRunTypeEnum.ADAPTIVE;
+    result.localEnvironment = dto.local_environment;
+    result.sandboxDefinitionId = dto.sandbox_definition_id;
     return result;
   }
 

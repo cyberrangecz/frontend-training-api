@@ -6,11 +6,12 @@ export interface AbstractPhaseDTO {
 }
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AbstractPhaseDTO {
-  export type PhaseTypeEnum = 'INFO' | 'TASK' | 'TRAINING' | 'QUESTIONNAIRE';
+  export type PhaseTypeEnum = 'INFO' | 'TASK' | 'TRAINING' | 'ACCESS' | 'QUESTIONNAIRE';
   export const PhaseTypeEnum = {
     INFO: 'INFO' as PhaseTypeEnum,
     TASK: 'TASK' as PhaseTypeEnum,
     TRAINING: 'TRAINING' as PhaseTypeEnum,
+    ACCESS: 'ACCESS' as PhaseTypeEnum,
     QUESTIONNAIRE: 'QUESTIONNAIRE' as PhaseTypeEnum,
   };
 }

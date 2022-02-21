@@ -23,6 +23,8 @@ export interface AccessedTrainingRunDTO {
   title?: string;
   training_instance_end_date?: Date;
   training_instance_start_date?: Date;
+  local_environment?: boolean;
+  sandbox_definition_id?: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
