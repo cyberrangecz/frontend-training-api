@@ -1,3 +1,11 @@
+### 13.0.0 Update to Angular 13, CI/CD optimisation, local env. and sandbox def. id attribute added to TI and TR DTOs, access level/phase integrated.
+* 548913a -- [CI/CD] Update packages.json version based on GitLab tag.
+*   d64977d -- Merge branch '12.1.1-pre-tag-changes' into 'master'
+|\  
+| * c55a5ba -- 12.1.1 pre tag changes
+|/  
+* 9a7c808 -- Merge branch '53-update-to-angular-13' into 'master'
+* 313f5af -- Resolve "Update to Angular 13"
 ### 12.1.0 Add tests for particular api services. Add DTO, mappers and api methods for command analysis visualization.
 * 842c40c -- [CI/CD] Update packages.json version based on GitLab tag.
 *   14317ec -- Merge branch '47-integrate-command-visualization' into 'master'
