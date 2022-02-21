@@ -171,6 +171,15 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   }
 
   /**
+   * Sends http request to submit the passkey from access level and check its valid
+   * @param trainingRunId id of training run in which the passkey should be submitted
+   * @param passkey a passkey submitted by user
+   */
+  isCorrectPasskey(trainingRunId: number, passkey: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.trainingRunsEndpointUri}/${trainingRunId}/is-correct-passkey`, { passkey });
+  }
+
+  /**
    * Sends http request to display hint and deduct points for it
    * @param trainingRunId id of training run in which, hint should be revealed
    * @param hintId id of requested hint

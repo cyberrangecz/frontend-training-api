@@ -7,7 +7,7 @@ import {
   SentinelFilter,
   SentinelParamsMerger,
 } from '@sentinel/common';
-import { TrainingDefinitionStateEnum, TrainingLevel } from '@muni-kypo-crp/training-model';
+import { AccessLevel, TrainingDefinitionStateEnum, TrainingLevel } from '@muni-kypo-crp/training-model';
 import { AssessmentLevel } from '@muni-kypo-crp/training-model';
 import { TrainingDefinitionInfo } from '@muni-kypo-crp/training-model';
 import { Level } from '@muni-kypo-crp/training-model';
@@ -260,6 +260,20 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
         { headers: this.createDefaultHeaders() }
       )
       .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as TrainingLevel));
+  }
+
+  /**
+   * Sends http request to create new access level associated with training definition
+   * @param trainingDefinitionId id of training definition which should be associated with the new level
+   */
+  createAccessLevel(trainingDefinitionId: number): Observable<AccessLevel> {
+    return this.http
+      .post<BasicLevelInfoDTO>(
+        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/ACCESS`,
+        {},
+        { headers: this.createDefaultHeaders() }
+      )
+      .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as AccessLevel));
   }
 
   /**

@@ -1,5 +1,6 @@
 import { PaginatedResource, OffsetPaginationEvent, SentinelFilter } from '@sentinel/common';
 import {
+  AccessLevel,
   AssessmentLevel,
   InfoLevel,
   Level,
@@ -100,6 +101,12 @@ export abstract class TrainingDefinitionApi {
    * @param trainingDefinitionId id of training definition which should be associated with the new level
    */
   abstract createTrainingLevel(trainingDefinitionId: number): Observable<TrainingLevel>;
+
+  /**
+   * Sends http request to create new access level associated with training definition
+   * @param trainingDefinitionId id of training definition which should be associated with the new level
+   */
+  abstract createAccessLevel(trainingDefinitionId: number): Observable<AccessLevel>;
 
   /**
    * Sends http request to create new info level associated with training definition

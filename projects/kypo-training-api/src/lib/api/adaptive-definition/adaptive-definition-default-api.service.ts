@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
 import { AdaptiveDefinitionApiService } from './adaptive-definition-api.service';
 import {
+  AccessPhase,
   InfoPhase,
   Phase,
   QuestionnairePhase,
@@ -199,6 +200,16 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
         { headers: this.createDefaultHeaders() }
       )
       .pipe(map((resp) => PhaseMapper.fromDTO(resp) as TrainingPhase));
+  }
+
+  createAccessPhase(trainingDefinitionId: number): Observable<AccessPhase> {
+    return this.http
+      .post<TrainingPhaseDTO>(
+        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
+        { phase_type: 'ACCESS' },
+        { headers: this.createDefaultHeaders() }
+      )
+      .pipe(map((resp) => PhaseMapper.fromDTO(resp) as AccessPhase));
   }
 
   createAdaptiveQuestionnairePhase(trainingDefinitionId: number): Observable<QuestionnairePhase> {

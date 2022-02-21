@@ -10,6 +10,8 @@ export class AccessAdaptiveRunMapper {
     const result = new AccessTrainingRunInfo();
     result.trainingRunId = dto.training_run_id;
     result.sandboxInstanceId = dto.sandbox_instance_ref_id;
+    result.sandboxDefinitionId = dto.sandbox_definition_id;
+    result.localEnvironment = dto.local_environment;
     result.startTime = new Date(dto.start_time);
     result.isStepperDisplayed = dto.show_stepper_bar;
     result.currentLevel = PhaseMapper.fromDTO(dto.current_phase);

@@ -1,6 +1,7 @@
 import { PaginatedResource, OffsetPaginationEvent, SentinelFilter } from '@sentinel/common';
 import { Observable } from 'rxjs';
 import {
+  AccessPhase,
   InfoPhase,
   Phase,
   QuestionnairePhase,
@@ -41,6 +42,8 @@ export abstract class AdaptiveDefinitionApiService {
   abstract createInfoPhase(trainingDefinitionId: number): Observable<InfoPhase>;
 
   abstract createTrainingPhase(trainingDefinitionId: number): Observable<TrainingPhase>;
+
+  abstract createAccessPhase(trainingDefinitionId: number): Observable<AccessPhase>;
 
   abstract createAdaptiveQuestionnairePhase(trainingDefinitionId: number): Observable<QuestionnairePhase>;
 
