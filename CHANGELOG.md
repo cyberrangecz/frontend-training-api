@@ -1,3 +1,7 @@
+### 13.0.1 Add has reference solution field.
+* ea49761 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 62c5bda -- Merge branch '56-add-has-reference-solution-field' into 'master'
+* 30e4c03 -- Resolve "Add has reference solution field"
 ### 13.0.0 Update to Angular 13, CI/CD optimisation, local env. and sandbox def. id attribute added to TI and TR DTOs, access level/phase integrated.
 * 548913a -- [CI/CD] Update packages.json version based on GitLab tag.
 *   d64977d -- Merge branch '12.1.1-pre-tag-changes' into 'master'
