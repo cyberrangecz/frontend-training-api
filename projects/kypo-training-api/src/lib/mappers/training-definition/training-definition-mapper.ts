@@ -27,7 +27,7 @@ export class TrainingDefinitionMapper {
       result.levels = PhaseMapper.fromDTOs(dto.phases);
     }
     result.lastEditBy = dto.last_edited_by;
-
+    result.hasReferenceSolution = dto.has_reference_solution;
     return result;
   }
 
