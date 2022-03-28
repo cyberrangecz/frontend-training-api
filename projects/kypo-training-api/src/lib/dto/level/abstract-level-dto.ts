@@ -2,6 +2,7 @@ export interface AbstractLevelDTO {
   id?: number;
   max_score?: number;
   estimated_duration?: number;
+  minimal_possible_solve_time?: number;
   order?: number;
   snapshot_hook?: any;
   title?: string;

@@ -33,6 +33,7 @@ export class TrainingLevelMapper {
     result.max_score = trainingLevel.maxScore;
     result.content = trainingLevel.content;
     result.estimated_duration = trainingLevel.estimatedDuration;
+    result.minimal_possible_solve_time = trainingLevel.minimalPossibleSolveTime;
     result.answer = trainingLevel.answer;
     result.answer_variable_name = trainingLevel.answerVariableName;
     result.incorrect_answer_limit = trainingLevel.incorrectAnswerLimit;
