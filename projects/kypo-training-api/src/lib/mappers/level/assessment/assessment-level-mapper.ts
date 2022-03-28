@@ -27,6 +27,7 @@ export class AssessmentLevelMapper {
     result.title = level.title;
     result.max_score = level.maxScore;
     result.estimated_duration = level.estimatedDuration;
+    result.minimal_possible_solve_time = level.minimalPossibleSolveTime;
     result.instructions = level.instructions;
     result.type = this.typeToDTO(level.assessmentType);
     result.questions = QuestionMapper.toCreateDTOs(level.questions);

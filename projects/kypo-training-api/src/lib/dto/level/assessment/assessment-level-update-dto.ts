@@ -11,6 +11,7 @@ export interface AssessmentLevelUpdateDTO {
   type?: AssessmentLevelUpdateDTO.TypeEnum;
   max_score?: number;
   estimated_duration: number;
+  minimal_possible_solve_time: number;
   instructions?: string;
   questions?: AbstractQuestionCreateDTO[];
 }
@@ -33,4 +34,5 @@ export class AssessmentLevelUpdateDTOClass implements AssessmentLevelUpdateDTO {
   max_score: number;
   questions: AbstractQuestionCreateDTO[];
   estimated_duration: number;
+  minimal_possible_solve_time: number;
 }

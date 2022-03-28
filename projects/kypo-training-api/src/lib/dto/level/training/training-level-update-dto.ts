@@ -7,6 +7,7 @@ export interface TrainingLevelUpdateDto {
   max_score?: number;
   content?: string;
   estimated_duration?: number;
+  minimal_possible_solve_time?: number;
   answer?: string;
   answer_variable_name?: string;
   hints?: HintDTO[];
@@ -22,6 +23,7 @@ export interface TrainingLevelUpdateDto {
 export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
   content: string;
   estimated_duration: number;
+  minimal_possible_solve_time: number;
   answer: string;
   answer_variable_name: string;
   hints: HintDTO[];

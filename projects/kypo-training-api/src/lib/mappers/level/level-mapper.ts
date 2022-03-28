@@ -48,6 +48,7 @@ export class LevelMapper {
     level.title = dto.title;
     level.order = dto.order;
     level.estimatedDuration = dto.estimated_duration;
+    level.minimalPossibleSolveTime = dto.minimal_possible_solve_time;
     level.maxScore = dto.max_score;
     return level;
   }
