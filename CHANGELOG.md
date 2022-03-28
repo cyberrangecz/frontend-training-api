@@ -1,3 +1,7 @@
+### 13.0.2 Added new field minimal possible solve time added to the assessment and training level.
+* 47f328d -- [CI/CD] Update packages.json version based on GitLab tag.
+* e4ef90b -- Merge branch '13.x.x-pre-tag-changes' into 'master'
+* 9fb3211 -- 13.x.x pre tag changes
 ### 13.0.1 Add has reference solution field.
 * ea49761 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 62c5bda -- Merge branch '56-add-has-reference-solution-field' into 'master'
