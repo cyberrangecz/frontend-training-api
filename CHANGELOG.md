@@ -1,3 +1,7 @@
+### 13.0.3 Added mitre techniques field.
+* f4360b9 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 59f6709 -- Merge branch '58-add-support-for-map-of-games' into 'master'
+* 64d2f60 -- Resolve "Add support for map of games"
 ### 13.0.2 Added new field minimal possible solve time added to the assessment and training level.
 * 47f328d -- [CI/CD] Update packages.json version based on GitLab tag.
 * e4ef90b -- Merge branch '13.x.x-pre-tag-changes' into 'master'
