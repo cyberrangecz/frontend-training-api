@@ -4,6 +4,7 @@ import { TrainingPhaseUpdateDTO } from '../../dto/phase/training-phase/training-
 import { TaskDTO } from '../../dto/phase/training-phase/task-dto';
 import { TaskMapper } from './task-mapper';
 import { DecisionMatrixRowDTO } from '../../dto/phase/training-phase/decision-matrix-row-dto';
+import { MitreTechniqueMapper } from '../mitre-techniques/mitre-technique-mapper';
 
 export class TrainingPhaseMapper {
   static fromDTO(dto: TrainingPhaseDTO): TrainingPhase {
@@ -25,6 +26,8 @@ export class TrainingPhaseMapper {
     if (dto.task) {
       result.currentTask = TaskMapper.fromDTO(dto.task);
     }
+    result.mitreTechniques = MitreTechniqueMapper.fromDTOs(dto.mitre_techniques);
+    result.expectedCommands = dto.expected_commands ? dto.expected_commands : [];
     return result;
   }
 
@@ -39,6 +42,8 @@ export class TrainingPhaseMapper {
     result.title = phase.title;
     result.decision_matrix = this.mapDecisionMatrixToDTO(phase.decisionMatrix);
     result.tasks = TaskMapper.toUpdateDTOs(phase.tasks);
+    result.mitre_techniques = MitreTechniqueMapper.toDTOs(phase.mitreTechniques);
+    result.expected_commands = phase.expectedCommands;
     return result;
   }
 

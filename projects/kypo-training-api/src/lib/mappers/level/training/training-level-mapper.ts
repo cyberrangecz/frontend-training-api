@@ -5,6 +5,7 @@ import {
   TrainingLevelUpdateDto,
   TrainingLevelUpdateDTOClass,
 } from '../../../dto/level/training/training-level-update-dto';
+import { MitreTechniqueMapper } from '../../mitre-techniques/mitre-technique-mapper';
 import { HintMapper } from './hint-mapper';
 import { ReferenceSolutionNodeMapper } from './reference-solution-node-mapper';
 
@@ -23,6 +24,10 @@ export class TrainingLevelMapper {
       result.referenceSolution = ReferenceSolutionNodeMapper.fromDTOs(dto.reference_solution);
     }
     result.variantAnswers = dto.variant_answers;
+    if (dto.mitre_techniques) {
+      result.mitreTechniques = MitreTechniqueMapper.fromDTOs(dto.mitre_techniques);
+    }
+    result.expectedCommands = dto.expected_commands;
     return result;
   }
 
@@ -42,6 +47,8 @@ export class TrainingLevelMapper {
     result.variant_answers = trainingLevel.variantAnswers;
     result.hints = HintMapper.toDTOs(trainingLevel.hints);
     result.reference_solution = ReferenceSolutionNodeMapper.toDTOs(trainingLevel.referenceSolution);
+    result.mitre_techniques = MitreTechniqueMapper.toDTOs(trainingLevel.mitreTechniques);
+    result.expected_commands = trainingLevel.expectedCommands;
     return result;
   }
 }

@@ -17,3 +17,5 @@ export * from './lib/api/user/user-api.service';
 export * from './lib/api/event/training-event-api.service';
 export * from './lib/api/visualization/visualization-api.service';
 export * from './lib/api/adaptive-run/adaptive-run-api.service';
+export * from './lib/api/adaptive-run/adaptive-run-api.service';
+export * from './lib/api/mitre-techniques/mitre-techniques-api.service';

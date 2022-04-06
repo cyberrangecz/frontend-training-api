@@ -1,3 +1,4 @@
+import { MitreTechniqueDTO } from '../../mitre-techniques/mitre-technique-dto';
 import { AbstractLevelDTO } from '../abstract-level-dto';
 import { HintDTO } from './hint-dto';
 import { ReferenceSolutionNodeDTO } from './reference-solution-node-dto';
@@ -18,6 +19,8 @@ export interface TrainingLevelUpdateDto {
   reference_solution?: ReferenceSolutionNodeDTO[];
   variant_answers?: boolean;
   order: number;
+  mitre_techniques: MitreTechniqueDTO[];
+  expected_commands: string[];
 }
 
 export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
@@ -37,4 +40,6 @@ export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
   title: string;
   variant_answers: boolean;
   order: number;
+  mitre_techniques: MitreTechniqueDTO[];
+  expected_commands: string[];
 }

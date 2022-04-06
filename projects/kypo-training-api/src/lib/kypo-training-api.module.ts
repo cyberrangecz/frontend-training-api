@@ -20,6 +20,8 @@ import { AdaptiveInstanceDefaultApi } from './api/adaptive-instance/adaptive-ins
 import { AdaptiveInstanceApi } from './api/adaptive-instance/adaptive-instance-api.service';
 import { AdaptiveRunApi } from './api/adaptive-run/adaptive-run-api.service';
 import { AdaptiveRunDefaultApi } from './api/adaptive-run/adaptive-run-default-api.service';
+import { MitreTechniquesApi } from '../public-api';
+import { MitreTechniquesDefaultApi } from './api/mitre-techniques/mitre-techniques-default-api.service';
 
 @NgModule({
   imports: [CommonModule],
@@ -34,6 +36,7 @@ import { AdaptiveRunDefaultApi } from './api/adaptive-run/adaptive-run-default-a
     { provide: VisualizationApi, useClass: VisualizationDefaultApi },
     { provide: AdaptiveInstanceApi, useClass: AdaptiveInstanceDefaultApi },
     { provide: AdaptiveRunApi, useClass: AdaptiveRunDefaultApi },
+    { provide: MitreTechniquesApi, useClass: MitreTechniquesDefaultApi },
   ],
 })
 export class KypoTrainingApiModule {
