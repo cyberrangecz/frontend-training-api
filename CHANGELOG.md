@@ -1,3 +1,7 @@
+### 13.0.4 Added support for movement between already finished levels.
+* 9c6977e -- [CI/CD] Update packages.json version based on GitLab tag.
+* d76bd76 -- Merge branch '60-add-necessary-fields-and-update-mappers-to-support-movement-between-accessed-levels-phases' into 'master'
+* e940be7 -- Resolve "Add necessary fields and update mappers to support movement between accessed levels/phases during training run"
 ### 13.0.3 Added mitre techniques field.
 * f4360b9 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 59f6709 -- Merge branch '58-add-support-for-map-of-games' into 'master'
