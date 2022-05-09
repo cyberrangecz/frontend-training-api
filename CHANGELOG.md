@@ -1,3 +1,7 @@
+### 13.0.5 Fix MITRE techniques mapping.
+* 4c21a0c -- [CI/CD] Update packages.json version based on GitLab tag.
+* e0df389 -- Merge branch '61-fix-mitre-techniques-mapping' into 'master'
+* 881dfb5 -- Resolve "Fix mitre techniques mapping"
 ### 13.0.4 Added support for movement between already finished levels.
 * 9c6977e -- [CI/CD] Update packages.json version based on GitLab tag.
 * d76bd76 -- Merge branch '60-add-necessary-fields-and-update-mappers-to-support-movement-between-accessed-levels-phases' into 'master'
