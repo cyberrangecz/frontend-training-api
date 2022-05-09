@@ -31,4 +31,5 @@ export interface AccessTrainingRunDTO {
   taken_solution: string;
   taken_hints: HintDTO[];
   local_environment: boolean;
+  backward_mode: boolean;
 }

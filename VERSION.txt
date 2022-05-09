@@ -1,3 +1,4 @@
+13.0.4 Added support for movement between already finished levels.
 13.0.3 Added mitre techniques field.
 13.0.2 Added new field minimal possible solve time added to the assessment and training level.
 13.0.1 Add has reference solution field.

@@ -26,4 +26,5 @@ export interface TrainingInstanceDTO {
   last_edited_by?: string;
   local_environment?: boolean;
   sandbox_definition_id?: number;
+  backward_mode?: boolean;
 }

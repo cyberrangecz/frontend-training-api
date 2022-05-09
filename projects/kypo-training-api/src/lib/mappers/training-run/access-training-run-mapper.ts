@@ -12,6 +12,7 @@ export class AccessTrainingRunMapper {
     result.sandboxInstanceId = dto.sandbox_instance_ref_id;
     result.sandboxDefinitionId = dto.sandbox_definition_id;
     result.localEnvironment = dto.local_environment;
+    result.backwardMode = dto.backward_mode;
     result.startTime = new Date(dto.start_time);
     result.isStepperDisplayed = dto.show_stepper_bar;
     result.currentLevel = LevelMapper.fromDTO(dto.abstract_level_dto);

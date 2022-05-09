@@ -27,4 +27,5 @@ export abstract class AdaptiveRunApi {
   abstract evaluateQuestionnaire(trainingRunId: number, questionAnswers: QuestionAnswer[]): Observable<any>;
   abstract finish(trainingRunId: number): Observable<any>;
   abstract archive(trainingRunId: number): Observable<any>;
+  abstract moveToPhase(trainingRunId: number, phaseId: number): Observable<Phase>;
 }

@@ -27,6 +27,7 @@ import { PhaseMapper } from '../../mappers/phase/phase-mapper';
 import { IsCorrectAnswerDTO } from '../../dto/phase/training-phase/is-correct-answer-dto';
 import { TaskAnswerMapper } from '../../mappers/training-run/task-answer-mapper';
 import { QuestionAnswerMapper } from '../../mappers/phase/question-answer-mapper';
+import { AnsweredPhaseMapper } from '../../mappers/training-run/training-run-phases/answered-phase-mapper';
 
 @Injectable()
 export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
@@ -174,5 +175,16 @@ export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
    */
   archive(trainingRunId: number): Observable<any> {
     return this.http.patch(`${this.trainingRunsEndpointUri}/${trainingRunId}/archive`, null);
+  }
+
+  /**
+   * Sends http request to move to specified finished phase
+   * @param trainingRunId id of a training run in which phase should be accessed
+   * @param levelId id of a phase, which to be switched to
+   */
+  moveToPhase(trainingRunId: number, phaseId: number): Observable<Phase> {
+    return this.http
+      .get<AbstractPhaseDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/phases/${phaseId}`)
+      .pipe(map((response) => AnsweredPhaseMapper.fromDTO(response)));
   }
 }
