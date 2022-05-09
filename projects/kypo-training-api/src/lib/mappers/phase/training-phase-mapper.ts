@@ -26,7 +26,9 @@ export class TrainingPhaseMapper {
     if (dto.task) {
       result.currentTask = TaskMapper.fromDTO(dto.task);
     }
-    result.mitreTechniques = MitreTechniqueMapper.fromDTOs(dto.mitre_techniques);
+    if (dto.mitre_techniques) {
+      result.mitreTechniques = MitreTechniqueMapper.fromDTOs(dto.mitre_techniques);
+    }
     result.expectedCommands = dto.expected_commands ? dto.expected_commands : [];
     return result;
   }
