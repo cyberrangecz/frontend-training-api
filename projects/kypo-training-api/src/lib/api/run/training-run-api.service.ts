@@ -116,4 +116,11 @@ export abstract class TrainingRunApi {
    * @param trainingRunId id of a training run which should be archived
    */
   abstract archive(trainingRunId: number): Observable<any>;
+
+  /**
+   * Sends http request to move to specified finished level
+   * @param trainingRunId id of a training run in which level should be accessed
+   * @param levelId id of a level, which to be switched to
+   */
+  abstract moveToLevel(trainingRunId: number, levelId: number): Observable<Level>;
 }

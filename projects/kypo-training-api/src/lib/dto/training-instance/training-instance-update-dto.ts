@@ -22,4 +22,5 @@ export class TrainingInstanceUpdateDTO {
   pool_id?: number;
   local_environment?: boolean;
   sandbox_definition_id?: number;
+  backward_mode?: boolean;
 }

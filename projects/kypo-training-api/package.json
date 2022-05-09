@@ -5,7 +5,7 @@
     "@angular/common": "~13.2.1",
     "@angular/core": "~13.2.1",
     "@sentinel/common": "~13.0.1",
-    "@muni-kypo-crp/training-model": "~13.0.1",
+    "@muni-kypo-crp/training-model": "~13.0.5",
     "file-saver": "^2.0.2"
   },
   "dependencies": {

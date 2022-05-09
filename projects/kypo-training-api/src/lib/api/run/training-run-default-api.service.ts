@@ -29,6 +29,7 @@ import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
 import { TrainingRunApi } from './training-run-api.service';
 import { TrainingRunInfoDTO } from '../../dto/training-run/training-run-info-dto';
 import { TrainingRunInfoMapper } from '../../mappers/training-run/training-run-info-mapper';
+import { AnsweredLevelMapper } from '../../mappers/training-run/training-run-levels/answered-level-mapper';
 /**
  * Default implementation of service abstracting http communication with training run endpoints.
  */
@@ -224,5 +225,16 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
    */
   archive(trainingRunId: number): Observable<any> {
     return this.http.patch(`${this.trainingRunsEndpointUri}/${trainingRunId}/archive`, null);
+  }
+
+  /**
+   * Sends http request to move to specified finished level
+   * @param trainingRunId id of a training run in which level should be accessed
+   * @param levelId id of a level, which to be switched to
+   */
+  moveToLevel(trainingRunId: number, levelId: number): Observable<Level> {
+    return this.http
+      .get<AbstractLevelDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/levels/${levelId}`)
+      .pipe(map((response) => AnsweredLevelMapper.fromDTO(response)));
   }
 }

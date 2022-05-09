@@ -20,6 +20,7 @@ export class TrainingInstanceMapper {
     result.lastEditBy = dto.last_edited_by;
     result.localEnvironment = dto.local_environment;
     result.sandboxDefinitionId = dto.sandbox_definition_id;
+    result.backwardMode = dto.backward_mode;
     return result;
   }
 
@@ -37,6 +38,7 @@ export class TrainingInstanceMapper {
     result.pool_id = trainingInstance.poolId;
     result.local_environment = trainingInstance.localEnvironment;
     result.sandbox_definition_id = trainingInstance.sandboxDefinitionId;
+    result.backward_mode = trainingInstance.backwardMode;
     return result;
   }
 
@@ -51,6 +53,7 @@ export class TrainingInstanceMapper {
     result.pool_id = trainingInstance.poolId;
     result.local_environment = trainingInstance.localEnvironment;
     result.sandbox_definition_id = trainingInstance.sandboxDefinitionId;
+    result.backward_mode = trainingInstance.backwardMode;
     return result;
   }
 }
