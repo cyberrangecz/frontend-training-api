@@ -1,3 +1,7 @@
+### 13.0.6 Added field that marks if current level of training run has been answered.
+* 4a2a78c -- [CI/CD] Update packages.json version based on GitLab tag.
+* 23c1a82 -- Merge branch '62-add-fields-phase_answered-and-level_answered-to-accesstrainingrundto' into 'master'
+* 67468f4 -- Resolve "Add fields phase_answered and level_answered to AccessTrainingRunDTO"
 ### 13.0.5 Fix MITRE techniques mapping.
 * 4c21a0c -- [CI/CD] Update packages.json version based on GitLab tag.
 * e0df389 -- Merge branch '61-fix-mitre-techniques-mapping' into 'master'
