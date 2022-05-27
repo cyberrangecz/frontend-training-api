@@ -15,6 +15,7 @@ export class AccessAdaptiveRunMapper {
     result.backwardMode = dto.backward_mode;
     result.startTime = new Date(dto.start_time);
     result.isStepperDisplayed = dto.show_stepper_bar;
+    result.isLevelAnswered = dto.phase_answered;
     result.currentLevel = PhaseMapper.fromDTO(dto.current_phase);
     result.levels = PhaseMapper.fromBasicDTOs(dto.info_about_phases);
 
