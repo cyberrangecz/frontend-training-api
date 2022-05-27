@@ -1,3 +1,4 @@
+13.0.6 Added field that marks if current level of training run has been answered.
 13.0.5 Fix MITRE techniques mapping.
 13.0.4 Added support for movement between already finished levels.
 13.0.3 Added mitre techniques field.

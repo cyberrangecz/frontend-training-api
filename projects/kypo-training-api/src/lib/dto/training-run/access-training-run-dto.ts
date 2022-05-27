@@ -32,4 +32,6 @@ export interface AccessTrainingRunDTO {
   taken_hints: HintDTO[];
   local_environment: boolean;
   backward_mode: boolean;
+  level_answered?: boolean;
+  phase_answered?: boolean;
 }
