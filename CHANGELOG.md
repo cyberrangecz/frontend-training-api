@@ -1,3 +1,7 @@
+### 13.0.7 Export phase mapper and abstract phase dto for from public api.
+* 25aa298 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 4037002 -- Merge branch 'adaptive-model-simulator-adjustments' into 'master'
+* 2a98eef -- Adaptive model simulator adjustments
 ### 13.0.6 Added field that marks if current level of training run has been answered.
 * 4a2a78c -- [CI/CD] Update packages.json version based on GitLab tag.
 * 23c1a82 -- Merge branch '62-add-fields-phase_answered-and-level_answered-to-accesstrainingrundto' into 'master'
