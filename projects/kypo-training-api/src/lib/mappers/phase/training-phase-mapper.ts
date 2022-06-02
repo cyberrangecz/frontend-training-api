@@ -44,7 +44,9 @@ export class TrainingPhaseMapper {
     result.title = phase.title;
     result.decision_matrix = this.mapDecisionMatrixToDTO(phase.decisionMatrix);
     result.tasks = TaskMapper.toUpdateDTOs(phase.tasks);
-    result.mitre_techniques = MitreTechniqueMapper.toDTOs(phase.mitreTechniques);
+    if (phase.mitreTechniques) {
+      result.mitre_techniques = MitreTechniqueMapper.toDTOs(phase.mitreTechniques);
+    }
     result.expected_commands = phase.expectedCommands;
     return result;
   }

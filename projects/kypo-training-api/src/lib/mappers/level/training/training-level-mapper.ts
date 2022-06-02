@@ -47,7 +47,9 @@ export class TrainingLevelMapper {
     result.variant_answers = trainingLevel.variantAnswers;
     result.hints = HintMapper.toDTOs(trainingLevel.hints);
     result.reference_solution = ReferenceSolutionNodeMapper.toDTOs(trainingLevel.referenceSolution);
-    result.mitre_techniques = MitreTechniqueMapper.toDTOs(trainingLevel.mitreTechniques);
+    if (trainingLevel.mitreTechniques) {
+      result.mitre_techniques = MitreTechniqueMapper.toDTOs(trainingLevel.mitreTechniques);
+    }
     result.expected_commands = trainingLevel.expectedCommands;
     return result;
   }
