@@ -1,6 +1,6 @@
 {
   "name": "@muni-kypo-crp/training-api",
-  "version": "13.0.6",
+  "version": "13.0.7",
   "peerDependencies": {
     "@angular/common": "~13.2.1",
     "@angular/core": "~13.2.1",
