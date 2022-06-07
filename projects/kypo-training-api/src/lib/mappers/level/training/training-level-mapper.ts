@@ -28,6 +28,7 @@ export class TrainingLevelMapper {
       result.mitreTechniques = MitreTechniqueMapper.fromDTOs(dto.mitre_techniques);
     }
     result.expectedCommands = dto.expected_commands;
+    result.commandsRequired = dto.commands_required;
     return result;
   }
 
@@ -51,6 +52,7 @@ export class TrainingLevelMapper {
       result.mitre_techniques = MitreTechniqueMapper.toDTOs(trainingLevel.mitreTechniques);
     }
     result.expected_commands = trainingLevel.expectedCommands;
+    result.commands_required = trainingLevel.commandsRequired;
     return result;
   }
 }
