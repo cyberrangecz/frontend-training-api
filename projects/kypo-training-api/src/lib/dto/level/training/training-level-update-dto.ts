@@ -42,4 +42,5 @@ export class TrainingLevelUpdateDTOClass implements TrainingLevelUpdateDto {
   order: number;
   mitre_techniques: MitreTechniqueDTO[];
   expected_commands: string[];
+  commands_required: boolean;
 }

@@ -16,4 +16,5 @@ export interface TrainingLevelDto extends AbstractLevelDTO {
   variant_answers: boolean;
   mitre_techniques: MitreTechniqueDTO[];
   expected_commands: string[];
+  commands_required: boolean;
 }
