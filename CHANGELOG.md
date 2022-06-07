@@ -1,3 +1,7 @@
+### 13.0.8 Added field for required commands in training level.
+* 6b3feeb -- [CI/CD] Update packages.json version based on GitLab tag.
+* 7bd8fe1 -- Merge branch '63-add-attribute-commands_required-to-training-level-dto-classes' into 'master'
+* e542292 -- Added attribute commands_required to training level dto classes and updated mapping
 ### 13.0.7 Export phase mapper and abstract phase dto for from public api.
 * 25aa298 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 4037002 -- Merge branch 'adaptive-model-simulator-adjustments' into 'master'
