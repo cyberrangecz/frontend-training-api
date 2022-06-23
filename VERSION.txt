@@ -1,3 +1,4 @@
+14.0.0 Update to Angular 14.
 13.0.8 Added field for required commands in training level.
 13.0.7 Export phase mapper and abstract phase dto for from public api.
 13.0.6 Added field that marks if current level of training run has been answered.
