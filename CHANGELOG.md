@@ -1,3 +1,7 @@
+### 14.0.0 Update to Angular 14.
+* 7c43bd5 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 323e8bb -- Merge branch '64-update-to-angular-14' into 'master'
+* 9ef18bc -- Resolve "Update to Angular 14"
 ### 13.0.8 Added field for required commands in training level.
 * 6b3feeb -- [CI/CD] Update packages.json version based on GitLab tag.
 * 7bd8fe1 -- Merge branch '63-add-attribute-commands_required-to-training-level-dto-classes' into 'master'
