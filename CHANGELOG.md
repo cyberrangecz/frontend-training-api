@@ -1,3 +1,7 @@
+### 14.0.1 Added functionality to export scores from training instance.
+* badeae9 -- [CI/CD] Update packages.json version based on GitLab tag.
+* f9eb8f2 -- Merge branch '65-export-score-of-all-trainees-from-training-instance' into 'master'
+* 277c93a -- Added functionality to export scores from training instance
 ### 14.0.0 Update to Angular 14.
 * 7c43bd5 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 323e8bb -- Merge branch '64-update-to-angular-14' into 'master'
