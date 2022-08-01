@@ -174,4 +174,25 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
   unassignPool(trainingInstanceId: number): Observable<any> {
     return this.http.patch(`${this.trainingInstancesEndpointUri}/${trainingInstanceId}/unassign-pool`, {});
   }
+
+  exportScore(trainingInstanceId: number): Observable<boolean> {
+    const headers = new HttpHeaders();
+    headers.set('Accept', ['application/octet-stream']);
+    return this.http
+      .get(`${this.trainingExportsEndpointUri}/${this.trainingInstancesUriExtension}/${trainingInstanceId}/scores`, {
+        responseType: 'blob',
+        observe: 'response',
+        headers,
+      })
+      .pipe(
+        catchError((err) => JSONErrorConverter.fromBlob(err)),
+        map((resp) => {
+          FileSaver.fromBlob(
+            resp.body,
+            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-instance-scores.zip')
+          );
+          return true;
+        })
+      );
+  }
 }
