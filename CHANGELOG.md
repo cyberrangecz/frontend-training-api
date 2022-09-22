@@ -1,3 +1,7 @@
+### 14.0.2 Exported score from training instance is now uncompressed
+* 9866f6d -- [CI/CD] Update packages.json version based on GitLab tag.
+* 0578927 -- Merge branch '66-update-exportscore-to-receive-uncompressed-data' into 'master'
+* 744a003 -- Updated headers
 ### 14.0.1 Added functionality to export scores from training instance.
 * badeae9 -- [CI/CD] Update packages.json version based on GitLab tag.
 * f9eb8f2 -- Merge branch '65-export-score-of-all-trainees-from-training-instance' into 'master'
