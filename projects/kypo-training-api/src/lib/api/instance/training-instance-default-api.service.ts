@@ -177,7 +177,7 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
 
   exportScore(trainingInstanceId: number): Observable<boolean> {
     const headers = new HttpHeaders();
-    headers.set('Accept', ['application/octet-stream']);
+    headers.set('Accept', ['text/plain']);
     return this.http
       .get(`${this.trainingExportsEndpointUri}/${this.trainingInstancesUriExtension}/${trainingInstanceId}/scores`, {
         responseType: 'blob',
@@ -189,7 +189,7 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
         map((resp) => {
           FileSaver.fromBlob(
             resp.body,
-            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-instance-scores.zip')
+            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-instance-scores.csv')
           );
           return true;
         })
