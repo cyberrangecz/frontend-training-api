@@ -1,3 +1,7 @@
+### 14.0.3 Added attributes to TrainingRun stating whether logging of events and commands works.
+* 34cb6f0 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 82083c0 -- Merge branch '67-add-attribute-stating-whether-event-and-command-logging-works' into 'master'
+* f045067 -- Resolve "Add attribute stating whether event and command logging works"
 ### 14.0.2 Exported score from training instance is now uncompressed
 * 9866f6d -- [CI/CD] Update packages.json version based on GitLab tag.
 * 0578927 -- Merge branch '66-update-exportscore-to-receive-uncompressed-data' into 'master'
