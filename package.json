@@ -16,12 +16,8 @@
     "build-and-pack": "npm install && npm run build-library && npm run create-package",
     "ci-update-version": "cd ./projects/kypo-training-api/ && npm version $TAG_VERSION",
     "ci-build-and-pack": "npm ci --cache .npm --prefer-offline && npm run build-library && npm run create-package",
-    "ci-publish-package": "cd dist/kypo-training-api && npm publish"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier-check"
-    }
+    "ci-publish-package": "cd dist/kypo-training-api && npm publish",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -33,7 +29,7 @@
     "@angular/platform-browser": "^14.0.3",
     "@angular/platform-browser-dynamic": "^14.0.3",
     "@angular/router": "^14.0.3",
-    "@muni-kypo-crp/training-model": "~14.0.0",
+    "@muni-kypo-crp/training-model": "~14.0.1",
     "@sentinel/common": "~14.0.0",
     "file-saver": "^2.0.5",
     "rxjs": "~7.5.5",
