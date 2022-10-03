@@ -28,6 +28,8 @@ export interface TrainingRunDTO {
   state?: TrainingRunDTO.StateEnum;
   definition_id: number;
   instance_id: number;
+  event_logging_state?: boolean;
+  command_logging_state?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace

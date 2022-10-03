@@ -21,6 +21,8 @@ export class AdaptiveRunMapper {
     result.endTime = new Date(dto.end_time);
     result.eventLogReference = dto.event_log_reference;
     result.sandboxInstanceId = dto.sandbox_instance_ref_id;
+    result.eventLogging = dto.event_logging_state;
+    result.commandLogging = dto.command_logging_state;
     result.player = UserMapper.fromDTO(dto.participant_ref);
     result.state = this.resolveState(dto.state);
     if (result.currentLevel) {
