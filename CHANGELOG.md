@@ -1,3 +1,7 @@
+### 14.1.0 Add apis, DTOs and mappers for experimental version of cheating detection.
+* bd371d2 -- [CI/CD] Update packages.json version based on GitLab tag.
+* dfa0db8 -- Merge branch 'cheating-detection' into 'master'
+* 61d99cf -- Cheating detection
 ### 14.0.3 Added attributes to TrainingRun stating whether logging of events and commands works.
 * 34cb6f0 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 82083c0 -- Merge branch '67-add-attribute-stating-whether-event-and-command-logging-works' into 'master'
