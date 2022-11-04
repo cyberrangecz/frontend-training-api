@@ -21,3 +21,5 @@ export * from './lib/api/visualization/visualization-api.service';
 export * from './lib/api/adaptive-run/adaptive-run-api.service';
 export * from './lib/api/adaptive-run/adaptive-run-api.service';
 export * from './lib/api/mitre-techniques/mitre-techniques-api.service';
+export * from './lib/api/cheating-detection/cheating-detection-api.service';
+export * from './lib/api/detection-event/detection-event-api.service';
