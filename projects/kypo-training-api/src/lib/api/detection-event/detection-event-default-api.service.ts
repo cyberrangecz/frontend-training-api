@@ -41,7 +41,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       .pipe(
         map(
           (response) =>
-            new PaginatedResource(
+            new PaginatedResource<AbstractDetectionEvent>(
               DetectionEventMapper.fromDTOs(response.content),
               PaginationMapper.fromJavaAPI(response.pagination)
             )

@@ -59,12 +59,10 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
    * @param cheatingDetection cheatingDetection
    */
   createAndExecute(cheatingDetection: CheatingDetection): Observable<any> {
-    return this.http
-      .post<CheatingDetectionDTO>(
-        `${this.cheatingDetectionsEndpointUri}/create-detection`,
-        CheatingDetectionMapper.toDTO(cheatingDetection)
-      )
-      .pipe(map((response) => CheatingDetectionMapper.fromDTO(response)));
+    return this.http.post<CheatingDetectionDTO>(
+      `${this.cheatingDetectionsEndpointUri}/create-detection`,
+      CheatingDetectionMapper.toDTO(cheatingDetection)
+    );
   }
 
   /**
