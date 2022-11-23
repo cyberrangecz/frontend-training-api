@@ -29,7 +29,7 @@
     "@angular/platform-browser": "^14.0.3",
     "@angular/platform-browser-dynamic": "^14.0.3",
     "@angular/router": "^14.0.3",
-    "@muni-kypo-crp/training-model": "~14.1.0",
+    "@muni-kypo-crp/training-model": "~14.2.0",
     "@sentinel/common": "~14.0.0",
     "file-saver": "^2.0.5",
     "rxjs": "~7.5.5",
