@@ -20,9 +20,10 @@ import { AdaptiveInstanceDefaultApi } from './api/adaptive-instance/adaptive-ins
 import { AdaptiveInstanceApi } from './api/adaptive-instance/adaptive-instance-api.service';
 import { AdaptiveRunApi } from './api/adaptive-run/adaptive-run-api.service';
 import { AdaptiveRunDefaultApi } from './api/adaptive-run/adaptive-run-default-api.service';
-import { CheatingDetectionApi, MitreTechniquesApi } from '../public-api';
+import { CheatingDetectionApi, DetectionEventApi, MitreTechniquesApi } from '../public-api';
 import { MitreTechniquesDefaultApi } from './api/mitre-techniques/mitre-techniques-default-api.service';
 import { CheatingDetectionDefaultApi } from './api/cheating-detection/cheating-detection-default-api.service';
+import { DetectionEventDefaultApi } from './api/detection-event/detection-event-default-api.service';
 
 @NgModule({
   imports: [CommonModule],
@@ -39,6 +40,7 @@ import { CheatingDetectionDefaultApi } from './api/cheating-detection/cheating-d
     { provide: AdaptiveRunApi, useClass: AdaptiveRunDefaultApi },
     { provide: MitreTechniquesApi, useClass: MitreTechniquesDefaultApi },
     { provide: CheatingDetectionApi, useClass: CheatingDetectionDefaultApi },
+    { provide: DetectionEventApi, useClass: DetectionEventDefaultApi },
   ],
 })
 export class KypoTrainingApiModule {

@@ -2,9 +2,9 @@ export interface DetectionEventDTO {
   id: number;
   training_instance_id: number;
   cheating_detection_id: number;
-  detection_type: DetectionEventDTO.AbstractDetectionEventTypeEnum;
+  detection_event_type: DetectionEventDTO.AbstractDetectionEventTypeEnum;
   detected_at: Date;
-  level_name: string;
+  level_title: string;
   level_id: number;
   participant_count: number;
 }

@@ -71,9 +71,10 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
    * @param trainingInstanceId id of training instance
    */
   rerun(cheatingDetectionId: number, trainingInstanceId: number): Observable<any> {
-    let params = new HttpParams();
-    params = params.append('trainingInstanceId', trainingInstanceId);
-    return this.http.patch(`${this.cheatingDetectionsEndpointUri}/${cheatingDetectionId}/rerun`, {}, { params });
+    return this.http.patch(
+      `${this.cheatingDetectionsEndpointUri}/${cheatingDetectionId}/rerun/${trainingInstanceId}`,
+      {}
+    );
   }
 
   /**

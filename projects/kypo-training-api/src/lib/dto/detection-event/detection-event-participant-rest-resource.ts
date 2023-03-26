@@ -10,13 +10,13 @@
  * Do not edit the class manually.
  */
 import { Paginated } from '../rest/paginated';
-import { DetectionEventDTO } from './detection-event-dto';
+import { DetectionEventParticipantDTO } from './detection-event-participant-dto';
 
-export interface DetectionEventRestResource {
+export interface DetectionEventParticipantRestResource {
   /**
-   * Retrieved Detection events from databases.
+   * Retrieved detection event participants from databases.
    */
-  content?: DetectionEventDTO[];
+  content?: DetectionEventParticipantDTO[];
   /**
    * Paginated including: page number, number of elements in page, size, total elements and total pages.
    */

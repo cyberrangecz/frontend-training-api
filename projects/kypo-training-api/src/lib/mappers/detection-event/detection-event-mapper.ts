@@ -4,7 +4,6 @@ import { AnswerSimilarityDetectionEventDTO } from '../../dto/detection-event/ans
 import { LocationSimilarityDetectionEventDTO } from '../../dto/detection-event/location-similarity/location_similarity-detection-event-dto';
 import { TimeProximityDetectionEventDTO } from '../../dto/detection-event/time-proximity/time_proximity-detection-event-dto';
 import { MinimalSolveTimeDetectionEventDTO } from '../../dto/detection-event/minimal-solve-time/minimal-solve-time-detection-event-dto';
-import { NoCommandsDetectionEventDTO } from '../../dto/detection-event/no-commands/no-commands-detection-event-dto';
 import { ForbiddenCommandsDetectionEventDTO } from '../../dto/detection-event/forbidden-commands/forbidden-commands-detection-event-dto';
 import { AnswerSimilarityDetectionEventMapper } from './answer-similarity-detection-event-mapper';
 import { LocationSimilarityDetectionEventMapper } from './location-similarity-detection-event-mapper';
@@ -12,11 +11,12 @@ import { TimeProximityDetectionEventMapper } from './time-proximity-detection-ev
 import { MinimalSolveTimeDetectionEventMapper } from './minimal-solve-time-detection-event-mapper';
 import { NoCommandsDetectionEventMapper } from './no-commands-detection-event-mapper';
 import { ForbiddenCommandsDetectionEventMapper } from './forbidden-commands-detection-event-mapper';
+import { NoCommandsDetectionEventDTO } from '../../dto/detection-event/no-commands/no-commands-detection-event-dto';
 
 export class DetectionEventMapper {
   static fromDTO(dto: DetectionEventDTO): AbstractDetectionEvent {
     let detectionEvent = new AbstractDetectionEvent();
-    switch (dto.detection_type) {
+    switch (dto.detection_event_type) {
       case DetectionEventDTO.AbstractDetectionEventTypeEnum.ANSWER_SIMIlARITY: {
         detectionEvent = AnswerSimilarityDetectionEventMapper.fromDTO(dto as AnswerSimilarityDetectionEventDTO);
         break;
@@ -46,7 +46,7 @@ export class DetectionEventMapper {
     detectionEvent.cheatingDetectionId = dto.cheating_detection_id;
     detectionEvent.id = dto.id;
     detectionEvent.detectedAt = dto.detected_at;
-    detectionEvent.levelTitle = dto.level_name;
+    detectionEvent.levelTitle = dto.level_title;
     detectionEvent.levelId = dto.level_id;
     detectionEvent.participantCount = dto.participant_count;
     return detectionEvent;

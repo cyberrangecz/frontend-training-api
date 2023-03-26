@@ -8,7 +8,8 @@ export class DetectionEventParticipantMapper {
       occurredAt: dto.occurred_at,
       participantName: dto.participant_name,
       solvedInTime: dto.solved_in_time,
-      userId: dto.userId,
+      userId: dto.user_id,
+      detectionEventId: dto.detection_event_id,
     };
   }
 
