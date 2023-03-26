@@ -1,3 +1,7 @@
+### 14.2.0 Replaced sandbox id with sandbox uuid.
+* 7dbd228 -- [CI/CD] Update packages.json version based on GitLab tag.
+* d84f682 -- Merge branch 'fix-sandbox-uuid' into 'master'
+* e883296 -- Fix sandbox uuid
 ### 14.1.0 Add apis, DTOs and mappers for experimental version of cheating detection.
 * bd371d2 -- [CI/CD] Update packages.json version based on GitLab tag.
 * dfa0db8 -- Merge branch 'cheating-detection' into 'master'
