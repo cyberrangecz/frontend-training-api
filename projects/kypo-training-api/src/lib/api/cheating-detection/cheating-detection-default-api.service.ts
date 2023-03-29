@@ -59,12 +59,10 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
    * @param cheatingDetection cheatingDetection
    */
   createAndExecute(cheatingDetection: CheatingDetection): Observable<any> {
-    return this.http
-      .post<CheatingDetectionDTO>(
-        `${this.cheatingDetectionsEndpointUri}/create-detection`,
-        CheatingDetectionMapper.toDTO(cheatingDetection)
-      )
-      .pipe(map((response) => CheatingDetectionMapper.fromDTO(response)));
+    return this.http.post<CheatingDetectionDTO>(
+      `${this.cheatingDetectionsEndpointUri}/create-detection`,
+      CheatingDetectionMapper.toDTO(cheatingDetection)
+    );
   }
 
   /**
@@ -73,9 +71,10 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
    * @param trainingInstanceId id of training instance
    */
   rerun(cheatingDetectionId: number, trainingInstanceId: number): Observable<any> {
-    let params = new HttpParams();
-    params = params.append('trainingInstanceId', trainingInstanceId);
-    return this.http.patch(`${this.cheatingDetectionsEndpointUri}/${cheatingDetectionId}/rerun`, {}, { params });
+    return this.http.patch(
+      `${this.cheatingDetectionsEndpointUri}/${cheatingDetectionId}/rerun/${trainingInstanceId}`,
+      {}
+    );
   }
 
   /**

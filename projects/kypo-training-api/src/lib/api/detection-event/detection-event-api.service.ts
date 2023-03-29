@@ -1,5 +1,13 @@
 import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common';
-import { AbstractDetectionEvent } from '@muni-kypo-crp/training-model';
+import {
+  AbstractDetectionEvent,
+  AnswerSimilarityDetectionEvent,
+  DetectionEventParticipant,
+  LocationSimilarityDetectionEvent,
+  MinimalSolveTimeDetectionEvent,
+  NoCommandsDetectionEvent,
+  TimeProximityDetectionEvent,
+} from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 
 export abstract class DetectionEventApi {
@@ -7,20 +15,56 @@ export abstract class DetectionEventApi {
    * Sends http request to retrieve all detection events from cheating detection
    * on specified page of a pagination
    * @param cheatingDetectionId id of the training instance
+   * @param trainingInstanceId id of the training instance
    * @param pagination requested pagination
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    cheatingDetectionId: number
+    cheatingDetectionId: number,
+    trainingInstanceId: number
   ): Observable<PaginatedResource<AbstractDetectionEvent>>;
 
   /**
-   * Sends http request to specific detection event by his id
-   * @param trainingInstanceId training instance id
-   * @param id id of the training instance
+   * Sends http request to find all participants of a detection event
+   * @param pagination requested pagination
+   * @param eventId the id of the detection event
    */
-  abstract get(trainingInstanceId: number, id: number): Observable<AbstractDetectionEvent>;
+  abstract getAllParticipants(
+    pagination: OffsetPaginationEvent,
+    eventId: number
+  ): Observable<PaginatedResource<DetectionEventParticipant>>;
 
+  /**
+   * Sends http request to find specific detection event by his id
+   * @param eventId id of the training instance
+   */
+  abstract getEventById(eventId: number): Observable<AbstractDetectionEvent>;
+
+  /**
+   * Sends http request to find detection event of type answer similarity by its id
+   * @param eventId the event id
+   */
+  abstract getAnswerSimilarityEventById(eventId: number): Observable<AnswerSimilarityDetectionEvent>;
+  /**
+   * Sends http request to find detection event of type location similarity by its id
+   * @param eventId the event id
+   */
+  abstract getLocationSimilarityEventById(eventId: number): Observable<LocationSimilarityDetectionEvent>;
+  /**
+   * Sends http request to find detection event of type time proximity by its id
+   * @param eventId the event id
+   */
+  abstract getTimeProximityEventById(eventId: number): Observable<TimeProximityDetectionEvent>;
+  /**
+   * Sends http request to find detection event of type minimal solve time by its id
+   * @param eventId the event id
+   */
+  abstract getMinimalSolveTimeEventById(eventId: number): Observable<MinimalSolveTimeDetectionEvent>;
+  /**
+   * Sends http request to find detection event of type no commands by its id
+   * @param eventId the event id
+   */
+  abstract getNoCommandsEventById(eventId: number): Observable<NoCommandsDetectionEvent>;
   /**
    * Sends http request to delete all detection events by training instance id
    * @param trainingInstanceId id of training instance
