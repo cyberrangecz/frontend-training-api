@@ -1,3 +1,12 @@
+### 14.2.1 Updated and enhanced apis, DTOs and mappers for experimental version of cheating detection.
+* 395dc7e -- [CI/CD] Update packages.json version based on GitLab tag.
+* f41680b -- Merge branch 'cheating-detection' into 'master'
+* 47748a5 -- Removed unused attribute. Disabled linter for empty interface.
+* f8ea295 -- Removed console.log().
+* 416af80 -- Updated version and packages.
+* 6005b13 -- Merge changes from cheating detection fork.
+* 7ab983f -- Merge branch 'master' into cheating-detection
+* 682995c -- Fixed cheating detection create routing. Added a type to paginated resource of abstract event.
 ### 14.2.0 Replaced sandbox id with sandbox uuid.
 * 7dbd228 -- [CI/CD] Update packages.json version based on GitLab tag.
 * d84f682 -- Merge branch 'fix-sandbox-uuid' into 'master'
