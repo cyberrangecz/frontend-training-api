@@ -5,6 +5,7 @@ import { NoCommandsDetectionEventDTO } from '../../dto/detection-event/no-comman
 export class NoCommandsDetectionEventMapper {
   static fromDTO(dto: NoCommandsDetectionEventDTO): NoCommandsDetectionEvent {
     const result = new NoCommandsDetectionEvent();
+    console.debug(dto + ' TBD');
     result.detectionEventType = AbstractDetectionEventTypeEnum.No_commands;
     return result;
   }
