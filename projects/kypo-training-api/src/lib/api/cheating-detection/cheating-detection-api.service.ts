@@ -34,9 +34,8 @@ export abstract class CheatingDetectionApi {
   abstract delete(cheatingDetectionId: number, trainingInstanceId: number): Observable<any>;
 
   /**
-   * Sends http request to delete all cheating detections and its associated detection events
-   * by training instance id
-   * @param trainingInstanceId id of training instance
+   * Sends http request to export (download) cheating detection
+   * @param cheatingDetectionId id of cheating detection which should be archived
    */
-  abstract deleteAllByTrainingInstance(trainingInstanceId: number): Observable<any>;
+  abstract archive(cheatingDetectionId: number): Observable<any>;
 }

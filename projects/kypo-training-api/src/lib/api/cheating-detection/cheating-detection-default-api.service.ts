@@ -1,9 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent, ResponseHeaderContentDispositionReader } from '@sentinel/common';
 import { CheatingDetection } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
 import { CheatingDetectionApi } from './cheating-detection-api.service';
 import { PaginationParams } from '../../http/params/pagination-params';
@@ -11,6 +11,8 @@ import { PaginationMapper } from '../../mappers/pagination-mapper';
 import { CheatingDetectionDTO } from '../../dto/cheating-detection/cheating-detection-dto';
 import { CheatingDetectionMapper } from '../../mappers/cheating-detection/cheating-detection-mapper';
 import { CheatingDetectionRestResource } from '../../dto/cheating-detection/cheating-detection-rest-resource';
+import { JSONErrorConverter } from '../../http/json-error-converter';
+import { FileSaver } from '../../http/response-headers/file-saver';
 
 /**
  * Default implementation of service abstracting http communication with training event endpoints.
@@ -89,11 +91,25 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
   }
 
   /**
-   * Sends http request to delete all cheating detections and its associated detection events
-   * by training instance id
-   * @param trainingInstanceId id of training instance
+   * Sends http request to archive (download) cheating detection
+   * @param cheatingDetectionId id of cheating detection which should be archived
    */
-  deleteAllByTrainingInstance(trainingInstanceId: number): Observable<any> {
-    return this.http.delete<any>(`${this.cheatingDetectionsEndpointUri}/${trainingInstanceId}/deleteAll`, {});
+  archive(cheatingDetectionId: number): Observable<any> {
+    const filename = `cheating-detection-${cheatingDetectionId}.zip`;
+    const headers = new HttpHeaders();
+    headers.set('Accept', ['application/octet-stream']);
+    return this.http
+      .get(`${this.cheatingDetectionsEndpointUri}/exports/${cheatingDetectionId}`, {
+        responseType: 'blob',
+        observe: 'response',
+        headers,
+      })
+      .pipe(
+        catchError((err) => JSONErrorConverter.fromBlob(err)),
+        map((resp) => {
+          FileSaver.fromBlob(resp.body, ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, filename));
+          return true;
+        })
+      );
   }
 }
