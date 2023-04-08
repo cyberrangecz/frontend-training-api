@@ -1,3 +1,7 @@
+### 14.2.2 Added cheating detection archive api method.
+* e741359 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 601a9ea -- Merge branch 'develop' into 'master'
+* a99ef8c -- Added cheating detection api archive method.
 ### 14.2.1 Updated and enhanced apis, DTOs and mappers for experimental version of cheating detection.
 * 395dc7e -- [CI/CD] Update packages.json version based on GitLab tag.
 * f41680b -- Merge branch 'cheating-detection' into 'master'
