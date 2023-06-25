@@ -13,6 +13,7 @@ import {
   AbstractDetectionEvent,
   AnswerSimilarityDetectionEvent,
   DetectionEventParticipant,
+  ForbiddenCommandsDetectionEvent,
   LocationSimilarityDetectionEvent,
   MinimalSolveTimeDetectionEvent,
   NoCommandsDetectionEvent,
@@ -31,6 +32,8 @@ import { MinimalSolveTimeDetectionEventMapper } from '../../mappers/detection-ev
 import { MinimalSolveTimeDetectionEventDTO } from '../../dto/detection-event/minimal-solve-time/minimal-solve-time-detection-event-dto';
 import { TimeProximityDetectionEventDTO } from '../../dto/detection-event/time-proximity/time_proximity-detection-event-dto';
 import { TimeProximityDetectionEventMapper } from '../../mappers/detection-event/time-proximity-detection-event-mapper';
+import { ForbiddenCommandsDetectionEventDTO } from '../../dto/detection-event/forbidden-commands/forbidden-commands-detection-event-dto';
+import { ForbiddenCommandsDetectionEventMapper } from '../../mappers/detection-event/forbidden-commands-detection-event-mapper';
 
 @Injectable()
 export class DetectionEventDefaultApi extends DetectionEventApi {
@@ -164,6 +167,17 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
     return this.http
       .get<NoCommandsDetectionEventDTO>(`${this.detectionEventsEndpointUri}/find-no-commands`, { params })
       .pipe(map((response) => NoCommandsDetectionEventMapper.fromDTO(response)));
+  }
+
+  /**
+   * Sends http request to find detection event of type forbidden commands by its id
+   * @param eventId the event id
+   */
+  getForbiddenCommandsEventById(eventId: number): Observable<ForbiddenCommandsDetectionEvent> {
+    const params = new HttpParams().append('eventId', eventId.toString());
+    return this.http
+      .get<ForbiddenCommandsDetectionEventDTO>(`${this.detectionEventsEndpointUri}/find-forbidden-commands`, { params })
+      .pipe(map((response) => ForbiddenCommandsDetectionEventMapper.fromDTO(response)));
   }
 
   /**

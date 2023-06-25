@@ -3,6 +3,7 @@ import {
   AbstractDetectionEvent,
   AnswerSimilarityDetectionEvent,
   DetectionEventParticipant,
+  ForbiddenCommandsDetectionEvent,
   LocationSimilarityDetectionEvent,
   MinimalSolveTimeDetectionEvent,
   NoCommandsDetectionEvent,
@@ -65,6 +66,11 @@ export abstract class DetectionEventApi {
    * @param eventId the event id
    */
   abstract getNoCommandsEventById(eventId: number): Observable<NoCommandsDetectionEvent>;
+  /**
+   * Sends http request to find detection event of type forbidden commands by its id
+   * @param eventId the event id
+   */
+  abstract getForbiddenCommandsEventById(eventId: number): Observable<ForbiddenCommandsDetectionEvent>;
   /**
    * Sends http request to delete all detection events by training instance id
    * @param trainingInstanceId id of training instance
