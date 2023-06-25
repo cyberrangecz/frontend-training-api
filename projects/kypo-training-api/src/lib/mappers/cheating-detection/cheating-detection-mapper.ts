@@ -1,6 +1,8 @@
-import { CheatingDetection } from '@muni-kypo-crp/training-model';
+import { CheatingDetection, ForbiddenCommand } from '@muni-kypo-crp/training-model';
 import { CheatingDetectionDTO } from '../../dto/cheating-detection/cheating-detection-dto';
 import { CheatingDetectionStateEnum } from '@muni-kypo-crp/training-model';
+import { ForbiddenCommandDTO } from '../../dto/detection-event/forbidden-command-dto';
+import { ForbiddenCommandMapper } from '../detection-event/forbidden-command-mapper';
 
 export class CheatingDetectionMapper {
   static fromDTO(dto: CheatingDetectionDTO): CheatingDetection {
@@ -18,7 +20,16 @@ export class CheatingDetectionMapper {
       minimalSolveTimeState: this.typeFromDTO(dto.minimal_solve_time_state),
       noCommandsState: this.typeFromDTO(dto.no_commands_state),
       forbiddenCommandsState: this.typeFromDTO(dto.forbidden_commands_state),
+      forbiddenCommands: this.forbiddenCommmandsFromDTOs(dto.forbidden_commands),
     };
+  }
+
+  static forbiddenCommmandsFromDTOs(dtos: ForbiddenCommandDTO[]): ForbiddenCommand[] {
+    return dtos.map((dto) => ForbiddenCommandMapper.fromDTO(dto));
+  }
+
+  static forbiddenCommmandsToDTOs(commands: ForbiddenCommand[]): ForbiddenCommandDTO[] {
+    return commands.map((command) => ForbiddenCommandMapper.toDTO(command));
   }
 
   static fromDTOs(dtos: CheatingDetectionDTO[]): CheatingDetection[] {
@@ -40,6 +51,7 @@ export class CheatingDetectionMapper {
       minimal_solve_time_state: this.typeToDTO(cheatingDetection.minimalSolveTimeState),
       no_commands_state: this.typeToDTO(cheatingDetection.noCommandsState),
       forbidden_commands_state: this.typeToDTO(cheatingDetection.forbiddenCommandsState),
+      forbidden_commands: this.forbiddenCommmandsToDTOs(cheatingDetection.forbiddenCommands),
     };
   }
 

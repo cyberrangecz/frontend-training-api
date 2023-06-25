@@ -9,6 +9,13 @@ export class ForbiddenCommandMapper {
     };
   }
 
+  static toDTO(forbiddenCommand: ForbiddenCommand): ForbiddenCommandDTO {
+    return {
+      command: forbiddenCommand.command,
+      type: forbiddenCommand.type,
+    };
+  }
+
   static fromDTOs(dtos: ForbiddenCommandDTO[]): ForbiddenCommand[] {
     return dtos.map((dto) => ForbiddenCommandMapper.fromDTO(dto));
   }

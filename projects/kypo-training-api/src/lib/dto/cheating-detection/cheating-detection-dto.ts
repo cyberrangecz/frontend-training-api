@@ -1,3 +1,5 @@
+import { ForbiddenCommandDTO } from '../detection-event/forbidden-command-dto';
+
 /**
  * Cheating Detection DTO.
  */
@@ -15,6 +17,7 @@ export interface CheatingDetectionDTO {
   minimal_solve_time_state: CheatingDetectionDTO.CheatingDetectionStateEnum;
   no_commands_state: CheatingDetectionDTO.CheatingDetectionStateEnum;
   forbidden_commands_state: CheatingDetectionDTO.CheatingDetectionStateEnum;
+  forbidden_commands: ForbiddenCommandDTO[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
