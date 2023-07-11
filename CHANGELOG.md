@@ -1,3 +1,7 @@
+### 14.2.3 Bump model version.
+* 892b569 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 20b2df6 -- Merge branch 'develop' into 'master'
+* dcd40b5 -- Bump version of model.
 ### 14.2.2 Added cheating detection archive api method.
 * e741359 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 601a9ea -- Merge branch 'develop' into 'master'
