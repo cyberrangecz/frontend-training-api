@@ -1,3 +1,9 @@
+### 14.2.4 Update api with new training definition model.
+* 649c124 -- [CI/CD] Update packages.json version based on GitLab tag.
+* ce2d390 -- Merge branch 'develop' into 'master'
+* ed12c1f -- Merge branch '70-adjust-api-with-changes-from-new-training-definition-model' into 'develop'
+* fd8f550 -- Bump version of training model
+* 6ac703d -- Update api with new training definition model.
 ### 14.2.3 Bump model version.
 * 892b569 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 20b2df6 -- Merge branch 'develop' into 'master'
