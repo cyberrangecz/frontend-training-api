@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaginatedResource, OffsetPaginationEvent, ResponseHeaderContentDispositionReader } from '@sentinel/common';
+import { ResponseHeaderContentDispositionReader } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { CheatingDetection } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';

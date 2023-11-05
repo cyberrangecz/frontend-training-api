@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AdaptiveRunApi } from './adaptive-run-api.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
-import { PaginatedResource, OffsetPaginationEvent, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
+import { SentinelParamsMerger } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { Observable } from 'rxjs';
 import {
   AccessedTrainingRun,
