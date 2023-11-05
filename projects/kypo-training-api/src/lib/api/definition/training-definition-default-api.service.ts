@@ -1,12 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  OffsetPaginationEvent,
-  PaginatedResource,
-  ResponseHeaderContentDispositionReader,
-  SentinelFilter,
-  SentinelParamsMerger,
-} from '@sentinel/common';
+import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { AccessLevel, TrainingDefinitionStateEnum, TrainingLevel } from '@muni-kypo-crp/training-model';
 import { AssessmentLevel } from '@muni-kypo-crp/training-model';
 import { TrainingDefinitionInfo } from '@muni-kypo-crp/training-model';

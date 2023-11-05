@@ -1,4 +1,5 @@
-import { PaginatedResource, OffsetPaginationEvent, SentinelFilter } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { Trainee, TrainingUser } from '@muni-kypo-crp/training-model';
 import { VisualizationInfo } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
