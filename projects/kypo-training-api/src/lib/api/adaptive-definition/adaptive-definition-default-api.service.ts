@@ -23,13 +23,9 @@ import { QuestionnairePhaseMapper } from '../../mappers/phase/questionnaire-phas
 import { InfoPhaseMapper } from '../../mappers/phase/info-phase-mapper';
 import { TaskDTO } from '../../dto/phase/training-phase/task-dto';
 import { TaskMapper } from '../../mappers/phase/task-mapper';
-import {
-  PaginatedResource,
-  OffsetPaginationEvent,
-  ResponseHeaderContentDispositionReader,
-  SentinelFilter,
-  SentinelParamsMerger,
-} from '@sentinel/common';
+import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
 import { TrainingDefinitionMapper } from '../../mappers/training-definition/training-definition-mapper';
 import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';

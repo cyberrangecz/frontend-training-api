@@ -1,12 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  PaginatedResource,
-  OffsetPaginationEvent,
-  ResponseHeaderContentDispositionReader,
-  SentinelFilter,
-  SentinelParamsMerger,
-} from '@sentinel/common';
+import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { TrainingRun } from '@muni-kypo-crp/training-model';
 import { TrainingInstance } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
