@@ -1,3 +1,13 @@
+### 15.0.0 Update to Angular 15.
+* d243071 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   6718c8d -- Merge new package.json and Angular 15
+|\  
+| * 8659e95 -- Merge branch '71-update-to-angular-15' into 'master'
+| *   12d5088 -- Merge branch '71-update-to-angular-15' of gitlab.ics.muni.cz:muni-kypo-crp/frontend-angular/apis/kypo-training-api into 71-update-to-angular-15
+| |\  
+| | * 67ca857 -- Update to Angular 15
+| * 4139bbd -- Update to Angular 15
+* ae12bff -- Update optional dependencies
 ### 14.2.4 Update api with new training definition model.
 * 649c124 -- [CI/CD] Update packages.json version based on GitLab tag.
 * ce2d390 -- Merge branch 'develop' into 'master'
