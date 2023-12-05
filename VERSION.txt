@@ -1,3 +1,4 @@
+15.0.1 Add allocation id to training run model.
 15.0.0 Update to Angular 15.
 14.2.4 Update api with new training definition model.
 14.2.3 Bump model version.
