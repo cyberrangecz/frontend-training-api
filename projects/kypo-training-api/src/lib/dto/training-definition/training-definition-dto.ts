@@ -18,6 +18,7 @@ export class TrainingDefinitionDTO {
   variant_sandboxes: boolean;
   last_edited_by?: string;
   has_reference_solution?: boolean;
+  created_at: Date;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace

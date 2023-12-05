@@ -1,3 +1,27 @@
+### 15.0.0 Update to Angular 15.
+* d243071 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   6718c8d -- Merge new package.json and Angular 15
+|\  
+| * 8659e95 -- Merge branch '71-update-to-angular-15' into 'master'
+| *   12d5088 -- Merge branch '71-update-to-angular-15' of gitlab.ics.muni.cz:muni-kypo-crp/frontend-angular/apis/kypo-training-api into 71-update-to-angular-15
+| |\  
+| | * 67ca857 -- Update to Angular 15
+| * 4139bbd -- Update to Angular 15
+* ae12bff -- Update optional dependencies
+### 14.2.4 Update api with new training definition model.
+* 649c124 -- [CI/CD] Update packages.json version based on GitLab tag.
+* ce2d390 -- Merge branch 'develop' into 'master'
+* ed12c1f -- Merge branch '70-adjust-api-with-changes-from-new-training-definition-model' into 'develop'
+* fd8f550 -- Bump version of training model
+* 6ac703d -- Update api with new training definition model.
+### 14.2.3 Bump model version.
+* 892b569 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 20b2df6 -- Merge branch 'develop' into 'master'
+* dcd40b5 -- Bump version of model.
+### 14.2.2 Added cheating detection archive api method.
+* e741359 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 601a9ea -- Merge branch 'develop' into 'master'
+* a99ef8c -- Added cheating detection api archive method.
 ### 14.2.1 Updated and enhanced apis, DTOs and mappers for experimental version of cheating detection.
 * 395dc7e -- [CI/CD] Update packages.json version based on GitLab tag.
 * f41680b -- Merge branch 'cheating-detection' into 'master'

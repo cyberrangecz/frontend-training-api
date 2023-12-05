@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { OffsetPaginationEvent } from '@sentinel/common';
+import { OffsetPaginationEvent } from '@sentinel/common/pagination';
 
 /**
  * Class transforming requested pagination object to http params into microservice supported format

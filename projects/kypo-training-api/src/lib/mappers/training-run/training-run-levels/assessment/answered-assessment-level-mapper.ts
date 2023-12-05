@@ -8,7 +8,7 @@ export class AnsweredAssessmentLevelMapper {
     result.type = AbstractLevelTypeEnum.Assessment;
     result.instructions = dto.instructions;
     result.assessmentType = this.typeFromDTO(dto.assessment_type);
-    if (dto.questions && dto.questions !== []) {
+    if (dto.questions && dto.questions.length !== 0) {
       result.questions = AnsweredAssessmentQuestionMapper.fromDTOs(dto.questions);
       result.questions = result.questions ? result.questions : [];
     }
