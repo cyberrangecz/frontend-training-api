@@ -82,12 +82,16 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   /**
    * Sends http request to retrieve training run already accessed by logged in user
    * @param pagination requested pagination
+   * @param filters to be applied on resources
    */
-  getAccessed(pagination: OffsetPaginationEvent): Observable<PaginatedResource<AccessedTrainingRun>> {
+  getAccessed(
+    pagination: OffsetPaginationEvent,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<AccessedTrainingRun>> {
+    const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
+
     return this.http
-      .get<TrainingRunRestResource>(`${this.trainingRunsEndpointUri}/accessible`, {
-        params: PaginationParams.forJavaAPI(pagination),
-      })
+      .get<TrainingRunRestResource>(`${this.trainingRunsEndpointUri}/accessible`, { params })
       .pipe(
         map(
           (response) =>

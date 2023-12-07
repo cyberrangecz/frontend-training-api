@@ -32,8 +32,12 @@ export abstract class TrainingRunApi {
   /**
    * Sends http request to retrieve training run already accessed by logged in user
    * @param pagination requested pagination
+   * @param filters to be applied on resources
    */
-  abstract getAccessed(pagination: OffsetPaginationEvent): Observable<PaginatedResource<AccessedTrainingRun>>;
+  abstract getAccessed(
+    pagination: OffsetPaginationEvent,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<AccessedTrainingRun>>;
 
   /**
    * Sends http request to retrieve info about training run by id
