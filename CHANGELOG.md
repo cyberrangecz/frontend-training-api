@@ -1,3 +1,23 @@
+### 15.0.2 Enhance accessed training run api call.
+* 264fd5d -- [CI/CD] Update packages.json version based on GitLab tag.
+* 066a9cb -- Merge branch 'develop' into 'master'
+*   52324a5 -- Merge branch '68-add-support-for-training-run-table-sorting' into 'develop'
+|\  
+| * f64ad0a -- Update version
+| *   8ec83b5 -- Merge develop
+| |\  
+| |/  
+|/|   
+* | 9577a41 -- Merge branch '69-add-allocation-id-to-training-run' into 'develop'
+* | b5552b5 -- Update package lock
+* | 2572f22 -- Fix package lock
+* | 53506a1 -- Update model package
+* | 847af97 -- Update version
+* | 70058ae -- Merge branch 'develop' into 69-add-allocation-id-to-training-run
+* | 76fe666 -- Add sandbox instance allocation id to training run
+ /  
+* 3ec1efe -- Fix package-lock
+* 562e90b -- Add support for accessed runs table sorting.
 ### 15.0.0 Update to Angular 15.
 * d243071 -- [CI/CD] Update packages.json version based on GitLab tag.
 *   6718c8d -- Merge new package.json and Angular 15
