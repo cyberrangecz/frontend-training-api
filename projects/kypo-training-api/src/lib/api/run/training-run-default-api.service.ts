@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaginatedResource, OffsetPaginationEvent, SentinelFilter, SentinelParamsMerger } from '@sentinel/common';
+import { SentinelParamsMerger } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { LevelAnswerCheck, TrainingRun, TrainingRunInfo } from '@muni-kypo-crp/training-model';
 import { Question } from '@muni-kypo-crp/training-model';
 import { AccessedTrainingRun } from '@muni-kypo-crp/training-model';

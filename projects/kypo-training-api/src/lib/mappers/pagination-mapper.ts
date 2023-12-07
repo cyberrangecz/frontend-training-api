@@ -1,4 +1,4 @@
-import { OffsetPagination } from '@sentinel/common';
+import { OffsetPagination } from '@sentinel/common/pagination';
 import { Paginated } from '../dto/rest/paginated';
 
 export class PaginationMapper {

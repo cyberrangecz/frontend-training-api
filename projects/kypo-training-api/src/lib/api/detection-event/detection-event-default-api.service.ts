@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaginatedResource, OffsetPaginationEvent, SentinelParamsMerger } from '@sentinel/common';
+import { SentinelParamsMerger } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';

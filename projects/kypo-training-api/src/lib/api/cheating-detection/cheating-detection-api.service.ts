@@ -1,4 +1,4 @@
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { CheatingDetection } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 
