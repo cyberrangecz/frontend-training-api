@@ -23,7 +23,7 @@ export interface TrainingRunDTO {
   event_log_reference?: string;
   id?: number;
   sandbox_instance_ref_id?: string;
-  sandbox_instance_allocation_id: number;
+  sandbox_instance_allocation_id?: number;
   participant_ref: UserRefDTO;
   start_time?: Date;
   state?: TrainingRunDTO.StateEnum;
