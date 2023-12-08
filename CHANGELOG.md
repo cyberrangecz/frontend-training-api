@@ -1,3 +1,7 @@
+### 15.0.3 Fix nullability of training run allocation id.
+* dda4b4b -- [CI/CD] Update packages.json version based on GitLab tag.
+* eab2a07 -- Merge branch 'fix-nullability-of-allocation-id' into 'master'
+* e155bbc -- Fix nullability
 ### 15.0.2 Enhance accessed training run api call.
 * 264fd5d -- [CI/CD] Update packages.json version based on GitLab tag.
 * 066a9cb -- Merge branch 'develop' into 'master'
