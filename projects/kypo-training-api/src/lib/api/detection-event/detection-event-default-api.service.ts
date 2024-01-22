@@ -63,7 +63,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       PaginationParams.forJavaAPI(pagination),
     ]);
     return this.http
-      .get<DetectionEventRestResource>(`${this.detectionEventsEndpointUri}/${cheatingDetectionId}/find-all-events`, {
+      .get<DetectionEventRestResource>(`${this.detectionEventsEndpointUri}/${cheatingDetectionId}/events`, {
         params,
       })
       .pipe(
@@ -71,6 +71,34 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
           (response) =>
             new PaginatedResource<AbstractDetectionEvent>(
               DetectionEventMapper.fromDTOs(response.content),
+              PaginationMapper.fromJavaAPI(response.pagination)
+            )
+        )
+      );
+  }
+
+  /**
+   * Sends http request to find all forbidden commands of a detection event
+   * @param pagination requested pagination
+   * @param eventId the id of the detection event
+   */
+  getAllForbiddenCommandsOfEvent(
+    pagination: OffsetPaginationEvent,
+    eventId: number
+  ): Observable<PaginatedResource<DetectedForbiddenCommand>> {
+    const params = SentinelParamsMerger.merge([
+      new HttpParams().append('eventId', eventId.toString()),
+      PaginationParams.forJavaAPI(pagination),
+    ]);
+    return this.http
+      .get<DetectedForbiddenCommandRestResource>(`${this.detectionEventsEndpointUri}/participants`, {
+        params,
+      })
+      .pipe(
+        map(
+          (response) =>
+            new PaginatedResource<DetectionEventParticipant>(
+              DetectionEventParticipantMapper.fromDTOs(response.content),
               PaginationMapper.fromJavaAPI(response.pagination)
             )
         )
@@ -91,7 +119,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       PaginationParams.forJavaAPI(pagination),
     ]);
     return this.http
-      .get<DetectionEventParticipantRestResource>(`${this.detectionEventsEndpointUri}/find-all-participants`, {
+      .get<DetectionEventParticipantRestResource>(`${this.detectionEventsEndpointUri}/participants`, {
         params,
       })
       .pipe(
