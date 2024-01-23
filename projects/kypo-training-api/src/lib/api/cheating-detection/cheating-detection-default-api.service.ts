@@ -39,12 +39,9 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
   ): Observable<PaginatedResource<CheatingDetection>> {
     const params = PaginationParams.forJavaAPI(pagination);
     return this.http
-      .get<CheatingDetectionRestResource>(
-        `${this.cheatingDetectionsEndpointUri}/${trainingInstanceId}/detections`,
-        {
-          params,
-        }
-      )
+      .get<CheatingDetectionRestResource>(`${this.cheatingDetectionsEndpointUri}/${trainingInstanceId}/detections`, {
+        params,
+      })
       .pipe(
         map(
           (response) =>
