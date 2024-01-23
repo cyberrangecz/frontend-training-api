@@ -1,3 +1,8 @@
+15.0.2 Enhance accessed training run api call.
+15.0.1 Add allocation id to training run model.
+15.0.0 Update to Angular 15.
+14.2.4 Update api with new training definition model.
+14.2.3 Bump model version.
 14.2.2 Added cheating detection archive api method.
 14.2.1 Updated and enhanced apis, DTOs and mappers for experimental version of cheating detection.
 14.2.0 Replaced sandbox id with sandbox uuid.
