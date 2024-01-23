@@ -1,5 +1,5 @@
 export interface DetectedForbiddenCommandDTO {
   command: string;
   type: string;
-  detectionEvent: number;
+  detection_event_id: number;
 }

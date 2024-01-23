@@ -91,14 +91,14 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       PaginationParams.forJavaAPI(pagination),
     ]);
     return this.http
-      .get<DetectedForbiddenCommandRestResource>(`${this.detectionEventsEndpointUri}/participants`, {
+      .get<DetectedForbiddenCommandRestResource>(`${this.detectionEventsEndpointUri}/commands`, {
         params,
       })
       .pipe(
         map(
           (response) =>
-            new PaginatedResource<DetectionEventParticipant>(
-              DetectionEventParticipantMapper.fromDTOs(response.content),
+            new PaginatedResource<DetectedForbiddenCommand>(
+              DetectedForbiddenCommandMapper.fromDTOs(response.content),
               PaginationMapper.fromJavaAPI(response.pagination)
             )
         )

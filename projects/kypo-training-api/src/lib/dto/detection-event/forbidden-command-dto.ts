@@ -1,5 +1,5 @@
 export interface ForbiddenCommandDTO {
   command: string;
   type: string;
-  cheatingDetectionId: number;
+  cheating_detection_id: number;
 }

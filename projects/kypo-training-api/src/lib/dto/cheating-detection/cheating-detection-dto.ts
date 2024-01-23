@@ -17,7 +17,7 @@ export interface CheatingDetectionDTO {
   minimal_solve_time_state: CheatingDetectionDTO.CheatingDetectionStateEnum;
   no_commands_state: CheatingDetectionDTO.CheatingDetectionStateEnum;
   forbidden_commands_state: CheatingDetectionDTO.CheatingDetectionStateEnum;
-  forbidden_commands: ForbiddenCommandDTO[];
+  forbidden_commands?: ForbiddenCommandDTO[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace

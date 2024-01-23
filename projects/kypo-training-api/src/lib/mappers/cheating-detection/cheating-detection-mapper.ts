@@ -1,35 +1,29 @@
 import { CheatingDetection, ForbiddenCommand } from '@muni-kypo-crp/training-model';
 import { CheatingDetectionDTO } from '../../dto/cheating-detection/cheating-detection-dto';
 import { CheatingDetectionStateEnum } from '@muni-kypo-crp/training-model';
-import { ForbiddenCommandDTO } from '../../dto/detection-event/forbidden-command-dto';
 import { ForbiddenCommandMapper } from '../detection-event/forbidden-command-mapper';
 
 export class CheatingDetectionMapper {
   static fromDTO(dto: CheatingDetectionDTO): CheatingDetection {
-    return {
-      trainingInstanceId: dto.training_instance_id,
-      executedBy: dto.executed_by,
-      executeTime: dto.execute_time,
-      id: dto.id,
-      proximityThreshold: dto.proximity_threshold,
-      currentState: this.typeFromDTO(dto.current_state),
-      results: dto.results,
-      answerSimilarityState: this.typeFromDTO(dto.answer_similarity_state),
-      locationSimilarityState: this.typeFromDTO(dto.location_similarity_state),
-      timeProximityState: this.typeFromDTO(dto.time_proximity_state),
-      minimalSolveTimeState: this.typeFromDTO(dto.minimal_solve_time_state),
-      noCommandsState: this.typeFromDTO(dto.no_commands_state),
-      forbiddenCommandsState: this.typeFromDTO(dto.forbidden_commands_state),
-      forbiddenCommands: this.forbiddenCommmandsFromDTOs(dto.forbidden_commands),
-    };
-  }
+    const result = new CheatingDetection();
 
-  static forbiddenCommmandsFromDTOs(dtos: ForbiddenCommandDTO[]): ForbiddenCommand[] {
-    return dtos.map((dto) => ForbiddenCommandMapper.fromDTO(dto));
-  }
-
-  static forbiddenCommmandsToDTOs(commands: ForbiddenCommand[]): ForbiddenCommandDTO[] {
-    return commands.map((command) => ForbiddenCommandMapper.toDTO(command));
+    result.trainingInstanceId = dto.training_instance_id;
+    result.executedBy = dto.executed_by;
+    result.executeTime = dto.execute_time;
+    result.id = dto.id;
+    result.proximityThreshold = dto.proximity_threshold;
+    result.currentState = this.typeFromDTO(dto.current_state);
+    result.results = dto.results;
+    result.answerSimilarityState = this.typeFromDTO(dto.answer_similarity_state);
+    result.locationSimilarityState = this.typeFromDTO(dto.location_similarity_state);
+    result.timeProximityState = this.typeFromDTO(dto.time_proximity_state);
+    result.minimalSolveTimeState = this.typeFromDTO(dto.minimal_solve_time_state);
+    result.noCommandsState = this.typeFromDTO(dto.no_commands_state);
+    result.forbiddenCommandsState = this.typeFromDTO(dto.forbidden_commands_state);
+    if (dto.forbidden_commands && dto.forbidden_commands !== []) {
+      result.forbiddenCommands = ForbiddenCommandMapper.fromDTOs(dto.forbidden_commands);
+    }
+    return result;
   }
 
   static fromDTOs(dtos: CheatingDetectionDTO[]): CheatingDetection[] {
@@ -37,22 +31,24 @@ export class CheatingDetectionMapper {
   }
 
   static toDTO(cheatingDetection: CheatingDetection): CheatingDetectionDTO {
-    return {
-      training_instance_id: cheatingDetection.trainingInstanceId,
-      executed_by: cheatingDetection.executedBy,
-      execute_time: cheatingDetection.executeTime,
-      id: cheatingDetection.id,
-      current_state: this.typeToDTO(cheatingDetection.currentState),
-      results: cheatingDetection.results,
-      proximity_threshold: cheatingDetection.proximityThreshold,
-      answer_similarity_state: this.typeToDTO(cheatingDetection.answerSimilarityState),
-      location_similarity_state: this.typeToDTO(cheatingDetection.locationSimilarityState),
-      time_proximity_state: this.typeToDTO(cheatingDetection.timeProximityState),
-      minimal_solve_time_state: this.typeToDTO(cheatingDetection.minimalSolveTimeState),
-      no_commands_state: this.typeToDTO(cheatingDetection.noCommandsState),
-      forbidden_commands_state: this.typeToDTO(cheatingDetection.forbiddenCommandsState),
-      forbidden_commands: this.forbiddenCommmandsToDTOs(cheatingDetection.forbiddenCommands),
-    };
+    const result = new CheatingDetectionDTO();
+    result.training_instance_id = cheatingDetection.trainingInstanceId;
+    result.executed_by = cheatingDetection.executedBy;
+    result.execute_time = cheatingDetection.executeTime;
+    result.id = cheatingDetection.id;
+    result.current_state = this.typeToDTO(cheatingDetection.currentState);
+    result.results = cheatingDetection.results;
+    result.proximity_threshold = cheatingDetection.proximityThreshold;
+    result.answer_similarity_state = this.typeToDTO(cheatingDetection.answerSimilarityState);
+    result.location_similarity_state = this.typeToDTO(cheatingDetection.locationSimilarityState);
+    result.time_proximity_state = this.typeToDTO(cheatingDetection.timeProximityState);
+    result.minimal_solve_time_state = this.typeToDTO(cheatingDetection.minimalSolveTimeState);
+    result.no_commands_state = this.typeToDTO(cheatingDetection.noCommandsState);
+    result.forbidden_commands_state = this.typeToDTO(cheatingDetection.forbiddenCommandsState);
+    if (cheatingDetection.forbiddenCommands && cheatingDetection.forbiddenCommands !== []) {
+      result.forbidden_commands = ForbiddenCommandMapper.toDTOs(cheatingDetection.forbiddenCommands);
+    }
+    return result;
   }
 
   private static typeToDTO(type: CheatingDetectionStateEnum): CheatingDetectionDTO.CheatingDetectionStateEnum {
