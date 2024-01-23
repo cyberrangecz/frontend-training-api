@@ -40,7 +40,7 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
     const params = PaginationParams.forJavaAPI(pagination);
     return this.http
       .get<CheatingDetectionRestResource>(
-        `${this.cheatingDetectionsEndpointUri}/${trainingInstanceId}/find-all-detections`,
+        `${this.cheatingDetectionsEndpointUri}/${trainingInstanceId}/detections`,
         {
           params,
         }
@@ -62,7 +62,7 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
    */
   createAndExecute(cheatingDetection: CheatingDetection): Observable<any> {
     return this.http.post<CheatingDetectionDTO>(
-      `${this.cheatingDetectionsEndpointUri}/create-detection`,
+      `${this.cheatingDetectionsEndpointUri}/detection`,
       CheatingDetectionMapper.toDTO(cheatingDetection)
     );
   }
