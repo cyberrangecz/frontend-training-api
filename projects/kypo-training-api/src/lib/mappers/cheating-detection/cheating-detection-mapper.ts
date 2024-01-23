@@ -1,5 +1,5 @@
-import { CheatingDetection, ForbiddenCommand } from '@muni-kypo-crp/training-model';
-import { CheatingDetectionDTO } from '../../dto/cheating-detection/cheating-detection-dto';
+import { CheatingDetection } from '@muni-kypo-crp/training-model';
+import { CheatingDetectionDTO, CheatingDetectionDTOClass } from '../../dto/cheating-detection/cheating-detection-dto';
 import { CheatingDetectionStateEnum } from '@muni-kypo-crp/training-model';
 import { ForbiddenCommandMapper } from '../detection-event/forbidden-command-mapper';
 
@@ -31,7 +31,7 @@ export class CheatingDetectionMapper {
   }
 
   static toDTO(cheatingDetection: CheatingDetection): CheatingDetectionDTO {
-    const result = new CheatingDetectionDTO();
+    const result = new CheatingDetectionDTOClass();
     result.training_instance_id = cheatingDetection.trainingInstanceId;
     result.executed_by = cheatingDetection.executedBy;
     result.execute_time = cheatingDetection.executeTime;

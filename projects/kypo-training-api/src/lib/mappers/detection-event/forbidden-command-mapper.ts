@@ -1,5 +1,5 @@
 import { ForbiddenCommandDTO } from '../../dto/detection-event/forbidden-command-dto';
-import { ForbiddenCommand, ReferenceSolutionNode } from '@muni-kypo-crp/training-model';
+import { ForbiddenCommand } from '@muni-kypo-crp/training-model';
 
 export class ForbiddenCommandMapper {
   static fromDTO(dto: ForbiddenCommandDTO): ForbiddenCommand {

@@ -12,7 +12,7 @@
 import { Paginated } from '../rest/paginated';
 import { DetectedForbiddenCommandDTO } from './detected-forbidden-command-dto';
 
-export interface DetectionEventParticipantRestResource {
+export interface DetectedForbiddenCommandRestResource {
   /**
    * Retrieved detection event forbidden commands from databases.
    */
