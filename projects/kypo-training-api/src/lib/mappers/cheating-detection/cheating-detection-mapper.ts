@@ -20,7 +20,7 @@ export class CheatingDetectionMapper {
     result.minimalSolveTimeState = this.typeFromDTO(dto.minimal_solve_time_state);
     result.noCommandsState = this.typeFromDTO(dto.no_commands_state);
     result.forbiddenCommandsState = this.typeFromDTO(dto.forbidden_commands_state);
-    if (dto.forbidden_commands && dto.forbidden_commands !== []) {
+    if (dto.forbidden_commands) {
       result.forbiddenCommands = ForbiddenCommandMapper.fromDTOs(dto.forbidden_commands);
     }
     return result;
@@ -45,7 +45,7 @@ export class CheatingDetectionMapper {
     result.minimal_solve_time_state = this.typeToDTO(cheatingDetection.minimalSolveTimeState);
     result.no_commands_state = this.typeToDTO(cheatingDetection.noCommandsState);
     result.forbidden_commands_state = this.typeToDTO(cheatingDetection.forbiddenCommandsState);
-    if (cheatingDetection.forbiddenCommands && cheatingDetection.forbiddenCommands !== []) {
+    if (cheatingDetection.forbiddenCommands) {
       result.forbidden_commands = ForbiddenCommandMapper.toDTOs(cheatingDetection.forbiddenCommands);
     }
     return result;
