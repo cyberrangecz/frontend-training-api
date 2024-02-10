@@ -61,6 +61,7 @@ export class QuestionnairePhaseMapper {
       question.id = questionDTO.id;
       question.order = questionDTO.order;
       question.text = questionDTO.text;
+      question.isRequired = questionDTO.is_required;
       question.choices = this.mapChoicesFromDTO(questionDTO.choices).sort((a, b) => a.order - b.order);
       switch (questionDTO.question_type) {
         case 'FFQ': {
@@ -125,6 +126,7 @@ export class QuestionnairePhaseMapper {
       dto.id = question.id;
       dto.order = question.order;
       dto.text = question.text;
+      dto.is_required = question.isRequired;
       dto.choices = this.mapChoicesToDTO(question.choices, question.questionType);
       switch (question.questionType) {
         case QuestionTypeEnum.FFQ: {
