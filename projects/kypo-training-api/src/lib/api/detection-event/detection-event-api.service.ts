@@ -2,6 +2,7 @@ import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagin
 import {
   AbstractDetectionEvent,
   AnswerSimilarityDetectionEvent,
+  DetectedForbiddenCommand,
   DetectionEventParticipant,
   ForbiddenCommandsDetectionEvent,
   LocationSimilarityDetectionEvent,
@@ -34,6 +35,16 @@ export abstract class DetectionEventApi {
     pagination: OffsetPaginationEvent,
     eventId: number
   ): Observable<PaginatedResource<DetectionEventParticipant>>;
+
+  /**
+   * Sends http request to find all forbidden commands of a detection event
+   * @param pagination requested pagination
+   * @param eventId the id of the detection event
+   */
+  abstract getAllForbiddenCommandsOfEvent(
+    pagination: OffsetPaginationEvent,
+    eventId: number
+  ): Observable<PaginatedResource<DetectedForbiddenCommand>>;
 
   /**
    * Sends http request to find specific detection event by his id

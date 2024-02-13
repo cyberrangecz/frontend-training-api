@@ -6,6 +6,7 @@ export class ForbiddenCommandsDetectionEventMapper {
   static fromDTO(dto: ForbiddenCommandsDetectionEventDTO): ForbiddenCommandsDetectionEvent {
     const result = new ForbiddenCommandsDetectionEvent();
     result.commandCount = dto.command_count;
+    result.trainingRunId = dto.training_run_id;
     result.detectionEventType = AbstractDetectionEventTypeEnum.Forbidden_commands;
     return result;
   }
