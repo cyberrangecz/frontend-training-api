@@ -95,7 +95,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       PaginationParams.forJavaAPI(pagination),
     ]);
     return this.http
-      .get<DetectedForbiddenCommandRestResource>(`${this.detectionEventsEndpointUri}/forbidden-commands`, {
+      .get<DetectedForbiddenCommandRestResource>(`${this.detectionEventsEndpointUri}/detected-forbidden-commands`, {
         params,
       })
       .pipe(
