@@ -1,5 +1,6 @@
 import { DetectionEventDTO } from '../detection-event-dto';
 
 export interface ForbiddenCommandsDetectionEventDTO extends DetectionEventDTO {
-  forbidden_commands: string[];
+  command_count: number;
+  training_run_id: number;
 }

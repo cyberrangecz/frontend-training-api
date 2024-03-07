@@ -5,7 +5,8 @@ import { AbstractDetectionEventTypeEnum } from '@muni-kypo-crp/training-model';
 export class ForbiddenCommandsDetectionEventMapper {
   static fromDTO(dto: ForbiddenCommandsDetectionEventDTO): ForbiddenCommandsDetectionEvent {
     const result = new ForbiddenCommandsDetectionEvent();
-    result.forbiddenCommands = dto.forbidden_commands;
+    result.commandCount = dto.command_count;
+    result.trainingRunId = dto.training_run_id;
     result.detectionEventType = AbstractDetectionEventTypeEnum.Forbidden_commands;
     return result;
   }
