@@ -7,6 +7,7 @@ export interface DetectionEventDTO {
   level_title: string;
   level_id: number;
   participant_count: number;
+  participants: string;
 }
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace DetectionEventDTO {
