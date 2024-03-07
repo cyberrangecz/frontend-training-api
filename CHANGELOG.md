@@ -1,3 +1,24 @@
+### 15.1.0 Update cheating detection api with updated models and requests.
+* 08c6afb -- [CI/CD] Update packages.json version based on GitLab tag.
+* bcdc9dd -- Merge branch 'develop' into 'master'
+* 99279f6 -- Merge branch 'master' into 'develop'
+* 548675e -- Merge branch 'forbidden-commands-detection-method-integration' into 'develop'
+* b272087 -- Update version
+* 7f3a7d7 -- revert package-lock changes
+* 8ef1ec7 -- Update package
+* 1209da1 -- Update version
+* 12d33c8 -- Update rest endpoint map
+* 247584c -- Add training run id to forbidden detection event
+* 97df70e -- Update condition
+* 08057bf -- Merge branch 'develop' into forbidden-commands-detection-method-integration
+* 3edfbc0 -- Update api paths
+* 9e55a86 -- Update api paths
+* ab82e60 -- Update detection event api and add forbidden commands support
+* ca928ad -- Implement missing models and api functions for forbidden commands
+* b388362 -- Unfinished changes to cheating detection api
+* cbe1aac -- Update detection event model
+* b448336 -- Updated api service for forbidden commands.
+* a5390ac -- Updated cheating detection and forbidden commands mappers
 ### 15.0.3 Fix nullability of training run allocation id.
 * dda4b4b -- [CI/CD] Update packages.json version based on GitLab tag.
 * eab2a07 -- Merge branch 'fix-nullability-of-allocation-id' into 'master'
