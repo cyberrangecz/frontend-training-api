@@ -7,6 +7,8 @@ export class DetectedForbiddenCommandMapper {
       command: dto.command,
       type: dto.type,
       detectionEventId: dto.detection_event_id,
+      hostname: dto.hostname,
+      occurredAt: dto.occurred_at,
     };
   }
 
