@@ -1,3 +1,8 @@
+### 15.1.2 Fix detected forbidden command dto type.
+* 3b033c3 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 4b37cd3 -- Merge branch 'develop' into 'master'
+* 30a04db -- Merge branch 'forbidden-commands-detection-method-integration' into 'develop'
+* abd9ee6 -- Forbidden commands detection method integration
 ### 15.1.1 Add hostname and occurredAt to detected forbidden command.
 * 6686f39 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 6e6e5a2 -- Merge branch 'develop' into 'master'
