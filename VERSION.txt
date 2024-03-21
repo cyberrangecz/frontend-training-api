@@ -1,3 +1,4 @@
+15.1.2 Fix detected forbidden command dto type.
 15.1.1 Add hostname and occurredAt to detected forbidden command.
 15.1.0 Update cheating detection api with updated models and requests.
 15.0.3 Fix nullability of training run allocation id.
