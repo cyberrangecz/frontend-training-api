@@ -1,3 +1,8 @@
+### 15.1.3 Add level order to detection event.
+* 4c3d4b6 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 7611476 -- Merge branch 'develop' into 'master'
+* e5aa2ab -- Merge branch 'forbidden-commands-detection-method-integration' into 'develop'
+* a87b562 -- Forbidden commands detection method integration
 ### 15.1.2 Fix detected forbidden command dto type.
 * 3b033c3 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 4b37cd3 -- Merge branch 'develop' into 'master'
