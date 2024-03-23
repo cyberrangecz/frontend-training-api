@@ -48,6 +48,7 @@ export class DetectionEventMapper {
     detectionEvent.detectedAt = dto.detected_at;
     detectionEvent.levelTitle = dto.level_title;
     detectionEvent.levelId = dto.level_id;
+    detectionEvent.levelOrder = dto.level_order;
     detectionEvent.participantCount = dto.participant_count;
     detectionEvent.participants = dto.participants;
     return detectionEvent;
