@@ -6,6 +6,7 @@ export interface DetectionEventDTO {
   detected_at: Date;
   level_title: string;
   level_id: number;
+  level_order: number;
   participant_count: number;
   participants: string;
 }
