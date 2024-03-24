@@ -2,6 +2,7 @@ export interface DetectionEventDTO {
   id: number;
   training_instance_id: number;
   cheating_detection_id: number;
+  training_run_id: number;
   detection_event_type: DetectionEventDTO.AbstractDetectionEventTypeEnum;
   detected_at: Date;
   level_title: string;
