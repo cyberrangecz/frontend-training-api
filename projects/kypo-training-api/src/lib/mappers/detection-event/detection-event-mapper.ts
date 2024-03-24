@@ -44,6 +44,7 @@ export class DetectionEventMapper {
     }
     detectionEvent.trainingInstanceId = dto.training_instance_id;
     detectionEvent.cheatingDetectionId = dto.cheating_detection_id;
+    detectionEvent.trainingRunId = dto.training_run_id;
     detectionEvent.id = dto.id;
     detectionEvent.detectedAt = dto.detected_at;
     detectionEvent.levelTitle = dto.level_title;
