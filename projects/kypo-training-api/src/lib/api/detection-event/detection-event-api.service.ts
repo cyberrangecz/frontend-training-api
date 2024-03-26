@@ -11,6 +11,7 @@ import {
   TimeProximityDetectionEvent,
 } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
+import { SentinelFilter } from '@sentinel/common/filter';
 
 export abstract class DetectionEventApi {
   /**
@@ -19,11 +20,13 @@ export abstract class DetectionEventApi {
    * @param cheatingDetectionId id of the training instance
    * @param trainingInstanceId id of the training instance
    * @param pagination requested pagination
+   * @param filters filters to be applied on result
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
     cheatingDetectionId: number,
-    trainingInstanceId: number
+    trainingInstanceId: number,
+    filters?: SentinelFilter[]
   ): Observable<PaginatedResource<AbstractDetectionEvent>>;
 
   /**

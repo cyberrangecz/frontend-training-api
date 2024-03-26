@@ -38,6 +38,8 @@ import { ForbiddenCommandsDetectionEventDTO } from '../../dto/detection-event/fo
 import { ForbiddenCommandsDetectionEventMapper } from '../../mappers/detection-event/forbidden-commands-detection-event-mapper';
 import { DetectedForbiddenCommandRestResource } from '../../dto/detection-event/detected-forbidden-command-rest-resource';
 import { DetectedForbiddenCommandMapper } from '../../mappers/detection-event/detected-forbidden-command-mapper';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { FilterParams } from '../../http/params/filter-params';
 
 @Injectable()
 export class DetectionEventDefaultApi extends DetectionEventApi {
@@ -56,15 +58,18 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
    * @param cheatingDetectionId id of the cheating detection
    * @param trainingInstanceId id of the training instance
    * @param pagination requested pagination
+   * @param filters filters to be applied on result
    */
   getAll(
     pagination: OffsetPaginationEvent,
     cheatingDetectionId: number,
-    trainingInstanceId: number
+    trainingInstanceId: number,
+    filters: SentinelFilter[] = []
   ): Observable<PaginatedResource<AbstractDetectionEvent>> {
     const params = SentinelParamsMerger.merge([
       new HttpParams().append('trainingInstanceId', trainingInstanceId.toString()),
       PaginationParams.forJavaAPI(pagination),
+      FilterParams.create(filters),
     ]);
     return this.http
       .get<DetectionEventRestResource>(`${this.detectionEventsEndpointUri}/${cheatingDetectionId}/events`, {
