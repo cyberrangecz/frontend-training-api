@@ -1,3 +1,8 @@
+### 15.1.5 Add filter logic to detection events.
+* 8ec9217 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 5c94d18 -- Merge branch 'develop' into 'master'
+* 2185b93 -- Merge branch 'forbidden-commands-detection-method-integration' into 'develop'
+* cc96742 -- Forbidden commands detection method integration
 ### 15.1.4 Add run id to detection event dto.
 * 5616269 -- [CI/CD] Update packages.json version based on GitLab tag.
 * faafd5d -- Merge branch 'develop' into 'master'
