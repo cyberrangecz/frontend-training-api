@@ -6,7 +6,7 @@ export class QuestionDTO {
   text: string;
   question_type: QuestionDTO.QuestionTypeEnum;
   choices: ChoiceDTO[];
-  is_required: boolean;
+  answer_required: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
