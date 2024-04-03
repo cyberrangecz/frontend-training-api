@@ -1,3 +1,13 @@
+### 15.1.6 Add answerRequired field to adaptive question dto.
+* 6d1cf19 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 079c66c -- Merge branch 'develop' into 'master'
+* f00b517 -- Merge branch '72-add-required-field-to-adaptive-question' into 'develop'
+* 3ffbc5b -- Update packages
+* f4ab1d0 -- Update version
+* 3e5ad8f -- Merge branch 'develop' into 72-add-required-field-to-adaptive-question
+* fe34a2d -- Fix naming
+* 15b7773 -- Merge branch 'master' into 72-add-required-field-to-adaptive-question
+* 2294513 -- Add required field to adaptive question
 ### 15.1.5 Add filter logic to detection events.
 * 8ec9217 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 5c94d18 -- Merge branch 'develop' into 'master'
