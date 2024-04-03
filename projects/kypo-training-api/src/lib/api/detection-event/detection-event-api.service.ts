@@ -2,13 +2,16 @@ import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagin
 import {
   AbstractDetectionEvent,
   AnswerSimilarityDetectionEvent,
+  DetectedForbiddenCommand,
   DetectionEventParticipant,
+  ForbiddenCommandsDetectionEvent,
   LocationSimilarityDetectionEvent,
   MinimalSolveTimeDetectionEvent,
   NoCommandsDetectionEvent,
   TimeProximityDetectionEvent,
 } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
+import { SentinelFilter } from '@sentinel/common/filter';
 
 export abstract class DetectionEventApi {
   /**
@@ -17,11 +20,13 @@ export abstract class DetectionEventApi {
    * @param cheatingDetectionId id of the training instance
    * @param trainingInstanceId id of the training instance
    * @param pagination requested pagination
+   * @param filters filters to be applied on result
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
     cheatingDetectionId: number,
-    trainingInstanceId: number
+    trainingInstanceId: number,
+    filters?: SentinelFilter[]
   ): Observable<PaginatedResource<AbstractDetectionEvent>>;
 
   /**
@@ -33,6 +38,16 @@ export abstract class DetectionEventApi {
     pagination: OffsetPaginationEvent,
     eventId: number
   ): Observable<PaginatedResource<DetectionEventParticipant>>;
+
+  /**
+   * Sends http request to find all forbidden commands of a detection event
+   * @param pagination requested pagination
+   * @param eventId the id of the detection event
+   */
+  abstract getAllForbiddenCommandsOfEvent(
+    pagination: OffsetPaginationEvent,
+    eventId: number
+  ): Observable<PaginatedResource<DetectedForbiddenCommand>>;
 
   /**
    * Sends http request to find specific detection event by his id
@@ -65,6 +80,11 @@ export abstract class DetectionEventApi {
    * @param eventId the event id
    */
   abstract getNoCommandsEventById(eventId: number): Observable<NoCommandsDetectionEvent>;
+  /**
+   * Sends http request to find detection event of type forbidden commands by its id
+   * @param eventId the event id
+   */
+  abstract getForbiddenCommandsEventById(eventId: number): Observable<ForbiddenCommandsDetectionEvent>;
   /**
    * Sends http request to delete all detection events by training instance id
    * @param trainingInstanceId id of training instance

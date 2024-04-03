@@ -44,11 +44,14 @@ export class DetectionEventMapper {
     }
     detectionEvent.trainingInstanceId = dto.training_instance_id;
     detectionEvent.cheatingDetectionId = dto.cheating_detection_id;
+    detectionEvent.trainingRunId = dto.training_run_id;
     detectionEvent.id = dto.id;
     detectionEvent.detectedAt = dto.detected_at;
     detectionEvent.levelTitle = dto.level_title;
     detectionEvent.levelId = dto.level_id;
+    detectionEvent.levelOrder = dto.level_order;
     detectionEvent.participantCount = dto.participant_count;
+    detectionEvent.participants = dto.participants;
     return detectionEvent;
   }
 

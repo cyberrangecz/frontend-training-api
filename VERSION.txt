@@ -1,3 +1,9 @@
+15.1.5 Add filter logic to detection events.
+15.1.4 Add run id to detection event dto.
+15.1.3 Add level order to detection event.
+15.1.2 Fix detected forbidden command dto type.
+15.1.1 Add hostname and occurredAt to detected forbidden command.
+15.1.0 Update cheating detection api with updated models and requests.
 15.0.3 Fix nullability of training run allocation id.
 15.0.2 Enhance accessed training run api call.
 15.0.1 Add allocation id to training run model.
