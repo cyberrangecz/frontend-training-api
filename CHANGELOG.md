@@ -1,3 +1,7 @@
+### 16.0.0 Update to Angular 16.
+* 2f3ea3c -- [CI/CD] Update packages.json version based on GitLab tag.
+* 571d5a6 -- Merge branch '73-update-to-angular-16' into 'master'
+* a8d12fb -- Update to Angular 16
 ### 15.1.6 Add answerRequired field to adaptive question dto.
 * 6d1cf19 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 079c66c -- Merge branch 'develop' into 'master'
