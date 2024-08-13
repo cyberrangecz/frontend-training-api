@@ -21,6 +21,12 @@ export abstract class TrainingInstanceApi {
   abstract get(id: number): Observable<TrainingInstance>;
 
   /**
+   * Sends http request to retrieves training instance by pool id
+   * @param poolId id of the pool
+   */
+  abstract getByPoolId(poolId: number): Observable<TrainingInstance>;
+
+  /**
    * Sends http request to retrieve all training runs associated with training instance
    * @param trainingInstanceId id of a training instance associated with training runs
    * @param pagination requested pagination

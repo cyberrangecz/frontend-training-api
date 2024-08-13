@@ -74,6 +74,16 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
   }
 
   /**
+   * Sends http request to retrieves training instance by pool id
+   * @param poolId id of the pool
+   */
+  getByPoolId(poolId: number): Observable<TrainingInstance> {
+    return this.http
+      .get<TrainingInstanceDTO>(`${this.trainingInstancesEndpointUri}/pool/${poolId}`)
+      .pipe(map((response) => TrainingInstanceMapper.fromDTO(response)));
+  }
+
+  /**
    * Sends http request to retrieve all training runs associated with training instance
    * @param trainingInstanceId id of a training instance associated with training runs
    * @param pagination requested pagination
