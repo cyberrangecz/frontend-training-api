@@ -1,3 +1,9 @@
+### 16.1.1 Update sentinel versions.
+* bf764fd -- [CI/CD] Update packages.json version based on GitLab tag.
+* 76913de -- Merge branch 'develop' into 'master'
+* e0ba2ae -- Merge branch 'update-sentinel-versions' into 'develop'
+* 9d5dd25 -- Update version
+* 6fa4407 -- Update sentinel versions
 ### 16.1.0 Add new endpoint call for training instance by pool id.
 * 63a9d6c -- [CI/CD] Update packages.json version based on GitLab tag.
 * 0eaebb7 -- Merge branch 'develop' into 'master'
