@@ -2,9 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
-import { TrainingRun } from '@muni-kypo-crp/training-model';
-import { TrainingInstance } from '@muni-kypo-crp/training-model';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
+import { TrainingInstance, TrainingRun } from '@muni-kypo-crp/training-model';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { TrainingInstanceAssignPoolDTO } from '../../dto/training-instance/training-instance-assign-pool-dto';
@@ -74,13 +73,16 @@ export class TrainingInstanceDefaultApi extends TrainingInstanceApi {
   }
 
   /**
-   * Sends http request to retrieves training instance by pool id
+   * Sends http request to retrieve training access token by pool id
    * @param poolId id of the pool
+   * @returns access token or null if not found
    */
-  getByPoolId(poolId: number): Observable<TrainingInstance> {
+  getTrainingAccessTokenByPoolId(poolId: number): Observable<string | null> {
     return this.http
-      .get<TrainingInstanceDTO>(`${this.trainingInstancesEndpointUri}/pool/${poolId}`)
-      .pipe(map((response) => TrainingInstanceMapper.fromDTO(response)));
+      .get(`${this.trainingInstancesEndpointUri}/access/${poolId}`, {
+        responseType: 'text',
+      })
+      .pipe(map((response) => response || null));
   }
 
   /**
