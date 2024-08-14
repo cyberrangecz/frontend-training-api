@@ -21,6 +21,12 @@ export abstract class AdaptiveInstanceApi {
   abstract get(id: number): Observable<TrainingInstance>;
 
   /**
+   * Sends http request to retrieve training access token by pool id
+   * @param poolId id of the pool
+   */
+  abstract getTrainingAccessTokenByPoolId(poolId: number): Observable<string>;
+
+  /**
    * Sends http request to retrieve all training runs associated with training instance
    * @param trainingInstanceId id of a training instance associated with training runs
    * @param pagination requested pagination

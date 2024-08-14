@@ -74,6 +74,19 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
   }
 
   /**
+   * Sends http request to retrieve training access token by pool id
+   * @param poolId id of the pool
+   * @returns access token or null if not found
+   */
+  getTrainingAccessTokenByPoolId(poolId: number): Observable<string | null> {
+    return this.http
+      .get(`${this.trainingInstancesEndpointUri}/access/${poolId}`, {
+        responseType: 'text',
+      })
+      .pipe(map((response) => response || null));
+  }
+
+  /**
    * Sends http request to retrieve all training runs associated with training instance
    * @param trainingInstanceId id of a training instance associated with training runs
    * @param pagination requested pagination
