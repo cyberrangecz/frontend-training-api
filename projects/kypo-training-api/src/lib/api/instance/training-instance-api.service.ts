@@ -21,10 +21,10 @@ export abstract class TrainingInstanceApi {
   abstract get(id: number): Observable<TrainingInstance>;
 
   /**
-   * Sends http request to retrieves training instance by pool id
+   * Sends http request to retrieve training access token by pool id
    * @param poolId id of the pool
    */
-  abstract getByPoolId(poolId: number): Observable<TrainingInstance>;
+  abstract getTrainingAccessTokenByPoolId(poolId: number): Observable<string>;
 
   /**
    * Sends http request to retrieve all training runs associated with training instance
