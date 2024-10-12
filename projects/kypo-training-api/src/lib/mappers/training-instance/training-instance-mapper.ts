@@ -21,6 +21,7 @@ export class TrainingInstanceMapper {
     result.localEnvironment = dto.local_environment;
     result.sandboxDefinitionId = dto.sandbox_definition_id;
     result.backwardMode = dto.backward_mode;
+    result.showStepperBar = dto.show_stepper_bar;
     return result;
   }
 
