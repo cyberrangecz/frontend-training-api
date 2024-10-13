@@ -14,6 +14,7 @@ export class AccessTrainingRunMapper {
     result.localEnvironment = dto.local_environment;
     result.backwardMode = dto.backward_mode;
     result.startTime = new Date(dto.start_time);
+    result.isStepperDisplayed = dto.show_stepper_bar;
     result.isLevelAnswered = dto.level_answered;
     result.currentLevel = LevelMapper.fromDTO(dto.abstract_level_dto);
     result.levels = LevelMapper.fromBasicDTOs(dto.info_about_levels);
