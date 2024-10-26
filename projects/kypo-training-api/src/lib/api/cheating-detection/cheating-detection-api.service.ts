@@ -10,7 +10,7 @@ export abstract class CheatingDetectionApi {
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    trainingInstanceId: number
+    trainingInstanceId: number,
   ): Observable<PaginatedResource<CheatingDetection>>;
 
   /**

@@ -24,7 +24,10 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
 
   readonly cheatingDetectionsEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.cheatingDetectionsEndpointUri = this.context.config.trainingBasePath + this.cheatingDetectionsUriExtension;
   }
@@ -36,7 +39,7 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
    */
   getAll(
     pagination: OffsetPaginationEvent,
-    trainingInstanceId: number
+    trainingInstanceId: number,
   ): Observable<PaginatedResource<CheatingDetection>> {
     const params = PaginationParams.forJavaAPI(pagination);
     return this.http
@@ -48,9 +51,9 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
           (response) =>
             new PaginatedResource<CheatingDetection>(
               CheatingDetectionMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -61,7 +64,7 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
   createAndExecute(cheatingDetection: CheatingDetection): Observable<any> {
     return this.http.post<CheatingDetectionDTO>(
       `${this.cheatingDetectionsEndpointUri}/detection`,
-      CheatingDetectionMapper.toDTO(cheatingDetection)
+      CheatingDetectionMapper.toDTO(cheatingDetection),
     );
   }
 
@@ -73,7 +76,7 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
   rerun(cheatingDetectionId: number, trainingInstanceId: number): Observable<any> {
     return this.http.patch(
       `${this.cheatingDetectionsEndpointUri}/${cheatingDetectionId}/rerun/${trainingInstanceId}`,
-      {}
+      {},
     );
   }
 
@@ -107,7 +110,7 @@ export class CheatingDetectionDefaultApi extends CheatingDetectionApi {
         map((resp) => {
           FileSaver.fromBlob(resp.body, ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, filename));
           return true;
-        })
+        }),
       );
   }
 }

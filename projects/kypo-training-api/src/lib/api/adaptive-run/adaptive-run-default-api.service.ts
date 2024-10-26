@@ -37,14 +37,17 @@ export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
 
   readonly trainingRunsEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.trainingRunsEndpointUri = this.context.config.adaptiveBasePath + this.trainingRunsUriExtension;
   }
 
   getAll(
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<TrainingRun>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
@@ -54,9 +57,9 @@ export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
           (response) =>
             new PaginatedResource<TrainingRun>(
               AdaptiveRunMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -84,9 +87,9 @@ export class AdaptiveRunDefaultApi extends AdaptiveRunApi {
           (response) =>
             new PaginatedResource<AccessedTrainingRun>(
               AccessedAdaptiveRunMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 

@@ -50,7 +50,10 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
   readonly trainingExportEndpointUri: string;
   readonly trainingImportEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.adaptiveDefinitionsUri = this.context.config.adaptiveBasePath + this.trainingDefinitionUriExtension;
     this.trainingExportEndpointUri = this.context.config.adaptiveBasePath + this.exportsUriExtension;
@@ -60,7 +63,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
   changeState(trainingDefinitionId: number, newState: TrainingDefinitionStateEnum): Observable<any> {
     return this.http.put(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/states/${TrainingDefinitionMapper.stateToDTO(newState)}`,
-      {}
+      {},
     );
   }
 
@@ -73,7 +76,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       {
         params,
         headers: this.createDefaultHeaders(),
-      }
+      },
     );
   }
 
@@ -82,7 +85,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       .post<TrainingDefinitionDTO>(
         this.adaptiveDefinitionsUri,
         TrainingDefinitionMapper.toCreateDTO(trainingDefinition),
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => TrainingDefinitionMapper.fromDTO(resp, false)));
   }
@@ -106,10 +109,10 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
         map((resp) => {
           FileSaver.fromBlob(
             resp.body,
-            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-definition.json')
+            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-definition.json'),
           );
           return true;
-        })
+        }),
       );
   }
 
@@ -121,7 +124,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
 
   getAll(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingDefinition>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
@@ -131,15 +134,15 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
           (response) =>
             new PaginatedResource(
               TrainingDefinitionMapper.fromDTOs(response.content, false),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
   getAllForOrganizer(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingDefinitionInfo>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
@@ -149,9 +152,9 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
           (response) =>
             new PaginatedResource(
               TrainingDefinitionInfoMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -159,7 +162,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http.put<number>(
       this.adaptiveDefinitionsUri,
       TrainingDefinitionMapper.toUpdateDTO(trainingDefinition),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -170,9 +173,9 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
         const jsonBody = JSON.parse(fileReader.result as string);
         return this.http.post<TrainingDefinitionDTO>(
           `${this.trainingImportEndpointUri}/${this.trainingDefinitionUriExtension}`,
-          jsonBody
+          jsonBody,
         );
-      })
+      }),
     );
     fileReader.readAsText(file);
     return fileRead$.pipe(map((resp) => TrainingDefinitionMapper.fromDTO(resp, false)));
@@ -183,7 +186,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       .post<InfoPhaseDTO>(
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
         { phase_type: 'INFO' },
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => PhaseMapper.fromDTO(resp) as InfoPhase));
   }
@@ -193,7 +196,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       .post<TrainingPhaseDTO>(
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
         { phase_type: 'TRAINING' },
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => PhaseMapper.fromDTO(resp) as TrainingPhase));
   }
@@ -203,7 +206,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       .post<TrainingPhaseDTO>(
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
         { phase_type: 'ACCESS' },
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => PhaseMapper.fromDTO(resp) as AccessPhase));
   }
@@ -213,7 +216,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       .post<QuestionnairePhaseDTO>(
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
         { phase_type: 'QUESTIONNAIRE', questionnaire_type: 'ADAPTIVE' },
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => PhaseMapper.fromDTO(resp) as QuestionnairePhase));
   }
@@ -223,23 +226,23 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       .post<QuestionnairePhaseDTO>(
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
         { phase_type: 'QUESTIONNAIRE', questionnaire_type: 'GENERAL' },
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => PhaseMapper.fromDTO(resp) as QuestionnairePhase));
   }
 
   getPhase(trainingDefinitionId: number, phaseId: number): Observable<Phase> {
     return this.http
-      .get<InfoPhaseDTO | TrainingPhaseDTO | QuestionnairePhaseDTO>(
-        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${phaseId}`
-      )
+      .get<
+        InfoPhaseDTO | TrainingPhaseDTO | QuestionnairePhaseDTO
+      >(`${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${phaseId}`)
       .pipe(map((response) => PhaseMapper.fromDTO(response)));
   }
 
   deletePhase(trainingDefinitionId: number, phaseId: number): Observable<any> {
     return this.http.delete(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${phaseId}`,
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -247,7 +250,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http.put(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}`,
       PhaseMapper.toUpdateDTOs(phases),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -255,19 +258,19 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http.put(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhase.id}/training`,
       TrainingPhaseMapper.toUpdateDTO(trainingPhase),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
   updateQuestionnairePhase(
     trainingDefinitionId: number,
-    questionnairePhase: QuestionnairePhase
+    questionnairePhase: QuestionnairePhase,
   ): Observable<QuestionnairePhase> {
     return this.http
       .put<QuestionnairePhaseDTO>(
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${questionnairePhase.id}/questionnaire`,
         QuestionnairePhaseMapper.mapQuestionnaireToUpdateDTO(questionnairePhase),
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((response) => PhaseMapper.fromDTO(response) as QuestionnairePhase));
   }
@@ -276,7 +279,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http.put(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${infoPhase.id}/info`,
       InfoPhaseMapper.toUpdateDTO(infoPhase),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -284,7 +287,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http.put<void>(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${phaseId}/move-to/${newPosition}`,
       {},
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -293,7 +296,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
       // eslint-disable-next-line max-len
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${phaseId}/${this.tasksUriExtension}/${taskId}/move-to/${newPosition}`,
       {},
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -303,7 +306,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
         // eslint-disable-next-line max-len
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}`,
         {},
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => TaskMapper.fromDTO(resp) as Task));
   }
@@ -314,7 +317,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
         // eslint-disable-next-line max-len
         `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${clonedTask.id}`,
         TaskMapper.toCopyDTO(clonedTask),
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => TaskMapper.fromDTO(resp) as Task));
   }
@@ -323,7 +326,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http.delete(
       // eslint-disable-next-line max-len
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${taskId}`,
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -331,7 +334,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http
       .get<TaskDTO>(
         // eslint-disable-next-line max-len
-        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${taskId}`
+        `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/${this.tasksUriExtension}/${taskId}`,
       )
       .pipe(map((response) => TaskMapper.fromDTO(response)));
   }
@@ -340,7 +343,7 @@ export class AdaptiveDefinitionDefaultApiService extends AdaptiveDefinitionApiSe
     return this.http.put(
       `${this.adaptiveDefinitionsUri}/${trainingDefinitionId}/${this.phasesUriExtension}/${trainingPhaseId}/tasks/${task.id}`,
       TaskMapper.toUpdateDTO(task),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 

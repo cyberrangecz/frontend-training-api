@@ -20,7 +20,7 @@ export abstract class TrainingEventApi {
   abstract getAllForRun(
     trainingDefinitionId: number,
     trainingInstanceId: number,
-    trainingRunId: number
+    trainingRunId: number,
   ): Observable<any>;
 
   /**

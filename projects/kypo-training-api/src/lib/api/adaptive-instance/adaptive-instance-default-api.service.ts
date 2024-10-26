@@ -34,7 +34,10 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
   readonly trainingInstancesEndpointUri: string;
   readonly trainingExportsEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.trainingInstancesEndpointUri = this.context.config.adaptiveBasePath + this.trainingInstancesUriExtension;
     this.trainingExportsEndpointUri = this.context.config.adaptiveBasePath + this.exportsUriExtension;
@@ -47,7 +50,7 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
    */
   getAll(
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<TrainingInstance>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
@@ -57,9 +60,9 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
           (response) =>
             new PaginatedResource<TrainingInstance>(
               TrainingInstanceMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -93,22 +96,22 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
    */
   getAssociatedTrainingRuns(
     trainingInstanceId: number,
-    pagination: OffsetPaginationEvent
+    pagination: OffsetPaginationEvent,
   ): Observable<PaginatedResource<TrainingRun>> {
     const params = PaginationParams.forJavaAPI(pagination);
     return this.http
       .get<TrainingRunRestResource>(
         `${this.trainingInstancesEndpointUri}/${trainingInstanceId}/${this.trainingRunsUriExtension}`,
-        { params }
+        { params },
       )
       .pipe(
         map(
           (response) =>
             new PaginatedResource(
               TrainingRunMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -120,7 +123,7 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
     return this.http
       .post<TrainingInstanceDTO>(
         this.trainingInstancesEndpointUri,
-        TrainingInstanceMapper.toCreateDTO(trainingInstance)
+        TrainingInstanceMapper.toCreateDTO(trainingInstance),
       )
       .pipe(map((response) => TrainingInstanceMapper.fromDTO(response)));
   }
@@ -165,17 +168,17 @@ export class AdaptiveInstanceDefaultApi extends AdaptiveInstanceApi {
         map((resp) => {
           FileSaver.fromBlob(
             resp.body,
-            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'archived-training-instance.zip')
+            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'archived-training-instance.zip'),
           );
           return true;
-        })
+        }),
       );
   }
 
   assignPool(trainingInstanceId: number, poolId: number): Observable<any> {
     return this.http.patch(
       `${this.trainingInstancesEndpointUri}/${trainingInstanceId}/assign-pool`,
-      new TrainingInstanceAssignPoolDTO(poolId)
+      new TrainingInstanceAssignPoolDTO(poolId),
     );
   }
 
