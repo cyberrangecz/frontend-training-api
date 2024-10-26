@@ -13,7 +13,7 @@ import {
 export abstract class AdaptiveRunApi {
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingRun>>;
   abstract get(id: number): Observable<TrainingRun>;
   abstract getAccessed(pagination: OffsetPaginationEvent): Observable<PaginatedResource<AccessedTrainingRun>>;

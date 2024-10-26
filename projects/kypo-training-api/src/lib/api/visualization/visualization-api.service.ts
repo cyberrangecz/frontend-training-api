@@ -35,6 +35,6 @@ export abstract class VisualizationApi {
   abstract getUsers(
     usersIds: number[],
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingUser>>;
 }

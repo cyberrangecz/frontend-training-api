@@ -17,7 +17,10 @@ export class TrainingEventDefaultApi extends TrainingEventApi {
 
   readonly trainingEventEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.trainingEventEndpointUri = this.context.config.trainingBasePath + this.trainingEventUriExtension;
   }
@@ -30,7 +33,7 @@ export class TrainingEventDefaultApi extends TrainingEventApi {
   getAll(trainingDefinitionId: number, trainingInstanceId: number): Observable<any> {
     return this.http.get(
       `${this.trainingEventEndpointUri}/${this.trainingDefinitionUriExtension}/${trainingDefinitionId}/${this.trainingInstanceUrlExtension}
-      /${trainingInstanceId}`
+      /${trainingInstanceId}`,
     );
   }
 
@@ -43,7 +46,7 @@ export class TrainingEventDefaultApi extends TrainingEventApi {
   getAllForRun(trainingDefinitionId: number, trainingInstanceId: number, trainingRunId: number): Observable<any> {
     return this.http.get(
       `${this.trainingEventEndpointUri}/${this.trainingDefinitionUriExtension}/${trainingDefinitionId}/${this.trainingInstanceUrlExtension}
-      /${trainingInstanceId}/${this.trainingRunUrlExtension}/${trainingRunId}`
+      /${trainingInstanceId}/${this.trainingRunUrlExtension}/${trainingRunId}`,
     );
   }
 
@@ -55,7 +58,7 @@ export class TrainingEventDefaultApi extends TrainingEventApi {
   deleteAllEvents(trainingInstanceId: number, trainingRunId: number): Observable<any> {
     return this.http.delete(
       `${this.trainingEventEndpointUri}/${this.trainingInstanceUrlExtension}/${trainingInstanceId}/${this.trainingRunUrlExtension}
-        /${trainingRunId}`
+        /${trainingRunId}`,
     );
   }
 }

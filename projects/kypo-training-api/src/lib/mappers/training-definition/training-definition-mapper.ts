@@ -46,7 +46,7 @@ export class TrainingDefinitionMapper {
         return TrainingDefinitionStateEnum.Unreleased;
       default: {
         console.error(
-          `Attribute "state" of TrainingDefinitionDTO with value: ${stateDTO} does not match any of the TrainingDefinition states`
+          `Attribute "state" of TrainingDefinitionDTO with value: ${stateDTO} does not match any of the TrainingDefinition states`,
         );
         return undefined;
       }
@@ -63,7 +63,7 @@ export class TrainingDefinitionMapper {
         return TrainingDefinitionDTO.StateEnum.ARCHIVED;
       default: {
         console.error(
-          `Attribute "state" of TrainingDefinition with value ${state} does not match any of the TrainingDefinitionDTO states`
+          `Attribute "state" of TrainingDefinition with value ${state} does not match any of the TrainingDefinitionDTO states`,
         );
         return undefined;
       }

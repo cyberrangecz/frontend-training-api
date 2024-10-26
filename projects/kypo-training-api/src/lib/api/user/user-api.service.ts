@@ -19,7 +19,7 @@ export abstract class UserApi {
     trainingInstanceId: number,
     pagination: OffsetPaginationEvent,
     adaptive: boolean,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<Organizer>>;
 
   /**
@@ -33,7 +33,7 @@ export abstract class UserApi {
     trainingDefinitionId: number,
     pagination: OffsetPaginationEvent,
     adaptive: boolean,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<Organizer>>;
 
   /**
@@ -47,7 +47,7 @@ export abstract class UserApi {
     trainingDefinitionId: number,
     pagination: OffsetPaginationEvent,
     adaptive: boolean,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<Designer>>;
 
   /**
@@ -61,7 +61,7 @@ export abstract class UserApi {
     trainingInstanceId: number,
     pagination: OffsetPaginationEvent,
     adaptive: boolean,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<Organizer>>;
 
   /**
@@ -75,7 +75,7 @@ export abstract class UserApi {
     trainingDefinitionId: number,
     additions: number[],
     adaptive: boolean,
-    removals: number[]
+    removals: number[],
   ): Observable<any>;
 
   /**
@@ -89,7 +89,7 @@ export abstract class UserApi {
     trainingInstanceId: number,
     additions: number[],
     adaptive: boolean,
-    removals: number[]
+    removals: number[],
   ): Observable<any>;
 
   /**
@@ -103,7 +103,7 @@ export abstract class UserApi {
     trainingInstanceId: number,
     pagination: OffsetPaginationEvent,
     adaptive: boolean,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<BetaTester>>;
 
   /**
@@ -117,7 +117,7 @@ export abstract class UserApi {
     trainingDefinitionId: number,
     pagination: OffsetPaginationEvent,
     adaptive: boolean,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<Designer>>;
 
   /**
@@ -131,7 +131,7 @@ export abstract class UserApi {
     trainingDefinitionId: number,
     pagination: OffsetPaginationEvent,
     adaptive: boolean,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<Organizer>>;
 
   /**

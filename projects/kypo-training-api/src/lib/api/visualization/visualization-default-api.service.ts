@@ -26,7 +26,10 @@ export class VisualizationDefaultApi extends VisualizationApi {
 
   readonly visualizationsEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.visualizationsEndpointUri = this.context.config.trainingBasePath + this.visualizationsUriExtension;
   }
@@ -38,7 +41,7 @@ export class VisualizationDefaultApi extends VisualizationApi {
   getInfo(trainingInstanceId: number): Observable<VisualizationInfo> {
     return this.http
       .get<VisualizationInfoDTO>(
-        `${this.visualizationsEndpointUri}/${this.trainingInstanceUrlExtension}/${trainingInstanceId}`
+        `${this.visualizationsEndpointUri}/${this.trainingInstanceUrlExtension}/${trainingInstanceId}`,
       )
       .pipe(map((resp) => VisualizationInfoMapper.fromDTO(resp)));
   }
@@ -49,9 +52,9 @@ export class VisualizationDefaultApi extends VisualizationApi {
    */
   getParticipants(trainingInstanceId: number): Observable<Trainee[]> {
     return this.http
-      .get<UserRefDTO[]>(
-        `${this.visualizationsEndpointUri}/${this.trainingInstanceUrlExtension}/${trainingInstanceId}/participants`
-      )
+      .get<
+        UserRefDTO[]
+      >(`${this.visualizationsEndpointUri}/${this.trainingInstanceUrlExtension}/${trainingInstanceId}/participants`)
       .pipe(map((resp) => UserMapper.fromDTOs(resp)));
   }
 
@@ -74,7 +77,7 @@ export class VisualizationDefaultApi extends VisualizationApi {
   getUsers(
     usersIds: number[],
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<TrainingUser>> {
     const idsParam = new HttpParams().set('ids', usersIds.toString());
     const params = SentinelParamsMerger.merge([
@@ -86,9 +89,9 @@ export class VisualizationDefaultApi extends VisualizationApi {
       map((resp) => {
         return new PaginatedResource<TrainingUser>(
           UserMapper.fromDTOs(resp.content),
-          PaginationMapper.fromJavaAPI(resp.pagination)
+          PaginationMapper.fromJavaAPI(resp.pagination),
         );
-      })
+      }),
     );
   }
 }

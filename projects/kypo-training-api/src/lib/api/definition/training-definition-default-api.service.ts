@@ -44,7 +44,10 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   readonly trainingExportEndpointUri: string;
   readonly trainingImportEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.trainingDefsEndpointUri = this.context.config.trainingBasePath + this.trainingDefinitionUriExtension;
     this.trainingExportEndpointUri = this.context.config.trainingBasePath + this.exportsUriExtension;
@@ -58,7 +61,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    */
   getAll(
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<TrainingDefinition>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
@@ -68,9 +71,9 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
           (response) =>
             new PaginatedResource(
               TrainingDefinitionMapper.fromDTOs(response.content, false),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -81,7 +84,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    */
   getAllForOrganizer(
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<TrainingDefinitionInfo>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
@@ -91,9 +94,9 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
           (response) =>
             new PaginatedResource(
               TrainingDefinitionInfoMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -116,7 +119,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   changeState(trainingDefinitionId: number, newState: TrainingDefinitionStateEnum): Observable<any> {
     return this.http.put(
       `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/states/${TrainingDefinitionMapper.stateToDTO(newState)}`,
-      {}
+      {},
     );
   }
 
@@ -126,9 +129,9 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    */
   getLevel(levelId: number): Observable<Level> {
     return this.http
-      .get<TrainingLevelDto | InfoLevelDTO | AssessmentLevelDTO>(
-        `${this.trainingDefsEndpointUri}/${this.levelsUriExtension}/${levelId}`
-      )
+      .get<
+        TrainingLevelDto | InfoLevelDTO | AssessmentLevelDTO
+      >(`${this.trainingDefsEndpointUri}/${this.levelsUriExtension}/${levelId}`)
       .pipe(map((response) => LevelMapper.fromDTO(response)));
   }
 
@@ -151,10 +154,10 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
         map((resp) => {
           FileSaver.fromBlob(
             resp.body,
-            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-definition.json')
+            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'training-definition.json'),
           );
           return true;
-        })
+        }),
       );
   }
 
@@ -170,9 +173,9 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
         const jsonBody = JSON.parse(fileReader.result as string);
         return this.http.post<TrainingDefinitionDTO>(
           `${this.trainingImportEndpointUri}/${this.trainingDefinitionUriExtension}`,
-          jsonBody
+          jsonBody,
         );
-      })
+      }),
     );
     fileReader.readAsText(file);
     return fileRead$.pipe(map((resp) => TrainingDefinitionMapper.fromDTO(resp, false)));
@@ -200,7 +203,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
       {
         params,
         headers: this.createDefaultHeaders(),
-      }
+      },
     );
   }
 
@@ -212,7 +215,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
     return this.http.put<number>(
       this.trainingDefsEndpointUri,
       TrainingDefinitionMapper.toUpdateDTO(trainingDefinition),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -225,7 +228,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
       .post<TrainingDefinitionDTO>(
         this.trainingDefsEndpointUri,
         TrainingDefinitionMapper.toCreateDTO(trainingDefinition),
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => TrainingDefinitionMapper.fromDTO(resp, false)));
   }
@@ -239,7 +242,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
       .post<BasicLevelInfoDTO>(
         `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/ASSESSMENT`,
         {},
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as AssessmentLevel));
   }
@@ -253,7 +256,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
       .post<BasicLevelInfoDTO>(
         `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/TRAINING`,
         {},
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as TrainingLevel));
   }
@@ -267,7 +270,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
       .post<BasicLevelInfoDTO>(
         `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/ACCESS`,
         {},
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as AccessLevel));
   }
@@ -281,7 +284,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
       .post<BasicLevelInfoDTO>(
         `${this.trainingDefsEndpointUri}/${trainingDefId}/${this.levelsUriExtension}/INFO`,
         {},
-        { headers: this.createDefaultHeaders() }
+        { headers: this.createDefaultHeaders() },
       )
       .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as InfoLevel));
   }
@@ -292,9 +295,11 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param levelId id of level which should be deleted
    */
   deleteLevel(trainingDefinitionId: number, levelId: number): Observable<Level[]> {
+    // prettier-ignore
     return this.http
       .delete<BasicLevelInfoDTO[]>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/${levelId}`,
+        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/`+
+        `${this.levelsUriExtension}/${levelId}`,
         { headers: this.createDefaultHeaders() }
       )
       .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
@@ -309,7 +314,7 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
     return this.http.put(
       `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/levels`,
       LevelMapper.toUpdateDTOs(levels),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 
@@ -320,9 +325,11 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param toPosition index of new position of a level
    */
   moveLevelTo(trainingDefinitionId: number, levelId: number, toPosition: number): Observable<Level[]> {
+    // prettier-ignore
     return this.http
       .put<BasicLevelInfoDTO[]>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/${levelId}/move-to/${toPosition}`,
+        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/` +
+        `${this.levelsUriExtension}/${levelId}/move-to/${toPosition}`,
         {},
         { headers: this.createDefaultHeaders() }
       )
@@ -336,9 +343,11 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
    * @param levelIdTo id of a second level which should be swaped
    */
   swapLevelWith(trainingDefinitionId: number, levelIdFrom: number, levelIdTo: number): Observable<Level[]> {
+    // prettier-ignore
     return this.http
       .put<BasicLevelInfoDTO[]>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/${this.levelsUriExtension}/${levelIdFrom}/swap-with/${levelIdTo}`,
+        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/` +
+        `${this.levelsUriExtension}/${levelIdFrom}/swap-with/${levelIdTo}`,
         {},
         { headers: this.createDefaultHeaders() }
       )
@@ -362,22 +371,22 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   geTrainingDefinition(
     sandboxDefId: number,
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<TrainingDefinition>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
       .get<TrainingDefinitionRestResource>(
         `${this.trainingDefsEndpointUri}/${this.sandboxDefUriExtension}/${sandboxDefId}`,
-        { params }
+        { params },
       )
       .pipe(
         map(
           (response) =>
             new PaginatedResource(
               TrainingDefinitionMapper.fromDTOs(response.content, false),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 

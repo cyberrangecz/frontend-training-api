@@ -16,12 +16,12 @@ import {
 export abstract class AdaptiveDefinitionApiService {
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingDefinition>>;
 
   abstract getAllForOrganizer(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingDefinitionInfo>>;
 
   abstract get(id: number, withPhases?: boolean): Observable<TrainingDefinition>;
@@ -60,7 +60,7 @@ export abstract class AdaptiveDefinitionApiService {
 
   abstract updateQuestionnairePhase(
     trainingDefinitionId: number,
-    questionnairePhase: QuestionnairePhase
+    questionnairePhase: QuestionnairePhase,
   ): Observable<QuestionnairePhase>;
 
   abstract updateInfoPhase(trainingDefinitionId: number, infoPhase: InfoPhase): Observable<any>;
@@ -71,7 +71,7 @@ export abstract class AdaptiveDefinitionApiService {
     trainingDefinitionId: number,
     phaseId: number,
     taskId: number,
-    newPosition: number
+    newPosition: number,
   ): Observable<any>;
 
   abstract createTask(trainingDefinitionId: number, trainingPhaseId: number): Observable<Task>;

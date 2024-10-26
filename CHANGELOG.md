@@ -1,3 +1,9 @@
+### 16.1.2 Add new endpoint call for access token to training run by pool id.
+* 1cb9cef -- [CI/CD] Update packages.json version based on GitLab tag.
+* 6364c96 -- Merge branch 'develop' into 'master'
+* 0effa3f -- Merge branch '75-add-new-endpoint-call-for-access-token-to-training-run-by-poolid' into 'develop'
+* b8a35a1 -- Add getTrainingAccessTokenByPoolId endpoint to adaptive instance api
+* 264469b -- Change getByPoolId endpoint for getTrainingAccessTokenByPoolId
 ### 16.1.1 Update sentinel versions.
 * bf764fd -- [CI/CD] Update packages.json version based on GitLab tag.
 * 76913de -- Merge branch 'develop' into 'master'
