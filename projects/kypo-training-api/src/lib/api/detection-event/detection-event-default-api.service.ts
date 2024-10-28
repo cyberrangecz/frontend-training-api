@@ -47,7 +47,10 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
 
   readonly detectionEventsEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.detectionEventsEndpointUri = this.context.config.trainingBasePath + this.detectionEventsUriExtension;
   }
@@ -64,7 +67,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
     pagination: OffsetPaginationEvent,
     cheatingDetectionId: number,
     trainingInstanceId: number,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<AbstractDetectionEvent>> {
     const params = SentinelParamsMerger.merge([
       new HttpParams().append('trainingInstanceId', trainingInstanceId.toString()),
@@ -80,9 +83,9 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
           (response) =>
             new PaginatedResource<AbstractDetectionEvent>(
               DetectionEventMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -93,7 +96,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
    */
   getAllForbiddenCommandsOfEvent(
     pagination: OffsetPaginationEvent,
-    eventId: number
+    eventId: number,
   ): Observable<PaginatedResource<DetectedForbiddenCommand>> {
     const params = SentinelParamsMerger.merge([
       new HttpParams().append('eventId', eventId.toString()),
@@ -108,9 +111,9 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
           (response) =>
             new PaginatedResource<DetectedForbiddenCommand>(
               DetectedForbiddenCommandMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -121,7 +124,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
    */
   getAllParticipants(
     pagination: OffsetPaginationEvent,
-    eventId: number
+    eventId: number,
   ): Observable<PaginatedResource<DetectionEventParticipant>> {
     const params = SentinelParamsMerger.merge([
       new HttpParams().append('eventId', eventId.toString()),
@@ -136,9 +139,9 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
           (response) =>
             new PaginatedResource<DetectionEventParticipant>(
               DetectionEventParticipantMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 

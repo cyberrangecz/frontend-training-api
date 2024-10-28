@@ -16,7 +16,7 @@ export class DetectedForbiddenCommandMapper {
   }
 
   private static typeFromDTO(
-    type: DetectedForbiddenCommandDTO.DetectedForbiddenCommandTypeEnum
+    type: DetectedForbiddenCommandDTO.DetectedForbiddenCommandTypeEnum,
   ): DetectedForbiddenCommandTypeEnum {
     switch (type) {
       case DetectedForbiddenCommandDTO.DetectedForbiddenCommandTypeEnum.BASH:

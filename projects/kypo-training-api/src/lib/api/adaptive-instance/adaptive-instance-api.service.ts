@@ -11,7 +11,7 @@ export abstract class AdaptiveInstanceApi {
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingInstance>>;
 
   /**
@@ -33,7 +33,7 @@ export abstract class AdaptiveInstanceApi {
    */
   abstract getAssociatedTrainingRuns(
     trainingInstanceId: number,
-    pagination: OffsetPaginationEvent
+    pagination: OffsetPaginationEvent,
   ): Observable<PaginatedResource<TrainingRun>>;
 
   /**

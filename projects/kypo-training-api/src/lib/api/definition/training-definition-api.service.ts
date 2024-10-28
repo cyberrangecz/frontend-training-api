@@ -20,7 +20,7 @@ export abstract class TrainingDefinitionApi {
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingDefinition>>;
 
   /**
@@ -30,7 +30,7 @@ export abstract class TrainingDefinitionApi {
    */
   abstract getAllForOrganizer(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingDefinitionInfo>>;
 
   /**
@@ -160,6 +160,6 @@ export abstract class TrainingDefinitionApi {
   abstract geTrainingDefinition(
     sandboxDefId: number,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingDefinition>>;
 }

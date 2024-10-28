@@ -20,7 +20,7 @@ export abstract class TrainingRunApi {
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<TrainingRun>>;
 
   /**
@@ -36,7 +36,7 @@ export abstract class TrainingRunApi {
    */
   abstract getAccessed(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<AccessedTrainingRun>>;
 
   /**

@@ -18,7 +18,10 @@ export class MitreTechniquesDefaultApi extends MitreTechniquesApi {
   readonly mitreTechniquesEndpointUri: string;
   readonly mitreTechniquesListEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.mitreTechniquesEndpointUri = this.context.config.mitreTechniqueBasePath + this.mitreTechniquesUriExtension;
     this.mitreTechniquesListEndpointUri =
