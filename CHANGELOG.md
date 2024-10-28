@@ -1,3 +1,8 @@
+### 18.0.0 Update to Angular 18.
+* 3884209 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 0b366ea -- Merge branch 'develop' into 'master'
+* 34de457 -- Merge branch '77-update-to-angular-18' into 'develop'
+* e1d054c -- Update to Angular 18
 ### 16.1.2 Add new endpoint call for access token to training run by pool id.
 * 1cb9cef -- [CI/CD] Update packages.json version based on GitLab tag.
 * 6364c96 -- Merge branch 'develop' into 'master'
