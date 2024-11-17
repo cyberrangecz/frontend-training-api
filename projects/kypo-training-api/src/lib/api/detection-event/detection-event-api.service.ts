@@ -26,7 +26,7 @@ export abstract class DetectionEventApi {
     pagination: OffsetPaginationEvent,
     cheatingDetectionId: number,
     trainingInstanceId: number,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<AbstractDetectionEvent>>;
 
   /**
@@ -36,7 +36,7 @@ export abstract class DetectionEventApi {
    */
   abstract getAllParticipants(
     pagination: OffsetPaginationEvent,
-    eventId: number
+    eventId: number,
   ): Observable<PaginatedResource<DetectionEventParticipant>>;
 
   /**
@@ -46,7 +46,7 @@ export abstract class DetectionEventApi {
    */
   abstract getAllForbiddenCommandsOfEvent(
     pagination: OffsetPaginationEvent,
-    eventId: number
+    eventId: number,
   ): Observable<PaginatedResource<DetectedForbiddenCommand>>;
 
   /**

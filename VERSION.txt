@@ -1,4 +1,5 @@
-16.2.0 Move stepperBar from training definition to instance.
+18.1.0 Move stepperBar from training definition to instance.
+18.0.0 Update to Angular 18.
 16.1.2 Add new endpoint call for access token to training run by pool id.
 16.1.1 Update sentinel versions.
 16.1.0 Add new endpoint call for training instance by pool id.

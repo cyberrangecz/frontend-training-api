@@ -8,7 +8,7 @@ export class PaginationMapper {
       paginationDTO.number_of_elements,
       paginationDTO.size,
       paginationDTO.total_elements,
-      paginationDTO.total_pages
+      paginationDTO.total_pages,
     );
   }
 }

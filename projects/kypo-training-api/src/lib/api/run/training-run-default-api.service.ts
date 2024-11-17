@@ -41,7 +41,10 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
 
   readonly trainingRunsEndpointUri: string;
 
-  constructor(private http: HttpClient, private context: KypoTrainingApiContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoTrainingApiContext,
+  ) {
     super();
     this.trainingRunsEndpointUri = this.context.config.trainingBasePath + this.trainingRunsUriExtension;
   }
@@ -53,7 +56,7 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
    */
   getAll(
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<TrainingRun>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
     return this.http
@@ -63,9 +66,9 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
           (response) =>
             new PaginatedResource<TrainingRun>(
               TrainingRunMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -86,7 +89,7 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
    */
   getAccessed(
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<AccessedTrainingRun>> {
     const params = SentinelParamsMerger.merge([PaginationParams.forJavaAPI(pagination), FilterParams.create(filters)]);
 
@@ -97,9 +100,9 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
           (response) =>
             new PaginatedResource<AccessedTrainingRun>(
               AccessedTrainingRunMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination)
-            )
-        )
+              PaginationMapper.fromJavaAPI(response.pagination),
+            ),
+        ),
       );
   }
 
@@ -213,7 +216,7 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
   submitAnswers(trainingRunId: number, questions: Question[]): Observable<any> {
     return this.http.put(
       `${this.trainingRunsEndpointUri}/${trainingRunId}/assessment-evaluations`,
-      QuestionMapper.toAnswersDTOs(questions)
+      QuestionMapper.toAnswersDTOs(questions),
     );
   }
 

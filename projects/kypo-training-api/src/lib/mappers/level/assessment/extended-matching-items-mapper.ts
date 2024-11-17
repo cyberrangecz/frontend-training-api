@@ -11,7 +11,7 @@ export class ExtendedMatchingItemsMapper {
   static fromDTO(dto: ExtendedMatchingItemsDTO): ExtendedMatchingItems {
     const result = new ExtendedMatchingItems(dto.text);
     result.extendedMatchingStatements = dto.extended_matching_statements?.map((statementDTO) =>
-      this.fromStatementDTO(statementDTO)
+      this.fromStatementDTO(statementDTO),
     );
     result.extendedMatchingOptions = dto.extended_matching_options?.map((optionDTO) => this.fromOptionDTO(optionDTO));
     return result;
@@ -46,7 +46,7 @@ export class ExtendedMatchingItemsMapper {
     questionDTO.question_type = AbstractQuestionDTO.QuestionTypeEnum.EMI;
     questionDTO.extended_matching_options = question.extendedMatchingOptions;
     questionDTO.extended_matching_statements = question.extendedMatchingStatements.map(
-      (ems) => new ExtendedMatchingStatementDTO(ems.id, ems.order, ems.text, ems.correctOptionOrder)
+      (ems) => new ExtendedMatchingStatementDTO(ems.id, ems.order, ems.text, ems.correctOptionOrder),
     );
     return questionDTO;
   }

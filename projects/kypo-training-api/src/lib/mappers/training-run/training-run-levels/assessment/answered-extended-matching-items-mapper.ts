@@ -9,7 +9,7 @@ export class AnsweredExtendedMatchingItemsMapper {
   static fromDTO(dto: AnsweredExtendedMatchingItemsDTO): ExtendedMatchingItems {
     const result = new ExtendedMatchingItems(dto.text);
     result.extendedMatchingStatements = dto.extended_matching_statements?.map((statementDTO) =>
-      this.fromStatementDTO(statementDTO)
+      this.fromStatementDTO(statementDTO),
     );
     result.extendedMatchingOptions = dto.extended_matching_options?.map((optionDTO) => this.fromOptionDTO(optionDTO));
     return result;
