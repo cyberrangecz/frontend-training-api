@@ -1,3 +1,12 @@
+### 18.1.0 Move stepperBar from training definition to instance.
+* a913712 -- [CI/CD] Update packages.json version based on GitLab tag.
+* 5cf7f2b -- Merge branch 'develop' into 'master'
+* 8c2eab0 -- Merge branch '76-update-training-instance-and-training-definition-dtos-with-stepper-bar-change' into 'develop'
+* 72436d0 -- Upgrade training model version
+* 928421b -- merge changes from develop
+* 696038b -- revert trainingRunInfo removal of stepperDisplayed flag
+* 4e0786c -- Update version
+* 753200a -- Move stepper bar from definition to instance
 ### 18.0.0 Update to Angular 18.
 * 3884209 -- [CI/CD] Update packages.json version based on GitLab tag.
 * 0b366ea -- Merge branch 'develop' into 'master'
