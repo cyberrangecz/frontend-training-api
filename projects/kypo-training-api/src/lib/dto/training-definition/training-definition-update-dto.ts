@@ -18,7 +18,6 @@ export class TrainingDefinitionUpdateDTO {
   id?: number;
   outcomes?: string[];
   prerequisites?: string[];
-  show_stepper_bar?: boolean;
   state?: TrainingDefinitionUpdateDTO.StateEnum;
   title?: string;
   variant_sandboxes?: boolean;

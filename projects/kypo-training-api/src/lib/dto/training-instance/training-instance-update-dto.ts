@@ -23,4 +23,5 @@ export class TrainingInstanceUpdateDTO {
   local_environment?: boolean;
   sandbox_definition_id?: number;
   backward_mode?: boolean;
+  show_stepper_bar?: boolean;
 }

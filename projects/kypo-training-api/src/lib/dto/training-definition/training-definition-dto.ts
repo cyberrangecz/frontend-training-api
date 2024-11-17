@@ -10,7 +10,6 @@ export class TrainingDefinitionDTO {
   id?: number;
   outcomes?: string[];
   prerequisites?: string[];
-  show_stepper_bar?: boolean;
   state?: TrainingDefinitionDTO.StateEnum;
   title?: string;
   estimated_duration: number;
