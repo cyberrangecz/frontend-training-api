@@ -9,7 +9,7 @@ export class TrainingDefinitionInfoMapper {
   static fromDTO(dto: TrainingDefinitionInfoDTO): TrainingDefinitionInfo {
     const result = new TrainingDefinitionInfo();
     result.id = dto.id;
-    result.title = `${dto.title}`;
+    result.title = dto.title;
     result.state = TrainingDefinitionMapper.stateFromDTO(dto.state);
     return result;
   }
