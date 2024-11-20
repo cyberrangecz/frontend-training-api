@@ -20,7 +20,6 @@ export class TrainingDefinitionMapper {
     result.state = this.stateFromDTO(dto.state);
     result.lastEditTime = dto.last_edited;
     result.estimatedDuration = dto.estimated_duration;
-    result.showStepperBar = dto.show_stepper_bar;
     if (withLevels) {
       result.levels = LevelMapper.fromDTOs(dto.levels);
     } else if (withPhases) {
@@ -74,7 +73,6 @@ export class TrainingDefinitionMapper {
     const result = new TrainingDefinitionUpdateDTO();
     result.id = trainingDefinition.id;
     result.description = trainingDefinition.description;
-    result.show_stepper_bar = trainingDefinition.showStepperBar;
     result.prerequisites = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
     result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
     result.state = TrainingDefinitionMapper.stateToDTO(trainingDefinition.state);
@@ -89,7 +87,6 @@ export class TrainingDefinitionMapper {
     result.description = trainingDefinition.description;
     result.state = TrainingDefinitionDTO.StateEnum.UNRELEASED;
     result.title = trainingDefinition.title;
-    result.show_stepper_bar = trainingDefinition.showStepperBar;
     result.default_content = trainingDefinition.defaultContent;
     return result;
   }

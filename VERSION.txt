@@ -1,4 +1,5 @@
-18.0.1 Remove title formatting from TrainingDefinitionInfoMapper
+18.1.1 Remove title formatting from TrainingDefinitionInfoMapper
+18.1.0 Move stepperBar from training definition to instance.
 18.0.0 Update to Angular 18.
 16.1.2 Add new endpoint call for access token to training run by pool id.
 16.1.1 Update sentinel versions.
