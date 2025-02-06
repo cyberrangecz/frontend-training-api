@@ -1,7 +1,7 @@
-import { AbstractLevelTypeEnum } from '@muni-kypo-crp/training-model';
-import { VisualizationInfo } from '@muni-kypo-crp/training-model';
+import { AbstractLevelTypeEnum, VisualizationInfo } from '@cyberrangecz-platform/training-model';
 import { VisualizationInfoDTO } from './../../dto/visualization/visualization-info-dto';
 import { LevelMapper } from './../level/level-mapper';
+
 export class VisualizationInfoMapper {
   static fromDTO(dto: VisualizationInfoDTO): VisualizationInfo {
     const res = new VisualizationInfo();

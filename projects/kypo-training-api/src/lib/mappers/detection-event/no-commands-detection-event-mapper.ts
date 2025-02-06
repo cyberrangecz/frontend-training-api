@@ -1,5 +1,4 @@
-import { NoCommandsDetectionEvent } from '@muni-kypo-crp/training-model';
-import { AbstractDetectionEventTypeEnum } from '@muni-kypo-crp/training-model';
+import { AbstractDetectionEventTypeEnum, NoCommandsDetectionEvent } from '@cyberrangecz-platform/training-model';
 import { NoCommandsDetectionEventDTO } from '../../dto/detection-event/no-commands/no-commands-detection-event-dto';
 
 export class NoCommandsDetectionEventMapper {

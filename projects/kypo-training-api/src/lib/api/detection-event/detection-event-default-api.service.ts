@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SentinelParamsMerger } from '@sentinel/common';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
@@ -20,7 +20,7 @@ import {
   MinimalSolveTimeDetectionEvent,
   NoCommandsDetectionEvent,
   TimeProximityDetectionEvent,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { DetectionEventRestResource } from '../../dto/detection-event/detection-event-rest-resource';
 import { DetectionEventParticipantRestResource } from '../../dto/detection-event/detection-event-participant-rest-resource';
 import { DetectionEventParticipantMapper } from '../../mappers/detection-event/detection-event-participant-mapper';
@@ -166,6 +166,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       .get<AnswerSimilarityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/answer-similarity`, { params })
       .pipe(map((response) => AnswerSimilarityDetectionEventMapper.fromDTO(response)));
   }
+
   /**
    * Sends http request to find detection event of type location similarity by its id
    * @param eventId the event id
@@ -178,6 +179,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       })
       .pipe(map((response) => LocationSimilarityDetectionEventMapper.fromDTO(response)));
   }
+
   /**
    * Sends http request to find detection event of type time proximity by its id
    * @param eventId the event id
@@ -188,6 +190,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       .get<TimeProximityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/time-proximity`, { params })
       .pipe(map((response) => TimeProximityDetectionEventMapper.fromDTO(response)));
   }
+
   /**
    * Sends http request to find detection event of type minimal solve time by its id
    * @param eventId the event id
@@ -198,6 +201,7 @@ export class DetectionEventDefaultApi extends DetectionEventApi {
       .get<MinimalSolveTimeDetectionEventDTO>(`${this.detectionEventsEndpointUri}/minimal-solve-time`, { params })
       .pipe(map((response) => MinimalSolveTimeDetectionEventMapper.fromDTO(response)));
   }
+
   /**
    * Sends http request to find detection event of type no commands by its id
    * @param eventId the event id

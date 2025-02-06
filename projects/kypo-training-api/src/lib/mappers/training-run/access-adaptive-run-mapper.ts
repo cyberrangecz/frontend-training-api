@@ -1,5 +1,4 @@
-import { TrainingPhase } from '@muni-kypo-crp/training-model';
-import { AccessTrainingRunInfo } from '@muni-kypo-crp/training-model';
+import { AccessTrainingRunInfo, TrainingPhase } from '@cyberrangecz-platform/training-model';
 import { AccessTrainingRunDTO } from '../../dto/training-run/access-training-run-dto';
 import { PhaseMapper } from '../phase/phase-mapper';
 import { AbstractPhaseDTO } from '../../dto/phase/abstract-phase-dto';

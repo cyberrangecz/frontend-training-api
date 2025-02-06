@@ -1,11 +1,11 @@
 import {
+  AbstractLevelTypeEnum,
+  AccessLevel,
+  AssessmentLevel,
+  InfoLevel,
   Level,
   TrainingLevel,
-  AbstractLevelTypeEnum,
-  InfoLevel,
-  AssessmentLevel,
-  AccessLevel,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { AbstractLevelDTO } from '../../../dto/level/abstract-level-dto';
 import { AccessLevelDTO } from '../../../dto/level/access/access-level-dto';
 import { AssessmentLevelDTO } from '../../../dto/level/assessment/assessment-level-dto';
@@ -23,6 +23,7 @@ import { AnsweredAssessmentLevelMapper } from './assessment/answered-assessment-
  */
 export class AnsweredLevelMapper {
   AssessmentRunQuestionMapper;
+
   static fromDTO(dto: AbstractLevelDTO): Level {
     let level: Level;
     switch (dto.level_type) {

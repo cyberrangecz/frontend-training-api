@@ -1,9 +1,8 @@
-import { TrainingLevel } from '@muni-kypo-crp/training-model';
-import { AccessTrainingRunInfo } from '@muni-kypo-crp/training-model';
+import { AccessTrainingRunInfo, TrainingLevel } from '@cyberrangecz-platform/training-model';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
-import LevelTypeEnum = AbstractLevelDTO.LevelTypeEnum;
 import { AccessTrainingRunDTO } from '../../dto/training-run/access-training-run-dto';
 import { LevelMapper } from '../level/level-mapper';
+import LevelTypeEnum = AbstractLevelDTO.LevelTypeEnum;
 
 export class AccessTrainingRunMapper {
   static fromDTO(dto: AccessTrainingRunDTO): AccessTrainingRunInfo {

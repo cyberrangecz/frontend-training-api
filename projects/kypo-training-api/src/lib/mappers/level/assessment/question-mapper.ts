@@ -1,7 +1,9 @@
-import { FreeFormQuestion } from '@muni-kypo-crp/training-model';
-import { ExtendedMatchingItems } from '@muni-kypo-crp/training-model';
-import { MultipleChoiceQuestion } from '@muni-kypo-crp/training-model';
-import { Question } from '@muni-kypo-crp/training-model';
+import {
+  ExtendedMatchingItems,
+  FreeFormQuestion,
+  MultipleChoiceQuestion,
+  Question,
+} from '@cyberrangecz-platform/training-model';
 import { AbstractQuestionCreateDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import { AbstractAssessmentAnswerDTO } from '../../../dto/level/assessment/abstract-assessment-answer-dto';
 import { ExtendedMatchingItemsMapper } from './extended-matching-items-mapper';

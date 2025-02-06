@@ -7,7 +7,7 @@ import {
   QuestionnairePhase,
   QuestionnaireTypeEnum,
   QuestionTypeEnum,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { PhaseRelationDTO } from '../../dto/phase/questionnaire-phase/phase-relation-dto';
 import { QuestionDTO } from '../../dto/phase/questionnaire-phase/question-dto';
 import { ChoiceDTO } from '../../dto/phase/questionnaire-phase/choice-dto';

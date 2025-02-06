@@ -1,4 +1,4 @@
-import { AbstractLevelTypeEnum, AccessLevel } from '@muni-kypo-crp/training-model';
+import { AbstractLevelTypeEnum, AccessLevel } from '@cyberrangecz-platform/training-model';
 import { AccessLevelDTO } from '../../../dto/level/access/access-level-dto';
 import { AccessLevelUpdateDTO, AccessLevelUpdateDTOClass } from '../../../dto/level/access/access-level-update-dto';
 

@@ -1,6 +1,5 @@
-import { AnswerSimilarityDetectionEvent } from '@muni-kypo-crp/training-model';
+import { AbstractDetectionEventTypeEnum, AnswerSimilarityDetectionEvent } from '@cyberrangecz-platform/training-model';
 import { AnswerSimilarityDetectionEventDTO } from '../../dto/detection-event/answer-similarity/answer-similarity-detection-event-dto';
-import { AbstractDetectionEventTypeEnum } from '@muni-kypo-crp/training-model';
 
 export class AnswerSimilarityDetectionEventMapper {
   static fromDTO(dto: AnswerSimilarityDetectionEventDTO): AnswerSimilarityDetectionEvent {

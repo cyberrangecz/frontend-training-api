@@ -8,6 +8,7 @@ export interface AbstractLevelDTO {
   title?: string;
   level_type?: AbstractLevelDTO.LevelTypeEnum;
 }
+
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AbstractLevelDTO {
   export type LevelTypeEnum = 'INFO_LEVEL' | 'ASSESSMENT_LEVEL' | 'TRAINING_LEVEL' | 'ACCESS_LEVEL';

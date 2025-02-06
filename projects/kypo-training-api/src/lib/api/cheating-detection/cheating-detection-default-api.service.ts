@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseHeaderContentDispositionReader } from '@sentinel/common';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
-import { CheatingDetection } from '@muni-kypo-crp/training-model';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
+import { CheatingDetection } from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';

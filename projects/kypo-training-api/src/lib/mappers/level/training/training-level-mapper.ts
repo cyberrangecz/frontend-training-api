@@ -1,5 +1,4 @@
-import { AbstractLevelTypeEnum } from '@muni-kypo-crp/training-model';
-import { TrainingLevel } from '@muni-kypo-crp/training-model';
+import { AbstractLevelTypeEnum, TrainingLevel } from '@cyberrangecz-platform/training-model';
 import { TrainingLevelDto } from '../../../dto/level/training/training-level-dto';
 import {
   TrainingLevelUpdateDto,

@@ -1,4 +1,4 @@
-import { MultipleChoiceQuestion } from '@muni-kypo-crp/training-model';
+import { MultipleChoiceQuestion } from '@cyberrangecz-platform/training-model';
 import { AbstractQuestionDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import {
   MultipleChoiceQuestionCreateDTO,

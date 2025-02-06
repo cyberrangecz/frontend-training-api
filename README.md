@@ -4,7 +4,6 @@ This library contains Angular API services of backend [KYPO Training service](ht
 It contains default implementation and mapping from DTOs to internal frontend model imported from [kypo-training-model](https://gitlab.ics.muni.cz/kypo-crp/frontend-angular/models/kypo-training-model).
 You can override existing services by implementing the related abstract class and provide it in module.
 
-
 ## Prerequisites
 
 * NPM with access to [KYPO registry](https://projects.ics.muni.cz/projects/kbase/knowledgebase/articles/153)
@@ -13,7 +12,7 @@ You can override existing services by implementing the related abstract class an
 
 To use kypo-training-api in your application, follow these steps:
 
-1. Run `npm install @muni-kypo-crp/training-api`
+1. Run `npm install @cyberrangecz-platform/training-api`
 2. Install peer dependencies
 3. Create an instance of `KypoTrainingApiConfig`
 4. Import `KypoTrainingApiModule` with config passed to `forRoot()` method
@@ -27,7 +26,7 @@ export class MyTrainingDefinitionApi extends TrainingDefinitionApi {
 }
 ```
 
-and provide your implementation in the module 
+and provide your implementation in the module
 
 ```
 @NgModule({

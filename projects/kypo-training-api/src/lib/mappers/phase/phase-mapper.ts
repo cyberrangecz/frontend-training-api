@@ -7,7 +7,7 @@ import {
   QuestionnairePhase,
   Task,
   TrainingPhase,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { TrainingPhaseMapper } from './training-phase-mapper';
 import { TrainingPhaseDTO } from '../../dto/phase/training-phase/training-phase-dto';
 import { InfoPhaseMapper } from './info-phase-mapper';

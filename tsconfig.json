@@ -1,32 +1,32 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "target": "ES2022",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "kypo-training-api": [
-        "dist/kypo-training-api/kypo-training-api",
-        "dist/kypo-training-api"
-      ]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "target": "ES2022",
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "paths": {
+            "kypo-training-api": [
+                "dist/kypo-training-api/kypo-training-api",
+                "dist/kypo-training-api"
+            ]
+        },
+        "useDefineForClassFields": false
     },
-    "useDefineForClassFields": false
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true
+    }
 }

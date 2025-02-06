@@ -12,7 +12,7 @@ import {
   TrainingDefinitionInfo,
   TrainingDefinitionStateEnum,
   TrainingPhase,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { InfoPhaseDTO } from '../../dto/phase/info-phase/info-phase-dto';
 import { PhaseMapper } from '../../mappers/phase/phase-mapper';
 import { catchError, map, mergeMap } from 'rxjs/operators';
@@ -25,7 +25,7 @@ import { TaskDTO } from '../../dto/phase/training-phase/task-dto';
 import { TaskMapper } from '../../mappers/phase/task-mapper';
 import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
 import { TrainingDefinitionMapper } from '../../mappers/training-definition/training-definition-mapper';
 import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';

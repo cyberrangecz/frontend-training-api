@@ -1,4 +1,4 @@
-import { Hint } from '@muni-kypo-crp/training-model';
+import { Hint } from '@cyberrangecz-platform/training-model';
 import { HintDTO, HintDTOClass } from '../../../dto/level/training/hint-dto';
 
 /**

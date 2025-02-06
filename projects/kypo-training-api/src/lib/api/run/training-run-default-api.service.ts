@@ -2,13 +2,17 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
-import { LevelAnswerCheck, TrainingRun, TrainingRunInfo } from '@muni-kypo-crp/training-model';
-import { Question } from '@muni-kypo-crp/training-model';
-import { AccessedTrainingRun } from '@muni-kypo-crp/training-model';
-import { AccessTrainingRunInfo } from '@muni-kypo-crp/training-model';
-import { Level } from '@muni-kypo-crp/training-model';
-import { Hint } from '@muni-kypo-crp/training-model';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
+import {
+  AccessedTrainingRun,
+  AccessTrainingRunInfo,
+  Hint,
+  Level,
+  LevelAnswerCheck,
+  Question,
+  TrainingRun,
+  TrainingRunInfo,
+} from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
@@ -32,6 +36,7 @@ import { TrainingRunApi } from './training-run-api.service';
 import { TrainingRunInfoDTO } from '../../dto/training-run/training-run-info-dto';
 import { TrainingRunInfoMapper } from '../../mappers/training-run/training-run-info-mapper';
 import { AnsweredLevelMapper } from '../../mappers/training-run/training-run-levels/answered-level-mapper';
+
 /**
  * Default implementation of service abstracting http communication with training run endpoints.
  */

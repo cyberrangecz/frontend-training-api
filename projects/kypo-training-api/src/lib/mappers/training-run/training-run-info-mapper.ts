@@ -1,5 +1,5 @@
 import { TrainingRunInfoDTO } from '../../dto/training-run/training-run-info-dto';
-import { TrainingRunInfo } from '@muni-kypo-crp/training-model';
+import { TrainingRunInfo } from '@cyberrangecz-platform/training-model';
 
 /**
  * @dynamic

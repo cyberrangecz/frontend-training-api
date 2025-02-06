@@ -4,6 +4,7 @@ export interface AbstractPhaseDTO {
   order: number;
   phase_type: AbstractPhaseDTO.PhaseTypeEnum;
 }
+
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace AbstractPhaseDTO {
   export type PhaseTypeEnum = 'INFO' | 'TASK' | 'TRAINING' | 'ACCESS' | 'QUESTIONNAIRE';

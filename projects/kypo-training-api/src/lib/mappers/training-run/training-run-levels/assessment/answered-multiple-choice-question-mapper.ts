@@ -1,4 +1,4 @@
-import { MultipleChoiceQuestion } from '@muni-kypo-crp/training-model';
+import { MultipleChoiceQuestion } from '@cyberrangecz-platform/training-model';
 import { AnsweredMultipleChoiceQuestionDTOClass } from '../../../../dto/training-run/training-run-levels/answered-multiple-choice-question-dto';
 
 export class AnsweredMultipleChoiceQuestionMapper {

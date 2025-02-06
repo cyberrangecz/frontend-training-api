@@ -1,4 +1,4 @@
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import {
   AbstractDetectionEvent,
   AnswerSimilarityDetectionEvent,
@@ -9,7 +9,7 @@ import {
   MinimalSolveTimeDetectionEvent,
   NoCommandsDetectionEvent,
   TimeProximityDetectionEvent,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 import { SentinelFilter } from '@sentinel/common/filter';
 
@@ -60,31 +60,37 @@ export abstract class DetectionEventApi {
    * @param eventId the event id
    */
   abstract getAnswerSimilarityEventById(eventId: number): Observable<AnswerSimilarityDetectionEvent>;
+
   /**
    * Sends http request to find detection event of type location similarity by its id
    * @param eventId the event id
    */
   abstract getLocationSimilarityEventById(eventId: number): Observable<LocationSimilarityDetectionEvent>;
+
   /**
    * Sends http request to find detection event of type time proximity by its id
    * @param eventId the event id
    */
   abstract getTimeProximityEventById(eventId: number): Observable<TimeProximityDetectionEvent>;
+
   /**
    * Sends http request to find detection event of type minimal solve time by its id
    * @param eventId the event id
    */
   abstract getMinimalSolveTimeEventById(eventId: number): Observable<MinimalSolveTimeDetectionEvent>;
+
   /**
    * Sends http request to find detection event of type no commands by its id
    * @param eventId the event id
    */
   abstract getNoCommandsEventById(eventId: number): Observable<NoCommandsDetectionEvent>;
+
   /**
    * Sends http request to find detection event of type forbidden commands by its id
    * @param eventId the event id
    */
   abstract getForbiddenCommandsEventById(eventId: number): Observable<ForbiddenCommandsDetectionEvent>;
+
   /**
    * Sends http request to delete all detection events by training instance id
    * @param trainingInstanceId id of training instance

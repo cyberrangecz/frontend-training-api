@@ -1,5 +1,5 @@
 import { IsCorrectAnswerDTO } from '../../dto/phase/training-phase/is-correct-answer-dto';
-import { PhaseAnswerCheck } from '@muni-kypo-crp/training-model';
+import { PhaseAnswerCheck } from '@cyberrangecz-platform/training-model';
 
 export class TaskAnswerMapper {
   static fromDTO(dto: IsCorrectAnswerDTO): PhaseAnswerCheck {

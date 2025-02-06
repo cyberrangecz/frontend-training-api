@@ -1,5 +1,5 @@
 import { TaskDTO } from '../../dto/phase/training-phase/task-dto';
-import { AbstractPhaseTypeEnum, Task } from '@muni-kypo-crp/training-model';
+import { AbstractPhaseTypeEnum, Task } from '@cyberrangecz-platform/training-model';
 import { TaskUpdateDTO } from '../../dto/phase/training-phase/task-update-dto';
 import { TaskCopyDTO } from '../../dto/phase/training-phase/task-copy-dto';
 

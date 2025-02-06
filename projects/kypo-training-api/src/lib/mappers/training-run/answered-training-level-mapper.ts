@@ -1,9 +1,11 @@
-import { TrainingLevel } from '@muni-kypo-crp/training-model';
-import { AssessmentLevel } from '@muni-kypo-crp/training-model';
-import { Level } from '@muni-kypo-crp/training-model';
-import { InfoLevel } from '@muni-kypo-crp/training-model';
-import { AccessLevel } from '@muni-kypo-crp/training-model';
-import { AbstractLevelTypeEnum } from '@muni-kypo-crp/training-model';
+import {
+  AbstractLevelTypeEnum,
+  AccessLevel,
+  AssessmentLevel,
+  InfoLevel,
+  Level,
+  TrainingLevel,
+} from '@cyberrangecz-platform/training-model';
 import { AbstractLevelDTO } from '../../dto/level/abstract-level-dto';
 import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';
 import { BasicLevelInfoDTO } from '../../dto/level/basic-level-info-dto';

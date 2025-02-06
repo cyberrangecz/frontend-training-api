@@ -1,4 +1,4 @@
-import { AbstractPhaseTypeEnum, AccessPhase } from '@muni-kypo-crp/training-model';
+import { AbstractPhaseTypeEnum, AccessPhase } from '@cyberrangecz-platform/training-model';
 import { AccessPhaseDTO } from '../../dto/phase/access-phase/access-phase-dto';
 import { AccessPhaseUpdateDTO } from '../../dto/phase/access-phase/access-phase-update-dto';
 

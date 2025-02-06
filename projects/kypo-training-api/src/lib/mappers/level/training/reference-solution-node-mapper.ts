@@ -1,4 +1,4 @@
-import { ReferenceSolutionNode } from '@muni-kypo-crp/training-model';
+import { ReferenceSolutionNode } from '@cyberrangecz-platform/training-model';
 import { ReferenceSolutionNodeDTO } from '../../../dto/level/training/reference-solution-node-dto';
 
 export class ReferenceSolutionNodeMapper {

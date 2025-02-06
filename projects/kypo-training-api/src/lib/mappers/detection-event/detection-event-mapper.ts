@@ -1,4 +1,4 @@
-import { AbstractDetectionEvent } from '@muni-kypo-crp/training-model';
+import { AbstractDetectionEvent } from '@cyberrangecz-platform/training-model';
 import { DetectionEventDTO } from '../../dto/detection-event/detection-event-dto';
 import { AnswerSimilarityDetectionEventDTO } from '../../dto/detection-event/answer-similarity/answer-similarity-detection-event-dto';
 import { LocationSimilarityDetectionEventDTO } from '../../dto/detection-event/location-similarity/location_similarity-detection-event-dto';

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MitreTechnique } from '@muni-kypo-crp/training-model';
+import { MitreTechnique } from '@cyberrangecz-platform/training-model';
 import { map, Observable } from 'rxjs';
 import { MitreTechniquesListDTO } from '../../dto/mitre-techniques/mitre-techniques-list-dto';
 import { MitreTechniquesListMapper } from '../../mappers/mitre-techniques/mitre-techniques-list-mapper';

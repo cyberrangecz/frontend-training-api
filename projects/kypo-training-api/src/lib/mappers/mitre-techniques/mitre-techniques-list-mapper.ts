@@ -1,4 +1,4 @@
-import { MitreTechnique } from '@muni-kypo-crp/training-model';
+import { MitreTechnique } from '@cyberrangecz-platform/training-model';
 import { MitreTechniquePythonDTO, MitreTechniquesListDTO } from '../../dto/mitre-techniques/mitre-techniques-list-dto';
 
 /**

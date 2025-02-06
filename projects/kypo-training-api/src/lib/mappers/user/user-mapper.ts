@@ -1,4 +1,4 @@
-import { TrainingUser } from '@muni-kypo-crp/training-model';
+import { TrainingUser } from '@cyberrangecz-platform/training-model';
 import { UserRefDTO } from '../../dto/user/user-ref-dto';
 
 /**

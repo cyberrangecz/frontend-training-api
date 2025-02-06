@@ -1,5 +1,5 @@
 import { InfoPhaseDTO } from '../../dto/phase/info-phase/info-phase-dto';
-import { AbstractPhaseTypeEnum, InfoPhase } from '@muni-kypo-crp/training-model';
+import { AbstractPhaseTypeEnum, InfoPhase } from '@cyberrangecz-platform/training-model';
 import { InfoPhaseUpdateDTO } from '../../dto/phase/info-phase/info-phase-update-dto';
 
 export class InfoPhaseMapper {

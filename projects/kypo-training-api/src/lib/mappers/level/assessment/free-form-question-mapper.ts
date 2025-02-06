@@ -4,7 +4,7 @@ import {
   FreeFormQuestionDTOClass,
 } from '../../../dto/level/assessment/free-form-question-dto';
 import { QuestionAnswerDTO } from '../../../dto/level/assessment/question-answer-dto';
-import { FreeFormQuestion } from '@muni-kypo-crp/training-model';
+import { FreeFormQuestion } from '@cyberrangecz-platform/training-model';
 
 export class FreeFormQuestionMapper {
   static fromDTO(dto: FreeFormQuestionDTOClass): FreeFormQuestion {

@@ -1,4 +1,4 @@
-import { AbstractLevelTypeEnum } from '@muni-kypo-crp/training-model';
+import { AbstractLevelTypeEnum } from '@cyberrangecz-platform/training-model';
 import { AbstractLevelDTO } from '../level/abstract-level-dto';
 
 export class VisualizationInfoDTO {

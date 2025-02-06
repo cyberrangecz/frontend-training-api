@@ -1,9 +1,9 @@
-import { ExtendedMatchingItems } from '@muni-kypo-crp/training-model';
+import { ExtendedMatchingItems } from '@cyberrangecz-platform/training-model';
 import { AbstractQuestionDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import { ExtendedMatchingItemsAnswerDTO } from '../../../dto/level/assessment/extended-matching-items-answer-dto';
 import { ExtendedMatchingItemsDTO } from '../../../dto/level/assessment/extended-matching-items-dto';
-import { ExtendedMatchingOption } from '@muni-kypo-crp/training-model/lib/questions/extended-matching-option';
-import { ExtendedMatchingStatement } from '@muni-kypo-crp/training-model/lib/questions/extended-matching-statement';
+import { ExtendedMatchingOption } from '@cyberrangecz-platform/training-model/lib/questions/extended-matching-option';
+import { ExtendedMatchingStatement } from '@cyberrangecz-platform/training-model/lib/questions/extended-matching-statement';
 import { ExtendedMatchingStatementDTO } from '../../../dto/level/assessment/extended-matching-statement-dto';
 import { ExtendedMatchingOptionDTO } from '../../../dto/level/assessment/extended-matching-option-dto';
 

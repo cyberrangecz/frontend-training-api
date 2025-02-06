@@ -1,7 +1,6 @@
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
-import { Trainee, TrainingUser } from '@muni-kypo-crp/training-model';
-import { VisualizationInfo } from '@muni-kypo-crp/training-model';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
+import { Trainee, TrainingUser, VisualizationInfo } from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 
 /**

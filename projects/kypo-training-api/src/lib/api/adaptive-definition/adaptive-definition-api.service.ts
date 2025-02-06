@@ -1,5 +1,5 @@
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { Observable } from 'rxjs';
 import {
   AccessPhase,
@@ -11,7 +11,7 @@ import {
   TrainingDefinitionInfo,
   TrainingDefinitionStateEnum,
   TrainingPhase,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 
 export abstract class AdaptiveDefinitionApiService {
   abstract getAll(

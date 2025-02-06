@@ -5,7 +5,7 @@ import {
   QuestionnairePhase,
   QuestionnaireTypeEnum,
   QuestionTypeEnum,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { AnsweredQuestionDTO } from './../../../../dto/training-run/adaptive-run-phases/answered-question-dto';
 import { AnsweredQuestionnairePhaseDTO } from 'projects/kypo-training-api/src/lib/dto/training-run/adaptive-run-phases/answered-questionnaire-phase-dto';
 import { ChoiceDTO } from './../../../../dto/phase/questionnaire-phase/choice-dto';

@@ -1,4 +1,4 @@
-import { FreeFormQuestion } from '@muni-kypo-crp/training-model';
+import { FreeFormQuestion } from '@cyberrangecz-platform/training-model';
 import { AnsweredFreeFormQuestionDTOClass } from '../../../../dto/training-run/training-run-levels/answered-free-form-question-dto';
 
 export class AnsweredFreeFormQuestionMapper {

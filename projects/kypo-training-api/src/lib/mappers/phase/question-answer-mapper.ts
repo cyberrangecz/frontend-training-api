@@ -1,4 +1,4 @@
-import { QuestionAnswer } from '@muni-kypo-crp/training-model';
+import { QuestionAnswer } from '@cyberrangecz-platform/training-model';
 import { QuestionAnswerDTO } from '../../dto/phase/questionnaire-phase/question-answer-dto';
 
 /**

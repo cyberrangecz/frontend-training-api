@@ -1,5 +1,4 @@
-import { TrainingRunStateEnum } from '@muni-kypo-crp/training-model';
-import { TrainingRun } from '@muni-kypo-crp/training-model';
+import { TrainingRun, TrainingRunStateEnum } from '@cyberrangecz-platform/training-model';
 import { TrainingRunDTO } from '../../dto/training-run/training-run-dto';
 import { UserMapper } from '../user/user-mapper';
 import { PhaseMapper } from '../phase/phase-mapper';

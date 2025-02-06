@@ -1,5 +1,4 @@
-import { TrainingDefinitionStateEnum } from '@muni-kypo-crp/training-model';
-import { TrainingDefinition } from '@muni-kypo-crp/training-model';
+import { TrainingDefinition, TrainingDefinitionStateEnum } from '@cyberrangecz-platform/training-model';
 import { TrainingDefinitionCreateDTO } from '../../dto/training-definition/training-definition-create-dto';
 import { TrainingDefinitionDTO } from '../../dto/training-definition/training-definition-dto';
 import { TrainingDefinitionUpdateDTO } from '../../dto/training-definition/training-definition-update-dto';

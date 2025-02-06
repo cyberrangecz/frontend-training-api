@@ -1,5 +1,5 @@
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import {
   AccessLevel,
   AssessmentLevel,
@@ -9,7 +9,7 @@ import {
   TrainingDefinitionInfo,
   TrainingDefinitionStateEnum,
   TrainingLevel,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 
 export abstract class TrainingDefinitionApi {

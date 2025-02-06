@@ -1,7 +1,7 @@
-import { ExtendedMatchingItems } from '@muni-kypo-crp/training-model';
+import { ExtendedMatchingItems } from '@cyberrangecz-platform/training-model';
 import { ExtendedMatchingOptionDTO } from '../../../../dto/level/assessment/extended-matching-option-dto';
-import { ExtendedMatchingStatement } from '@muni-kypo-crp/training-model/lib/questions/extended-matching-statement';
-import { ExtendedMatchingOption } from '@muni-kypo-crp/training-model/lib/questions/extended-matching-option';
+import { ExtendedMatchingStatement } from '@cyberrangecz-platform/training-model/lib/questions/extended-matching-statement';
+import { ExtendedMatchingOption } from '@cyberrangecz-platform/training-model/lib/questions/extended-matching-option';
 import { AnsweredExtendedMatchingItemsDTO } from '../../../../dto/training-run/training-run-levels/answered-extended-matching-items-dto';
 import { AnsweredExtendedMatchingStatementDTO } from './../../../../dto/training-run/training-run-levels/answered-extended-matching-statement-dto';
 

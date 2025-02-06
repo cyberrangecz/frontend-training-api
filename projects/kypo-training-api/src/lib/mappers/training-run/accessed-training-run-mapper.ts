@@ -2,7 +2,7 @@ import {
   AccessedTrainingRun,
   TraineeAccessTrainingRunActionEnum,
   TrainingRunTypeEnum,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { AccessedTrainingRunDTO } from '../../dto/training-run/accessed-training-run-dto';
 import PossibleActionEnum = AccessedTrainingRunDTO.PossibleActionEnum;
 

@@ -1,5 +1,5 @@
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import {
   AccessedTrainingRun,
   AccessTrainingRunInfo,
@@ -9,7 +9,7 @@ import {
   Question,
   TrainingRun,
   TrainingRunInfo,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 
 export abstract class TrainingRunApi {
@@ -103,6 +103,7 @@ export abstract class TrainingRunApi {
    * @param trainingRunId id of the training run in which, solution should be revealed
    */
   abstract takeSolution(trainingRunId: number): Observable<string>;
+
   /**
    * Sends http request to submit user answers for questions in assessment level
    * @param trainingRunId id of the training run in which, questions should be submitted

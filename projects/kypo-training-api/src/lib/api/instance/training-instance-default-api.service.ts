@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
 import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
-import { TrainingInstance, TrainingRun } from '@muni-kypo-crp/training-model';
+import { TrainingInstance, TrainingRun } from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { TrainingInstanceAssignPoolDTO } from '../../dto/training-instance/training-instance-assign-pool-dto';

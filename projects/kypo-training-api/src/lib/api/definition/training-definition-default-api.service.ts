@@ -3,12 +3,16 @@ import { Injectable } from '@angular/core';
 import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
 import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
-import { AccessLevel, TrainingDefinitionStateEnum, TrainingLevel } from '@muni-kypo-crp/training-model';
-import { AssessmentLevel } from '@muni-kypo-crp/training-model';
-import { TrainingDefinitionInfo } from '@muni-kypo-crp/training-model';
-import { Level } from '@muni-kypo-crp/training-model';
-import { TrainingDefinition } from '@muni-kypo-crp/training-model';
-import { InfoLevel } from '@muni-kypo-crp/training-model';
+import {
+  AccessLevel,
+  AssessmentLevel,
+  InfoLevel,
+  Level,
+  TrainingDefinition,
+  TrainingDefinitionInfo,
+  TrainingDefinitionStateEnum,
+  TrainingLevel,
+} from '@cyberrangecz-platform/training-model';
 import { fromEvent, Observable } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { AssessmentLevelDTO } from '../../dto/level/assessment/assessment-level-dto';
@@ -297,12 +301,12 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   deleteLevel(trainingDefinitionId: number, levelId: number): Observable<Level[]> {
     // prettier-ignore
     return this.http
-      .delete<BasicLevelInfoDTO[]>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/`+
-        `${this.levelsUriExtension}/${levelId}`,
-        { headers: this.createDefaultHeaders() }
-      )
-      .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
+            .delete<BasicLevelInfoDTO[]>(
+                `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/` +
+                `${this.levelsUriExtension}/${levelId}`,
+                { headers: this.createDefaultHeaders() }
+            )
+            .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
   }
 
   /**
@@ -327,13 +331,13 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   moveLevelTo(trainingDefinitionId: number, levelId: number, toPosition: number): Observable<Level[]> {
     // prettier-ignore
     return this.http
-      .put<BasicLevelInfoDTO[]>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/` +
-        `${this.levelsUriExtension}/${levelId}/move-to/${toPosition}`,
-        {},
-        { headers: this.createDefaultHeaders() }
-      )
-      .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
+            .put<BasicLevelInfoDTO[]>(
+                `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/` +
+                `${this.levelsUriExtension}/${levelId}/move-to/${toPosition}`,
+                {},
+                { headers: this.createDefaultHeaders() }
+            )
+            .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
   }
 
   /**
@@ -345,13 +349,13 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
   swapLevelWith(trainingDefinitionId: number, levelIdFrom: number, levelIdTo: number): Observable<Level[]> {
     // prettier-ignore
     return this.http
-      .put<BasicLevelInfoDTO[]>(
-        `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/` +
-        `${this.levelsUriExtension}/${levelIdFrom}/swap-with/${levelIdTo}`,
-        {},
-        { headers: this.createDefaultHeaders() }
-      )
-      .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
+            .put<BasicLevelInfoDTO[]>(
+                `${this.trainingDefsEndpointUri}/${trainingDefinitionId}/` +
+                `${this.levelsUriExtension}/${levelIdFrom}/swap-with/${levelIdTo}`,
+                {},
+                { headers: this.createDefaultHeaders() }
+            )
+            .pipe(map((resp) => LevelMapper.fromBasicDTOs(resp)));
   }
 
   /**

@@ -1,5 +1,5 @@
 import { AbstractQuestionCreateDTO, AbstractQuestionDTO } from './abstact-question-dto';
-import { QuestionChoice } from '@muni-kypo-crp/training-model/lib/questions/question-choice';
+import { QuestionChoice } from '@cyberrangecz-platform/training-model/lib/questions/question-choice';
 import { QuestionChoiceDTO } from './question-choice-dto';
 
 export interface FreeFormQuestionCreateDTO extends AbstractQuestionCreateDTO {

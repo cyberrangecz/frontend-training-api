@@ -1,5 +1,5 @@
 import { TrainingPhaseDTO } from '../../dto/phase/training-phase/training-phase-dto';
-import { AbstractPhaseTypeEnum, DecisionMatrixRow, TrainingPhase, Task } from '@muni-kypo-crp/training-model';
+import { AbstractPhaseTypeEnum, DecisionMatrixRow, Task, TrainingPhase } from '@cyberrangecz-platform/training-model';
 import { TrainingPhaseUpdateDTO } from '../../dto/phase/training-phase/training-phase-update-dto';
 import { TaskDTO } from '../../dto/phase/training-phase/task-dto';
 import { TaskMapper } from './task-mapper';

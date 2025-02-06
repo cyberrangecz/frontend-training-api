@@ -1,4 +1,4 @@
-import { Question } from '@muni-kypo-crp/training-model';
+import { Question } from '@cyberrangecz-platform/training-model';
 import { AnsweredExtendedMatchingItemsMapper } from './answered-extended-matching-items-mapper';
 import { AnsweredFreeFormQuestionMapper } from './answered-free-form-question-mapper';
 import { AnsweredMultipleChoiceQuestionMapper } from './answered-multiple-choice-question-mapper';

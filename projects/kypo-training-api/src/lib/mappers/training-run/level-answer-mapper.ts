@@ -1,4 +1,4 @@
-import { LevelAnswerCheck } from '@muni-kypo-crp/training-model';
+import { LevelAnswerCheck } from '@cyberrangecz-platform/training-model';
 import { IsCorrectAnswerDto } from '../../dto/level/training/is-correct-answer-dto';
 
 export class LevelAnswerMapper {

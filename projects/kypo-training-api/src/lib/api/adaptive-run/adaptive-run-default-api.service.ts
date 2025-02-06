@@ -4,16 +4,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { KypoTrainingApiContext } from '../../other/kypo-training-api-context';
 import { SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { Observable } from 'rxjs';
 import {
   AccessedTrainingRun,
   AccessTrainingRunInfo,
-  PhaseAnswerCheck,
   Phase,
+  PhaseAnswerCheck,
   QuestionAnswer,
   TrainingRun,
-} from '@muni-kypo-crp/training-model';
+} from '@cyberrangecz-platform/training-model';
 import { PaginationParams } from '../../http/params/pagination-params';
 import { FilterParams } from '../../http/params/filter-params';
 import { TrainingRunRestResource } from '../../dto/training-run/training-run-rest-resource';

@@ -1,6 +1,6 @@
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
-import { TrainingInstance, TrainingRun } from '@muni-kypo-crp/training-model';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
+import { TrainingInstance, TrainingRun } from '@cyberrangecz-platform/training-model';
 import { Observable } from 'rxjs';
 
 export abstract class AdaptiveInstanceApi {
