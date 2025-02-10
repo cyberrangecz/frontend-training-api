@@ -18,9 +18,9 @@
             "dom"
         ],
         "paths": {
-            "kypo-training-api": [
-                "dist/kypo-training-api/kypo-training-api",
-                "dist/kypo-training-api"
+            "training-api": [
+                "dist/training-api/training-api",
+                "dist/training-api"
             ]
         },
         "useDefineForClassFields": false
