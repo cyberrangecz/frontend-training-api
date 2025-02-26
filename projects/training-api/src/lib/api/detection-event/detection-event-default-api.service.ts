@@ -11,16 +11,16 @@ import { DetectionEventApi } from './detection-event-api.service';
 import { DetectionEventMapper } from '../../mappers/detection-event/detection-event-mapper';
 import { DetectionEventDTO } from '../../dto/detection-event/detection-event-dto';
 import {
-  AbstractDetectionEvent,
-  AnswerSimilarityDetectionEvent,
-  DetectedForbiddenCommand,
-  DetectionEventParticipant,
-  ForbiddenCommandsDetectionEvent,
-  LocationSimilarityDetectionEvent,
-  MinimalSolveTimeDetectionEvent,
-  NoCommandsDetectionEvent,
-  TimeProximityDetectionEvent,
-} from '@cyberrangecz-platform/training-model';
+    AbstractDetectionEvent,
+    AnswerSimilarityDetectionEvent,
+    DetectedForbiddenCommand,
+    DetectionEventParticipant,
+    ForbiddenCommandsDetectionEvent,
+    LocationSimilarityDetectionEvent,
+    MinimalSolveTimeDetectionEvent,
+    NoCommandsDetectionEvent,
+    TimeProximityDetectionEvent,
+} from '@crczp/training-model';
 import { DetectionEventRestResource } from '../../dto/detection-event/detection-event-rest-resource';
 import { DetectionEventParticipantRestResource } from '../../dto/detection-event/detection-event-participant-rest-resource';
 import { DetectionEventParticipantMapper } from '../../mappers/detection-event/detection-event-participant-mapper';
@@ -43,201 +43,203 @@ import { FilterParams } from '../../http/params/filter-params';
 
 @Injectable()
 export class DetectionEventDefaultApi extends DetectionEventApi {
-  readonly detectionEventsUriExtension = 'cheating-detections';
+    readonly detectionEventsUriExtension = 'cheating-detections';
 
-  readonly detectionEventsEndpointUri: string;
+    readonly detectionEventsEndpointUri: string;
 
-  constructor(
-    private http: HttpClient,
-    private context: TrainingApiContext,
-  ) {
-    super();
-    this.detectionEventsEndpointUri = this.context.config.trainingBasePath + this.detectionEventsUriExtension;
-  }
+    constructor(
+        private http: HttpClient,
+        private context: TrainingApiContext,
+    ) {
+        super();
+        this.detectionEventsEndpointUri = this.context.config.trainingBasePath + this.detectionEventsUriExtension;
+    }
 
-  /**
-   * Sends http request to retrieve all detection events from cheating detection
-   * on specified page of a pagination
-   * @param cheatingDetectionId id of the cheating detection
-   * @param trainingInstanceId id of the training instance
-   * @param pagination requested pagination
-   * @param filters filters to be applied on result
-   */
-  getAll(
-    pagination: OffsetPaginationEvent,
-    cheatingDetectionId: number,
-    trainingInstanceId: number,
-    filters: SentinelFilter[] = [],
-  ): Observable<PaginatedResource<AbstractDetectionEvent>> {
-    const params = SentinelParamsMerger.merge([
-      new HttpParams().append('trainingInstanceId', trainingInstanceId.toString()),
-      PaginationParams.forJavaAPI(pagination),
-      FilterParams.create(filters),
-    ]);
-    return this.http
-      .get<DetectionEventRestResource>(`${this.detectionEventsEndpointUri}/${cheatingDetectionId}/events`, {
-        params,
-      })
-      .pipe(
-        map(
-          (response) =>
-            new PaginatedResource<AbstractDetectionEvent>(
-              DetectionEventMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination),
-            ),
-        ),
-      );
-  }
+    /**
+     * Sends http request to retrieve all detection events from cheating detection
+     * on specified page of a pagination
+     * @param cheatingDetectionId id of the cheating detection
+     * @param trainingInstanceId id of the training instance
+     * @param pagination requested pagination
+     * @param filters filters to be applied on result
+     */
+    getAll(
+        pagination: OffsetPaginationEvent,
+        cheatingDetectionId: number,
+        trainingInstanceId: number,
+        filters: SentinelFilter[] = [],
+    ): Observable<PaginatedResource<AbstractDetectionEvent>> {
+        const params = SentinelParamsMerger.merge([
+            new HttpParams().append('trainingInstanceId', trainingInstanceId.toString()),
+            PaginationParams.forJavaAPI(pagination),
+            FilterParams.create(filters),
+        ]);
+        return this.http
+            .get<DetectionEventRestResource>(`${this.detectionEventsEndpointUri}/${cheatingDetectionId}/events`, {
+                params,
+            })
+            .pipe(
+                map(
+                    (response) =>
+                        new PaginatedResource<AbstractDetectionEvent>(
+                            DetectionEventMapper.fromDTOs(response.content),
+                            PaginationMapper.fromJavaAPI(response.pagination),
+                        ),
+                ),
+            );
+    }
 
-  /**
-   * Sends http request to find all forbidden commands of a detection event
-   * @param pagination requested pagination
-   * @param eventId the id of the detection event
-   */
-  getAllForbiddenCommandsOfEvent(
-    pagination: OffsetPaginationEvent,
-    eventId: number,
-  ): Observable<PaginatedResource<DetectedForbiddenCommand>> {
-    const params = SentinelParamsMerger.merge([
-      new HttpParams().append('eventId', eventId.toString()),
-      PaginationParams.forJavaAPI(pagination),
-    ]);
-    return this.http
-      .get<DetectedForbiddenCommandRestResource>(`${this.detectionEventsEndpointUri}/forbidden-commands`, {
-        params,
-      })
-      .pipe(
-        map(
-          (response) =>
-            new PaginatedResource<DetectedForbiddenCommand>(
-              DetectedForbiddenCommandMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination),
-            ),
-        ),
-      );
-  }
+    /**
+     * Sends http request to find all forbidden commands of a detection event
+     * @param pagination requested pagination
+     * @param eventId the id of the detection event
+     */
+    getAllForbiddenCommandsOfEvent(
+        pagination: OffsetPaginationEvent,
+        eventId: number,
+    ): Observable<PaginatedResource<DetectedForbiddenCommand>> {
+        const params = SentinelParamsMerger.merge([
+            new HttpParams().append('eventId', eventId.toString()),
+            PaginationParams.forJavaAPI(pagination),
+        ]);
+        return this.http
+            .get<DetectedForbiddenCommandRestResource>(`${this.detectionEventsEndpointUri}/forbidden-commands`, {
+                params,
+            })
+            .pipe(
+                map(
+                    (response) =>
+                        new PaginatedResource<DetectedForbiddenCommand>(
+                            DetectedForbiddenCommandMapper.fromDTOs(response.content),
+                            PaginationMapper.fromJavaAPI(response.pagination),
+                        ),
+                ),
+            );
+    }
 
-  /**
-   * Sends http request to find all participants of a detection event
-   * @param pagination requested pagination
-   * @param eventId the id of the detection event
-   */
-  getAllParticipants(
-    pagination: OffsetPaginationEvent,
-    eventId: number,
-  ): Observable<PaginatedResource<DetectionEventParticipant>> {
-    const params = SentinelParamsMerger.merge([
-      new HttpParams().append('eventId', eventId.toString()),
-      PaginationParams.forJavaAPI(pagination),
-    ]);
-    return this.http
-      .get<DetectionEventParticipantRestResource>(`${this.detectionEventsEndpointUri}/participants`, {
-        params,
-      })
-      .pipe(
-        map(
-          (response) =>
-            new PaginatedResource<DetectionEventParticipant>(
-              DetectionEventParticipantMapper.fromDTOs(response.content),
-              PaginationMapper.fromJavaAPI(response.pagination),
-            ),
-        ),
-      );
-  }
+    /**
+     * Sends http request to find all participants of a detection event
+     * @param pagination requested pagination
+     * @param eventId the id of the detection event
+     */
+    getAllParticipants(
+        pagination: OffsetPaginationEvent,
+        eventId: number,
+    ): Observable<PaginatedResource<DetectionEventParticipant>> {
+        const params = SentinelParamsMerger.merge([
+            new HttpParams().append('eventId', eventId.toString()),
+            PaginationParams.forJavaAPI(pagination),
+        ]);
+        return this.http
+            .get<DetectionEventParticipantRestResource>(`${this.detectionEventsEndpointUri}/participants`, {
+                params,
+            })
+            .pipe(
+                map(
+                    (response) =>
+                        new PaginatedResource<DetectionEventParticipant>(
+                            DetectionEventParticipantMapper.fromDTOs(response.content),
+                            PaginationMapper.fromJavaAPI(response.pagination),
+                        ),
+                ),
+            );
+    }
 
-  /**
-   * Sends http request to retrieve detection event by its ID
-   * @param eventId id of the detection event
-   */
-  getEventById(eventId: number): Observable<AbstractDetectionEvent> {
-    const params = new HttpParams().append('eventId', eventId.toString());
-    return this.http
-      .get<DetectionEventDTO>(`${this.detectionEventsEndpointUri}/event`, { params })
-      .pipe(map((response) => DetectionEventMapper.fromDTO(response)));
-  }
+    /**
+     * Sends http request to retrieve detection event by its ID
+     * @param eventId id of the detection event
+     */
+    getEventById(eventId: number): Observable<AbstractDetectionEvent> {
+        const params = new HttpParams().append('eventId', eventId.toString());
+        return this.http
+            .get<DetectionEventDTO>(`${this.detectionEventsEndpointUri}/event`, { params })
+            .pipe(map((response) => DetectionEventMapper.fromDTO(response)));
+    }
 
-  /**
-   * Sends http request to find detection event of type answer similarity by its id
-   * @param eventId the event id
-   */
-  getAnswerSimilarityEventById(eventId: number): Observable<AnswerSimilarityDetectionEvent> {
-    const params = new HttpParams().append('eventId', eventId.toString());
-    return this.http
-      .get<AnswerSimilarityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/answer-similarity`, { params })
-      .pipe(map((response) => AnswerSimilarityDetectionEventMapper.fromDTO(response)));
-  }
+    /**
+     * Sends http request to find detection event of type answer similarity by its id
+     * @param eventId the event id
+     */
+    getAnswerSimilarityEventById(eventId: number): Observable<AnswerSimilarityDetectionEvent> {
+        const params = new HttpParams().append('eventId', eventId.toString());
+        return this.http
+            .get<AnswerSimilarityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/answer-similarity`, { params })
+            .pipe(map((response) => AnswerSimilarityDetectionEventMapper.fromDTO(response)));
+    }
 
-  /**
-   * Sends http request to find detection event of type location similarity by its id
-   * @param eventId the event id
-   */
-  getLocationSimilarityEventById(eventId: number): Observable<LocationSimilarityDetectionEvent> {
-    const params = new HttpParams().append('eventId', eventId.toString());
-    return this.http
-      .get<LocationSimilarityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/location-similarity`, {
-        params,
-      })
-      .pipe(map((response) => LocationSimilarityDetectionEventMapper.fromDTO(response)));
-  }
+    /**
+     * Sends http request to find detection event of type location similarity by its id
+     * @param eventId the event id
+     */
+    getLocationSimilarityEventById(eventId: number): Observable<LocationSimilarityDetectionEvent> {
+        const params = new HttpParams().append('eventId', eventId.toString());
+        return this.http
+            .get<LocationSimilarityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/location-similarity`, {
+                params,
+            })
+            .pipe(map((response) => LocationSimilarityDetectionEventMapper.fromDTO(response)));
+    }
 
-  /**
-   * Sends http request to find detection event of type time proximity by its id
-   * @param eventId the event id
-   */
-  getTimeProximityEventById(eventId: number): Observable<TimeProximityDetectionEvent> {
-    const params = new HttpParams().append('eventId', eventId.toString());
-    return this.http
-      .get<TimeProximityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/time-proximity`, { params })
-      .pipe(map((response) => TimeProximityDetectionEventMapper.fromDTO(response)));
-  }
+    /**
+     * Sends http request to find detection event of type time proximity by its id
+     * @param eventId the event id
+     */
+    getTimeProximityEventById(eventId: number): Observable<TimeProximityDetectionEvent> {
+        const params = new HttpParams().append('eventId', eventId.toString());
+        return this.http
+            .get<TimeProximityDetectionEventDTO>(`${this.detectionEventsEndpointUri}/time-proximity`, { params })
+            .pipe(map((response) => TimeProximityDetectionEventMapper.fromDTO(response)));
+    }
 
-  /**
-   * Sends http request to find detection event of type minimal solve time by its id
-   * @param eventId the event id
-   */
-  getMinimalSolveTimeEventById(eventId: number): Observable<MinimalSolveTimeDetectionEvent> {
-    const params = new HttpParams().append('eventId', eventId.toString());
-    return this.http
-      .get<MinimalSolveTimeDetectionEventDTO>(`${this.detectionEventsEndpointUri}/minimal-solve-time`, { params })
-      .pipe(map((response) => MinimalSolveTimeDetectionEventMapper.fromDTO(response)));
-  }
+    /**
+     * Sends http request to find detection event of type minimal solve time by its id
+     * @param eventId the event id
+     */
+    getMinimalSolveTimeEventById(eventId: number): Observable<MinimalSolveTimeDetectionEvent> {
+        const params = new HttpParams().append('eventId', eventId.toString());
+        return this.http
+            .get<MinimalSolveTimeDetectionEventDTO>(`${this.detectionEventsEndpointUri}/minimal-solve-time`, { params })
+            .pipe(map((response) => MinimalSolveTimeDetectionEventMapper.fromDTO(response)));
+    }
 
-  /**
-   * Sends http request to find detection event of type no commands by its id
-   * @param eventId the event id
-   */
-  getNoCommandsEventById(eventId: number): Observable<NoCommandsDetectionEvent> {
-    const params = new HttpParams().append('eventId', eventId.toString());
-    return this.http
-      .get<NoCommandsDetectionEventDTO>(`${this.detectionEventsEndpointUri}/no-commands`, { params })
-      .pipe(map((response) => NoCommandsDetectionEventMapper.fromDTO(response)));
-  }
+    /**
+     * Sends http request to find detection event of type no commands by its id
+     * @param eventId the event id
+     */
+    getNoCommandsEventById(eventId: number): Observable<NoCommandsDetectionEvent> {
+        const params = new HttpParams().append('eventId', eventId.toString());
+        return this.http
+            .get<NoCommandsDetectionEventDTO>(`${this.detectionEventsEndpointUri}/no-commands`, { params })
+            .pipe(map((response) => NoCommandsDetectionEventMapper.fromDTO(response)));
+    }
 
-  /**
-   * Sends http request to find detection event of type forbidden commands by its id
-   * @param eventId the event id
-   */
-  getForbiddenCommandsEventById(eventId: number): Observable<ForbiddenCommandsDetectionEvent> {
-    const params = new HttpParams().append('eventId', eventId.toString());
-    return this.http
-      .get<ForbiddenCommandsDetectionEventDTO>(`${this.detectionEventsEndpointUri}/forbidden-commands`, { params })
-      .pipe(map((response) => ForbiddenCommandsDetectionEventMapper.fromDTO(response)));
-  }
+    /**
+     * Sends http request to find detection event of type forbidden commands by its id
+     * @param eventId the event id
+     */
+    getForbiddenCommandsEventById(eventId: number): Observable<ForbiddenCommandsDetectionEvent> {
+        const params = new HttpParams().append('eventId', eventId.toString());
+        return this.http
+            .get<ForbiddenCommandsDetectionEventDTO>(`${this.detectionEventsEndpointUri}/forbidden-commands`, {
+                params,
+            })
+            .pipe(map((response) => ForbiddenCommandsDetectionEventMapper.fromDTO(response)));
+    }
 
-  /**
-   * Sends http request to delete all detection events by cheating detection id
-   * @param cheatingDetectionId id of cheating detection
-   * @param force true if delete should be forced, false otherwise
-   */
-  deleteAllByCheatingDetectionId(cheatingDetectionId: number): Observable<any> {
-    return this.http.delete<any>(`${this.detectionEventsEndpointUri}/${cheatingDetectionId}/delete`, {});
-  }
+    /**
+     * Sends http request to delete all detection events by cheating detection id
+     * @param cheatingDetectionId id of cheating detection
+     * @param force true if delete should be forced, false otherwise
+     */
+    deleteAllByCheatingDetectionId(cheatingDetectionId: number): Observable<any> {
+        return this.http.delete<any>(`${this.detectionEventsEndpointUri}/${cheatingDetectionId}/delete`, {});
+    }
 
-  /**
-   * Sends http request to delete all detection events by training instance id
-   * @param trainingInstanceId id of training instance
-   */
-  deleteAllByTrainingInstanceId(trainingInstanceId: number): Observable<any> {
-    return this.http.delete<any>(`${this.detectionEventsEndpointUri}/${trainingInstanceId}/instance`, {});
-  }
+    /**
+     * Sends http request to delete all detection events by training instance id
+     * @param trainingInstanceId id of training instance
+     */
+    deleteAllByTrainingInstanceId(trainingInstanceId: number): Observable<any> {
+        return this.http.delete<any>(`${this.detectionEventsEndpointUri}/${trainingInstanceId}/instance`, {});
+    }
 }

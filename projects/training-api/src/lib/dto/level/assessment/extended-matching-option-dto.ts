@@ -1,5 +1,5 @@
 export class ExtendedMatchingOptionDTO {
-  id: number;
-  order: number;
-  text: string;
+    id: number;
+    order: number;
+    text: string;
 }

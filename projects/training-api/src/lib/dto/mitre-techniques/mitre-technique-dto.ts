@@ -1,4 +1,4 @@
 export class MitreTechniqueDTO {
-  id: number;
-  technique_key: string;
+    id: number;
+    technique_key: string;
 }

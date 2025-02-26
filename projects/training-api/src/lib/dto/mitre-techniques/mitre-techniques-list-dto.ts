@@ -1,8 +1,8 @@
 export interface MitreTechniquesListDTO {
-  techniques: MitreTechniquePythonDTO[];
+    techniques: MitreTechniquePythonDTO[];
 }
 
 export class MitreTechniquePythonDTO {
-  code: string;
-  name: string;
+    code: string;
+    name: string;
 }

@@ -26,34 +26,34 @@ import { CheatingDetectionDefaultApi } from './api/cheating-detection/cheating-d
 import { DetectionEventDefaultApi } from './api/detection-event/detection-event-default-api.service';
 
 @NgModule({
-  imports: [CommonModule],
-  providers: [
-    TrainingApiContext,
-    { provide: TrainingDefinitionApi, useClass: TrainingDefinitionDefaultApi },
-    { provide: AdaptiveDefinitionApiService, useClass: AdaptiveDefinitionDefaultApiService },
-    { provide: TrainingInstanceApi, useClass: TrainingInstanceDefaultApi },
-    { provide: TrainingRunApi, useClass: TrainingRunDefaultApi },
-    { provide: UserApi, useClass: UserDefaultApi },
-    { provide: TrainingEventApi, useClass: TrainingEventDefaultApi },
-    { provide: VisualizationApi, useClass: VisualizationDefaultApi },
-    { provide: AdaptiveInstanceApi, useClass: AdaptiveInstanceDefaultApi },
-    { provide: AdaptiveRunApi, useClass: AdaptiveRunDefaultApi },
-    { provide: MitreTechniquesApi, useClass: MitreTechniquesDefaultApi },
-    { provide: CheatingDetectionApi, useClass: CheatingDetectionDefaultApi },
-    { provide: DetectionEventApi, useClass: DetectionEventDefaultApi },
-  ],
+    imports: [CommonModule],
+    providers: [
+        TrainingApiContext,
+        { provide: TrainingDefinitionApi, useClass: TrainingDefinitionDefaultApi },
+        { provide: AdaptiveDefinitionApiService, useClass: AdaptiveDefinitionDefaultApiService },
+        { provide: TrainingInstanceApi, useClass: TrainingInstanceDefaultApi },
+        { provide: TrainingRunApi, useClass: TrainingRunDefaultApi },
+        { provide: UserApi, useClass: UserDefaultApi },
+        { provide: TrainingEventApi, useClass: TrainingEventDefaultApi },
+        { provide: VisualizationApi, useClass: VisualizationDefaultApi },
+        { provide: AdaptiveInstanceApi, useClass: AdaptiveInstanceDefaultApi },
+        { provide: AdaptiveRunApi, useClass: AdaptiveRunDefaultApi },
+        { provide: MitreTechniquesApi, useClass: MitreTechniquesDefaultApi },
+        { provide: CheatingDetectionApi, useClass: CheatingDetectionDefaultApi },
+        { provide: DetectionEventApi, useClass: DetectionEventDefaultApi },
+    ],
 })
 export class TrainingApiModule {
-  constructor(@Optional() @SkipSelf() parentModule: TrainingApiModule) {
-    if (parentModule) {
-      throw new Error('TrainingApiModule is already loaded. Import it only once in single module hierarchy.');
+    constructor(@Optional() @SkipSelf() parentModule: TrainingApiModule) {
+        if (parentModule) {
+            throw new Error('TrainingApiModule is already loaded. Import it only once in single module hierarchy.');
+        }
     }
-  }
 
-  static forRoot(config: TrainingApiConfig): ModuleWithProviders<TrainingApiModule> {
-    return {
-      ngModule: TrainingApiModule,
-      providers: [{ provide: TrainingApiConfig, useValue: config }],
-    };
-  }
+    static forRoot(config: TrainingApiConfig): ModuleWithProviders<TrainingApiModule> {
+        return {
+            ngModule: TrainingApiModule,
+            providers: [{ provide: TrainingApiConfig, useValue: config }],
+        };
+    }
 }

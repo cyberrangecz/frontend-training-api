@@ -1,9 +1,4 @@
-import {
-  ExtendedMatchingItems,
-  FreeFormQuestion,
-  MultipleChoiceQuestion,
-  Question,
-} from '@cyberrangecz-platform/training-model';
+import { ExtendedMatchingItems, FreeFormQuestion, MultipleChoiceQuestion, Question } from '@crczp/training-model';
 import { AbstractQuestionCreateDTO } from '../../../dto/level/assessment/abstact-question-dto';
 import { AbstractAssessmentAnswerDTO } from '../../../dto/level/assessment/abstract-assessment-answer-dto';
 import { ExtendedMatchingItemsMapper } from './extended-matching-items-mapper';
@@ -14,89 +9,89 @@ import { MultipleChoiceQuestionMapper } from './multiple-choice-question-mapper'
  * @dynamic
  */
 export class QuestionMapper {
-  static fromDTO(dto: any): Question {
-    let question: Question;
+    static fromDTO(dto: any): Question {
+        let question: Question;
 
-    switch (dto.question_type) {
-      case 'FFQ': {
-        question = FreeFormQuestionMapper.fromDTO(dto);
-        break;
-      }
-      case 'EMI': {
-        question = ExtendedMatchingItemsMapper.fromDTO(dto);
-        break;
-      }
-      case 'MCQ': {
-        question = MultipleChoiceQuestionMapper.fromDTO(dto);
-        break;
-      }
-      default: {
-        console.error('Could not map question from JSON to any of known types');
-        return undefined;
-      }
+        switch (dto.question_type) {
+            case 'FFQ': {
+                question = FreeFormQuestionMapper.fromDTO(dto);
+                break;
+            }
+            case 'EMI': {
+                question = ExtendedMatchingItemsMapper.fromDTO(dto);
+                break;
+            }
+            case 'MCQ': {
+                question = MultipleChoiceQuestionMapper.fromDTO(dto);
+                break;
+            }
+            default: {
+                console.error('Could not map question from JSON to any of known types');
+                return undefined;
+            }
+        }
+
+        question.id = dto.id;
+        question.required = dto.answer_required;
+        question.penalty = dto.penalty;
+        question.score = dto.points;
+        question.order = dto.order;
+        return question;
     }
 
-    question.id = dto.id;
-    question.required = dto.answer_required;
-    question.penalty = dto.penalty;
-    question.score = dto.points;
-    question.order = dto.order;
-    return question;
-  }
-
-  static fromDTOs(dtos: any[]): Question[] {
-    return dtos.map((dto) => QuestionMapper.fromDTO(dto));
-  }
-
-  static toAnswersDTO(question: Question): AbstractAssessmentAnswerDTO {
-    if (question instanceof FreeFormQuestion) {
-      return FreeFormQuestionMapper.toAnswersDTO(question);
-    }
-    if (question instanceof MultipleChoiceQuestion) {
-      return MultipleChoiceQuestionMapper.toAnswersDTO(question);
-    }
-    if (question instanceof ExtendedMatchingItems) {
-      return ExtendedMatchingItemsMapper.toAnswersDTO(question);
-    }
-  }
-
-  static toAnswersDTOs(questions: Question[]): AbstractAssessmentAnswerDTO[] {
-    return questions.map((question) => this.toAnswersDTO(question));
-  }
-
-  static toCreateDTO(question: Question): AbstractQuestionCreateDTO {
-    let questionDTO;
-    if (question instanceof FreeFormQuestion) {
-      questionDTO = FreeFormQuestionMapper.toCreateDTO(question);
-    }
-    if (question instanceof MultipleChoiceQuestion) {
-      questionDTO = MultipleChoiceQuestionMapper.toCreateDTO(question);
-    }
-    if (question instanceof ExtendedMatchingItems) {
-      questionDTO = ExtendedMatchingItemsMapper.toCreateDTO(question);
+    static fromDTOs(dtos: any[]): Question[] {
+        return dtos.map((dto) => QuestionMapper.fromDTO(dto));
     }
 
-    questionDTO.id = question.id;
-    questionDTO.answer_required = question.required;
-    questionDTO.order = question.order;
-    questionDTO.penalty = question.penalty;
-    questionDTO.points = question.score;
-    questionDTO.text = question.title;
-    return questionDTO;
-  }
-
-  static toCreateDTOs(questions: Question[]): AbstractQuestionCreateDTO[] {
-    const result: AbstractQuestionCreateDTO[] = [];
-    if (!questions || questions.length < 1) {
-      return [];
+    static toAnswersDTO(question: Question): AbstractAssessmentAnswerDTO {
+        if (question instanceof FreeFormQuestion) {
+            return FreeFormQuestionMapper.toAnswersDTO(question);
+        }
+        if (question instanceof MultipleChoiceQuestion) {
+            return MultipleChoiceQuestionMapper.toAnswersDTO(question);
+        }
+        if (question instanceof ExtendedMatchingItems) {
+            return ExtendedMatchingItemsMapper.toAnswersDTO(question);
+        }
     }
-    let index = 0;
-    questions.forEach((question) => {
-      const questionDTO = QuestionMapper.toCreateDTO(question);
-      questionDTO.order = index;
-      index++;
-      result.push(questionDTO);
-    });
-    return result;
-  }
+
+    static toAnswersDTOs(questions: Question[]): AbstractAssessmentAnswerDTO[] {
+        return questions.map((question) => this.toAnswersDTO(question));
+    }
+
+    static toCreateDTO(question: Question): AbstractQuestionCreateDTO {
+        let questionDTO;
+        if (question instanceof FreeFormQuestion) {
+            questionDTO = FreeFormQuestionMapper.toCreateDTO(question);
+        }
+        if (question instanceof MultipleChoiceQuestion) {
+            questionDTO = MultipleChoiceQuestionMapper.toCreateDTO(question);
+        }
+        if (question instanceof ExtendedMatchingItems) {
+            questionDTO = ExtendedMatchingItemsMapper.toCreateDTO(question);
+        }
+
+        questionDTO.id = question.id;
+        questionDTO.answer_required = question.required;
+        questionDTO.order = question.order;
+        questionDTO.penalty = question.penalty;
+        questionDTO.points = question.score;
+        questionDTO.text = question.title;
+        return questionDTO;
+    }
+
+    static toCreateDTOs(questions: Question[]): AbstractQuestionCreateDTO[] {
+        const result: AbstractQuestionCreateDTO[] = [];
+        if (!questions || questions.length < 1) {
+            return [];
+        }
+        let index = 0;
+        questions.forEach((question) => {
+            const questionDTO = QuestionMapper.toCreateDTO(question);
+            questionDTO.order = index;
+            index++;
+            result.push(questionDTO);
+        });
+        return result;
+    }
 }
