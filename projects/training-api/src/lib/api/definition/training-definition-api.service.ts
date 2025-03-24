@@ -4,6 +4,7 @@ import {
     AccessLevel,
     AssessmentLevel,
     InfoLevel,
+    JeopardyLevel,
     Level,
     TrainingDefinition,
     TrainingDefinitionInfo,
@@ -114,6 +115,12 @@ export abstract class TrainingDefinitionApi {
      * @param trainingDefId id of training definition which should be associated with the new level
      */
     abstract createInfoLevel(trainingDefId: number): Observable<InfoLevel>;
+
+    /**
+     * Sends http request to create new jeopardy level associated with training definition
+     * @param trainingDefinitionId id of training definition which should be associated with the new level
+     */
+    abstract createJeopardyLevel(trainingDefinitionId: number): Observable<JeopardyLevel>;
 
     /**
      * Sends http request to delete level

@@ -1,5 +1,6 @@
 import { AbstractLevelDTO } from '../level/abstract-level-dto';
 import { AbstractPhaseDTO } from '../phase/abstract-phase-dto';
+import { TrainingTypeDTO } from '../training-type-dto';
 
 /**
  * Training Definition DTO.
@@ -12,6 +13,7 @@ export class TrainingDefinitionDTO {
     outcomes?: string[];
     prerequisites?: string[];
     state?: TrainingDefinitionDTO.StateEnum;
+    type: TrainingTypeDTO.TypeEnum;
     title?: string;
     estimated_duration: number;
     last_edited?: Date;

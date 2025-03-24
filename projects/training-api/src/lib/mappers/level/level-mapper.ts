@@ -3,6 +3,7 @@ import {
     AccessLevel,
     AssessmentLevel,
     InfoLevel,
+    JeopardyLevel,
     Level,
     TrainingLevel,
 } from '@crczp/training-model';
@@ -14,12 +15,11 @@ import { InfoLevelDTO } from '../../dto/level/info/info-level-dto';
 import { AssessmentLevelMapper } from './assessment/assessment-level-mapper';
 import { TrainingLevelMapper } from './training/training-level-mapper';
 import { InfoLevelMapper } from './info/info-level-mapper';
-import { TrainingLevelUpdateDTOClass } from '../../dto/level/training/training-level-update-dto';
-import { InfoLevelUpdateDTOClass } from '../../dto/level/info/info-level-update-dto';
-import { AssessmentLevelUpdateDTOClass } from '../../dto/level/assessment/assessment-level-update-dto';
 import { AccessLevelMapper } from './access/access-level-mapper';
-import { AccessLevelUpdateDTOClass } from '../../dto/level/access/access-level-update-dto';
 import { AccessLevelDTO } from '../../dto/level/access/access-level-dto';
+import { JeopardyLevelMapper } from './jeopardy/jeopardy-level-mapper';
+import { JeopardyLevelDTO } from '../../dto/level/jeopardy/jeopardy-level-dto';
+import { throwError } from 'rxjs';
 
 /**
  * @dynamic
@@ -43,6 +43,13 @@ export class LevelMapper {
             case AbstractLevelDTO.LevelTypeEnum.ACCESS: {
                 level = AccessLevelMapper.fromDTO(dto as AccessLevelDTO);
                 break;
+            }
+            case AbstractLevelDTO.LevelTypeEnum.JEOPARDY: {
+                level = JeopardyLevelMapper.fromDto(dto as JeopardyLevelDTO);
+                break;
+            }
+            default: {
+                throw throwError('Invalid level type: ' + dto.level_type);
             }
         }
 
@@ -82,6 +89,11 @@ export class LevelMapper {
                 level.type = AbstractLevelTypeEnum.Access;
                 break;
             }
+            case BasicLevelInfoDTO.LevelTypeEnum.JEOPARDY: {
+                level = new JeopardyLevel();
+                level.type = AbstractLevelTypeEnum.Jeopardy;
+                break;
+            }
         }
 
         level.id = dto.id;
@@ -102,24 +114,23 @@ export class LevelMapper {
         let levelDTO: AbstractLevelDTO;
         switch (level.type) {
             case AbstractLevelTypeEnum.Training: {
-                levelDTO = new TrainingLevelUpdateDTOClass();
                 levelDTO = TrainingLevelMapper.toUpdateDTO(level as TrainingLevel);
                 break;
             }
             case AbstractLevelTypeEnum.Access: {
-                levelDTO = new AccessLevelUpdateDTOClass();
                 levelDTO = AccessLevelMapper.toUpdateDTO(level as AccessLevel);
                 break;
             }
             case AbstractLevelTypeEnum.Info: {
-                levelDTO = new InfoLevelUpdateDTOClass();
                 levelDTO = InfoLevelMapper.toUpdateDTO(level as InfoLevel);
                 break;
             }
             case AbstractLevelTypeEnum.Assessment: {
-                levelDTO = new AssessmentLevelUpdateDTOClass();
                 levelDTO = AssessmentLevelMapper.toUpdateDTO(level as AssessmentLevel);
                 break;
+            }
+            case AbstractLevelTypeEnum.Jeopardy: {
+                levelDTO = TrainingLevelMapper.toUpdateDTO(level as TrainingLevel);
             }
         }
         return levelDTO;

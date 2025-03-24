@@ -3,6 +3,7 @@ import {
     AccessLevel,
     AssessmentLevel,
     InfoLevel,
+    JeopardyLevel,
     Level,
     TrainingLevel,
 } from '@crczp/training-model';
@@ -17,6 +18,8 @@ import { InfoLevelMapper } from '../level/info/info-level-mapper';
 import { AccessLevelMapper } from '../level/access/access-level-mapper';
 import { AnsweredLevelMapper } from './training-run-levels/answered-level-mapper';
 import { AnsweredAssessmentLevelMapper } from './training-run-levels/assessment/answered-assessment-level-mapper';
+import { JeopardyLevelMapper } from '../level/jeopardy/jeopardy-level-mapper';
+import { JeopardyLevelDTO } from '../../dto/level/jeopardy/jeopardy-level-dto';
 
 /**
  * @dynamic
@@ -39,6 +42,10 @@ export class TrainingRunLevelMapper {
             }
             case AbstractLevelDTO.LevelTypeEnum.ACCESS: {
                 level = AccessLevelMapper.fromDTO(dto as AccessLevelDTO);
+                break;
+            }
+            case AbstractLevelDTO.LevelTypeEnum.JEOPARDY: {
+                level = JeopardyLevelMapper.fromDto(dto as JeopardyLevelDTO);
                 break;
             }
         }
@@ -77,6 +84,11 @@ export class TrainingRunLevelMapper {
             case BasicLevelInfoDTO.LevelTypeEnum.ACCESS: {
                 level = new AccessLevel();
                 level.type = AbstractLevelTypeEnum.Access;
+                break;
+            }
+            case BasicLevelInfoDTO.LevelTypeEnum.JEOPARDY: {
+                level = new JeopardyLevel();
+                level.type = AbstractLevelTypeEnum.Jeopardy;
                 break;
             }
         }

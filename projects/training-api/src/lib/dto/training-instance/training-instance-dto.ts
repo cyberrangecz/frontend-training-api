@@ -1,4 +1,5 @@
 import { TrainingDefinitionDTO } from '../training-definition/training-definition-dto';
+import { TrainingTypeDTO } from '../training-type-dto';
 
 /**
  * Training Instance.
@@ -10,6 +11,7 @@ export interface TrainingInstanceDTO {
     start_time?: Date;
     title?: string;
     training_definition?: TrainingDefinitionDTO;
+    type?: TrainingTypeDTO.TypeEnum;
     access_token: string;
     last_edited_by?: string;
     local_environment?: boolean;

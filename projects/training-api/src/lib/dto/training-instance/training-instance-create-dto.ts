@@ -1,3 +1,5 @@
+import { TrainingTypeDTO } from '../training-type-dto';
+
 /**
  * Training Instance to create.
  */
@@ -7,6 +9,7 @@ export class TrainingInstanceCreateDTO {
     start_time?: string;
     title?: string;
     training_definition_id?: number;
+    type?: TrainingTypeDTO.TypeEnum;
     pool_id?: number;
     local_environment?: boolean;
     sandbox_definition_id?: number;

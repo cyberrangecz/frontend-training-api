@@ -7,6 +7,7 @@ import {
     AccessLevel,
     AssessmentLevel,
     InfoLevel,
+    JeopardyLevel,
     Level,
     TrainingDefinition,
     TrainingDefinitionInfo,
@@ -300,6 +301,20 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
                 { headers: this.createDefaultHeaders() },
             )
             .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as InfoLevel));
+    }
+
+    /**
+     * Sends http request to create new jeopardy level associated with training definition
+     * @param trainingDefId id of training definition which should be associated with the new level
+     */
+    createJeopardyLevel(trainingDefId: number): Observable<JeopardyLevel> {
+        return this.http
+            .post<BasicLevelInfoDTO>(
+                `${this.trainingDefsEndpointUri}/${trainingDefId}/${this.levelsUriExtension}/JEOPARDY`,
+                {},
+                { headers: this.createDefaultHeaders() },
+            )
+            .pipe(map((resp) => LevelMapper.fromBasicDTO(resp) as JeopardyLevel));
     }
 
     /**

@@ -2,13 +2,6 @@
     "name": "@crczp/training-api",
     "version": "0.0.2",
     "license": "MIT",
-    "peerDependencies": {
-        "@angular/common": "^18.2.13",
-        "@angular/core": "^18.2.13",
-        "@sentinel/common": "^18.0.4",
-        "@crczp/training-model": "^0.0.2",
-        "file-saver": "^2.0.5"
-    },
     "dependencies": {
         "tslib": "^2.7.0"
     },

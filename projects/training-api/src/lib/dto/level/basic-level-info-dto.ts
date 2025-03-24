@@ -13,5 +13,6 @@ export namespace BasicLevelInfoDTO {
         INFO: 'INFO_LEVEL' as LevelTypeEnum,
         TRAINING: 'TRAINING_LEVEL' as LevelTypeEnum,
         ACCESS: 'ACCESS_LEVEL' as LevelTypeEnum,
+        JEOPARDY: 'JEOPARDY' as LevelTypeEnum,
     };
 }

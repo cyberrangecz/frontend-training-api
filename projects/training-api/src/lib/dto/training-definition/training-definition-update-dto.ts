@@ -1,3 +1,5 @@
+import { TrainingTypeDTO } from '../training-type-dto';
+
 /**
  * Training Definition to update.
  */
@@ -7,6 +9,7 @@ export class TrainingDefinitionUpdateDTO {
     outcomes?: string[];
     prerequisites?: string[];
     state?: TrainingDefinitionUpdateDTO.StateEnum;
+    type?: TrainingTypeDTO.TypeEnum;
     title?: string;
     variant_sandboxes?: boolean;
 }

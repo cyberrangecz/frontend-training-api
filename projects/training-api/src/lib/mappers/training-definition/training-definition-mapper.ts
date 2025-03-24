@@ -4,6 +4,7 @@ import { TrainingDefinitionDTO } from '../../dto/training-definition/training-de
 import { TrainingDefinitionUpdateDTO } from '../../dto/training-definition/training-definition-update-dto';
 import { LevelMapper } from '../level/level-mapper';
 import { PhaseMapper } from '../phase/phase-mapper';
+import { TrainingTypeMapper } from '../training-type-mapper';
 
 /**
  * @dynamic
@@ -17,6 +18,7 @@ export class TrainingDefinitionMapper {
         result.prerequisites = dto.prerequisites ? dto.prerequisites : [];
         result.outcomes = dto.outcomes ? dto.outcomes : [];
         result.state = this.stateFromDTO(dto.state);
+        result.type = TrainingTypeMapper.typeFromDTO(dto.type, 'type', 'TrainingDefinitionDTO');
         result.lastEditTime = dto.last_edited;
         result.estimatedDuration = dto.estimated_duration;
         if (withLevels) {
@@ -76,6 +78,7 @@ export class TrainingDefinitionMapper {
         result.prerequisites = trainingDefinition.prerequisites.filter((prerequisite) => prerequisite.length > 1);
         result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
         result.state = TrainingDefinitionMapper.stateToDTO(trainingDefinition.state);
+        result.type = TrainingTypeMapper.typeToDTO(trainingDefinition.type, 'type', 'TrainingDefinition');
         result.title = trainingDefinition.title;
         return result;
     }
@@ -86,6 +89,7 @@ export class TrainingDefinitionMapper {
         result.outcomes = trainingDefinition.outcomes.filter((outcome) => outcome.length > 1);
         result.description = trainingDefinition.description;
         result.state = TrainingDefinitionDTO.StateEnum.UNRELEASED;
+        result.type = TrainingTypeMapper.typeToDTO(trainingDefinition.type, 'type', 'TrainingDefinition');
         result.title = trainingDefinition.title;
         result.default_content = trainingDefinition.defaultContent;
         return result;
