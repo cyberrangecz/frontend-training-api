@@ -3,6 +3,7 @@ import { TrainingInstanceCreateDTO } from '../../dto/training-instance/training-
 import { TrainingInstanceDTO } from '../../dto/training-instance/training-instance-dto';
 import { TrainingInstanceUpdateDTO } from '../../dto/training-instance/training-instance-update-dto';
 import { TrainingDefinitionMapper } from '../training-definition/training-definition-mapper';
+import { TrainingTypeMapper } from '../training-type-mapper';
 
 /**
  * @dynamic
@@ -17,11 +18,13 @@ export class TrainingInstanceMapper {
         result.title = dto.title;
         result.accessToken = dto.access_token;
         result.poolId = dto.pool_id;
+        result.type = TrainingTypeMapper.typeFromDTO(dto.type, 'type', 'TrainingInstanceDTO');
         result.lastEditBy = dto.last_edited_by;
         result.localEnvironment = dto.local_environment;
         result.sandboxDefinitionId = dto.sandbox_definition_id;
         result.backwardMode = dto.backward_mode;
         result.showStepperBar = dto.show_stepper_bar;
+        result.maxTeamSize = dto.max_team_size;
         return result;
     }
 
@@ -37,10 +40,12 @@ export class TrainingInstanceMapper {
         result.access_token = trainingInstance.accessToken;
         result.training_definition_id = trainingInstance.trainingDefinition.id;
         result.pool_id = trainingInstance.poolId;
+        result.type = TrainingTypeMapper.typeToDTO(trainingInstance.type, 'type', 'TrainingInstance');
         result.local_environment = trainingInstance.localEnvironment;
         result.sandbox_definition_id = trainingInstance.sandboxDefinitionId;
         result.backward_mode = trainingInstance.backwardMode;
         result.show_stepper_bar = trainingInstance.showStepperBar;
+        result.max_team_size = trainingInstance.maxTeamSize;
         return result;
     }
 

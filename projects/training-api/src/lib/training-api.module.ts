@@ -5,6 +5,8 @@ import { TrainingDefinitionDefaultApi } from './api/definition/training-definiti
 import { TrainingEventApi } from './api/event/training-event-api.service';
 import { TrainingEventDefaultApi } from './api/event/training-event-default-api.service';
 import { TrainingInstanceApi } from './api/instance/training-instance-api.service';
+import { TrainingInstanceLobbyApi } from './api/instance/lobby/training-instance-lobby-api.service';
+import { TrainingInstanceLobbyDefaultApi } from './api/instance/lobby/training-instance-lobby-default-api.service';
 import { TrainingInstanceDefaultApi } from './api/instance/training-instance-default-api.service';
 import { TrainingRunApi } from './api/run/training-run-api.service';
 import { TrainingRunDefaultApi } from './api/run/training-run-default-api.service';
@@ -32,6 +34,7 @@ import { DetectionEventDefaultApi } from './api/detection-event/detection-event-
         { provide: TrainingDefinitionApi, useClass: TrainingDefinitionDefaultApi },
         { provide: AdaptiveDefinitionApiService, useClass: AdaptiveDefinitionDefaultApiService },
         { provide: TrainingInstanceApi, useClass: TrainingInstanceDefaultApi },
+        { provide: TrainingInstanceLobbyApi, useClass: TrainingInstanceLobbyDefaultApi },
         { provide: TrainingRunApi, useClass: TrainingRunDefaultApi },
         { provide: UserApi, useClass: UserDefaultApi },
         { provide: TrainingEventApi, useClass: TrainingEventDefaultApi },

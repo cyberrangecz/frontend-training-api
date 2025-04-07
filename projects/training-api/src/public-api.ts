@@ -13,6 +13,7 @@ export * from './lib/dto/phase/abstract-phase-dto';
 export * from './lib/api/definition/training-definition-api.service';
 export * from './lib/api/adaptive-definition/adaptive-definition-api.service';
 export * from './lib/api/instance/training-instance-api.service';
+export * from './lib/api/instance/lobby/training-instance-lobby-api.service';
 export * from './lib/api/adaptive-instance/adaptive-instance-api.service';
 export * from './lib/api/run/training-run-api.service';
 export * from './lib/api/user/user-api.service';
