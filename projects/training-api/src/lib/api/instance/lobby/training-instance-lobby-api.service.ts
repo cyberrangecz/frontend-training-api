@@ -2,7 +2,25 @@ import { Observable } from 'rxjs';
 import { Team, TrainingInstanceLobby } from '@crczp/training-model';
 
 export abstract class TrainingInstanceLobbyApi {
+    /**
+     * Get the number of players waiting in the lobby
+     * @param accessToken access token of the training instance
+     * @param unassignedOnly if true, only players that are not assigned to a team will be counted
+     */
     abstract getPlayersWaiting(accessToken: string, unassignedOnly?: boolean): Observable<number>;
+
+    /**
+     * Retrieves the start date of the training instance
+     * @param accessToken access token of the training instance
+     */
+    abstract getInstanceStartDate(accessToken: string): Observable<Date>;
+
+    /**
+     * Retrieves the team information of the training instance
+     * Throws 425 if in instance, but not in a locked team
+     * @param accessToken
+     */
+    abstract getTeamInfo(accessToken: string): Observable<Team>;
 
     /**
      * Sends http request to retrieve TrainingInstanceLobby of a TrainingInstance
@@ -29,7 +47,7 @@ export abstract class TrainingInstanceLobbyApi {
      * @param teamId id of team to rename
      * @param newName the new name
      */
-    abstract renameTeam(teamId: number, newName: string): Observable<Team>;
+    abstract renameTeam(teamId: number, newName: string): Observable<string>;
 
     /**
      * Sends http request to disband team, removing the members to queue

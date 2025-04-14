@@ -29,7 +29,19 @@ export class TrainingInstanceLobbyDefaultApi extends TrainingInstanceLobbyApi {
         const params = FilterParams.create(
             unassignedOnly === undefined ? [] : [new SentinelFilter('unassignedOnly', String(unassignedOnly))],
         );
-        return this.http.post<number>(`${this.trainingInstanceLobbyUri}/${accessToken}/count`, {}, { params });
+        return this.http.get<number>(`${this.trainingInstanceLobbyUri}/${accessToken}/count`, { params });
+    }
+
+    getInstanceStartDate(accessToken: string): Observable<Date> {
+        return this.http
+            .get(`${this.trainingInstanceLobbyUri}/${accessToken}/startDate`, { responseType: 'text' })
+            .pipe(map((dateString) => new Date(dateString)));
+    }
+
+    getTeamInfo(accessToken: string): Observable<Team> {
+        return this.http
+            .get<TeamDTO>(`${this.trainingInstanceLobbyUri}/${accessToken}/team-info`)
+            .pipe(map(TeamMapper.fromDTO));
     }
 
     createTeam(instanceId: number, name: string): Observable<Team> {
@@ -53,11 +65,9 @@ export class TrainingInstanceLobbyDefaultApi extends TrainingInstanceLobbyApi {
         return this.http.put<void>(`${this.trainingInstanceLobbyUri}/team/${teamId}/lock`, {});
     }
 
-    renameTeam(teamId: number, newName: string): Observable<Team> {
+    renameTeam(teamId: number, newName: string): Observable<string> {
         const params = FilterParams.create([new SentinelFilter('name', newName)]);
-        return this.http
-            .put<TeamDTO>(`${this.trainingInstanceLobbyUri}/team/${teamId}/rename`, {}, { params })
-            .pipe(map(TeamMapper.fromDTO));
+        return this.http.put<string>(`${this.trainingInstanceLobbyUri}/team/${teamId}/rename`, {}, { params });
     }
 
     transferPlayersBetweenTeams(teamIdFrom: number, teamIdTo: number, playerIds: number[]): Observable<void> {
