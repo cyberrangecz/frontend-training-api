@@ -34,13 +34,16 @@ export class TrainingInstanceLobbyDefaultApi extends TrainingInstanceLobbyApi {
 
     getInstanceStartDate(accessToken: string): Observable<Date> {
         return this.http
-            .get(`${this.trainingInstanceLobbyUri}/${accessToken}/startDate`, { responseType: 'text' })
+            .get(`${this.trainingInstanceLobbyUri}/${accessToken}/start-date`, { responseType: 'text' })
             .pipe(map((dateString) => new Date(dateString)));
     }
 
-    getTeamInfo(accessToken: string): Observable<Team> {
+    getTeamInfo(accessToken: string, omitImages?: string): Observable<Team> {
+        const params = FilterParams.create(
+            omitImages === undefined ? [] : [new SentinelFilter('omitImages', String(omitImages))],
+        );
         return this.http
-            .get<TeamDTO>(`${this.trainingInstanceLobbyUri}/${accessToken}/team-info`)
+            .get<TeamDTO>(`${this.trainingInstanceLobbyUri}/${accessToken}/team-info`, { params })
             .pipe(map(TeamMapper.fromDTO));
     }
 

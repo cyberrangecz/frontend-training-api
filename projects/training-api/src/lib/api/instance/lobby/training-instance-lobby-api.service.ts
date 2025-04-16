@@ -19,8 +19,9 @@ export abstract class TrainingInstanceLobbyApi {
      * Retrieves the team information of the training instance
      * Throws 425 if in instance, but not in a locked team
      * @param accessToken
+     * @param omitImages will not include player profile pictures
      */
-    abstract getTeamInfo(accessToken: string): Observable<Team>;
+    abstract getTeamInfo(accessToken: string, omitImages?: string): Observable<Team>;
 
     /**
      * Sends http request to retrieve TrainingInstanceLobby of a TrainingInstance
