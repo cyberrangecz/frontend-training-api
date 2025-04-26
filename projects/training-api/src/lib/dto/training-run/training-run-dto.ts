@@ -1,6 +1,8 @@
 import { AbstractLevelDTO } from '../level/abstract-level-dto';
 import { UserRefDTO } from '../user/user-ref-dto';
 import { AbstractPhaseDTO } from '../phase/abstract-phase-dto';
+import { TeamDTO } from '../user/team/team-dto';
+import { TrainingTypeDTO } from '../training-type-dto';
 
 /**
  * .
@@ -13,7 +15,9 @@ export interface TrainingRunDTO {
     id?: number;
     sandbox_instance_ref_id?: string;
     sandbox_instance_allocation_id?: number;
+    type?: TrainingTypeDTO.TypeEnum;
     participant_ref: UserRefDTO;
+    team: TeamDTO;
     start_time?: Date;
     state?: TrainingRunDTO.StateEnum;
     definition_id: number;
