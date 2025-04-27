@@ -43,7 +43,7 @@ export class TrainingInstanceLobbyDefaultApi extends TrainingInstanceLobbyApi {
             omitImages === undefined ? [] : [new SentinelFilter('omitImages', String(omitImages))],
         );
         return this.http
-            .get<TeamDTO>(`${this.trainingInstanceLobbyUri}/${accessToken}/team-info`, { params })
+            .get<TeamDTO>(`${this.trainingInstanceLobbyUri}/${accessToken}/assigned-team`, { params })
             .pipe(map(TeamMapper.fromDTO));
     }
 

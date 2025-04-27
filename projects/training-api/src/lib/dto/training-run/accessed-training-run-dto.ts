@@ -1,3 +1,5 @@
+import { TrainingTypeDTO } from '../training-type-dto';
+
 /**
  * .
  */
@@ -9,6 +11,7 @@ export interface AccessedTrainingRunDTO {
     number_of_phases?: number;
     possible_action?: AccessedTrainingRunDTO.PossibleActionEnum;
     title?: string;
+    type?: TrainingTypeDTO.TypeEnum;
     training_instance_end_date?: Date;
     training_instance_start_date?: Date;
     local_environment?: boolean;

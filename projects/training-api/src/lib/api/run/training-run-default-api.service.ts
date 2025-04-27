@@ -1,5 +1,4 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
 import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
@@ -36,6 +35,7 @@ import { TrainingRunApi } from './training-run-api.service';
 import { TrainingRunInfoDTO } from '../../dto/training-run/training-run-info-dto';
 import { TrainingRunInfoMapper } from '../../mappers/training-run/training-run-info-mapper';
 import { AnsweredLevelMapper } from '../../mappers/training-run/training-run-levels/answered-level-mapper';
+import { Injectable } from '@angular/core';
 
 /**
  * Default implementation of service abstracting http communication with training run endpoints.
@@ -47,8 +47,8 @@ export class TrainingRunDefaultApi extends TrainingRunApi {
     readonly trainingRunsEndpointUri: string;
 
     constructor(
-        private http: HttpClient,
-        private context: TrainingApiContext,
+        protected http: HttpClient,
+        protected context: TrainingApiContext,
     ) {
         super();
         this.trainingRunsEndpointUri = this.context.config.trainingBasePath + this.trainingRunsUriExtension;

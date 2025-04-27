@@ -22,10 +22,12 @@ import { AdaptiveInstanceDefaultApi } from './api/adaptive-instance/adaptive-ins
 import { AdaptiveInstanceApi } from './api/adaptive-instance/adaptive-instance-api.service';
 import { AdaptiveRunApi } from './api/adaptive-run/adaptive-run-api.service';
 import { AdaptiveRunDefaultApi } from './api/adaptive-run/adaptive-run-default-api.service';
-import { CheatingDetectionApi, DetectionEventApi, MitreTechniquesApi } from '../public-api';
+import { CheatingDetectionApi, CoopTrainingRunApi, DetectionEventApi, MitreTechniquesApi } from '../public-api';
 import { MitreTechniquesDefaultApi } from './api/mitre-techniques/mitre-techniques-default-api.service';
 import { CheatingDetectionDefaultApi } from './api/cheating-detection/cheating-detection-default-api.service';
 import { DetectionEventDefaultApi } from './api/detection-event/detection-event-default-api.service';
+import { LinearTrainingRunApi, LinearTrainingRunDefaultApi } from './api/run/linear-run-api.service';
+import { CoopTrainingRunDefaultApi } from './api/run/coop-run-api.service';
 
 @NgModule({
     imports: [CommonModule],
@@ -36,6 +38,8 @@ import { DetectionEventDefaultApi } from './api/detection-event/detection-event-
         { provide: TrainingInstanceApi, useClass: TrainingInstanceDefaultApi },
         { provide: TrainingInstanceLobbyApi, useClass: TrainingInstanceLobbyDefaultApi },
         { provide: TrainingRunApi, useClass: TrainingRunDefaultApi },
+        { provide: LinearTrainingRunApi, useClass: LinearTrainingRunDefaultApi },
+        { provide: CoopTrainingRunApi, useClass: CoopTrainingRunDefaultApi },
         { provide: UserApi, useClass: UserDefaultApi },
         { provide: TrainingEventApi, useClass: TrainingEventDefaultApi },
         { provide: VisualizationApi, useClass: VisualizationDefaultApi },

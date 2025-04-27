@@ -11,7 +11,8 @@ import {
     TrainingRunInfo,
 } from '@crczp/training-model';
 import { Observable } from 'rxjs';
-
+import { Injectable } from '@angular/core';
+@Injectable()
 export abstract class TrainingRunApi {
     /**
      * Sends http request to retrieve all training runs on specified page of a pagination

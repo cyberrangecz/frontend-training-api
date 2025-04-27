@@ -13,6 +13,7 @@ import {
     TrainingDefinitionInfo,
     TrainingDefinitionStateEnum,
     TrainingLevel,
+    TrainingTypeEnum,
 } from '@crczp/training-model';
 import { fromEvent, Observable } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
@@ -33,6 +34,7 @@ import { TrainingDefinitionInfoMapper } from '../../mappers/training-definition/
 import { TrainingDefinitionMapper } from '../../mappers/training-definition/training-definition-mapper';
 import { TrainingApiContext } from '../../other/training-api-context';
 import { TrainingDefinitionApi } from './training-definition-api.service';
+import { TrainingTypeMapper } from '../../mappers/training-type-mapper';
 
 /**
  * Service abstracting http communication with training definition endpoints.
@@ -179,12 +181,14 @@ export class TrainingDefinitionDefaultApi extends TrainingDefinitionApi {
      * Sends http request to upload training definition json file,
      * Converts training definition file to a JSON object and sends it to provided url.
      * @param file json file to be uploaded
+     * @param trainingType type of training definition
      */
-    upload(file: File): Observable<TrainingDefinition> {
+    upload(file: File, trainingType: TrainingTypeEnum): Observable<TrainingDefinition> {
         const fileReader = new FileReader();
         const fileRead$ = fromEvent(fileReader, 'load').pipe(
             mergeMap(() => {
                 const jsonBody = JSON.parse(fileReader.result as string);
+                jsonBody.type = TrainingTypeMapper.typeToDTO(trainingType, 'type', 'definition upload');
                 return this.http.post<TrainingDefinitionDTO>(
                     `${this.trainingImportEndpointUri}/${this.trainingDefinitionUriExtension}`,
                     jsonBody,

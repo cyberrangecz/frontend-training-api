@@ -1,9 +1,9 @@
-import { TrainingRun, TrainingRunStateEnum } from '@crczp/training-model';
+import { TrainingRun, TrainingRunStateEnum, TrainingRunTypeEnum } from '@crczp/training-model';
 import { TrainingRunDTO } from '../../dto/training-run/training-run-dto';
 import { LevelMapper } from '../level/level-mapper';
 import { UserMapper } from '../user/user-mapper';
 import { TeamMapper } from '../user/team-mapper';
-import { TrainingTypeMapper } from '../training-type-mapper';
+import { TrainingTypeDTO } from '../../dto/training-type-dto';
 
 /**
  * @dynamic
@@ -25,9 +25,10 @@ export class TrainingRunMapper {
         result.sandboxInstanceAllocationId = dto.sandbox_instance_allocation_id;
         result.eventLogging = dto.event_logging_state;
         result.commandLogging = dto.command_logging_state;
-        result.player = !!dto.participant_ref ?  UserMapper.fromDTO(dto.participant_ref) : undefined;
-        result.team = !!dto.team ? TeamMapper.fromDTO(dto.team) : undefined;
-        result.type = TrainingTypeMapper.typeFromDTO(dto.type, 'type', 'TrainingInstanceDTO');
+        result.player = dto.participant_ref ? UserMapper.fromDTO(dto.participant_ref) : undefined;
+        result.team = dto.team ? TeamMapper.fromDTO(dto.team) : undefined;
+        result.type =
+            dto.type === TrainingTypeDTO.TypeEnum.COOP ? TrainingRunTypeEnum.COOP : TrainingRunTypeEnum.LINEAR;
         result.state = this.resolveState(dto.state);
         if (result.currentLevel) {
             result.currentLevel = LevelMapper.fromDTO(dto.current_level);

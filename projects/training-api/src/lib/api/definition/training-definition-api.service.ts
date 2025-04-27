@@ -10,6 +10,7 @@ import {
     TrainingDefinitionInfo,
     TrainingDefinitionStateEnum,
     TrainingLevel,
+    TrainingTypeEnum,
 } from '@crczp/training-model';
 import { Observable } from 'rxjs';
 
@@ -64,8 +65,9 @@ export abstract class TrainingDefinitionApi {
      * Sends http request to upload training definition json file,
      * Converts training definition file to a JSON object and sends it to provided url.
      * @param file json file to be uploaded
+     * @param trainingType type of training definition
      */
-    abstract upload(file: File): Observable<TrainingDefinition>;
+    abstract upload(file: File, trainingType: TrainingTypeEnum): Observable<TrainingDefinition>;
 
     /**
      * Sends http request to delete training definition
