@@ -1,8 +1,8 @@
 import { ScoreboardEntryDTO } from './scoreboard-entry-dto';
 
 export class LimitedScoreboardDTO {
-    scoreboard: ScoreboardEntryDTO[];
+    limited_scoreboard: ScoreboardEntryDTO[];
 
-    teamCountBeforeRelative: number;
-    teamCountAfterRelative: number;
+    team_count_before_relative: number;
+    team_count_after_relative: number;
 }

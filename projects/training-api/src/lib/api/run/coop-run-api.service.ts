@@ -37,9 +37,10 @@ export abstract class CoopTrainingRunApi extends TrainingRunApi {
     /**
      * Sends http request to post a message to a team chat
      * @param teamId id of the team
+     * @param senderId this id is not sent to the API, just mapped to the result
      * @param message message to be posted
      */
-    abstract postTeamMessage(teamId: number, message: string): Observable<TeamMessage>;
+    abstract postTeamMessage(teamId: number, senderId: number, message: string): Observable<TeamMessage>;
 
     /**
      * Sends http request to retrieve scoreboard of a training instance
@@ -80,7 +81,7 @@ export class CoopTrainingRunDefaultApi extends TrainingRunDefaultApi implements 
     getLocalizedScoreboard(trainingRunId: number): Observable<LimitedScoreboard> {
         return this.http
             .get<LimitedScoreboardDTO>(`${this.trainingRunsEndpointUri}/${trainingRunId}/scoreboard`)
-            .pipe(map(ScoreboardMapper.limitedFromDTO));
+            .pipe(map((scoreboardDto) => ScoreboardMapper.limitedFromDTO(scoreboardDto)));
     }
 
     /**
@@ -95,19 +96,25 @@ export class CoopTrainingRunDefaultApi extends TrainingRunDefaultApi implements 
 
     getTeamMessages(teamId: number, lastFetch: Date): Observable<TeamMessage[]> {
         return this.http
-            .get<{ [key: number]: TeamMessageDTO }>(`${this.trainingRunsEndpointUri}/team/${teamId}/messages`, {
+            .get<{ [key: number]: TeamMessageDTO[] }>(`${this.trainingRunsEndpointUri}/team/${teamId}/message`, {
                 params: FilterParams.create([
                     new SentinelFilter('lastFetch', String(Math.floor(lastFetch.getTime() / 1000))),
                 ]),
             })
             .pipe(
-                map((dto) => Object.keys(dto).map((key) => TeamMessageMapper.fromDTO(dto[Number(key)], Number(key)))),
+                map((dto) =>
+                    Object.keys(dto)
+                        .map((key) =>
+                            dto[Number(key)].map((message) => TeamMessageMapper.fromDTO(message, Number(key))),
+                        )
+                        .reduce((reduced, next) => reduced.concat(next), []),
+                ),
             );
     }
 
-    postTeamMessage(teamId: number, message: string): Observable<TeamMessage> {
+    postTeamMessage(teamId: number, senderId: number, message: string): Observable<TeamMessage> {
         return this.http
-            .post<TeamMessageDTO>(`${this.trainingRunsEndpointUri}/team/${teamId}/message`, { message })
-            .pipe(map((dto) => TeamMessageMapper.fromDTO(dto)));
+            .post<TeamMessageDTO>(`${this.trainingRunsEndpointUri}/team/${teamId}/message`, message)
+            .pipe(map((dto) => TeamMessageMapper.fromDTO(dto, senderId)));
     }
 }

@@ -14,9 +14,9 @@ export class ScoreboardMapper {
 
     public static limitedFromDTO(dto: LimitedScoreboardDTO): LimitedScoreboard {
         const result = new LimitedScoreboard();
-        result.scoreboard = dto.scoreboard.map(ScoreboardMapper.fromDTO);
-        result.countBeforeUserTeam = dto.teamCountBeforeRelative;
-        result.countAfterUserTeam = dto.teamCountAfterRelative;
+        result.scoreboard = dto.limited_scoreboard.map((entry) => ScoreboardMapper.fromDTO(entry));
+        result.countBeforeUserTeam = dto.team_count_before_relative;
+        result.countAfterUserTeam = dto.team_count_after_relative;
         return result;
     }
 }
