@@ -17,7 +17,7 @@ export interface TrainingRunDTO {
     sandbox_instance_allocation_id?: number;
     type?: TrainingTypeDTO.TypeEnum;
     participant_ref: UserRefDTO;
-    team: TeamDTO;
+    coopRunTeam: TeamDTO;
     start_time?: Date;
     state?: TrainingRunDTO.StateEnum;
     definition_id: number;

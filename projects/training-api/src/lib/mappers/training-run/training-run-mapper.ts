@@ -26,7 +26,7 @@ export class TrainingRunMapper {
         result.eventLogging = dto.event_logging_state;
         result.commandLogging = dto.command_logging_state;
         result.player = dto.participant_ref ? UserMapper.fromDTO(dto.participant_ref) : undefined;
-        result.team = dto.team ? TeamMapper.fromDTO(dto.team) : undefined;
+        result.team = dto.coopRunTeam ? TeamMapper.fromDTO(dto.coopRunTeam) : undefined;
         result.type =
             dto.type === TrainingTypeDTO.TypeEnum.COOP ? TrainingRunTypeEnum.COOP : TrainingRunTypeEnum.LINEAR;
         result.state = this.resolveState(dto.state);
